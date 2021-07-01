@@ -1,0 +1,320 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: fulfillments.dialogflow.google.kubeform.com
+spec:
+  group: dialogflow.google.kubeform.com
+  names:
+    kind: Fulfillment
+    listKind: FulfillmentList
+    plural: fulfillments
+    singular: fulfillment
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              kubeformOutput:
+                properties:
+                  displayName:
+                    description: The human-readable name of the fulfillment, unique
+                      within the agent.
+                    type: string
+                  enabled:
+                    description: Whether fulfillment is enabled.
+                    type: boolean
+                  features:
+                    description: The field defines whether the fulfillment is enabled
+                      for certain features.
+                    items:
+                      properties:
+                        type:
+                          description: 'The type of the feature that enabled for fulfillment.
+                            * SMALLTALK: Fulfillment is enabled for SmallTalk. Possible
+                            values: ["SMALLTALK"]'
+                          type: string
+                      required:
+                      - type
+                      type: object
+                    type: array
+                  genericWebService:
+                    description: 'Represents configuration for a generic web service.
+                      Dialogflow supports two mechanisms for authentications: - Basic
+                      authentication with username and password. - Authentication
+                      with additional authentication headers.'
+                    properties:
+                      password:
+                        description: The password for HTTP Basic authentication.
+                        type: string
+                      requestHeaders:
+                        additionalProperties:
+                          type: string
+                        description: The HTTP request headers to send together with
+                          fulfillment requests.
+                        type: object
+                      uri:
+                        description: The fulfillment URI for receiving POST requests.
+                          It must use https protocol.
+                        type: string
+                      username:
+                        description: The user name for HTTP Basic authentication.
+                        type: string
+                    required:
+                    - uri
+                    type: object
+                  id:
+                    type: string
+                  name:
+                    description: 'The unique identifier of the fulfillment. Format:
+                      projects/<Project ID>/agent/fulfillment - projects/<Project
+                      ID>/locations/<Location ID>/agent/fulfillment'
+                    type: string
+                  project:
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - displayName
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  displayName:
+                    description: The human-readable name of the fulfillment, unique
+                      within the agent.
+                    type: string
+                  enabled:
+                    description: Whether fulfillment is enabled.
+                    type: boolean
+                  features:
+                    description: The field defines whether the fulfillment is enabled
+                      for certain features.
+                    items:
+                      properties:
+                        type:
+                          description: 'The type of the feature that enabled for fulfillment.
+                            * SMALLTALK: Fulfillment is enabled for SmallTalk. Possible
+                            values: ["SMALLTALK"]'
+                          type: string
+                      required:
+                      - type
+                      type: object
+                    type: array
+                  genericWebService:
+                    description: 'Represents configuration for a generic web service.
+                      Dialogflow supports two mechanisms for authentications: - Basic
+                      authentication with username and password. - Authentication
+                      with additional authentication headers.'
+                    properties:
+                      password:
+                        description: The password for HTTP Basic authentication.
+                        type: string
+                      requestHeaders:
+                        additionalProperties:
+                          type: string
+                        description: The HTTP request headers to send together with
+                          fulfillment requests.
+                        type: object
+                      uri:
+                        description: The fulfillment URI for receiving POST requests.
+                          It must use https protocol.
+                        type: string
+                      username:
+                        description: The user name for HTTP Basic authentication.
+                        type: string
+                    required:
+                    - uri
+                    type: object
+                  id:
+                    type: string
+                  name:
+                    description: 'The unique identifier of the fulfillment. Format:
+                      projects/<Project ID>/agent/fulfillment - projects/<Project
+                      ID>/locations/<Location ID>/agent/fulfillment'
+                    type: string
+                  project:
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - displayName
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -1,0 +1,430 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: instances.memcache.google.kubeform.com
+spec:
+  group: memcache.google.kubeform.com
+  names:
+    kind: Instance
+    listKind: InstanceList
+    plural: instances
+    singular: instance
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              kubeformOutput:
+                properties:
+                  authorizedNetwork:
+                    description: The full name of the GCE network to connect the instance
+                      to.  If not provided, 'default' will be used.
+                    type: string
+                  createTime:
+                    description: Creation timestamp in RFC3339 text format.
+                    type: string
+                  discoveryEndpoint:
+                    description: Endpoint for Discovery API
+                    type: string
+                  displayName:
+                    description: A user-visible name for the instance.
+                    type: string
+                  id:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Resource labels to represent user-provided metadata.
+                    type: object
+                  memcacheFullVersion:
+                    description: The full version of memcached server running on this
+                      instance.
+                    type: string
+                  memcacheNodes:
+                    description: Additional information about the instance state,
+                      if available.
+                    items:
+                      properties:
+                        host:
+                          description: Hostname or IP address of the Memcached node
+                            used by the clients to connect to the Memcached server
+                            on this node.
+                          type: string
+                        nodeID:
+                          description: Identifier of the Memcached node. The node
+                            id does not include project or location like the Memcached
+                            instance name.
+                          type: string
+                        port:
+                          description: The port number of the Memcached server on
+                            this node.
+                          format: int64
+                          type: integer
+                        state:
+                          description: Current state of the Memcached node.
+                          type: string
+                        zone:
+                          description: Location (GCP Zone) for the Memcached node.
+                          type: string
+                      type: object
+                    type: array
+                  memcacheParameters:
+                    description: User-specified parameters for this memcache instance.
+                    properties:
+                      ID:
+                        description: This is a unique ID associated with this set
+                          of parameters.
+                        type: string
+                      params:
+                        additionalProperties:
+                          type: string
+                        description: User-defined set of parameters to use in the
+                          memcache process.
+                        type: object
+                    type: object
+                  memcacheVersion:
+                    description: 'The major version of Memcached software. If not
+                      provided, latest supported version will be used. Currently the
+                      latest supported major version is MEMCACHE_1_5. The minor version
+                      will be automatically determined by our system based on the
+                      latest supported minor version. Default value: "MEMCACHE_1_5"
+                      Possible values: ["MEMCACHE_1_5"]'
+                    type: string
+                  name:
+                    description: The resource name of the instance.
+                    type: string
+                  nodeConfig:
+                    description: Configuration for memcache nodes.
+                    properties:
+                      cpuCount:
+                        description: Number of CPUs per node.
+                        format: int64
+                        type: integer
+                      memorySizeMb:
+                        description: Memory size in Mebibytes for each memcache node.
+                        format: int64
+                        type: integer
+                    required:
+                    - cpuCount
+                    - memorySizeMb
+                    type: object
+                  nodeCount:
+                    description: Number of nodes in the memcache instance.
+                    format: int64
+                    type: integer
+                  project:
+                    type: string
+                  region:
+                    description: The region of the Memcache instance. If it is not
+                      provided, the provider region is used.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  zones:
+                    description: Zones where memcache nodes should be provisioned.  If
+                      not provided, all zones will be used.
+                    items:
+                      type: string
+                    type: array
+                required:
+                - name
+                - nodeConfig
+                - nodeCount
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  authorizedNetwork:
+                    description: The full name of the GCE network to connect the instance
+                      to.  If not provided, 'default' will be used.
+                    type: string
+                  createTime:
+                    description: Creation timestamp in RFC3339 text format.
+                    type: string
+                  discoveryEndpoint:
+                    description: Endpoint for Discovery API
+                    type: string
+                  displayName:
+                    description: A user-visible name for the instance.
+                    type: string
+                  id:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Resource labels to represent user-provided metadata.
+                    type: object
+                  memcacheFullVersion:
+                    description: The full version of memcached server running on this
+                      instance.
+                    type: string
+                  memcacheNodes:
+                    description: Additional information about the instance state,
+                      if available.
+                    items:
+                      properties:
+                        host:
+                          description: Hostname or IP address of the Memcached node
+                            used by the clients to connect to the Memcached server
+                            on this node.
+                          type: string
+                        nodeID:
+                          description: Identifier of the Memcached node. The node
+                            id does not include project or location like the Memcached
+                            instance name.
+                          type: string
+                        port:
+                          description: The port number of the Memcached server on
+                            this node.
+                          format: int64
+                          type: integer
+                        state:
+                          description: Current state of the Memcached node.
+                          type: string
+                        zone:
+                          description: Location (GCP Zone) for the Memcached node.
+                          type: string
+                      type: object
+                    type: array
+                  memcacheParameters:
+                    description: User-specified parameters for this memcache instance.
+                    properties:
+                      ID:
+                        description: This is a unique ID associated with this set
+                          of parameters.
+                        type: string
+                      params:
+                        additionalProperties:
+                          type: string
+                        description: User-defined set of parameters to use in the
+                          memcache process.
+                        type: object
+                    type: object
+                  memcacheVersion:
+                    description: 'The major version of Memcached software. If not
+                      provided, latest supported version will be used. Currently the
+                      latest supported major version is MEMCACHE_1_5. The minor version
+                      will be automatically determined by our system based on the
+                      latest supported minor version. Default value: "MEMCACHE_1_5"
+                      Possible values: ["MEMCACHE_1_5"]'
+                    type: string
+                  name:
+                    description: The resource name of the instance.
+                    type: string
+                  nodeConfig:
+                    description: Configuration for memcache nodes.
+                    properties:
+                      cpuCount:
+                        description: Number of CPUs per node.
+                        format: int64
+                        type: integer
+                      memorySizeMb:
+                        description: Memory size in Mebibytes for each memcache node.
+                        format: int64
+                        type: integer
+                    required:
+                    - cpuCount
+                    - memorySizeMb
+                    type: object
+                  nodeCount:
+                    description: Number of nodes in the memcache instance.
+                    format: int64
+                    type: integer
+                  project:
+                    type: string
+                  region:
+                    description: The region of the Memcache instance. If it is not
+                      provided, the provider region is used.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  zones:
+                    description: Zones where memcache nodes should be provisioned.  If
+                      not provided, all zones will be used.
+                    items:
+                      type: string
+                    type: array
+                required:
+                - name
+                - nodeConfig
+                - nodeCount
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
