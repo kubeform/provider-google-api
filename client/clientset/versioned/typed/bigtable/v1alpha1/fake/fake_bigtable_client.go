@@ -19,9 +19,10 @@ limitations under the License.
 package fake
 
 import (
+	v1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigtable/v1alpha1"
+
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
-	v1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigtable/v1alpha1"
 )
 
 type FakeBigtableV1alpha1 struct {
