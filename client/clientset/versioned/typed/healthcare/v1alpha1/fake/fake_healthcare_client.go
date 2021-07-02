@@ -19,9 +19,10 @@ limitations under the License.
 package fake
 
 import (
+	v1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/healthcare/v1alpha1"
+
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
-	v1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/healthcare/v1alpha1"
 )
 
 type FakeHealthcareV1alpha1 struct {
