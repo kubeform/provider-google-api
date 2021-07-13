@@ -49,7 +49,7 @@ type ManagedSslCertificateSpecManaged struct {
 }
 
 type ManagedSslCertificateSpec struct {
-	KubeformOutput *ManagedSslCertificateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagedSslCertificateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagedSslCertificateSpecResource `json:"resource" tf:"resource"`
 

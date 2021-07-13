@@ -42,7 +42,7 @@ type RouterInterface struct {
 }
 
 type RouterInterfaceSpec struct {
-	KubeformOutput *RouterInterfaceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouterInterfaceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouterInterfaceSpecResource `json:"resource" tf:"resource"`
 

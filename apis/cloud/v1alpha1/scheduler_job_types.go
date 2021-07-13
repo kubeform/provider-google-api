@@ -176,7 +176,7 @@ type SchedulerJobSpecRetryConfig struct {
 }
 
 type SchedulerJobSpec struct {
-	KubeformOutput *SchedulerJobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SchedulerJobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SchedulerJobSpecResource `json:"resource" tf:"resource"`
 

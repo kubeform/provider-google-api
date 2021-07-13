@@ -42,7 +42,7 @@ type TagKey struct {
 }
 
 type TagKeySpec struct {
-	KubeformOutput *TagKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TagKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TagKeySpecResource `json:"resource" tf:"resource"`
 

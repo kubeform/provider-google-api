@@ -42,7 +42,7 @@ type CatalogEntryGroup struct {
 }
 
 type CatalogEntryGroupSpec struct {
-	KubeformOutput *CatalogEntryGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogEntryGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogEntryGroupSpecResource `json:"resource" tf:"resource"`
 

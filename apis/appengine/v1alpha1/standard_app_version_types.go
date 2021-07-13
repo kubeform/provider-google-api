@@ -205,7 +205,7 @@ type StandardAppVersionSpecVpcAccessConnector struct {
 }
 
 type StandardAppVersionSpec struct {
-	KubeformOutput *StandardAppVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *StandardAppVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource StandardAppVersionSpecResource `json:"resource" tf:"resource"`
 

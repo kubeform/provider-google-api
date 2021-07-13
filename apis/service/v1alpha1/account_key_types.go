@@ -42,7 +42,7 @@ type AccountKey struct {
 }
 
 type AccountKeySpec struct {
-	KubeformOutput *AccountKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccountKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccountKeySpecResource `json:"resource" tf:"resource"`
 

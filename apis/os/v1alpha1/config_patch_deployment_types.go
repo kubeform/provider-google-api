@@ -387,7 +387,7 @@ type ConfigPatchDeploymentSpecRollout struct {
 }
 
 type ConfigPatchDeploymentSpec struct {
-	KubeformOutput *ConfigPatchDeploymentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConfigPatchDeploymentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConfigPatchDeploymentSpecResource `json:"resource" tf:"resource"`
 

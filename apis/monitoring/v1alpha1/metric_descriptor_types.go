@@ -62,7 +62,7 @@ type MetricDescriptorSpecMetadata struct {
 }
 
 type MetricDescriptorSpec struct {
-	KubeformOutput *MetricDescriptorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MetricDescriptorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MetricDescriptorSpecResource `json:"resource" tf:"resource"`
 

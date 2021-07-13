@@ -42,7 +42,7 @@ type PlatformDefaultSupportedIdpConfig struct {
 }
 
 type PlatformDefaultSupportedIdpConfigSpec struct {
-	KubeformOutput *PlatformDefaultSupportedIdpConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlatformDefaultSupportedIdpConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlatformDefaultSupportedIdpConfigSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type InterconnectAttachmentSpecPrivateInterconnectInfo struct {
 }
 
 type InterconnectAttachmentSpec struct {
-	KubeformOutput *InterconnectAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InterconnectAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InterconnectAttachmentSpecResource `json:"resource" tf:"resource"`
 

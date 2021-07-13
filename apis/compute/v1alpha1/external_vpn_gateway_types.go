@@ -58,7 +58,7 @@ type ExternalVPNGatewaySpecInterface struct {
 }
 
 type ExternalVPNGatewaySpec struct {
-	KubeformOutput *ExternalVPNGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ExternalVPNGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ExternalVPNGatewaySpecResource `json:"resource" tf:"resource"`
 

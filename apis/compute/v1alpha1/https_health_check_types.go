@@ -42,7 +42,7 @@ type HttpsHealthCheck struct {
 }
 
 type HttpsHealthCheckSpec struct {
-	KubeformOutput *HttpsHealthCheckSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HttpsHealthCheckSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HttpsHealthCheckSpecResource `json:"resource" tf:"resource"`
 

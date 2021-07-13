@@ -68,7 +68,7 @@ type AnalysisNoteSpecRelatedURL struct {
 }
 
 type AnalysisNoteSpec struct {
-	KubeformOutput *AnalysisNoteSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AnalysisNoteSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AnalysisNoteSpecResource `json:"resource" tf:"resource"`
 

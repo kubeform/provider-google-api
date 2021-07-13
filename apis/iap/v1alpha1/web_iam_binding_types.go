@@ -49,7 +49,7 @@ type WebIamBindingSpecCondition struct {
 }
 
 type WebIamBindingSpec struct {
-	KubeformOutput *WebIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebIamBindingSpecResource `json:"resource" tf:"resource"`
 

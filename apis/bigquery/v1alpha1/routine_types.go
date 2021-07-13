@@ -63,7 +63,7 @@ type RoutineSpecArguments struct {
 }
 
 type RoutineSpec struct {
-	KubeformOutput *RoutineSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RoutineSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RoutineSpecResource `json:"resource" tf:"resource"`
 

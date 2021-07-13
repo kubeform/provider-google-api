@@ -49,7 +49,7 @@ type CatalogEntryGroupIamBindingSpecCondition struct {
 }
 
 type CatalogEntryGroupIamBindingSpec struct {
-	KubeformOutput *CatalogEntryGroupIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogEntryGroupIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogEntryGroupIamBindingSpecResource `json:"resource" tf:"resource"`
 

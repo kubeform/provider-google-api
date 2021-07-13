@@ -42,7 +42,7 @@ type CatalogEntryGroupIamPolicy struct {
 }
 
 type CatalogEntryGroupIamPolicySpec struct {
-	KubeformOutput *CatalogEntryGroupIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogEntryGroupIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogEntryGroupIamPolicySpecResource `json:"resource" tf:"resource"`
 

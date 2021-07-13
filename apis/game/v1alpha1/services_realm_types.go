@@ -42,7 +42,7 @@ type ServicesRealm struct {
 }
 
 type ServicesRealmSpec struct {
-	KubeformOutput *ServicesRealmSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServicesRealmSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServicesRealmSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type EnvgroupAttachment struct {
 }
 
 type EnvgroupAttachmentSpec struct {
-	KubeformOutput *EnvgroupAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EnvgroupAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EnvgroupAttachmentSpecResource `json:"resource" tf:"resource"`
 

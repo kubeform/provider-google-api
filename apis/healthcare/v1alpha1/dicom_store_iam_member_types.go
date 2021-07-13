@@ -49,7 +49,7 @@ type DicomStoreIamMemberSpecCondition struct {
 }
 
 type DicomStoreIamMemberSpec struct {
-	KubeformOutput *DicomStoreIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DicomStoreIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DicomStoreIamMemberSpecResource `json:"resource" tf:"resource"`
 

@@ -60,7 +60,7 @@ type BillingAccountSinkSpecExclusions struct {
 }
 
 type BillingAccountSinkSpec struct {
-	KubeformOutput *BillingAccountSinkSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BillingAccountSinkSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BillingAccountSinkSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type DiskIamBindingSpecCondition struct {
 }
 
 type DiskIamBindingSpec struct {
-	KubeformOutput *DiskIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DiskIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DiskIamBindingSpecResource `json:"resource" tf:"resource"`
 

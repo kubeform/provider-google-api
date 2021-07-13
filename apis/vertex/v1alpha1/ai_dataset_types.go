@@ -49,7 +49,7 @@ type AiDatasetSpecEncryptionSpec struct {
 }
 
 type AiDatasetSpec struct {
-	KubeformOutput *AiDatasetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AiDatasetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AiDatasetSpecResource `json:"resource" tf:"resource"`
 

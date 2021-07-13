@@ -424,7 +424,7 @@ type RegionBackendServiceSpecOutlierDetection struct {
 }
 
 type RegionBackendServiceSpec struct {
-	KubeformOutput *RegionBackendServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionBackendServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionBackendServiceSpecResource `json:"resource" tf:"resource"`
 

@@ -397,7 +397,7 @@ type BackendServiceSpecOutlierDetection struct {
 }
 
 type BackendServiceSpec struct {
-	KubeformOutput *BackendServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackendServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackendServiceSpecResource `json:"resource" tf:"resource"`
 

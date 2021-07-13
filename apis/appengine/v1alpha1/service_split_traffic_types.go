@@ -50,7 +50,7 @@ type ServiceSplitTrafficSpecSplit struct {
 }
 
 type ServiceSplitTrafficSpec struct {
-	KubeformOutput *ServiceSplitTrafficSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceSplitTrafficSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceSplitTrafficSpecResource `json:"resource" tf:"resource"`
 

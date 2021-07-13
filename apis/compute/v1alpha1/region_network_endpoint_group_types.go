@@ -106,7 +106,7 @@ type RegionNetworkEndpointGroupSpecCloudRun struct {
 }
 
 type RegionNetworkEndpointGroupSpec struct {
-	KubeformOutput *RegionNetworkEndpointGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionNetworkEndpointGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionNetworkEndpointGroupSpecResource `json:"resource" tf:"resource"`
 

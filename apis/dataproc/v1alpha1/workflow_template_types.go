@@ -589,7 +589,7 @@ type WorkflowTemplateSpecPlacement struct {
 }
 
 type WorkflowTemplateSpec struct {
-	KubeformOutput *WorkflowTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WorkflowTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WorkflowTemplateSpecResource `json:"resource" tf:"resource"`
 

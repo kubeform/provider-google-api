@@ -238,7 +238,7 @@ type LossPreventionJobTriggerSpecTriggers struct {
 }
 
 type LossPreventionJobTriggerSpec struct {
-	KubeformOutput *LossPreventionJobTriggerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LossPreventionJobTriggerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LossPreventionJobTriggerSpecResource `json:"resource" tf:"resource"`
 

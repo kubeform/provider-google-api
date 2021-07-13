@@ -42,7 +42,7 @@ type TargetPool struct {
 }
 
 type TargetPoolSpec struct {
-	KubeformOutput *TargetPoolSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetPoolSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetPoolSpecResource `json:"resource" tf:"resource"`
 

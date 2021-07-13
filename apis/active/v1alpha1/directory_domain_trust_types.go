@@ -42,7 +42,7 @@ type DirectoryDomainTrust struct {
 }
 
 type DirectoryDomainTrustSpec struct {
-	KubeformOutput *DirectoryDomainTrustSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DirectoryDomainTrustSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DirectoryDomainTrustSpecResource `json:"resource" tf:"resource"`
 

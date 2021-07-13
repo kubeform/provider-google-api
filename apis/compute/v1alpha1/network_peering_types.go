@@ -42,7 +42,7 @@ type NetworkPeering struct {
 }
 
 type NetworkPeeringSpec struct {
-	KubeformOutput *NetworkPeeringSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NetworkPeeringSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NetworkPeeringSpecResource `json:"resource" tf:"resource"`
 

@@ -51,7 +51,7 @@ type CryptoKeySpecVersionTemplate struct {
 }
 
 type CryptoKeySpec struct {
-	KubeformOutput *CryptoKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CryptoKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CryptoKeySpecResource `json:"resource" tf:"resource"`
 

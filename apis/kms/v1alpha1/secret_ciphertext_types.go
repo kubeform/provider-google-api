@@ -42,7 +42,7 @@ type SecretCiphertext struct {
 }
 
 type SecretCiphertextSpec struct {
-	KubeformOutput *SecretCiphertextSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SecretCiphertextSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SecretCiphertextSpecResource `json:"resource" tf:"resource"`
 

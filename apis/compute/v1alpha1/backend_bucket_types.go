@@ -90,7 +90,7 @@ type BackendBucketSpecCdnPolicy struct {
 }
 
 type BackendBucketSpec struct {
-	KubeformOutput *BackendBucketSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackendBucketSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackendBucketSpecResource `json:"resource" tf:"resource"`
 

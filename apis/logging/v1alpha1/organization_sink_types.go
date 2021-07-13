@@ -60,7 +60,7 @@ type OrganizationSinkSpecExclusions struct {
 }
 
 type OrganizationSinkSpec struct {
-	KubeformOutput *OrganizationSinkSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationSinkSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationSinkSpecResource `json:"resource" tf:"resource"`
 

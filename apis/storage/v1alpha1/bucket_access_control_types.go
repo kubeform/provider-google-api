@@ -42,7 +42,7 @@ type BucketAccessControl struct {
 }
 
 type BucketAccessControlSpec struct {
-	KubeformOutput *BucketAccessControlSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketAccessControlSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketAccessControlSpecResource `json:"resource" tf:"resource"`
 

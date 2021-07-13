@@ -292,7 +292,7 @@ type LossPreventionInspectTemplateSpecInspectConfig struct {
 }
 
 type LossPreventionInspectTemplateSpec struct {
-	KubeformOutput *LossPreventionInspectTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LossPreventionInspectTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LossPreventionInspectTemplateSpecResource `json:"resource" tf:"resource"`
 

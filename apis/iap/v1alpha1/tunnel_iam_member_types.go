@@ -49,7 +49,7 @@ type TunnelIamMemberSpecCondition struct {
 }
 
 type TunnelIamMemberSpec struct {
-	KubeformOutput *TunnelIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TunnelIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TunnelIamMemberSpecResource `json:"resource" tf:"resource"`
 

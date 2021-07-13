@@ -108,7 +108,7 @@ type DeviceSpecState struct {
 }
 
 type DeviceSpec struct {
-	KubeformOutput *DeviceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DeviceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DeviceSpecResource `json:"resource" tf:"resource"`
 

@@ -90,7 +90,7 @@ type ReservationSpecSpecificReservation struct {
 }
 
 type ReservationSpec struct {
-	KubeformOutput *ReservationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReservationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReservationSpecResource `json:"resource" tf:"resource"`
 

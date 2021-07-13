@@ -47,7 +47,7 @@ type LiteSubscriptionSpecDeliveryConfig struct {
 }
 
 type LiteSubscriptionSpec struct {
-	KubeformOutput *LiteSubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LiteSubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LiteSubscriptionSpecResource `json:"resource" tf:"resource"`
 

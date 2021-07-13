@@ -69,7 +69,7 @@ type AssetOrganizationFeedSpecFeedOutputConfig struct {
 }
 
 type AssetOrganizationFeedSpec struct {
-	KubeformOutput *AssetOrganizationFeedSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AssetOrganizationFeedSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AssetOrganizationFeedSpecResource `json:"resource" tf:"resource"`
 

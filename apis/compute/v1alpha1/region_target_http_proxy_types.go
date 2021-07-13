@@ -42,7 +42,7 @@ type RegionTargetHTTPProxy struct {
 }
 
 type RegionTargetHTTPProxySpec struct {
-	KubeformOutput *RegionTargetHTTPProxySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionTargetHTTPProxySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionTargetHTTPProxySpecResource `json:"resource" tf:"resource"`
 

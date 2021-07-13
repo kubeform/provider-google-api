@@ -42,7 +42,7 @@ type LoginSSHPublicKey struct {
 }
 
 type LoginSSHPublicKeySpec struct {
-	KubeformOutput *LoginSSHPublicKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LoginSSHPublicKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LoginSSHPublicKeySpecResource `json:"resource" tf:"resource"`
 

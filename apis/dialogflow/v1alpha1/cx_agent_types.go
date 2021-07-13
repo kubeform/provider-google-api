@@ -48,7 +48,7 @@ type CxAgentSpecSpeechToTextSettings struct {
 }
 
 type CxAgentSpec struct {
-	KubeformOutput *CxAgentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CxAgentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CxAgentSpecResource `json:"resource" tf:"resource"`
 

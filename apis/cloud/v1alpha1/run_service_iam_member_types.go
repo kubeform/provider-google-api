@@ -49,7 +49,7 @@ type RunServiceIamMemberSpecCondition struct {
 }
 
 type RunServiceIamMemberSpec struct {
-	KubeformOutput *RunServiceIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RunServiceIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RunServiceIamMemberSpecResource `json:"resource" tf:"resource"`
 

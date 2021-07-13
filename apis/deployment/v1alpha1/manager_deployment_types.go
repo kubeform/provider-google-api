@@ -76,7 +76,7 @@ type ManagerDeploymentSpecTarget struct {
 }
 
 type ManagerDeploymentSpec struct {
-	KubeformOutput *ManagerDeploymentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerDeploymentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerDeploymentSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type ManagerSecretVersion struct {
 }
 
 type ManagerSecretVersionSpec struct {
-	KubeformOutput *ManagerSecretVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerSecretVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerSecretVersionSpecResource `json:"resource" tf:"resource"`
 

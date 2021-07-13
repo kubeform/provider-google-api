@@ -85,7 +85,7 @@ type OrganizationPolicySpecRestorePolicy struct {
 }
 
 type OrganizationPolicySpec struct {
-	KubeformOutput *OrganizationPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationPolicySpecResource `json:"resource" tf:"resource"`
 

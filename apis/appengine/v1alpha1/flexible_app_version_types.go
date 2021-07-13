@@ -393,7 +393,7 @@ type FlexibleAppVersionSpecVpcAccessConnector struct {
 }
 
 type FlexibleAppVersionSpec struct {
-	KubeformOutput *FlexibleAppVersionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FlexibleAppVersionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FlexibleAppVersionSpecResource `json:"resource" tf:"resource"`
 

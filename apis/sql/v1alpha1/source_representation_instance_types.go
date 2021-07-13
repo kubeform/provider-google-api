@@ -42,7 +42,7 @@ type SourceRepresentationInstance struct {
 }
 
 type SourceRepresentationInstanceSpec struct {
-	KubeformOutput *SourceRepresentationInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SourceRepresentationInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SourceRepresentationInstanceSpecResource `json:"resource" tf:"resource"`
 

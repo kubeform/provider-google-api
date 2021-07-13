@@ -70,7 +70,7 @@ type IdentityGroupMembershipSpecRoles struct {
 }
 
 type IdentityGroupMembershipSpec struct {
-	KubeformOutput *IdentityGroupMembershipSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityGroupMembershipSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityGroupMembershipSpecResource `json:"resource" tf:"resource"`
 

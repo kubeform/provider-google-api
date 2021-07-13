@@ -50,7 +50,7 @@ type CustomServiceSpecTelemetry struct {
 }
 
 type CustomServiceSpec struct {
-	KubeformOutput *CustomServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CustomServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CustomServiceSpecResource `json:"resource" tf:"resource"`
 

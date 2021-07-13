@@ -49,7 +49,7 @@ type DatabaseIamMemberSpecCondition struct {
 }
 
 type DatabaseIamMemberSpec struct {
-	KubeformOutput *DatabaseIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatabaseIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatabaseIamMemberSpecResource `json:"resource" tf:"resource"`
 

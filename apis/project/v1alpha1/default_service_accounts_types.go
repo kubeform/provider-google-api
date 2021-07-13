@@ -42,7 +42,7 @@ type DefaultServiceAccounts struct {
 }
 
 type DefaultServiceAccountsSpec struct {
-	KubeformOutput *DefaultServiceAccountsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DefaultServiceAccountsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DefaultServiceAccountsSpecResource `json:"resource" tf:"resource"`
 

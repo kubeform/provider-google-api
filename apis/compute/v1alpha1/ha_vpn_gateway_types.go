@@ -60,7 +60,7 @@ type HaVPNGatewaySpecVpnInterfaces struct {
 }
 
 type HaVPNGatewaySpec struct {
-	KubeformOutput *HaVPNGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HaVPNGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HaVPNGatewaySpecResource `json:"resource" tf:"resource"`
 

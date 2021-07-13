@@ -42,7 +42,7 @@ type PlatformOauthIdpConfig struct {
 }
 
 type PlatformOauthIdpConfigSpec struct {
-	KubeformOutput *PlatformOauthIdpConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlatformOauthIdpConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlatformOauthIdpConfigSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type ClusterIamBindingSpecCondition struct {
 }
 
 type ClusterIamBindingSpec struct {
-	KubeformOutput *ClusterIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterIamBindingSpecResource `json:"resource" tf:"resource"`
 

@@ -56,7 +56,7 @@ type SourcerepoRepositorySpecPubsubConfigs struct {
 }
 
 type SourcerepoRepositorySpec struct {
-	KubeformOutput *SourcerepoRepositorySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SourcerepoRepositorySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SourcerepoRepositorySpecResource `json:"resource" tf:"resource"`
 

@@ -411,7 +411,7 @@ type SloSpecWindowsBasedSli struct {
 }
 
 type SloSpec struct {
-	KubeformOutput *SloSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SloSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SloSpecResource `json:"resource" tf:"resource"`
 

@@ -37,73 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  accessID:
-                    description: The access ID of the HMAC Key.
-                    type: string
-                  id:
-                    type: string
-                  project:
-                    type: string
-                  serviceAccountEmail:
-                    description: The email address of the key's associated service
-                      account.
-                    type: string
-                  state:
-                    description: 'The state of the key. Can be set to one of ACTIVE,
-                      INACTIVE. Default value: "ACTIVE" Possible values: ["ACTIVE",
-                      "INACTIVE"]'
-                    type: string
-                  timeCreated:
-                    description: '''The creation time of the HMAC key in RFC 3339
-                      format. '''
-                    type: string
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                  updated:
-                    description: '''The last modification time of the HMAC key metadata
-                      in RFC 3339 format.'''
-                    type: string
-                required:
-                - serviceAccountEmail
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -188,6 +121,73 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  accessID:
+                    description: The access ID of the HMAC Key.
+                    type: string
+                  id:
+                    type: string
+                  project:
+                    type: string
+                  serviceAccountEmail:
+                    description: The email address of the key's associated service
+                      account.
+                    type: string
+                  state:
+                    description: 'The state of the key. Can be set to one of ACTIVE,
+                      INACTIVE. Default value: "ACTIVE" Possible values: ["ACTIVE",
+                      "INACTIVE"]'
+                    type: string
+                  timeCreated:
+                    description: '''The creation time of the HMAC key in RFC 3339
+                      format. '''
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  updated:
+                    description: '''The last modification time of the HMAC key metadata
+                      in RFC 3339 format.'''
+                    type: string
+                required:
+                - serviceAccountEmail
                 type: object
               terminationPolicy:
                 enum:

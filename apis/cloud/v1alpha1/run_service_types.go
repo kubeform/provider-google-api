@@ -389,7 +389,7 @@ type RunServiceSpecTraffic struct {
 }
 
 type RunServiceSpec struct {
-	KubeformOutput *RunServiceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RunServiceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RunServiceSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type ForwardingRule struct {
 }
 
 type ForwardingRuleSpec struct {
-	KubeformOutput *ForwardingRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ForwardingRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ForwardingRuleSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type PlatformTenant struct {
 }
 
 type PlatformTenantSpec struct {
-	KubeformOutput *PlatformTenantSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlatformTenantSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlatformTenantSpecResource `json:"resource" tf:"resource"`
 

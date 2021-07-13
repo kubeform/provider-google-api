@@ -92,7 +92,7 @@ type Hl7V2StoreSpecParserConfig struct {
 }
 
 type Hl7V2StoreSpec struct {
-	KubeformOutput *Hl7V2StoreSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *Hl7V2StoreSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource Hl7V2StoreSpecResource `json:"resource" tf:"resource"`
 

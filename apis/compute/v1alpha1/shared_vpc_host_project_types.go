@@ -42,7 +42,7 @@ type SharedVpcHostProject struct {
 }
 
 type SharedVpcHostProjectSpec struct {
-	KubeformOutput *SharedVpcHostProjectSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SharedVpcHostProjectSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SharedVpcHostProjectSpecResource `json:"resource" tf:"resource"`
 

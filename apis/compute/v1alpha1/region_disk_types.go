@@ -64,7 +64,7 @@ type RegionDiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type RegionDiskSpec struct {
-	KubeformOutput *RegionDiskSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionDiskSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionDiskSpecResource `json:"resource" tf:"resource"`
 

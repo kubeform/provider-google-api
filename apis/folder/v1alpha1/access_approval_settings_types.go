@@ -73,7 +73,7 @@ type AccessApprovalSettingsSpecEnrolledServices struct {
 }
 
 type AccessApprovalSettingsSpec struct {
-	KubeformOutput *AccessApprovalSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccessApprovalSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccessApprovalSettingsSpecResource `json:"resource" tf:"resource"`
 

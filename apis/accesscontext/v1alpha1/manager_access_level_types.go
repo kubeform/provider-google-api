@@ -161,7 +161,7 @@ type ManagerAccessLevelSpecCustom struct {
 }
 
 type ManagerAccessLevelSpec struct {
-	KubeformOutput *ManagerAccessLevelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerAccessLevelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerAccessLevelSpecResource `json:"resource" tf:"resource"`
 

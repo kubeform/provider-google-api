@@ -85,7 +85,7 @@ type SubnetworkSpecSecondaryIPRange struct {
 }
 
 type SubnetworkSpec struct {
-	KubeformOutput *SubnetworkSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SubnetworkSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SubnetworkSpecResource `json:"resource" tf:"resource"`
 

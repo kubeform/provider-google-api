@@ -133,7 +133,7 @@ type TasksQueueSpecStackdriverLoggingConfig struct {
 }
 
 type TasksQueueSpec struct {
-	KubeformOutput *TasksQueueSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TasksQueueSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TasksQueueSpecResource `json:"resource" tf:"resource"`
 

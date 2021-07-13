@@ -37,84 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  domain:
-                    description: The fully qualified domain name. e.g. mydomain.myorganization.com,
-                      with the restrictions, https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-                    type: string
-                  id:
-                    type: string
-                  project:
-                    type: string
-                  selectiveAuthentication:
-                    description: Whether the trusted side has forest/domain wide access
-                      or selective access to an approved set of resources.
-                    type: boolean
-                  targetDNSIPAddresses:
-                    description: The target DNS server IP addresses which can resolve
-                      the remote domain involved in the trust.
-                    items:
-                      type: string
-                    type: array
-                  targetDomainName:
-                    description: The fully qualified target domain name which will
-                      be in trust with the current domain.
-                    type: string
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                  trustDirection:
-                    description: 'The trust direction, which decides if the current
-                      domain is trusted, trusting, or both. Possible values: ["INBOUND",
-                      "OUTBOUND", "BIDIRECTIONAL"]'
-                    type: string
-                  trustType:
-                    description: 'The type of trust represented by the trust resource.
-                      Possible values: ["FOREST", "EXTERNAL"]'
-                    type: string
-                required:
-                - domain
-                - targetDNSIPAddresses
-                - targetDomainName
-                - trustDirection
-                - trustType
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -210,6 +132,84 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  domain:
+                    description: The fully qualified domain name. e.g. mydomain.myorganization.com,
+                      with the restrictions, https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+                    type: string
+                  id:
+                    type: string
+                  project:
+                    type: string
+                  selectiveAuthentication:
+                    description: Whether the trusted side has forest/domain wide access
+                      or selective access to an approved set of resources.
+                    type: boolean
+                  targetDNSIPAddresses:
+                    description: The target DNS server IP addresses which can resolve
+                      the remote domain involved in the trust.
+                    items:
+                      type: string
+                    type: array
+                  targetDomainName:
+                    description: The fully qualified target domain name which will
+                      be in trust with the current domain.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  trustDirection:
+                    description: 'The trust direction, which decides if the current
+                      domain is trusted, trusting, or both. Possible values: ["INBOUND",
+                      "OUTBOUND", "BIDIRECTIONAL"]'
+                    type: string
+                  trustType:
+                    description: 'The type of trust represented by the trust resource.
+                      Possible values: ["FOREST", "EXTERNAL"]'
+                    type: string
+                required:
+                - domain
+                - targetDNSIPAddresses
+                - targetDomainName
+                - trustDirection
+                - trustType
                 type: object
               terminationPolicy:
                 enum:

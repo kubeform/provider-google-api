@@ -111,7 +111,7 @@ type UptimeCheckConfigSpecTcpCheck struct {
 }
 
 type UptimeCheckConfigSpec struct {
-	KubeformOutput *UptimeCheckConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UptimeCheckConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UptimeCheckConfigSpecResource `json:"resource" tf:"resource"`
 

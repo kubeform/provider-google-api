@@ -70,7 +70,7 @@ type NodeTemplateSpecServerBinding struct {
 }
 
 type NodeTemplateSpec struct {
-	KubeformOutput *NodeTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NodeTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NodeTemplateSpecResource `json:"resource" tf:"resource"`
 

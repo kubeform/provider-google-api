@@ -55,7 +55,7 @@ type ApplicationURLDispatchRulesSpecDispatchRules struct {
 }
 
 type ApplicationURLDispatchRulesSpec struct {
-	KubeformOutput *ApplicationURLDispatchRulesSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApplicationURLDispatchRulesSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApplicationURLDispatchRulesSpecResource `json:"resource" tf:"resource"`
 

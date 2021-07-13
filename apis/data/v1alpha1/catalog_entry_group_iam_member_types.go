@@ -49,7 +49,7 @@ type CatalogEntryGroupIamMemberSpecCondition struct {
 }
 
 type CatalogEntryGroupIamMemberSpec struct {
-	KubeformOutput *CatalogEntryGroupIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogEntryGroupIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogEntryGroupIamMemberSpecResource `json:"resource" tf:"resource"`
 

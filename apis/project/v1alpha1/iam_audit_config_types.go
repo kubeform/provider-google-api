@@ -50,7 +50,7 @@ type IamAuditConfigSpecAuditLogConfig struct {
 }
 
 type IamAuditConfigSpec struct {
-	KubeformOutput *IamAuditConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IamAuditConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IamAuditConfigSpecResource `json:"resource" tf:"resource"`
 

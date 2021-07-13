@@ -62,7 +62,7 @@ type FulfillmentSpecGenericWebService struct {
 }
 
 type FulfillmentSpec struct {
-	KubeformOutput *FulfillmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FulfillmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FulfillmentSpecResource `json:"resource" tf:"resource"`
 

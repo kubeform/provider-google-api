@@ -48,7 +48,7 @@ type ServiceNetworkSettingsSpecNetworkSettings struct {
 }
 
 type ServiceNetworkSettingsSpec struct {
-	KubeformOutput *ServiceNetworkSettingsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServiceNetworkSettingsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServiceNetworkSettingsSpecResource `json:"resource" tf:"resource"`
 

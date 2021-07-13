@@ -69,7 +69,7 @@ type PerInstanceConfigSpecPreservedState struct {
 }
 
 type PerInstanceConfigSpec struct {
-	KubeformOutput *PerInstanceConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PerInstanceConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PerInstanceConfigSpecResource `json:"resource" tf:"resource"`
 

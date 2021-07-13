@@ -42,7 +42,7 @@ type DefaultObjectACL struct {
 }
 
 type DefaultObjectACLSpec struct {
-	KubeformOutput *DefaultObjectACLSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DefaultObjectACLSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DefaultObjectACLSpecResource `json:"resource" tf:"resource"`
 

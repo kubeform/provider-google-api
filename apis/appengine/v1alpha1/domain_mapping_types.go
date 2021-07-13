@@ -75,7 +75,7 @@ type DomainMappingSpecSslSettings struct {
 }
 
 type DomainMappingSpec struct {
-	KubeformOutput *DomainMappingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DomainMappingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DomainMappingSpecResource `json:"resource" tf:"resource"`
 

@@ -1659,7 +1659,7 @@ type UrlMapSpecTest struct {
 }
 
 type UrlMapSpec struct {
-	KubeformOutput *UrlMapSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UrlMapSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UrlMapSpecResource `json:"resource" tf:"resource"`
 

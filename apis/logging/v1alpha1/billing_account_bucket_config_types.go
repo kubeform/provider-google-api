@@ -42,7 +42,7 @@ type BillingAccountBucketConfig struct {
 }
 
 type BillingAccountBucketConfigSpec struct {
-	KubeformOutput *BillingAccountBucketConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BillingAccountBucketConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BillingAccountBucketConfigSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type ServicesGameServerDeployment struct {
 }
 
 type ServicesGameServerDeploymentSpec struct {
-	KubeformOutput *ServicesGameServerDeploymentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServicesGameServerDeploymentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServicesGameServerDeploymentSpecResource `json:"resource" tf:"resource"`
 

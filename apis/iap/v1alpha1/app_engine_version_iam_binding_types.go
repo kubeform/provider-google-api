@@ -49,7 +49,7 @@ type AppEngineVersionIamBindingSpecCondition struct {
 }
 
 type AppEngineVersionIamBindingSpec struct {
-	KubeformOutput *AppEngineVersionIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AppEngineVersionIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AppEngineVersionIamBindingSpecResource `json:"resource" tf:"resource"`
 

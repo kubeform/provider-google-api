@@ -65,7 +65,7 @@ type CloudfunctionsFunctionSpecSourceRepository struct {
 }
 
 type CloudfunctionsFunctionSpec struct {
-	KubeformOutput *CloudfunctionsFunctionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CloudfunctionsFunctionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CloudfunctionsFunctionSpecResource `json:"resource" tf:"resource"`
 

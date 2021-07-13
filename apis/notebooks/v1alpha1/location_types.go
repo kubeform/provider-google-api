@@ -42,7 +42,7 @@ type Location struct {
 }
 
 type LocationSpec struct {
-	KubeformOutput *LocationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LocationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LocationSpecResource `json:"resource" tf:"resource"`
 

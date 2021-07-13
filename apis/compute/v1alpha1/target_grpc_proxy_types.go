@@ -42,7 +42,7 @@ type TargetGrpcProxy struct {
 }
 
 type TargetGrpcProxySpec struct {
-	KubeformOutput *TargetGrpcProxySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetGrpcProxySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetGrpcProxySpecResource `json:"resource" tf:"resource"`
 

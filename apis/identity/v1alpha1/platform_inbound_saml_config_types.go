@@ -78,7 +78,7 @@ type PlatformInboundSamlConfigSpecSpConfig struct {
 }
 
 type PlatformInboundSamlConfigSpec struct {
-	KubeformOutput *PlatformInboundSamlConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PlatformInboundSamlConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PlatformInboundSamlConfigSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type BillingSubaccount struct {
 }
 
 type BillingSubaccountSpec struct {
-	KubeformOutput *BillingSubaccountSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BillingSubaccountSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BillingSubaccountSpecResource `json:"resource" tf:"resource"`
 

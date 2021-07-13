@@ -153,7 +153,7 @@ type BillingBudgetSpecThresholdRules struct {
 }
 
 type BillingBudgetSpec struct {
-	KubeformOutput *BillingBudgetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BillingBudgetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BillingBudgetSpecResource `json:"resource" tf:"resource"`
 

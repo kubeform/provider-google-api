@@ -42,7 +42,7 @@ type FhirStoreIamPolicy struct {
 }
 
 type FhirStoreIamPolicySpec struct {
-	KubeformOutput *FhirStoreIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FhirStoreIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FhirStoreIamPolicySpecResource `json:"resource" tf:"resource"`
 

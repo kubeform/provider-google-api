@@ -42,7 +42,7 @@ type GlobalNetworkEndpoint struct {
 }
 
 type GlobalNetworkEndpointSpec struct {
-	KubeformOutput *GlobalNetworkEndpointSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalNetworkEndpointSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalNetworkEndpointSpecResource `json:"resource" tf:"resource"`
 

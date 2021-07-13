@@ -53,7 +53,7 @@ type DatasetAccessSpecView struct {
 }
 
 type DatasetAccessSpec struct {
-	KubeformOutput *DatasetAccessSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatasetAccessSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatasetAccessSpecResource `json:"resource" tf:"resource"`
 

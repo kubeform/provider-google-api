@@ -42,7 +42,7 @@ type GlobalAddress struct {
 }
 
 type GlobalAddressSpec struct {
-	KubeformOutput *GlobalAddressSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalAddressSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalAddressSpecResource `json:"resource" tf:"resource"`
 

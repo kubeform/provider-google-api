@@ -123,7 +123,7 @@ type MetricSpecMetricDescriptor struct {
 }
 
 type MetricSpec struct {
-	KubeformOutput *MetricSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *MetricSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource MetricSpecResource `json:"resource" tf:"resource"`
 

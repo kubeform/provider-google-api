@@ -105,7 +105,7 @@ type ServicesGameServerConfigSpecScalingConfigs struct {
 }
 
 type ServicesGameServerConfigSpec struct {
-	KubeformOutput *ServicesGameServerConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServicesGameServerConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServicesGameServerConfigSpecResource `json:"resource" tf:"resource"`
 

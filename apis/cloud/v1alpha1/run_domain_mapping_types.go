@@ -148,7 +148,7 @@ type RunDomainMappingSpecStatus struct {
 }
 
 type RunDomainMappingSpec struct {
-	KubeformOutput *RunDomainMappingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RunDomainMappingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RunDomainMappingSpecResource `json:"resource" tf:"resource"`
 

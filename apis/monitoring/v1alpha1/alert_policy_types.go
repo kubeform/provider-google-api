@@ -562,7 +562,7 @@ type AlertPolicySpecDocumentation struct {
 }
 
 type AlertPolicySpec struct {
-	KubeformOutput *AlertPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AlertPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AlertPolicySpecResource `json:"resource" tf:"resource"`
 

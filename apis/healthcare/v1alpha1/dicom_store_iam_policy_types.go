@@ -42,7 +42,7 @@ type DicomStoreIamPolicy struct {
 }
 
 type DicomStoreIamPolicySpec struct {
-	KubeformOutput *DicomStoreIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DicomStoreIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DicomStoreIamPolicySpecResource `json:"resource" tf:"resource"`
 

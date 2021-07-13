@@ -42,7 +42,7 @@ type Dataset struct {
 }
 
 type DatasetSpec struct {
-	KubeformOutput *DatasetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatasetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatasetSpecResource `json:"resource" tf:"resource"`
 

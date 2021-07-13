@@ -63,7 +63,7 @@ type EnvironmentSpecVmImage struct {
 }
 
 type EnvironmentSpec struct {
-	KubeformOutput *EnvironmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EnvironmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EnvironmentSpecResource `json:"resource" tf:"resource"`
 

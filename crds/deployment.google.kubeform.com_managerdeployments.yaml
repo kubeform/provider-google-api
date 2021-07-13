@@ -37,7 +37,16 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
                 properties:
                   createPolicy:
                     description: 'Set the policy to use for creating new resources.
@@ -176,16 +185,7 @@ spec:
                 - name
                 - target
                 type: object
-              providerRef:
-                description: LocalObjectReference contains enough information to let
-                  you locate the referenced object inside the same namespace.
-                properties:
-                  name:
-                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                      TODO: Add other useful fields. apiVersion, kind, uid?'
-                    type: string
-                type: object
-              resource:
+              state:
                 properties:
                   createPolicy:
                     description: 'Set the policy to use for creating new resources.

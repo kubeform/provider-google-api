@@ -51,7 +51,7 @@ type DefaultObjectAccessControlSpecProjectTeam struct {
 }
 
 type DefaultObjectAccessControlSpec struct {
-	KubeformOutput *DefaultObjectAccessControlSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DefaultObjectAccessControlSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DefaultObjectAccessControlSpecResource `json:"resource" tf:"resource"`
 

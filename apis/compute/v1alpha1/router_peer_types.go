@@ -51,7 +51,7 @@ type RouterPeerSpecAdvertisedIPRanges struct {
 }
 
 type RouterPeerSpec struct {
-	KubeformOutput *RouterPeerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouterPeerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouterPeerSpecResource `json:"resource" tf:"resource"`
 

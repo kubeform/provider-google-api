@@ -75,7 +75,7 @@ type DataTransferConfigSpecSensitiveParams struct {
 }
 
 type DataTransferConfigSpec struct {
-	KubeformOutput *DataTransferConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DataTransferConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DataTransferConfigSpecResource `json:"resource" tf:"resource"`
 

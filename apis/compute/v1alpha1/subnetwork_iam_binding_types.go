@@ -49,7 +49,7 @@ type SubnetworkIamBindingSpecCondition struct {
 }
 
 type SubnetworkIamBindingSpec struct {
-	KubeformOutput *SubnetworkIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SubnetworkIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SubnetworkIamBindingSpecResource `json:"resource" tf:"resource"`
 

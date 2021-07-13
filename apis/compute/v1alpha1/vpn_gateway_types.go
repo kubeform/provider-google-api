@@ -42,7 +42,7 @@ type VpnGateway struct {
 }
 
 type VpnGatewaySpec struct {
-	KubeformOutput *VpnGatewaySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VpnGatewaySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VpnGatewaySpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type SubnetworkIamMemberSpecCondition struct {
 }
 
 type SubnetworkIamMemberSpec struct {
-	KubeformOutput *SubnetworkIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SubnetworkIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SubnetworkIamMemberSpecResource `json:"resource" tf:"resource"`
 
