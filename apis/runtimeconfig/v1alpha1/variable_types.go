@@ -42,7 +42,7 @@ type Variable struct {
 }
 
 type VariableSpec struct {
-	KubeformOutput *VariableSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *VariableSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource VariableSpecResource `json:"resource" tf:"resource"`
 

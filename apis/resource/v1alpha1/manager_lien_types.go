@@ -42,7 +42,7 @@ type ManagerLien struct {
 }
 
 type ManagerLienSpec struct {
-	KubeformOutput *ManagerLienSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerLienSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerLienSpecResource `json:"resource" tf:"resource"`
 

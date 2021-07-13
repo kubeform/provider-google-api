@@ -37,31 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  id:
-                    type: string
-                  name:
-                    description: The name of the variable to manage. Note that variable
-                      names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-                    type: string
-                  parent:
-                    description: The name of the RuntimeConfig resource containing
-                      this variable.
-                    type: string
-                  project:
-                    description: The ID of the project in which the resource belongs.
-                      If it is not provided, the provider project is used.
-                    type: string
-                  updateTime:
-                    description: 'The timestamp in RFC3339 UTC "Zulu" format, accurate
-                      to nanoseconds, representing when the variable was last updated.
-                      Example: "2016-10-09T12:33:37.578138407Z".'
-                    type: string
-                required:
-                - name
-                - parent
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -104,6 +79,31 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  id:
+                    type: string
+                  name:
+                    description: The name of the variable to manage. Note that variable
+                      names can be hierarchical using slashes (e.g. "prod-variables/hostname").
+                    type: string
+                  parent:
+                    description: The name of the RuntimeConfig resource containing
+                      this variable.
+                    type: string
+                  project:
+                    description: The ID of the project in which the resource belongs.
+                      If it is not provided, the provider project is used.
+                    type: string
+                  updateTime:
+                    description: 'The timestamp in RFC3339 UTC "Zulu" format, accurate
+                      to nanoseconds, representing when the variable was last updated.
+                      Example: "2016-10-09T12:33:37.578138407Z".'
+                    type: string
+                required:
+                - name
+                - parent
                 type: object
               terminationPolicy:
                 enum:

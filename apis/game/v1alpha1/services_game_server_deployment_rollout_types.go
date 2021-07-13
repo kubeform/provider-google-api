@@ -57,7 +57,7 @@ type ServicesGameServerDeploymentRolloutSpecGameServerConfigOverrides struct {
 }
 
 type ServicesGameServerDeploymentRolloutSpec struct {
-	KubeformOutput *ServicesGameServerDeploymentRolloutSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServicesGameServerDeploymentRolloutSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServicesGameServerDeploymentRolloutSpecResource `json:"resource" tf:"resource"`
 

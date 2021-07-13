@@ -164,7 +164,7 @@ type LossPreventionDeidentifyTemplateSpecDeidentifyConfig struct {
 }
 
 type LossPreventionDeidentifyTemplateSpec struct {
-	KubeformOutput *LossPreventionDeidentifyTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LossPreventionDeidentifyTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LossPreventionDeidentifyTemplateSpecResource `json:"resource" tf:"resource"`
 

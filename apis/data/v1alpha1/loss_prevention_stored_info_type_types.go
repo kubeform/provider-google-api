@@ -114,7 +114,7 @@ type LossPreventionStoredInfoTypeSpecRegex struct {
 }
 
 type LossPreventionStoredInfoTypeSpec struct {
-	KubeformOutput *LossPreventionStoredInfoTypeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LossPreventionStoredInfoTypeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LossPreventionStoredInfoTypeSpecResource `json:"resource" tf:"resource"`
 

@@ -78,7 +78,7 @@ type AnalysisOccurrenceSpecAttestation struct {
 }
 
 type AnalysisOccurrenceSpec struct {
-	KubeformOutput *AnalysisOccurrenceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AnalysisOccurrenceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AnalysisOccurrenceSpecResource `json:"resource" tf:"resource"`
 

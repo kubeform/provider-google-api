@@ -37,121 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  appID:
-                    description: Identifier of the app.
-                    type: string
-                  authDomain:
-                    description: The domain to authenticate users with when using
-                      App Engine's User API.
-                    type: string
-                  codeBucket:
-                    description: The GCS bucket code is being stored in for this app.
-                    type: string
-                  databaseType:
-                    type: string
-                  defaultBucket:
-                    description: The GCS bucket content is being stored in for this
-                      app.
-                    type: string
-                  defaultHostname:
-                    description: The default hostname for this app.
-                    type: string
-                  featureSettings:
-                    description: 'A block of optional settings to configure specific
-                      App Engine features:'
-                    properties:
-                      splitHealthChecks:
-                        type: boolean
-                    required:
-                    - splitHealthChecks
-                    type: object
-                  gcrDomain:
-                    description: The GCR domain used for storing managed Docker images
-                      for this app.
-                    type: string
-                  iap:
-                    description: Settings for enabling Cloud Identity Aware Proxy
-                    properties:
-                      enabled:
-                        description: Adapted for use with the app
-                        type: boolean
-                      oauth2ClientID:
-                        description: OAuth2 client ID to use for the authentication
-                          flow.
-                        type: string
-                    required:
-                    - oauth2ClientID
-                    type: object
-                  id:
-                    type: string
-                  locationID:
-                    description: The location to serve the app from.
-                    type: string
-                  name:
-                    description: Unique name of the app.
-                    type: string
-                  project:
-                    description: The project ID to create the application under.
-                    type: string
-                  servingStatus:
-                    description: The serving status of the app.
-                    type: string
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                  urlDispatchRule:
-                    description: A list of dispatch rule blocks. Each block has a
-                      domain, path, and service field.
-                    items:
-                      properties:
-                        domain:
-                          type: string
-                        path:
-                          type: string
-                        service:
-                          type: string
-                      type: object
-                    type: array
-                required:
-                - locationID
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -284,6 +169,121 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  appID:
+                    description: Identifier of the app.
+                    type: string
+                  authDomain:
+                    description: The domain to authenticate users with when using
+                      App Engine's User API.
+                    type: string
+                  codeBucket:
+                    description: The GCS bucket code is being stored in for this app.
+                    type: string
+                  databaseType:
+                    type: string
+                  defaultBucket:
+                    description: The GCS bucket content is being stored in for this
+                      app.
+                    type: string
+                  defaultHostname:
+                    description: The default hostname for this app.
+                    type: string
+                  featureSettings:
+                    description: 'A block of optional settings to configure specific
+                      App Engine features:'
+                    properties:
+                      splitHealthChecks:
+                        type: boolean
+                    required:
+                    - splitHealthChecks
+                    type: object
+                  gcrDomain:
+                    description: The GCR domain used for storing managed Docker images
+                      for this app.
+                    type: string
+                  iap:
+                    description: Settings for enabling Cloud Identity Aware Proxy
+                    properties:
+                      enabled:
+                        description: Adapted for use with the app
+                        type: boolean
+                      oauth2ClientID:
+                        description: OAuth2 client ID to use for the authentication
+                          flow.
+                        type: string
+                    required:
+                    - oauth2ClientID
+                    type: object
+                  id:
+                    type: string
+                  locationID:
+                    description: The location to serve the app from.
+                    type: string
+                  name:
+                    description: Unique name of the app.
+                    type: string
+                  project:
+                    description: The project ID to create the application under.
+                    type: string
+                  servingStatus:
+                    description: The serving status of the app.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  urlDispatchRule:
+                    description: A list of dispatch rule blocks. Each block has a
+                      domain, path, and service field.
+                    items:
+                      properties:
+                        domain:
+                          type: string
+                        path:
+                          type: string
+                        service:
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - locationID
                 type: object
               terminationPolicy:
                 enum:

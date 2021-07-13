@@ -42,7 +42,7 @@ type TargetInstance struct {
 }
 
 type TargetInstanceSpec struct {
-	KubeformOutput *TargetInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetInstanceSpecResource `json:"resource" tf:"resource"`
 

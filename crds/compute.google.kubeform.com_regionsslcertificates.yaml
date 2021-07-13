@@ -37,82 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  certificateID:
-                    description: The unique identifier for the resource.
-                    format: int64
-                    type: integer
-                  creationTimestamp:
-                    description: Creation timestamp in RFC3339 text format.
-                    type: string
-                  description:
-                    description: An optional description of this resource.
-                    type: string
-                  id:
-                    type: string
-                  name:
-                    description: "Name of the resource. Provided by the client when
-                      the resource is created. The name must be 1-63 characters long,
-                      and comply with RFC1035. Specifically, the name must be 1-63
-                      characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
-                      which means the first character must be a lowercase letter,
-                      and all following characters must be a dash, lowercase letter,
-                      or digit, except the last character, which cannot be a dash.
-                      \n These are in the same namespace as the managed SSL certificates."
-                    type: string
-                  namePrefix:
-                    description: Creates a unique name beginning with the specified
-                      prefix. Conflicts with name.
-                    type: string
-                  project:
-                    type: string
-                  region:
-                    description: The Region in which the created regional ssl certificate
-                      should reside. If it is not provided, the provider region is
-                      used.
-                    type: string
-                  selfLink:
-                    type: string
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -206,6 +130,82 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  certificateID:
+                    description: The unique identifier for the resource.
+                    format: int64
+                    type: integer
+                  creationTimestamp:
+                    description: Creation timestamp in RFC3339 text format.
+                    type: string
+                  description:
+                    description: An optional description of this resource.
+                    type: string
+                  id:
+                    type: string
+                  name:
+                    description: "Name of the resource. Provided by the client when
+                      the resource is created. The name must be 1-63 characters long,
+                      and comply with RFC1035. Specifically, the name must be 1-63
+                      characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
+                      which means the first character must be a lowercase letter,
+                      and all following characters must be a dash, lowercase letter,
+                      or digit, except the last character, which cannot be a dash.
+                      \n These are in the same namespace as the managed SSL certificates."
+                    type: string
+                  namePrefix:
+                    description: Creates a unique name beginning with the specified
+                      prefix. Conflicts with name.
+                    type: string
+                  project:
+                    type: string
+                  region:
+                    description: The Region in which the created regional ssl certificate
+                      should reside. If it is not provided, the provider region is
+                      used.
+                    type: string
+                  selfLink:
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
                 type: object
               terminationPolicy:
                 enum:

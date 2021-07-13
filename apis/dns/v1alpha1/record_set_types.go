@@ -42,7 +42,7 @@ type RecordSet struct {
 }
 
 type RecordSetSpec struct {
-	KubeformOutput *RecordSetSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RecordSetSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RecordSetSpecResource `json:"resource" tf:"resource"`
 

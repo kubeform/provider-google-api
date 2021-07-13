@@ -42,7 +42,7 @@ type BackendBucketSignedURLKey struct {
 }
 
 type BackendBucketSignedURLKeySpec struct {
-	KubeformOutput *BackendBucketSignedURLKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BackendBucketSignedURLKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BackendBucketSignedURLKeySpecResource `json:"resource" tf:"resource"`
 

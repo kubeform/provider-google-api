@@ -42,7 +42,7 @@ type RegionDiskResourcePolicyAttachment struct {
 }
 
 type RegionDiskResourcePolicyAttachmentSpec struct {
-	KubeformOutput *RegionDiskResourcePolicyAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionDiskResourcePolicyAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionDiskResourcePolicyAttachmentSpecResource `json:"resource" tf:"resource"`
 

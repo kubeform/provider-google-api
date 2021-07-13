@@ -42,7 +42,7 @@ type TunnelIamPolicy struct {
 }
 
 type TunnelIamPolicySpec struct {
-	KubeformOutput *TunnelIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TunnelIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TunnelIamPolicySpecResource `json:"resource" tf:"resource"`
 

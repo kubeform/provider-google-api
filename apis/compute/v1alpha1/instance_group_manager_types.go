@@ -143,7 +143,7 @@ type InstanceGroupManagerSpecVersion struct {
 }
 
 type InstanceGroupManagerSpec struct {
-	KubeformOutput *InstanceGroupManagerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceGroupManagerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceGroupManagerSpecResource `json:"resource" tf:"resource"`
 

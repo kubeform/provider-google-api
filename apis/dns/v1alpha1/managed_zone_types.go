@@ -126,7 +126,7 @@ type ManagedZoneSpecPrivateVisibilityConfig struct {
 }
 
 type ManagedZoneSpec struct {
-	KubeformOutput *ManagedZoneSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagedZoneSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagedZoneSpecResource `json:"resource" tf:"resource"`
 

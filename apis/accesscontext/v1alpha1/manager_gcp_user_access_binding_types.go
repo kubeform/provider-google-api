@@ -42,7 +42,7 @@ type ManagerGcpUserAccessBinding struct {
 }
 
 type ManagerGcpUserAccessBindingSpec struct {
-	KubeformOutput *ManagerGcpUserAccessBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerGcpUserAccessBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerGcpUserAccessBindingSpecResource `json:"resource" tf:"resource"`
 

@@ -49,7 +49,7 @@ type CryptoKeyIamMemberSpecCondition struct {
 }
 
 type CryptoKeyIamMemberSpec struct {
-	KubeformOutput *CryptoKeyIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CryptoKeyIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CryptoKeyIamMemberSpecResource `json:"resource" tf:"resource"`
 

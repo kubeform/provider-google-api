@@ -59,7 +59,7 @@ type KeyRingImportJobSpecPublicKey struct {
 }
 
 type KeyRingImportJobSpec struct {
-	KubeformOutput *KeyRingImportJobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KeyRingImportJobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KeyRingImportJobSpecResource `json:"resource" tf:"resource"`
 

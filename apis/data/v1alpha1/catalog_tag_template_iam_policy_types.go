@@ -42,7 +42,7 @@ type CatalogTagTemplateIamPolicy struct {
 }
 
 type CatalogTagTemplateIamPolicySpec struct {
-	KubeformOutput *CatalogTagTemplateIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogTagTemplateIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogTagTemplateIamPolicySpecResource `json:"resource" tf:"resource"`
 

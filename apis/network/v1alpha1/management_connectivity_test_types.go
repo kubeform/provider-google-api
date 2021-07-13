@@ -103,7 +103,7 @@ type ManagementConnectivityTestSpecSource struct {
 }
 
 type ManagementConnectivityTestSpec struct {
-	KubeformOutput *ManagementConnectivityTestSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagementConnectivityTestSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagementConnectivityTestSpecResource `json:"resource" tf:"resource"`
 

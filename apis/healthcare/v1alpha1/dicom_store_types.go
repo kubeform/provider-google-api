@@ -52,7 +52,7 @@ type DicomStoreSpecNotificationConfig struct {
 }
 
 type DicomStoreSpec struct {
-	KubeformOutput *DicomStoreSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DicomStoreSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DicomStoreSpecResource `json:"resource" tf:"resource"`
 

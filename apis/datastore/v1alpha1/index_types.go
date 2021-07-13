@@ -49,7 +49,7 @@ type IndexSpecProperties struct {
 }
 
 type IndexSpec struct {
-	KubeformOutput *IndexSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IndexSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IndexSpecResource `json:"resource" tf:"resource"`
 

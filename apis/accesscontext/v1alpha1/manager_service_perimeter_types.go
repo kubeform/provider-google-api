@@ -458,7 +458,7 @@ type ManagerServicePerimeterSpecStatus struct {
 }
 
 type ManagerServicePerimeterSpec struct {
-	KubeformOutput *ManagerServicePerimeterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerServicePerimeterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerServicePerimeterSpecResource `json:"resource" tf:"resource"`
 

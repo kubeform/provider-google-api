@@ -108,7 +108,7 @@ type DiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type DiskSpec struct {
-	KubeformOutput *DiskSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DiskSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DiskSpecResource `json:"resource" tf:"resource"`
 

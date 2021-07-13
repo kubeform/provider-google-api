@@ -305,7 +305,7 @@ type RegionHealthCheckSpecTcpHealthCheck struct {
 }
 
 type RegionHealthCheckSpec struct {
-	KubeformOutput *RegionHealthCheckSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionHealthCheckSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionHealthCheckSpecResource `json:"resource" tf:"resource"`
 

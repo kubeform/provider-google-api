@@ -86,7 +86,7 @@ type FhirStoreSpecStreamConfigs struct {
 }
 
 type FhirStoreSpec struct {
-	KubeformOutput *FhirStoreSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FhirStoreSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FhirStoreSpecResource `json:"resource" tf:"resource"`
 

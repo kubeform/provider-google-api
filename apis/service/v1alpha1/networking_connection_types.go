@@ -42,7 +42,7 @@ type NetworkingConnection struct {
 }
 
 type NetworkingConnectionSpec struct {
-	KubeformOutput *NetworkingConnectionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NetworkingConnectionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NetworkingConnectionSpecResource `json:"resource" tf:"resource"`
 

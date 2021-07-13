@@ -49,7 +49,7 @@ type RunServiceIamBindingSpecCondition struct {
 }
 
 type RunServiceIamBindingSpec struct {
-	KubeformOutput *RunServiceIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RunServiceIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RunServiceIamBindingSpecResource `json:"resource" tf:"resource"`
 

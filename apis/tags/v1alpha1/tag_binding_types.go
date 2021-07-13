@@ -42,7 +42,7 @@ type TagBinding struct {
 }
 
 type TagBindingSpec struct {
-	KubeformOutput *TagBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TagBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TagBindingSpecResource `json:"resource" tf:"resource"`
 

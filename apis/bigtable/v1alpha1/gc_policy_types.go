@@ -57,7 +57,7 @@ type GcPolicySpecMaxVersion struct {
 }
 
 type GcPolicySpec struct {
-	KubeformOutput *GcPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GcPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GcPolicySpecResource `json:"resource" tf:"resource"`
 

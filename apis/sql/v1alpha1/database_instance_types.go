@@ -280,7 +280,7 @@ type DatabaseInstanceSpecSettings struct {
 }
 
 type DatabaseInstanceSpec struct {
-	KubeformOutput *DatabaseInstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DatabaseInstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DatabaseInstanceSpecResource `json:"resource" tf:"resource"`
 

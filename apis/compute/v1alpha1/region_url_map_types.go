@@ -1078,7 +1078,7 @@ type RegionURLMapSpecTest struct {
 }
 
 type RegionURLMapSpec struct {
-	KubeformOutput *RegionURLMapSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionURLMapSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionURLMapSpecResource `json:"resource" tf:"resource"`
 

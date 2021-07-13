@@ -49,7 +49,7 @@ type ConsentStoreIamBindingSpecCondition struct {
 }
 
 type ConsentStoreIamBindingSpec struct {
-	KubeformOutput *ConsentStoreIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConsentStoreIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConsentStoreIamBindingSpecResource `json:"resource" tf:"resource"`
 

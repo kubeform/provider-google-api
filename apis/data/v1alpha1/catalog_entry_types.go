@@ -111,7 +111,7 @@ type CatalogEntrySpecGcsFilesetSpec struct {
 }
 
 type CatalogEntrySpec struct {
-	KubeformOutput *CatalogEntrySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogEntrySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogEntrySpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type NetworkPeeringRoutesConfig struct {
 }
 
 type NetworkPeeringRoutesConfigSpec struct {
-	KubeformOutput *NetworkPeeringRoutesConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NetworkPeeringRoutesConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NetworkPeeringRoutesConfigSpecResource `json:"resource" tf:"resource"`
 

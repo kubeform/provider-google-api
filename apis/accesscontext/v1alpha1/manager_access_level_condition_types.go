@@ -77,7 +77,7 @@ type ManagerAccessLevelConditionSpecDevicePolicy struct {
 }
 
 type ManagerAccessLevelConditionSpec struct {
-	KubeformOutput *ManagerAccessLevelConditionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerAccessLevelConditionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerAccessLevelConditionSpecResource `json:"resource" tf:"resource"`
 

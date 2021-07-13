@@ -49,7 +49,7 @@ type DicomStoreIamBindingSpecCondition struct {
 }
 
 type DicomStoreIamBindingSpec struct {
-	KubeformOutput *DicomStoreIamBindingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DicomStoreIamBindingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DicomStoreIamBindingSpecResource `json:"resource" tf:"resource"`
 

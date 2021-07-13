@@ -49,7 +49,7 @@ type WebTypeAppEngineIamMemberSpecCondition struct {
 }
 
 type WebTypeAppEngineIamMemberSpec struct {
-	KubeformOutput *WebTypeAppEngineIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebTypeAppEngineIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebTypeAppEngineIamMemberSpecResource `json:"resource" tf:"resource"`
 

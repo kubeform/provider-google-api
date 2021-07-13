@@ -42,7 +42,7 @@ type ProjectMetadataItem struct {
 }
 
 type ProjectMetadataItemSpec struct {
-	KubeformOutput *ProjectMetadataItemSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProjectMetadataItemSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProjectMetadataItemSpecResource `json:"resource" tf:"resource"`
 

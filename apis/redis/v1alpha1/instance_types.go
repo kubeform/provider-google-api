@@ -60,7 +60,7 @@ type InstanceSpecServerCaCerts struct {
 }
 
 type InstanceSpec struct {
-	KubeformOutput *InstanceSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceSpecResource `json:"resource" tf:"resource"`
 

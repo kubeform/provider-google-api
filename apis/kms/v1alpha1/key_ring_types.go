@@ -42,7 +42,7 @@ type KeyRing struct {
 }
 
 type KeyRingSpec struct {
-	KubeformOutput *KeyRingSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *KeyRingSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource KeyRingSpecResource `json:"resource" tf:"resource"`
 

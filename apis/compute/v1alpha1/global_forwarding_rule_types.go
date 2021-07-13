@@ -69,7 +69,7 @@ type GlobalForwardingRuleSpecMetadataFilters struct {
 }
 
 type GlobalForwardingRuleSpec struct {
-	KubeformOutput *GlobalForwardingRuleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *GlobalForwardingRuleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource GlobalForwardingRuleSpecResource `json:"resource" tf:"resource"`
 

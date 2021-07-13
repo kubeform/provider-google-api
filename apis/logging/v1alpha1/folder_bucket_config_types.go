@@ -42,7 +42,7 @@ type FolderBucketConfig struct {
 }
 
 type FolderBucketConfigSpec struct {
-	KubeformOutput *FolderBucketConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FolderBucketConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FolderBucketConfigSpecResource `json:"resource" tf:"resource"`
 

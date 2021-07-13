@@ -219,7 +219,7 @@ type InstanceTemplateSpecShieldedInstanceConfig struct {
 }
 
 type InstanceTemplateSpec struct {
-	KubeformOutput *InstanceTemplateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceTemplateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceTemplateSpecResource `json:"resource" tf:"resource"`
 

@@ -177,7 +177,7 @@ type ManagerAccessLevelBatchSpecAccessLevels struct {
 }
 
 type ManagerAccessLevelBatchSpec struct {
-	KubeformOutput *ManagerAccessLevelBatchSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerAccessLevelBatchSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerAccessLevelBatchSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type TargetSslProxy struct {
 }
 
 type TargetSslProxySpec struct {
-	KubeformOutput *TargetSslProxySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TargetSslProxySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TargetSslProxySpecResource `json:"resource" tf:"resource"`
 

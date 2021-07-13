@@ -65,7 +65,7 @@ type ServicesGameServerClusterSpecConnectionInfo struct {
 }
 
 type ServicesGameServerClusterSpec struct {
-	KubeformOutput *ServicesGameServerClusterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ServicesGameServerClusterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ServicesGameServerClusterSpecResource `json:"resource" tf:"resource"`
 

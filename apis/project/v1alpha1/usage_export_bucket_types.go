@@ -42,7 +42,7 @@ type UsageExportBucket struct {
 }
 
 type UsageExportBucketSpec struct {
-	KubeformOutput *UsageExportBucketSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *UsageExportBucketSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource UsageExportBucketSpecResource `json:"resource" tf:"resource"`
 

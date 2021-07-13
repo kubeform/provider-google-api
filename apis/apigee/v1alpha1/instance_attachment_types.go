@@ -42,7 +42,7 @@ type InstanceAttachment struct {
 }
 
 type InstanceAttachmentSpec struct {
-	KubeformOutput *InstanceAttachmentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceAttachmentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceAttachmentSpecResource `json:"resource" tf:"resource"`
 

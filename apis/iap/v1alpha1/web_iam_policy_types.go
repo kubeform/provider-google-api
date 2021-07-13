@@ -42,7 +42,7 @@ type WebIamPolicy struct {
 }
 
 type WebIamPolicySpec struct {
-	KubeformOutput *WebIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebIamPolicySpecResource `json:"resource" tf:"resource"`
 

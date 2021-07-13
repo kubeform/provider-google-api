@@ -68,7 +68,7 @@ type ApplicationSpecUrlDispatchRule struct {
 }
 
 type ApplicationSpec struct {
-	KubeformOutput *ApplicationSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ApplicationSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ApplicationSpecResource `json:"resource" tf:"resource"`
 

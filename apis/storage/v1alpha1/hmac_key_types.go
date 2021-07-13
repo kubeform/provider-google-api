@@ -42,7 +42,7 @@ type HmacKey struct {
 }
 
 type HmacKeySpec struct {
-	KubeformOutput *HmacKeySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *HmacKeySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource HmacKeySpecResource `json:"resource" tf:"resource"`
 

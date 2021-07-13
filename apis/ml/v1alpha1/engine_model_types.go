@@ -47,7 +47,7 @@ type EngineModelSpecDefaultVersion struct {
 }
 
 type EngineModelSpec struct {
-	KubeformOutput *EngineModelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EngineModelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EngineModelSpecResource `json:"resource" tf:"resource"`
 

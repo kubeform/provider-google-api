@@ -49,7 +49,7 @@ type WebIamMemberSpecCondition struct {
 }
 
 type WebIamMemberSpec struct {
-	KubeformOutput *WebIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebIamMemberSpecResource `json:"resource" tf:"resource"`
 

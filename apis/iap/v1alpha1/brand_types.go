@@ -42,7 +42,7 @@ type Brand struct {
 }
 
 type BrandSpec struct {
-	KubeformOutput *BrandSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BrandSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BrandSpecResource `json:"resource" tf:"resource"`
 

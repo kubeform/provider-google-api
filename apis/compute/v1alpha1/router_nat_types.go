@@ -66,7 +66,7 @@ type RouterNATSpecSubnetwork struct {
 }
 
 type RouterNATSpec struct {
-	KubeformOutput *RouterNATSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouterNATSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouterNATSpecResource `json:"resource" tf:"resource"`
 

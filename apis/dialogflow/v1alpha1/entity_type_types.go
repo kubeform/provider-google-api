@@ -57,7 +57,7 @@ type EntityTypeSpecEntities struct {
 }
 
 type EntityTypeSpec struct {
-	KubeformOutput *EntityTypeSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *EntityTypeSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource EntityTypeSpecResource `json:"resource" tf:"resource"`
 

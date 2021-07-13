@@ -66,7 +66,7 @@ type NodeGroupSpecMaintenanceWindow struct {
 }
 
 type NodeGroupSpec struct {
-	KubeformOutput *NodeGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NodeGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NodeGroupSpecResource `json:"resource" tf:"resource"`
 

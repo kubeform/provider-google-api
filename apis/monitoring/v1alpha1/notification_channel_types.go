@@ -54,7 +54,7 @@ type NotificationChannelSpecSensitiveLabels struct {
 }
 
 type NotificationChannelSpec struct {
-	KubeformOutput *NotificationChannelSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NotificationChannelSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NotificationChannelSpecResource `json:"resource" tf:"resource"`
 

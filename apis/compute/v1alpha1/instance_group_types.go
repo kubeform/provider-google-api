@@ -49,7 +49,7 @@ type InstanceGroupSpecNamedPort struct {
 }
 
 type InstanceGroupSpec struct {
-	KubeformOutput *InstanceGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *InstanceGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource InstanceGroupSpecResource `json:"resource" tf:"resource"`
 

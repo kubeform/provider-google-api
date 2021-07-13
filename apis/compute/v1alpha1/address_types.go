@@ -42,7 +42,7 @@ type Address struct {
 }
 
 type AddressSpec struct {
-	KubeformOutput *AddressSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AddressSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AddressSpecResource `json:"resource" tf:"resource"`
 

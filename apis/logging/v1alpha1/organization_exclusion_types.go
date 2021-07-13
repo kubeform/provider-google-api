@@ -42,7 +42,7 @@ type OrganizationExclusion struct {
 }
 
 type OrganizationExclusionSpec struct {
-	KubeformOutput *OrganizationExclusionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *OrganizationExclusionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource OrganizationExclusionSpecResource `json:"resource" tf:"resource"`
 

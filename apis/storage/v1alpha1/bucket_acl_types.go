@@ -42,7 +42,7 @@ type BucketACL struct {
 }
 
 type BucketACLSpec struct {
-	KubeformOutput *BucketACLSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *BucketACLSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource BucketACLSpecResource `json:"resource" tf:"resource"`
 

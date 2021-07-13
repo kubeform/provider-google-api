@@ -42,7 +42,7 @@ type AccessConnector struct {
 }
 
 type AccessConnectorSpec struct {
-	KubeformOutput *AccessConnectorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AccessConnectorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AccessConnectorSpecResource `json:"resource" tf:"resource"`
 

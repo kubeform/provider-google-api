@@ -144,7 +144,7 @@ type SubscriptionSpecRetryPolicy struct {
 }
 
 type SubscriptionSpec struct {
-	KubeformOutput *SubscriptionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SubscriptionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SubscriptionSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type RegionSslCertificate struct {
 }
 
 type RegionSslCertificateSpec struct {
-	KubeformOutput *RegionSslCertificateSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionSslCertificateSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionSslCertificateSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type DirectoryDomain struct {
 }
 
 type DirectoryDomainSpec struct {
-	KubeformOutput *DirectoryDomainSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DirectoryDomainSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DirectoryDomainSpecResource `json:"resource" tf:"resource"`
 

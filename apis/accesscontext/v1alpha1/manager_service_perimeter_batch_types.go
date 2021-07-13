@@ -517,7 +517,7 @@ type ManagerServicePerimeterBatchSpecServicePerimeters struct {
 }
 
 type ManagerServicePerimeterBatchSpec struct {
-	KubeformOutput *ManagerServicePerimeterBatchSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerServicePerimeterBatchSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerServicePerimeterBatchSpecResource `json:"resource" tf:"resource"`
 

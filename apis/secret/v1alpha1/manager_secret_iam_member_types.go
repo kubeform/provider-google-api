@@ -49,7 +49,7 @@ type ManagerSecretIamMemberSpecCondition struct {
 }
 
 type ManagerSecretIamMemberSpec struct {
-	KubeformOutput *ManagerSecretIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerSecretIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerSecretIamMemberSpecResource `json:"resource" tf:"resource"`
 

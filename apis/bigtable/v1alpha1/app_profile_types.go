@@ -51,7 +51,7 @@ type AppProfileSpecSingleClusterRouting struct {
 }
 
 type AppProfileSpec struct {
-	KubeformOutput *AppProfileSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AppProfileSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AppProfileSpecResource `json:"resource" tf:"resource"`
 

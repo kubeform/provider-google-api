@@ -49,7 +49,7 @@ type RegionDiskIamMemberSpecCondition struct {
 }
 
 type RegionDiskIamMemberSpec struct {
-	KubeformOutput *RegionDiskIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionDiskIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionDiskIamMemberSpecResource `json:"resource" tf:"resource"`
 

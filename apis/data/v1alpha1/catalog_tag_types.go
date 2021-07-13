@@ -69,7 +69,7 @@ type CatalogTagSpecFields struct {
 }
 
 type CatalogTagSpec struct {
-	KubeformOutput *CatalogTagSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CatalogTagSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CatalogTagSpecResource `json:"resource" tf:"resource"`
 

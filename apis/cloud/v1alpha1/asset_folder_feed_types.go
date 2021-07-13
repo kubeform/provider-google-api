@@ -69,7 +69,7 @@ type AssetFolderFeedSpecFeedOutputConfig struct {
 }
 
 type AssetFolderFeedSpec struct {
-	KubeformOutput *AssetFolderFeedSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AssetFolderFeedSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AssetFolderFeedSpecResource `json:"resource" tf:"resource"`
 

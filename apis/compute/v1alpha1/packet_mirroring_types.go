@@ -87,7 +87,7 @@ type PacketMirroringSpecNetwork struct {
 }
 
 type PacketMirroringSpec struct {
-	KubeformOutput *PacketMirroringSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *PacketMirroringSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource PacketMirroringSpecResource `json:"resource" tf:"resource"`
 

@@ -65,7 +65,7 @@ type IdentityGroupSpecGroupKey struct {
 }
 
 type IdentityGroupSpec struct {
-	KubeformOutput *IdentityGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IdentityGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IdentityGroupSpecResource `json:"resource" tf:"resource"`
 

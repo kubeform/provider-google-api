@@ -68,7 +68,7 @@ type LiteTopicSpecRetentionConfig struct {
 }
 
 type LiteTopicSpec struct {
-	KubeformOutput *LiteTopicSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LiteTopicSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LiteTopicSpecResource `json:"resource" tf:"resource"`
 

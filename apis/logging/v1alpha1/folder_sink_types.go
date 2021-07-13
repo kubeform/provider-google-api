@@ -60,7 +60,7 @@ type FolderSinkSpecExclusions struct {
 }
 
 type FolderSinkSpec struct {
-	KubeformOutput *FolderSinkSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FolderSinkSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FolderSinkSpecResource `json:"resource" tf:"resource"`
 

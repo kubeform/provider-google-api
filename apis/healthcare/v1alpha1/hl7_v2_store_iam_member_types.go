@@ -49,7 +49,7 @@ type Hl7V2StoreIamMemberSpecCondition struct {
 }
 
 type Hl7V2StoreIamMemberSpec struct {
-	KubeformOutput *Hl7V2StoreIamMemberSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *Hl7V2StoreIamMemberSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource Hl7V2StoreIamMemberSpecResource `json:"resource" tf:"resource"`
 

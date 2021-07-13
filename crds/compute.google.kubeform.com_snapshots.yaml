@@ -37,148 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  creationTimestamp:
-                    description: Creation timestamp in RFC3339 text format.
-                    type: string
-                  description:
-                    description: An optional description of this resource.
-                    type: string
-                  diskSizeGb:
-                    description: Size of the snapshot, specified in GB.
-                    format: int64
-                    type: integer
-                  id:
-                    type: string
-                  labelFingerprint:
-                    description: The fingerprint used for optimistic locking of this
-                      resource. Used internally during updates.
-                    type: string
-                  labels:
-                    additionalProperties:
-                      type: string
-                    description: Labels to apply to this Snapshot.
-                    type: object
-                  licenses:
-                    description: A list of public visible licenses that apply to this
-                      snapshot. This can be because the original image had licenses
-                      attached (such as a Windows image).  snapshotEncryptionKey nested
-                      object Encrypts the snapshot using a customer-supplied encryption
-                      key.
-                    items:
-                      type: string
-                    type: array
-                  name:
-                    description: Name of the resource; provided by the client when
-                      the resource is created. The name must be 1-63 characters long,
-                      and comply with RFC1035. Specifically, the name must be 1-63
-                      characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
-                      which means the first character must be a lowercase letter,
-                      and all following characters must be a dash, lowercase letter,
-                      or digit, except the last character, which cannot be a dash.
-                    type: string
-                  project:
-                    type: string
-                  selfLink:
-                    type: string
-                  snapshotEncryptionKey:
-                    description: The customer-supplied encryption key of the snapshot.
-                      Required if the source snapshot is protected by a customer-supplied
-                      encryption key.
-                    properties:
-                      kmsKeySelfLink:
-                        description: The name of the encryption key that is stored
-                          in Google Cloud KMS.
-                        type: string
-                      kmsKeyServiceAccount:
-                        description: The service account used for the encryption request
-                          for the given KMS key. If absent, the Compute Engine Service
-                          Agent service account is used.
-                        type: string
-                      sha256:
-                        description: The RFC 4648 base64 encoded SHA-256 hash of the
-                          customer-supplied encryption key that protects this resource.
-                        type: string
-                    type: object
-                  snapshotID:
-                    description: The unique identifier for the resource.
-                    format: int64
-                    type: integer
-                  sourceDisk:
-                    description: A reference to the disk used to create this snapshot.
-                    type: string
-                  sourceDiskEncryptionKey:
-                    description: The customer-supplied encryption key of the source
-                      snapshot. Required if the source snapshot is protected by a
-                      customer-supplied encryption key.
-                    properties:
-                      kmsKeyServiceAccount:
-                        description: The service account used for the encryption request
-                          for the given KMS key. If absent, the Compute Engine Service
-                          Agent service account is used.
-                        type: string
-                    type: object
-                  sourceDiskLink:
-                    description: Deprecated
-                    type: string
-                  storageBytes:
-                    description: A size of the storage used by the snapshot. As snapshots
-                      share storage, this number is expected to change with snapshot
-                      creation/deletion.
-                    format: int64
-                    type: integer
-                  storageLocations:
-                    description: Cloud Storage bucket storage location of the snapshot
-                      (regional or multi-regional).
-                    items:
-                      type: string
-                    type: array
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
-                  zone:
-                    description: A reference to the zone where the disk is hosted.
-                    type: string
-                required:
-                - name
-                - sourceDisk
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -338,6 +196,148 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  creationTimestamp:
+                    description: Creation timestamp in RFC3339 text format.
+                    type: string
+                  description:
+                    description: An optional description of this resource.
+                    type: string
+                  diskSizeGb:
+                    description: Size of the snapshot, specified in GB.
+                    format: int64
+                    type: integer
+                  id:
+                    type: string
+                  labelFingerprint:
+                    description: The fingerprint used for optimistic locking of this
+                      resource. Used internally during updates.
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Labels to apply to this Snapshot.
+                    type: object
+                  licenses:
+                    description: A list of public visible licenses that apply to this
+                      snapshot. This can be because the original image had licenses
+                      attached (such as a Windows image).  snapshotEncryptionKey nested
+                      object Encrypts the snapshot using a customer-supplied encryption
+                      key.
+                    items:
+                      type: string
+                    type: array
+                  name:
+                    description: Name of the resource; provided by the client when
+                      the resource is created. The name must be 1-63 characters long,
+                      and comply with RFC1035. Specifically, the name must be 1-63
+                      characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'
+                      which means the first character must be a lowercase letter,
+                      and all following characters must be a dash, lowercase letter,
+                      or digit, except the last character, which cannot be a dash.
+                    type: string
+                  project:
+                    type: string
+                  selfLink:
+                    type: string
+                  snapshotEncryptionKey:
+                    description: The customer-supplied encryption key of the snapshot.
+                      Required if the source snapshot is protected by a customer-supplied
+                      encryption key.
+                    properties:
+                      kmsKeySelfLink:
+                        description: The name of the encryption key that is stored
+                          in Google Cloud KMS.
+                        type: string
+                      kmsKeyServiceAccount:
+                        description: The service account used for the encryption request
+                          for the given KMS key. If absent, the Compute Engine Service
+                          Agent service account is used.
+                        type: string
+                      sha256:
+                        description: The RFC 4648 base64 encoded SHA-256 hash of the
+                          customer-supplied encryption key that protects this resource.
+                        type: string
+                    type: object
+                  snapshotID:
+                    description: The unique identifier for the resource.
+                    format: int64
+                    type: integer
+                  sourceDisk:
+                    description: A reference to the disk used to create this snapshot.
+                    type: string
+                  sourceDiskEncryptionKey:
+                    description: The customer-supplied encryption key of the source
+                      snapshot. Required if the source snapshot is protected by a
+                      customer-supplied encryption key.
+                    properties:
+                      kmsKeyServiceAccount:
+                        description: The service account used for the encryption request
+                          for the given KMS key. If absent, the Compute Engine Service
+                          Agent service account is used.
+                        type: string
+                    type: object
+                  sourceDiskLink:
+                    description: Deprecated
+                    type: string
+                  storageBytes:
+                    description: A size of the storage used by the snapshot. As snapshots
+                      share storage, this number is expected to change with snapshot
+                      creation/deletion.
+                    format: int64
+                    type: integer
+                  storageLocations:
+                    description: Cloud Storage bucket storage location of the snapshot
+                      (regional or multi-regional).
+                    items:
+                      type: string
+                    type: array
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  zone:
+                    description: A reference to the zone where the disk is hosted.
+                    type: string
+                required:
+                - name
+                - sourceDisk
                 type: object
               terminationPolicy:
                 enum:

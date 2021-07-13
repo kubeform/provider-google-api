@@ -179,7 +179,7 @@ type TransferJobSpecTransferSpec struct {
 }
 
 type TransferJobSpec struct {
-	KubeformOutput *TransferJobSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *TransferJobSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource TransferJobSpecResource `json:"resource" tf:"resource"`
 

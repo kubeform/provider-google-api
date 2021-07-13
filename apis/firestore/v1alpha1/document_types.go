@@ -42,7 +42,7 @@ type Document struct {
 }
 
 type DocumentSpec struct {
-	KubeformOutput *DocumentSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DocumentSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DocumentSpecResource `json:"resource" tf:"resource"`
 

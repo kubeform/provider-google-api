@@ -42,7 +42,7 @@ type FolderExclusion struct {
 }
 
 type FolderExclusionSpec struct {
-	KubeformOutput *FolderExclusionSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FolderExclusionSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FolderExclusionSpecResource `json:"resource" tf:"resource"`
 

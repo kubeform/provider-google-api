@@ -42,7 +42,7 @@ type WebTypeComputeIamPolicy struct {
 }
 
 type WebTypeComputeIamPolicySpec struct {
-	KubeformOutput *WebTypeComputeIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *WebTypeComputeIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource WebTypeComputeIamPolicySpecResource `json:"resource" tf:"resource"`
 

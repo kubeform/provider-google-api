@@ -42,7 +42,7 @@ type ProjectDefaultNetworkTier struct {
 }
 
 type ProjectDefaultNetworkTierSpec struct {
-	KubeformOutput *ProjectDefaultNetworkTierSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ProjectDefaultNetworkTierSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ProjectDefaultNetworkTierSpecResource `json:"resource" tf:"resource"`
 

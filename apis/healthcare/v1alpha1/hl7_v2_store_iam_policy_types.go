@@ -42,7 +42,7 @@ type Hl7V2StoreIamPolicy struct {
 }
 
 type Hl7V2StoreIamPolicySpec struct {
-	KubeformOutput *Hl7V2StoreIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *Hl7V2StoreIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource Hl7V2StoreIamPolicySpecResource `json:"resource" tf:"resource"`
 

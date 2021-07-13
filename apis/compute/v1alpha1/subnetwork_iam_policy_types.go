@@ -42,7 +42,7 @@ type SubnetworkIamPolicy struct {
 }
 
 type SubnetworkIamPolicySpec struct {
-	KubeformOutput *SubnetworkIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SubnetworkIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SubnetworkIamPolicySpecResource `json:"resource" tf:"resource"`
 

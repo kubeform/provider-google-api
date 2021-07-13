@@ -78,7 +78,7 @@ type RouterSpecBgp struct {
 }
 
 type RouterSpec struct {
-	KubeformOutput *RouterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RouterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RouterSpecResource `json:"resource" tf:"resource"`
 

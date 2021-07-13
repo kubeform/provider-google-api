@@ -42,7 +42,7 @@ type AttestorIamPolicy struct {
 }
 
 type AttestorIamPolicySpec struct {
-	KubeformOutput *AttestorIamPolicySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AttestorIamPolicySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AttestorIamPolicySpecResource `json:"resource" tf:"resource"`
 

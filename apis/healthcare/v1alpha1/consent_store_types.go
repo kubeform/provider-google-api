@@ -42,7 +42,7 @@ type ConsentStore struct {
 }
 
 type ConsentStoreSpec struct {
-	KubeformOutput *ConsentStoreSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConsentStoreSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConsentStoreSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type IamCustomRole struct {
 }
 
 type IamCustomRoleSpec struct {
-	KubeformOutput *IamCustomRoleSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *IamCustomRoleSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource IamCustomRoleSpecResource `json:"resource" tf:"resource"`
 

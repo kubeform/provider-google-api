@@ -87,7 +87,7 @@ type ManagerSecretSpecTopics struct {
 }
 
 type ManagerSecretSpec struct {
-	KubeformOutput *ManagerSecretSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ManagerSecretSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ManagerSecretSpecResource `json:"resource" tf:"resource"`
 

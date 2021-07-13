@@ -69,7 +69,7 @@ type RegionPerInstanceConfigSpecPreservedState struct {
 }
 
 type RegionPerInstanceConfigSpec struct {
-	KubeformOutput *RegionPerInstanceConfigSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *RegionPerInstanceConfigSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource RegionPerInstanceConfigSpecResource `json:"resource" tf:"resource"`
 

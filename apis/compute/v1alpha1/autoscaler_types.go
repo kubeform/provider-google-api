@@ -182,7 +182,7 @@ type AutoscalerSpecAutoscalingPolicy struct {
 }
 
 type AutoscalerSpec struct {
-	KubeformOutput *AutoscalerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AutoscalerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AutoscalerSpecResource `json:"resource" tf:"resource"`
 

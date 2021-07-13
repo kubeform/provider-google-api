@@ -42,7 +42,7 @@ type NetworkEndpointGroup struct {
 }
 
 type NetworkEndpointGroupSpec struct {
-	KubeformOutput *NetworkEndpointGroupSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *NetworkEndpointGroupSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource NetworkEndpointGroupSpecResource `json:"resource" tf:"resource"`
 

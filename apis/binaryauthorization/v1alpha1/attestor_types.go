@@ -120,7 +120,7 @@ type AttestorSpecAttestationAuthorityNote struct {
 }
 
 type AttestorSpec struct {
-	KubeformOutput *AttestorSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *AttestorSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource AttestorSpecResource `json:"resource" tf:"resource"`
 

@@ -42,7 +42,7 @@ type Client struct {
 }
 
 type ClientSpec struct {
-	KubeformOutput *ClientSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClientSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClientSpecResource `json:"resource" tf:"resource"`
 

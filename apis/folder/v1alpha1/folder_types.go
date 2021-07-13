@@ -42,7 +42,7 @@ type Folder struct {
 }
 
 type FolderSpec struct {
-	KubeformOutput *FolderSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FolderSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FolderSpecResource `json:"resource" tf:"resource"`
 
