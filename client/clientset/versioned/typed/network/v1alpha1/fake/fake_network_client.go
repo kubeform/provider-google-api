@@ -29,8 +29,8 @@ type FakeNetworkV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeNetworkV1alpha1) ManagementConnectivityTests(namespace string) v1alpha1.ManagementConnectivityTestInterface {
-	return &FakeManagementConnectivityTests{c, namespace}
+func (c *FakeNetworkV1alpha1) ManagementConnectivitytests(namespace string) v1alpha1.ManagementConnectivitytestInterface {
+	return &FakeManagementConnectivitytests{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

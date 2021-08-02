@@ -26,69 +26,69 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
-// ManagementConnectivityTestLister helps list ManagementConnectivityTests.
+// ManagementConnectivitytestLister helps list ManagementConnectivitytests.
 // All objects returned here must be treated as read-only.
-type ManagementConnectivityTestLister interface {
-	// List lists all ManagementConnectivityTests in the indexer.
+type ManagementConnectivitytestLister interface {
+	// List lists all ManagementConnectivitytests in the indexer.
 	// Objects returned here must be treated as read-only.
-	List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivityTest, err error)
-	// ManagementConnectivityTests returns an object that can list and get ManagementConnectivityTests.
-	ManagementConnectivityTests(namespace string) ManagementConnectivityTestNamespaceLister
-	ManagementConnectivityTestListerExpansion
+	List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivitytest, err error)
+	// ManagementConnectivitytests returns an object that can list and get ManagementConnectivitytests.
+	ManagementConnectivitytests(namespace string) ManagementConnectivitytestNamespaceLister
+	ManagementConnectivitytestListerExpansion
 }
 
-// managementConnectivityTestLister implements the ManagementConnectivityTestLister interface.
-type managementConnectivityTestLister struct {
+// managementConnectivitytestLister implements the ManagementConnectivitytestLister interface.
+type managementConnectivitytestLister struct {
 	indexer cache.Indexer
 }
 
-// NewManagementConnectivityTestLister returns a new ManagementConnectivityTestLister.
-func NewManagementConnectivityTestLister(indexer cache.Indexer) ManagementConnectivityTestLister {
-	return &managementConnectivityTestLister{indexer: indexer}
+// NewManagementConnectivitytestLister returns a new ManagementConnectivitytestLister.
+func NewManagementConnectivitytestLister(indexer cache.Indexer) ManagementConnectivitytestLister {
+	return &managementConnectivitytestLister{indexer: indexer}
 }
 
-// List lists all ManagementConnectivityTests in the indexer.
-func (s *managementConnectivityTestLister) List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivityTest, err error) {
+// List lists all ManagementConnectivitytests in the indexer.
+func (s *managementConnectivitytestLister) List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivitytest, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ManagementConnectivityTest))
+		ret = append(ret, m.(*v1alpha1.ManagementConnectivitytest))
 	})
 	return ret, err
 }
 
-// ManagementConnectivityTests returns an object that can list and get ManagementConnectivityTests.
-func (s *managementConnectivityTestLister) ManagementConnectivityTests(namespace string) ManagementConnectivityTestNamespaceLister {
-	return managementConnectivityTestNamespaceLister{indexer: s.indexer, namespace: namespace}
+// ManagementConnectivitytests returns an object that can list and get ManagementConnectivitytests.
+func (s *managementConnectivitytestLister) ManagementConnectivitytests(namespace string) ManagementConnectivitytestNamespaceLister {
+	return managementConnectivitytestNamespaceLister{indexer: s.indexer, namespace: namespace}
 }
 
-// ManagementConnectivityTestNamespaceLister helps list and get ManagementConnectivityTests.
+// ManagementConnectivitytestNamespaceLister helps list and get ManagementConnectivitytests.
 // All objects returned here must be treated as read-only.
-type ManagementConnectivityTestNamespaceLister interface {
-	// List lists all ManagementConnectivityTests in the indexer for a given namespace.
+type ManagementConnectivitytestNamespaceLister interface {
+	// List lists all ManagementConnectivitytests in the indexer for a given namespace.
 	// Objects returned here must be treated as read-only.
-	List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivityTest, err error)
-	// Get retrieves the ManagementConnectivityTest from the indexer for a given namespace and name.
+	List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivitytest, err error)
+	// Get retrieves the ManagementConnectivitytest from the indexer for a given namespace and name.
 	// Objects returned here must be treated as read-only.
-	Get(name string) (*v1alpha1.ManagementConnectivityTest, error)
-	ManagementConnectivityTestNamespaceListerExpansion
+	Get(name string) (*v1alpha1.ManagementConnectivitytest, error)
+	ManagementConnectivitytestNamespaceListerExpansion
 }
 
-// managementConnectivityTestNamespaceLister implements the ManagementConnectivityTestNamespaceLister
+// managementConnectivitytestNamespaceLister implements the ManagementConnectivitytestNamespaceLister
 // interface.
-type managementConnectivityTestNamespaceLister struct {
+type managementConnectivitytestNamespaceLister struct {
 	indexer   cache.Indexer
 	namespace string
 }
 
-// List lists all ManagementConnectivityTests in the indexer for a given namespace.
-func (s managementConnectivityTestNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivityTest, err error) {
+// List lists all ManagementConnectivitytests in the indexer for a given namespace.
+func (s managementConnectivitytestNamespaceLister) List(selector labels.Selector) (ret []*v1alpha1.ManagementConnectivitytest, err error) {
 	err = cache.ListAllByNamespace(s.indexer, s.namespace, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.ManagementConnectivityTest))
+		ret = append(ret, m.(*v1alpha1.ManagementConnectivitytest))
 	})
 	return ret, err
 }
 
-// Get retrieves the ManagementConnectivityTest from the indexer for a given namespace and name.
-func (s managementConnectivityTestNamespaceLister) Get(name string) (*v1alpha1.ManagementConnectivityTest, error) {
+// Get retrieves the ManagementConnectivitytest from the indexer for a given namespace and name.
+func (s managementConnectivitytestNamespaceLister) Get(name string) (*v1alpha1.ManagementConnectivitytest, error) {
 	obj, exists, err := s.indexer.GetByKey(s.namespace + "/" + name)
 	if err != nil {
 		return nil, err
@@ -96,5 +96,5 @@ func (s managementConnectivityTestNamespaceLister) Get(name string) (*v1alpha1.M
 	if !exists {
 		return nil, errors.NewNotFound(v1alpha1.Resource("managementconnectivitytest"), name)
 	}
-	return obj.(*v1alpha1.ManagementConnectivityTest), nil
+	return obj.(*v1alpha1.ManagementConnectivitytest), nil
 }

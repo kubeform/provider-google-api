@@ -27,7 +27,7 @@ import (
 
 type NetworkV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	ManagementConnectivityTestsGetter
+	ManagementConnectivitytestsGetter
 }
 
 // NetworkV1alpha1Client is used to interact with features provided by the network.google.kubeform.com group.
@@ -35,8 +35,8 @@ type NetworkV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *NetworkV1alpha1Client) ManagementConnectivityTests(namespace string) ManagementConnectivityTestInterface {
-	return newManagementConnectivityTests(c, namespace)
+func (c *NetworkV1alpha1Client) ManagementConnectivitytests(namespace string) ManagementConnectivitytestInterface {
+	return newManagementConnectivitytests(c, namespace)
 }
 
 // NewForConfig creates a new NetworkV1alpha1Client for the given config.

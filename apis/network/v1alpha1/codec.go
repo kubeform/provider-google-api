@@ -27,15 +27,15 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()): ManagementConnectivityTestSpecDestinationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecDestination{}).Type1()): ManagementConnectivitytestSpecDestinationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecSource{}).Type1()):      ManagementConnectivitytestSpecSourceCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()): ManagementConnectivityTestSpecDestinationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecDestination{}).Type1()): ManagementConnectivitytestSpecDestinationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecSource{}).Type1()):      ManagementConnectivitytestSpecSourceCodec{},
 	}
 }
 
@@ -52,18 +52,18 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 }
 
 // +k8s:deepcopy-gen=false
-type ManagementConnectivityTestSpecDestinationCodec struct {
+type ManagementConnectivitytestSpecDestinationCodec struct {
 }
 
-func (ManagementConnectivityTestSpecDestinationCodec) IsEmpty(ptr unsafe.Pointer) bool {
-	return (*ManagementConnectivityTestSpecDestination)(ptr) == nil
+func (ManagementConnectivitytestSpecDestinationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ManagementConnectivitytestSpecDestination)(ptr) == nil
 }
 
-func (ManagementConnectivityTestSpecDestinationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
-	obj := (*ManagementConnectivityTestSpecDestination)(ptr)
-	var objs []ManagementConnectivityTestSpecDestination
+func (ManagementConnectivitytestSpecDestinationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ManagementConnectivitytestSpecDestination)(ptr)
+	var objs []ManagementConnectivitytestSpecDestination
 	if obj != nil {
-		objs = []ManagementConnectivityTestSpecDestination{*obj}
+		objs = []ManagementConnectivitytestSpecDestination{*obj}
 	}
 
 	jsonit := jsoniter.Config{
@@ -71,7 +71,7 @@ func (ManagementConnectivityTestSpecDestinationCodec) Encode(ptr unsafe.Pointer,
 		SortMapKeys:            true,
 		ValidateJsonRawMessage: true,
 		TagKey:                 "tf",
-		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1())),
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecDestination{}).Type1())),
 	}.Froze()
 
 	byt, _ := jsonit.Marshal(objs)
@@ -79,70 +79,70 @@ func (ManagementConnectivityTestSpecDestinationCodec) Encode(ptr unsafe.Pointer,
 	stream.Write(byt)
 }
 
-func (ManagementConnectivityTestSpecDestinationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+func (ManagementConnectivitytestSpecDestinationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 	switch iter.WhatIsNext() {
 	case jsoniter.NilValue:
 		iter.Skip()
-		*(*ManagementConnectivityTestSpecDestination)(ptr) = ManagementConnectivityTestSpecDestination{}
+		*(*ManagementConnectivitytestSpecDestination)(ptr) = ManagementConnectivitytestSpecDestination{}
 		return
 	case jsoniter.ArrayValue:
 		objsByte := iter.SkipAndReturnBytes()
 		if len(objsByte) > 0 {
-			var objs []ManagementConnectivityTestSpecDestination
+			var objs []ManagementConnectivitytestSpecDestination
 
 			jsonit := jsoniter.Config{
 				EscapeHTML:             true,
 				SortMapKeys:            true,
 				ValidateJsonRawMessage: true,
 				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1())),
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecDestination{}).Type1())),
 			}.Froze()
 			jsonit.Unmarshal(objsByte, &objs)
 
 			if len(objs) > 0 {
-				*(*ManagementConnectivityTestSpecDestination)(ptr) = objs[0]
+				*(*ManagementConnectivitytestSpecDestination)(ptr) = objs[0]
 			} else {
-				*(*ManagementConnectivityTestSpecDestination)(ptr) = ManagementConnectivityTestSpecDestination{}
+				*(*ManagementConnectivitytestSpecDestination)(ptr) = ManagementConnectivitytestSpecDestination{}
 			}
 		} else {
-			*(*ManagementConnectivityTestSpecDestination)(ptr) = ManagementConnectivityTestSpecDestination{}
+			*(*ManagementConnectivitytestSpecDestination)(ptr) = ManagementConnectivitytestSpecDestination{}
 		}
 	case jsoniter.ObjectValue:
 		objByte := iter.SkipAndReturnBytes()
 		if len(objByte) > 0 {
-			var obj ManagementConnectivityTestSpecDestination
+			var obj ManagementConnectivitytestSpecDestination
 
 			jsonit := jsoniter.Config{
 				EscapeHTML:             true,
 				SortMapKeys:            true,
 				ValidateJsonRawMessage: true,
 				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1())),
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecDestination{}).Type1())),
 			}.Froze()
 			jsonit.Unmarshal(objByte, &obj)
 
-			*(*ManagementConnectivityTestSpecDestination)(ptr) = obj
+			*(*ManagementConnectivitytestSpecDestination)(ptr) = obj
 		} else {
-			*(*ManagementConnectivityTestSpecDestination)(ptr) = ManagementConnectivityTestSpecDestination{}
+			*(*ManagementConnectivitytestSpecDestination)(ptr) = ManagementConnectivitytestSpecDestination{}
 		}
 	default:
-		iter.ReportError("decode ManagementConnectivityTestSpecDestination", "unexpected JSON type")
+		iter.ReportError("decode ManagementConnectivitytestSpecDestination", "unexpected JSON type")
 	}
 }
 
 // +k8s:deepcopy-gen=false
-type ManagementConnectivityTestSpecSourceCodec struct {
+type ManagementConnectivitytestSpecSourceCodec struct {
 }
 
-func (ManagementConnectivityTestSpecSourceCodec) IsEmpty(ptr unsafe.Pointer) bool {
-	return (*ManagementConnectivityTestSpecSource)(ptr) == nil
+func (ManagementConnectivitytestSpecSourceCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ManagementConnectivitytestSpecSource)(ptr) == nil
 }
 
-func (ManagementConnectivityTestSpecSourceCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
-	obj := (*ManagementConnectivityTestSpecSource)(ptr)
-	var objs []ManagementConnectivityTestSpecSource
+func (ManagementConnectivitytestSpecSourceCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ManagementConnectivitytestSpecSource)(ptr)
+	var objs []ManagementConnectivitytestSpecSource
 	if obj != nil {
-		objs = []ManagementConnectivityTestSpecSource{*obj}
+		objs = []ManagementConnectivitytestSpecSource{*obj}
 	}
 
 	jsonit := jsoniter.Config{
@@ -150,7 +150,7 @@ func (ManagementConnectivityTestSpecSourceCodec) Encode(ptr unsafe.Pointer, stre
 		SortMapKeys:            true,
 		ValidateJsonRawMessage: true,
 		TagKey:                 "tf",
-		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1())),
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecSource{}).Type1())),
 	}.Froze()
 
 	byt, _ := jsonit.Marshal(objs)
@@ -158,53 +158,53 @@ func (ManagementConnectivityTestSpecSourceCodec) Encode(ptr unsafe.Pointer, stre
 	stream.Write(byt)
 }
 
-func (ManagementConnectivityTestSpecSourceCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+func (ManagementConnectivitytestSpecSourceCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 	switch iter.WhatIsNext() {
 	case jsoniter.NilValue:
 		iter.Skip()
-		*(*ManagementConnectivityTestSpecSource)(ptr) = ManagementConnectivityTestSpecSource{}
+		*(*ManagementConnectivitytestSpecSource)(ptr) = ManagementConnectivitytestSpecSource{}
 		return
 	case jsoniter.ArrayValue:
 		objsByte := iter.SkipAndReturnBytes()
 		if len(objsByte) > 0 {
-			var objs []ManagementConnectivityTestSpecSource
+			var objs []ManagementConnectivitytestSpecSource
 
 			jsonit := jsoniter.Config{
 				EscapeHTML:             true,
 				SortMapKeys:            true,
 				ValidateJsonRawMessage: true,
 				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1())),
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecSource{}).Type1())),
 			}.Froze()
 			jsonit.Unmarshal(objsByte, &objs)
 
 			if len(objs) > 0 {
-				*(*ManagementConnectivityTestSpecSource)(ptr) = objs[0]
+				*(*ManagementConnectivitytestSpecSource)(ptr) = objs[0]
 			} else {
-				*(*ManagementConnectivityTestSpecSource)(ptr) = ManagementConnectivityTestSpecSource{}
+				*(*ManagementConnectivitytestSpecSource)(ptr) = ManagementConnectivitytestSpecSource{}
 			}
 		} else {
-			*(*ManagementConnectivityTestSpecSource)(ptr) = ManagementConnectivityTestSpecSource{}
+			*(*ManagementConnectivitytestSpecSource)(ptr) = ManagementConnectivitytestSpecSource{}
 		}
 	case jsoniter.ObjectValue:
 		objByte := iter.SkipAndReturnBytes()
 		if len(objByte) > 0 {
-			var obj ManagementConnectivityTestSpecSource
+			var obj ManagementConnectivitytestSpecSource
 
 			jsonit := jsoniter.Config{
 				EscapeHTML:             true,
 				SortMapKeys:            true,
 				ValidateJsonRawMessage: true,
 				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1())),
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivitytestSpecSource{}).Type1())),
 			}.Froze()
 			jsonit.Unmarshal(objByte, &obj)
 
-			*(*ManagementConnectivityTestSpecSource)(ptr) = obj
+			*(*ManagementConnectivitytestSpecSource)(ptr) = obj
 		} else {
-			*(*ManagementConnectivityTestSpecSource)(ptr) = ManagementConnectivityTestSpecSource{}
+			*(*ManagementConnectivitytestSpecSource)(ptr) = ManagementConnectivitytestSpecSource{}
 		}
 	default:
-		iter.ReportError("decode ManagementConnectivityTestSpecSource", "unexpected JSON type")
+		iter.ReportError("decode ManagementConnectivitytestSpecSource", "unexpected JSON type")
 	}
 }
