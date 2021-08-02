@@ -24,8 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// ManagementConnectivityTests returns a ManagementConnectivityTestInformer.
-	ManagementConnectivityTests() ManagementConnectivityTestInformer
+	// ManagementConnectivitytests returns a ManagementConnectivitytestInformer.
+	ManagementConnectivitytests() ManagementConnectivitytestInformer
 }
 
 type version struct {
@@ -39,7 +39,7 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// ManagementConnectivityTests returns a ManagementConnectivityTestInformer.
-func (v *version) ManagementConnectivityTests() ManagementConnectivityTestInformer {
-	return &managementConnectivityTestInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// ManagementConnectivitytests returns a ManagementConnectivitytestInformer.
+func (v *version) ManagementConnectivitytests() ManagementConnectivitytestInformer {
+	return &managementConnectivitytestInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

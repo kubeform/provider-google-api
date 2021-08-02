@@ -18,10 +18,10 @@ limitations under the License.
 
 package v1alpha1
 
-// ManagementConnectivityTestListerExpansion allows custom methods to be added to
-// ManagementConnectivityTestLister.
-type ManagementConnectivityTestListerExpansion interface{}
+// ManagementConnectivitytestListerExpansion allows custom methods to be added to
+// ManagementConnectivitytestLister.
+type ManagementConnectivitytestListerExpansion interface{}
 
-// ManagementConnectivityTestNamespaceListerExpansion allows custom methods to be added to
-// ManagementConnectivityTestNamespaceLister.
-type ManagementConnectivityTestNamespaceListerExpansion interface{}
+// ManagementConnectivitytestNamespaceListerExpansion allows custom methods to be added to
+// ManagementConnectivitytestNamespaceLister.
+type ManagementConnectivitytestNamespaceListerExpansion interface{}

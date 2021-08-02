@@ -34,14 +34,14 @@ import (
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
-type ManagementConnectivityTest struct {
+type ManagementConnectivitytest struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ManagementConnectivityTestSpec   `json:"spec,omitempty"`
-	Status            ManagementConnectivityTestStatus `json:"status,omitempty"`
+	Spec              ManagementConnectivitytestSpec   `json:"spec,omitempty"`
+	Status            ManagementConnectivitytestStatus `json:"status,omitempty"`
 }
 
-type ManagementConnectivityTestSpecDestination struct {
+type ManagementConnectivitytestSpecDestination struct {
 	// A Compute Engine instance URI.
 	// +optional
 	Instance *string `json:"instance,omitempty" tf:"instance"`
@@ -69,7 +69,7 @@ type ManagementConnectivityTestSpecDestination struct {
 	ProjectID *string `json:"projectID,omitempty" tf:"project_id"`
 }
 
-type ManagementConnectivityTestSpecSource struct {
+type ManagementConnectivitytestSpecSource struct {
 	// A Compute Engine instance URI.
 	// +optional
 	Instance *string `json:"instance,omitempty" tf:"instance"`
@@ -102,10 +102,10 @@ type ManagementConnectivityTestSpecSource struct {
 	ProjectID *string `json:"projectID,omitempty" tf:"project_id"`
 }
 
-type ManagementConnectivityTestSpec struct {
-	State *ManagementConnectivityTestSpecResource `json:"state,omitempty" tf:"-"`
+type ManagementConnectivitytestSpec struct {
+	State *ManagementConnectivitytestSpecResource `json:"state,omitempty" tf:"-"`
 
-	Resource ManagementConnectivityTestSpecResource `json:"resource" tf:"resource"`
+	Resource ManagementConnectivitytestSpecResource `json:"resource" tf:"resource"`
 
 	UpdatePolicy base.UpdatePolicy `json:"updatePolicy,omitempty" tf:"-"`
 
@@ -114,7 +114,7 @@ type ManagementConnectivityTestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
-type ManagementConnectivityTestSpecResource struct {
+type ManagementConnectivitytestSpecResource struct {
 	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
@@ -141,7 +141,7 @@ type ManagementConnectivityTestSpecResource struct {
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
 	// don't intend to test.
-	Destination *ManagementConnectivityTestSpecDestination `json:"destination" tf:"destination"`
+	Destination *ManagementConnectivitytestSpecDestination `json:"destination" tf:"destination"`
 	// Resource labels to represent user-provided metadata.
 	// +optional
 	Labels *map[string]string `json:"labels,omitempty" tf:"labels"`
@@ -180,10 +180,10 @@ type ManagementConnectivityTestSpecResource struct {
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
 	// you don't intend to test.
-	Source *ManagementConnectivityTestSpecSource `json:"source" tf:"source"`
+	Source *ManagementConnectivitytestSpecSource `json:"source" tf:"source"`
 }
 
-type ManagementConnectivityTestStatus struct {
+type ManagementConnectivitytestStatus struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
@@ -196,10 +196,10 @@ type ManagementConnectivityTestStatus struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// ManagementConnectivityTestList is a list of ManagementConnectivityTests
-type ManagementConnectivityTestList struct {
+// ManagementConnectivitytestList is a list of ManagementConnectivitytests
+type ManagementConnectivitytestList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ManagementConnectivityTest CRD objects
-	Items []ManagementConnectivityTest `json:"items,omitempty"`
+	// Items is a list of ManagementConnectivitytest CRD objects
+	Items []ManagementConnectivitytest `json:"items,omitempty"`
 }

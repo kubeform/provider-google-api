@@ -819,7 +819,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 
 		// Group=network.google.kubeform.com, Version=v1alpha1
 	case networkv1alpha1.SchemeGroupVersion.WithResource("managementconnectivitytests"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ManagementConnectivityTests().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ManagementConnectivitytests().Informer()}, nil
 
 		// Group=notebooks.google.kubeform.com, Version=v1alpha1
 	case notebooksv1alpha1.SchemeGroupVersion.WithResource("environments"):
