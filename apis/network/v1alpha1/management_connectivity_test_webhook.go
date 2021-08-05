@@ -28,7 +28,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 )
 
-func (r *ManagementConnectivitytest) SetupWebhookWithManager(mgr ctrl.Manager) error {
+func (r *ManagementConnectivityTest) SetupWebhookWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(r).
 		Complete()
@@ -36,20 +36,20 @@ func (r *ManagementConnectivitytest) SetupWebhookWithManager(mgr ctrl.Manager) e
 
 //+kubebuilder:webhook:verbs=create;update;delete,path=/validate-network-google-kubeform-com-v1alpha1-managementconnectivitytest,mutating=false,failurePolicy=fail,groups=network.google.kubeform.com,resources=managementconnectivitytests,versions=v1alpha1,name=managementconnectivitytest.network.google.kubeform.io,sideEffects=None,admissionReviewVersions=v1
 
-var _ webhook.Validator = &ManagementConnectivitytest{}
+var _ webhook.Validator = &ManagementConnectivityTest{}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
-func (r *ManagementConnectivitytest) ValidateCreate() error {
+func (r *ManagementConnectivityTest) ValidateCreate() error {
 	return nil
 }
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
-func (r *ManagementConnectivitytest) ValidateUpdate(old runtime.Object) error {
+func (r *ManagementConnectivityTest) ValidateUpdate(old runtime.Object) error {
 	return nil
 }
 
 // ValidateDelete implements webhook.Validator so a webhook will be registered for the type
-func (r *ManagementConnectivitytest) ValidateDelete() error {
+func (r *ManagementConnectivityTest) ValidateDelete() error {
 	if r.Spec.TerminationPolicy == base.TerminationPolicyDoNotTerminate {
 		return fmt.Errorf(`managementconnectivitytest "%v/%v" can't be terminated. To delete, change spec.terminationPolicy to Delete`, r.Namespace, r.Name)
 	}

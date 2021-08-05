@@ -33,59 +33,59 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// ManagementConnectivitytestInformer provides access to a shared informer and lister for
-// ManagementConnectivitytests.
-type ManagementConnectivitytestInformer interface {
+// ManagementConnectivityTestInformer provides access to a shared informer and lister for
+// ManagementConnectivityTests.
+type ManagementConnectivityTestInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ManagementConnectivitytestLister
+	Lister() v1alpha1.ManagementConnectivityTestLister
 }
 
-type managementConnectivitytestInformer struct {
+type managementConnectivityTestInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewManagementConnectivitytestInformer constructs a new informer for ManagementConnectivitytest type.
+// NewManagementConnectivityTestInformer constructs a new informer for ManagementConnectivityTest type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewManagementConnectivitytestInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredManagementConnectivitytestInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewManagementConnectivityTestInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredManagementConnectivityTestInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredManagementConnectivitytestInformer constructs a new informer for ManagementConnectivitytest type.
+// NewFilteredManagementConnectivityTestInformer constructs a new informer for ManagementConnectivityTest type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredManagementConnectivitytestInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredManagementConnectivityTestInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.NetworkV1alpha1().ManagementConnectivitytests(namespace).List(context.TODO(), options)
+				return client.NetworkV1alpha1().ManagementConnectivityTests(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.NetworkV1alpha1().ManagementConnectivitytests(namespace).Watch(context.TODO(), options)
+				return client.NetworkV1alpha1().ManagementConnectivityTests(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&networkv1alpha1.ManagementConnectivitytest{},
+		&networkv1alpha1.ManagementConnectivityTest{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *managementConnectivitytestInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredManagementConnectivitytestInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *managementConnectivityTestInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredManagementConnectivityTestInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *managementConnectivitytestInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&networkv1alpha1.ManagementConnectivitytest{}, f.defaultInformer)
+func (f *managementConnectivityTestInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&networkv1alpha1.ManagementConnectivityTest{}, f.defaultInformer)
 }
 
-func (f *managementConnectivitytestInformer) Lister() v1alpha1.ManagementConnectivitytestLister {
-	return v1alpha1.NewManagementConnectivitytestLister(f.Informer().GetIndexer())
+func (f *managementConnectivityTestInformer) Lister() v1alpha1.ManagementConnectivityTestLister {
+	return v1alpha1.NewManagementConnectivityTestLister(f.Informer().GetIndexer())
 }
