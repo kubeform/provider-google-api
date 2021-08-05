@@ -31,31 +31,31 @@ import (
 	testing "k8s.io/client-go/testing"
 )
 
-// FakeManagementConnectivitytests implements ManagementConnectivitytestInterface
-type FakeManagementConnectivitytests struct {
+// FakeManagementConnectivityTests implements ManagementConnectivityTestInterface
+type FakeManagementConnectivityTests struct {
 	Fake *FakeNetworkV1alpha1
 	ns   string
 }
 
 var managementconnectivitytestsResource = schema.GroupVersionResource{Group: "network.google.kubeform.com", Version: "v1alpha1", Resource: "managementconnectivitytests"}
 
-var managementconnectivitytestsKind = schema.GroupVersionKind{Group: "network.google.kubeform.com", Version: "v1alpha1", Kind: "ManagementConnectivitytest"}
+var managementconnectivitytestsKind = schema.GroupVersionKind{Group: "network.google.kubeform.com", Version: "v1alpha1", Kind: "ManagementConnectivityTest"}
 
-// Get takes name of the managementConnectivitytest, and returns the corresponding managementConnectivitytest object, and an error if there is any.
-func (c *FakeManagementConnectivitytests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
+// Get takes name of the managementConnectivityTest, and returns the corresponding managementConnectivityTest object, and an error if there is any.
+func (c *FakeManagementConnectivityTests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(managementconnectivitytestsResource, c.ns, name), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewGetAction(managementconnectivitytestsResource, c.ns, name), &v1alpha1.ManagementConnectivityTest{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ManagementConnectivitytest), err
+	return obj.(*v1alpha1.ManagementConnectivityTest), err
 }
 
-// List takes label and field selectors, and returns the list of ManagementConnectivitytests that match those selectors.
-func (c *FakeManagementConnectivitytests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementConnectivitytestList, err error) {
+// List takes label and field selectors, and returns the list of ManagementConnectivityTests that match those selectors.
+func (c *FakeManagementConnectivityTests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementConnectivityTestList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(managementconnectivitytestsResource, managementconnectivitytestsKind, c.ns, opts), &v1alpha1.ManagementConnectivitytestList{})
+		Invokes(testing.NewListAction(managementconnectivitytestsResource, managementconnectivitytestsKind, c.ns, opts), &v1alpha1.ManagementConnectivityTestList{})
 
 	if obj == nil {
 		return nil, err
@@ -65,8 +65,8 @@ func (c *FakeManagementConnectivitytests) List(ctx context.Context, opts v1.List
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &v1alpha1.ManagementConnectivitytestList{ListMeta: obj.(*v1alpha1.ManagementConnectivitytestList).ListMeta}
-	for _, item := range obj.(*v1alpha1.ManagementConnectivitytestList).Items {
+	list := &v1alpha1.ManagementConnectivityTestList{ListMeta: obj.(*v1alpha1.ManagementConnectivityTestList).ListMeta}
+	for _, item := range obj.(*v1alpha1.ManagementConnectivityTestList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -74,70 +74,70 @@ func (c *FakeManagementConnectivitytests) List(ctx context.Context, opts v1.List
 	return list, err
 }
 
-// Watch returns a watch.Interface that watches the requested managementConnectivitytests.
-func (c *FakeManagementConnectivitytests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested managementConnectivityTests.
+func (c *FakeManagementConnectivityTests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(managementconnectivitytestsResource, c.ns, opts))
 
 }
 
-// Create takes the representation of a managementConnectivitytest and creates it.  Returns the server's representation of the managementConnectivitytest, and an error, if there is any.
-func (c *FakeManagementConnectivitytests) Create(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.CreateOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
+// Create takes the representation of a managementConnectivityTest and creates it.  Returns the server's representation of the managementConnectivityTest, and an error, if there is any.
+func (c *FakeManagementConnectivityTests) Create(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.CreateOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(managementconnectivitytestsResource, c.ns, managementConnectivitytest), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewCreateAction(managementconnectivitytestsResource, c.ns, managementConnectivityTest), &v1alpha1.ManagementConnectivityTest{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ManagementConnectivitytest), err
+	return obj.(*v1alpha1.ManagementConnectivityTest), err
 }
 
-// Update takes the representation of a managementConnectivitytest and updates it. Returns the server's representation of the managementConnectivitytest, and an error, if there is any.
-func (c *FakeManagementConnectivitytests) Update(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
+// Update takes the representation of a managementConnectivityTest and updates it. Returns the server's representation of the managementConnectivityTest, and an error, if there is any.
+func (c *FakeManagementConnectivityTests) Update(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(managementconnectivitytestsResource, c.ns, managementConnectivitytest), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewUpdateAction(managementconnectivitytestsResource, c.ns, managementConnectivityTest), &v1alpha1.ManagementConnectivityTest{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ManagementConnectivitytest), err
+	return obj.(*v1alpha1.ManagementConnectivityTest), err
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeManagementConnectivitytests) UpdateStatus(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivitytest, error) {
+func (c *FakeManagementConnectivityTests) UpdateStatus(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivityTest, error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(managementconnectivitytestsResource, "status", c.ns, managementConnectivitytest), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewUpdateSubresourceAction(managementconnectivitytestsResource, "status", c.ns, managementConnectivityTest), &v1alpha1.ManagementConnectivityTest{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ManagementConnectivitytest), err
+	return obj.(*v1alpha1.ManagementConnectivityTest), err
 }
 
-// Delete takes name of the managementConnectivitytest and deletes it. Returns an error if one occurs.
-func (c *FakeManagementConnectivitytests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+// Delete takes name of the managementConnectivityTest and deletes it. Returns an error if one occurs.
+func (c *FakeManagementConnectivityTests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(managementconnectivitytestsResource, c.ns, name), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewDeleteAction(managementconnectivitytestsResource, c.ns, name), &v1alpha1.ManagementConnectivityTest{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeManagementConnectivitytests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeManagementConnectivityTests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(managementconnectivitytestsResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &v1alpha1.ManagementConnectivitytestList{})
+	_, err := c.Fake.Invokes(action, &v1alpha1.ManagementConnectivityTestList{})
 	return err
 }
 
-// Patch applies the patch and returns the patched managementConnectivitytest.
-func (c *FakeManagementConnectivitytests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivitytest, err error) {
+// Patch applies the patch and returns the patched managementConnectivityTest.
+func (c *FakeManagementConnectivityTests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivityTest, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(managementconnectivitytestsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ManagementConnectivitytest{})
+		Invokes(testing.NewPatchSubresourceAction(managementconnectivitytestsResource, c.ns, name, pt, data, subresources...), &v1alpha1.ManagementConnectivityTest{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*v1alpha1.ManagementConnectivitytest), err
+	return obj.(*v1alpha1.ManagementConnectivityTest), err
 }

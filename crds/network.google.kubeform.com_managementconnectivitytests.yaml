@@ -9,8 +9,8 @@ metadata:
 spec:
   group: network.google.kubeform.com
   names:
-    kind: ManagementConnectivitytest
-    listKind: ManagementConnectivitytestList
+    kind: ManagementConnectivityTest
+    listKind: ManagementConnectivityTestList
     plural: managementconnectivitytests
     singular: managementconnectivitytest
   scope: Namespaced

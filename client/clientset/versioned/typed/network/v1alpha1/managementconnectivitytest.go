@@ -31,43 +31,43 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-// ManagementConnectivitytestsGetter has a method to return a ManagementConnectivitytestInterface.
+// ManagementConnectivityTestsGetter has a method to return a ManagementConnectivityTestInterface.
 // A group's client should implement this interface.
-type ManagementConnectivitytestsGetter interface {
-	ManagementConnectivitytests(namespace string) ManagementConnectivitytestInterface
+type ManagementConnectivityTestsGetter interface {
+	ManagementConnectivityTests(namespace string) ManagementConnectivityTestInterface
 }
 
-// ManagementConnectivitytestInterface has methods to work with ManagementConnectivitytest resources.
-type ManagementConnectivitytestInterface interface {
-	Create(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.CreateOptions) (*v1alpha1.ManagementConnectivitytest, error)
-	Update(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivitytest, error)
-	UpdateStatus(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivitytest, error)
+// ManagementConnectivityTestInterface has methods to work with ManagementConnectivityTest resources.
+type ManagementConnectivityTestInterface interface {
+	Create(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.CreateOptions) (*v1alpha1.ManagementConnectivityTest, error)
+	Update(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivityTest, error)
+	UpdateStatus(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (*v1alpha1.ManagementConnectivityTest, error)
 	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
-	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ManagementConnectivitytest, error)
-	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ManagementConnectivitytestList, error)
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1alpha1.ManagementConnectivityTest, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1alpha1.ManagementConnectivityTestList, error)
 	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
-	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivitytest, err error)
-	ManagementConnectivitytestExpansion
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivityTest, err error)
+	ManagementConnectivityTestExpansion
 }
 
-// managementConnectivitytests implements ManagementConnectivitytestInterface
-type managementConnectivitytests struct {
+// managementConnectivityTests implements ManagementConnectivityTestInterface
+type managementConnectivityTests struct {
 	client rest.Interface
 	ns     string
 }
 
-// newManagementConnectivitytests returns a ManagementConnectivitytests
-func newManagementConnectivitytests(c *NetworkV1alpha1Client, namespace string) *managementConnectivitytests {
-	return &managementConnectivitytests{
+// newManagementConnectivityTests returns a ManagementConnectivityTests
+func newManagementConnectivityTests(c *NetworkV1alpha1Client, namespace string) *managementConnectivityTests {
+	return &managementConnectivityTests{
 		client: c.RESTClient(),
 		ns:     namespace,
 	}
 }
 
-// Get takes name of the managementConnectivitytest, and returns the corresponding managementConnectivitytest object, and an error if there is any.
-func (c *managementConnectivitytests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
-	result = &v1alpha1.ManagementConnectivitytest{}
+// Get takes name of the managementConnectivityTest, and returns the corresponding managementConnectivityTest object, and an error if there is any.
+func (c *managementConnectivityTests) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
+	result = &v1alpha1.ManagementConnectivityTest{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
@@ -78,13 +78,13 @@ func (c *managementConnectivitytests) Get(ctx context.Context, name string, opti
 	return
 }
 
-// List takes label and field selectors, and returns the list of ManagementConnectivitytests that match those selectors.
-func (c *managementConnectivitytests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementConnectivitytestList, err error) {
+// List takes label and field selectors, and returns the list of ManagementConnectivityTests that match those selectors.
+func (c *managementConnectivityTests) List(ctx context.Context, opts v1.ListOptions) (result *v1alpha1.ManagementConnectivityTestList, err error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
 	}
-	result = &v1alpha1.ManagementConnectivitytestList{}
+	result = &v1alpha1.ManagementConnectivityTestList{}
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
@@ -95,8 +95,8 @@ func (c *managementConnectivitytests) List(ctx context.Context, opts v1.ListOpti
 	return
 }
 
-// Watch returns a watch.Interface that watches the requested managementConnectivitytests.
-func (c *managementConnectivitytests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+// Watch returns a watch.Interface that watches the requested managementConnectivityTests.
+func (c *managementConnectivityTests) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	var timeout time.Duration
 	if opts.TimeoutSeconds != nil {
 		timeout = time.Duration(*opts.TimeoutSeconds) * time.Second
@@ -110,28 +110,28 @@ func (c *managementConnectivitytests) Watch(ctx context.Context, opts v1.ListOpt
 		Watch(ctx)
 }
 
-// Create takes the representation of a managementConnectivitytest and creates it.  Returns the server's representation of the managementConnectivitytest, and an error, if there is any.
-func (c *managementConnectivitytests) Create(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.CreateOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
-	result = &v1alpha1.ManagementConnectivitytest{}
+// Create takes the representation of a managementConnectivityTest and creates it.  Returns the server's representation of the managementConnectivityTest, and an error, if there is any.
+func (c *managementConnectivityTests) Create(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.CreateOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
+	result = &v1alpha1.ManagementConnectivityTest{}
 	err = c.client.Post().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(managementConnectivitytest).
+		Body(managementConnectivityTest).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Update takes the representation of a managementConnectivitytest and updates it. Returns the server's representation of the managementConnectivitytest, and an error, if there is any.
-func (c *managementConnectivitytests) Update(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
-	result = &v1alpha1.ManagementConnectivitytest{}
+// Update takes the representation of a managementConnectivityTest and updates it. Returns the server's representation of the managementConnectivityTest, and an error, if there is any.
+func (c *managementConnectivityTests) Update(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
+	result = &v1alpha1.ManagementConnectivityTest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
-		Name(managementConnectivitytest.Name).
+		Name(managementConnectivityTest.Name).
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(managementConnectivitytest).
+		Body(managementConnectivityTest).
 		Do(ctx).
 		Into(result)
 	return
@@ -139,22 +139,22 @@ func (c *managementConnectivitytests) Update(ctx context.Context, managementConn
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *managementConnectivitytests) UpdateStatus(ctx context.Context, managementConnectivitytest *v1alpha1.ManagementConnectivitytest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivitytest, err error) {
-	result = &v1alpha1.ManagementConnectivitytest{}
+func (c *managementConnectivityTests) UpdateStatus(ctx context.Context, managementConnectivityTest *v1alpha1.ManagementConnectivityTest, opts v1.UpdateOptions) (result *v1alpha1.ManagementConnectivityTest, err error) {
+	result = &v1alpha1.ManagementConnectivityTest{}
 	err = c.client.Put().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
-		Name(managementConnectivitytest.Name).
+		Name(managementConnectivityTest.Name).
 		SubResource("status").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(managementConnectivitytest).
+		Body(managementConnectivityTest).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Delete takes name of the managementConnectivitytest and deletes it. Returns an error if one occurs.
-func (c *managementConnectivitytests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+// Delete takes name of the managementConnectivityTest and deletes it. Returns an error if one occurs.
+func (c *managementConnectivityTests) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	return c.client.Delete().
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
@@ -165,7 +165,7 @@ func (c *managementConnectivitytests) Delete(ctx context.Context, name string, o
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *managementConnectivitytests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *managementConnectivityTests) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
 	var timeout time.Duration
 	if listOpts.TimeoutSeconds != nil {
 		timeout = time.Duration(*listOpts.TimeoutSeconds) * time.Second
@@ -180,9 +180,9 @@ func (c *managementConnectivitytests) DeleteCollection(ctx context.Context, opts
 		Error()
 }
 
-// Patch applies the patch and returns the patched managementConnectivitytest.
-func (c *managementConnectivitytests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivitytest, err error) {
-	result = &v1alpha1.ManagementConnectivitytest{}
+// Patch applies the patch and returns the patched managementConnectivityTest.
+func (c *managementConnectivityTests) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1alpha1.ManagementConnectivityTest, err error) {
+	result = &v1alpha1.ManagementConnectivityTest{}
 	err = c.client.Patch(pt).
 		Namespace(c.ns).
 		Resource("managementconnectivitytests").
