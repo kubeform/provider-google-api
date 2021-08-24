@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,34 @@ func (r *InstanceFromTemplate) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &InstanceFromTemplate{}
 
+var instancefromtemplateForceNewList = map[string]bool{
+	"/boot_disk/*/auto_delete":                              true,
+	"/boot_disk/*/device_name":                              true,
+	"/boot_disk/*/initialize_params/*/image":                true,
+	"/boot_disk/*/initialize_params/*/labels":               true,
+	"/boot_disk/*/initialize_params/*/size":                 true,
+	"/boot_disk/*/initialize_params/*/type":                 true,
+	"/boot_disk/*/kms_key_self_link":                        true,
+	"/boot_disk/*/mode":                                     true,
+	"/boot_disk/*/source":                                   true,
+	"/can_ip_forward":                                       true,
+	"/description":                                          true,
+	"/guest_accelerator/*/count":                            true,
+	"/guest_accelerator/*/type":                             true,
+	"/hostname":                                             true,
+	"/metadata_startup_script":                              true,
+	"/name":                                                 true,
+	"/network_interface/*/nic_type":                         true,
+	"/project":                                              true,
+	"/reservation_affinity/*/specific_reservation/*/key":    true,
+	"/reservation_affinity/*/specific_reservation/*/values": true,
+	"/reservation_affinity/*/type":                          true,
+	"/resource_policies":                                    true,
+	"/scheduling/*/preemptible":                             true,
+	"/source_instance_template":                             true,
+	"/zone":                                                 true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *InstanceFromTemplate) ValidateCreate() error {
 	return nil
@@ -45,6 +76,53 @@ func (r *InstanceFromTemplate) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *InstanceFromTemplate) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*InstanceFromTemplate)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range instancefromtemplateForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`instancefromtemplate "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
