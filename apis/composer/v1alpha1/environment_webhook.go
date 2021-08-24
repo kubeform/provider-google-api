@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-google-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,30 @@ func (r *Environment) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Environment{}
 
+var environmentForceNewList = map[string]bool{
+	"/config/*/node_config/*/disk_size_gb":                                         true,
+	"/config/*/node_config/*/ip_allocation_policy/*/cluster_ipv4_cidr_block":       true,
+	"/config/*/node_config/*/ip_allocation_policy/*/cluster_secondary_range_name":  true,
+	"/config/*/node_config/*/ip_allocation_policy/*/services_ipv4_cidr_block":      true,
+	"/config/*/node_config/*/ip_allocation_policy/*/services_secondary_range_name": true,
+	"/config/*/node_config/*/ip_allocation_policy/*/use_ip_aliases":                true,
+	"/config/*/node_config/*/machine_type":                                         true,
+	"/config/*/node_config/*/network":                                              true,
+	"/config/*/node_config/*/oauth_scopes":                                         true,
+	"/config/*/node_config/*/service_account":                                      true,
+	"/config/*/node_config/*/subnetwork":                                           true,
+	"/config/*/node_config/*/tags":                                                 true,
+	"/config/*/node_config/*/zone":                                                 true,
+	"/config/*/private_environment_config/*/cloud_sql_ipv4_cidr_block":             true,
+	"/config/*/private_environment_config/*/enable_private_endpoint":               true,
+	"/config/*/private_environment_config/*/master_ipv4_cidr_block":                true,
+	"/config/*/private_environment_config/*/web_server_ipv4_cidr_block":            true,
+	"/config/*/software_config/*/python_version":                                   true,
+	"/name":    true,
+	"/project": true,
+	"/region":  true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Environment) ValidateCreate() error {
 	return nil
@@ -45,6 +72,53 @@ func (r *Environment) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Environment) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Environment)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range environmentForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`environment "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

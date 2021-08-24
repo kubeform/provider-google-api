@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-google-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,34 @@ func (r *NodePool) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &NodePool{}
 
+var nodepoolForceNewList = map[string]bool{
+	"/cluster":                    true,
+	"/initial_node_count":         true,
+	"/location":                   true,
+	"/max_pods_per_node":          true,
+	"/name":                       true,
+	"/name_prefix":                true,
+	"/node_config/*/disk_size_gb": true,
+	"/node_config/*/disk_type":    true,
+	"/node_config/*/guest_accelerator/*/count":                              true,
+	"/node_config/*/guest_accelerator/*/type":                               true,
+	"/node_config/*/labels":                                                 true,
+	"/node_config/*/local_ssd_count":                                        true,
+	"/node_config/*/machine_type":                                           true,
+	"/node_config/*/metadata":                                               true,
+	"/node_config/*/min_cpu_platform":                                       true,
+	"/node_config/*/oauth_scopes":                                           true,
+	"/node_config/*/preemptible":                                            true,
+	"/node_config/*/service_account":                                        true,
+	"/node_config/*/shielded_instance_config/*/enable_integrity_monitoring": true,
+	"/node_config/*/shielded_instance_config/*/enable_secure_boot":          true,
+	"/node_config/*/tags":                                                   true,
+	"/node_config/*/taint/*/effect":                                         true,
+	"/node_config/*/taint/*/key":                                            true,
+	"/node_config/*/taint/*/value":                                          true,
+	"/project":                                                              true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *NodePool) ValidateCreate() error {
 	return nil
@@ -45,6 +76,53 @@ func (r *NodePool) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *NodePool) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*NodePool)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range nodepoolForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`nodepool "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

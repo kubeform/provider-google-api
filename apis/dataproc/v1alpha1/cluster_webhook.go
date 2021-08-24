@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-google-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,48 @@ func (r *Cluster) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Cluster{}
 
+var clusterForceNewList = map[string]bool{
+	"/cluster_config/*/gce_cluster_config/*/internal_ip_only":                                       true,
+	"/cluster_config/*/gce_cluster_config/*/metadata":                                               true,
+	"/cluster_config/*/gce_cluster_config/*/network":                                                true,
+	"/cluster_config/*/gce_cluster_config/*/service_account":                                        true,
+	"/cluster_config/*/gce_cluster_config/*/service_account_scopes":                                 true,
+	"/cluster_config/*/gce_cluster_config/*/shielded_instance_config/*/enable_integrity_monitoring": true,
+	"/cluster_config/*/gce_cluster_config/*/shielded_instance_config/*/enable_secure_boot":          true,
+	"/cluster_config/*/gce_cluster_config/*/shielded_instance_config/*/enable_vtpm":                 true,
+	"/cluster_config/*/gce_cluster_config/*/subnetwork":                                             true,
+	"/cluster_config/*/gce_cluster_config/*/tags":                                                   true,
+	"/cluster_config/*/gce_cluster_config/*/zone":                                                   true,
+	"/cluster_config/*/initialization_action/*/script":                                              true,
+	"/cluster_config/*/initialization_action/*/timeout_sec":                                         true,
+	"/cluster_config/*/master_config/*/accelerators/*/accelerator_count":                            true,
+	"/cluster_config/*/master_config/*/accelerators/*/accelerator_type":                             true,
+	"/cluster_config/*/master_config/*/disk_config/*/boot_disk_size_gb":                             true,
+	"/cluster_config/*/master_config/*/disk_config/*/boot_disk_type":                                true,
+	"/cluster_config/*/master_config/*/disk_config/*/num_local_ssds":                                true,
+	"/cluster_config/*/master_config/*/image_uri":                                                   true,
+	"/cluster_config/*/master_config/*/machine_type":                                                true,
+	"/cluster_config/*/master_config/*/min_cpu_platform":                                            true,
+	"/cluster_config/*/preemptible_worker_config/*/disk_config/*/boot_disk_size_gb":                 true,
+	"/cluster_config/*/preemptible_worker_config/*/disk_config/*/boot_disk_type":                    true,
+	"/cluster_config/*/preemptible_worker_config/*/disk_config/*/num_local_ssds":                    true,
+	"/cluster_config/*/software_config/*/image_version":                                             true,
+	"/cluster_config/*/software_config/*/override_properties":                                       true,
+	"/cluster_config/*/staging_bucket":                                                              true,
+	"/cluster_config/*/temp_bucket":                                                                 true,
+	"/cluster_config/*/worker_config/*/accelerators/*/accelerator_count":                            true,
+	"/cluster_config/*/worker_config/*/accelerators/*/accelerator_type":                             true,
+	"/cluster_config/*/worker_config/*/disk_config/*/boot_disk_size_gb":                             true,
+	"/cluster_config/*/worker_config/*/disk_config/*/boot_disk_type":                                true,
+	"/cluster_config/*/worker_config/*/disk_config/*/num_local_ssds":                                true,
+	"/cluster_config/*/worker_config/*/image_uri":                                                   true,
+	"/cluster_config/*/worker_config/*/machine_type":                                                true,
+	"/cluster_config/*/worker_config/*/min_cpu_platform":                                            true,
+	"/name":    true,
+	"/project": true,
+	"/region":  true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Cluster) ValidateCreate() error {
 	return nil
@@ -45,6 +90,53 @@ func (r *Cluster) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Cluster) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Cluster)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range clusterForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`cluster "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 

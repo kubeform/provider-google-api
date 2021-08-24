@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/provider-google-api/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,81 @@ func (r *Job) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Job{}
 
+var jobForceNewList = map[string]bool{
+	"/copy/*/create_disposition":                                   true,
+	"/copy/*/destination_encryption_configuration/*/kms_key_name":  true,
+	"/copy/*/destination_table/*/dataset_id":                       true,
+	"/copy/*/destination_table/*/project_id":                       true,
+	"/copy/*/destination_table/*/table_id":                         true,
+	"/copy/*/source_tables/*/dataset_id":                           true,
+	"/copy/*/source_tables/*/project_id":                           true,
+	"/copy/*/source_tables/*/table_id":                             true,
+	"/copy/*/write_disposition":                                    true,
+	"/extract/*/compression":                                       true,
+	"/extract/*/destination_format":                                true,
+	"/extract/*/destination_uris":                                  true,
+	"/extract/*/field_delimiter":                                   true,
+	"/extract/*/print_header":                                      true,
+	"/extract/*/source_model/*/dataset_id":                         true,
+	"/extract/*/source_model/*/model_id":                           true,
+	"/extract/*/source_model/*/project_id":                         true,
+	"/extract/*/source_table/*/dataset_id":                         true,
+	"/extract/*/source_table/*/project_id":                         true,
+	"/extract/*/source_table/*/table_id":                           true,
+	"/extract/*/use_avro_logical_types":                            true,
+	"/job_id":                                                      true,
+	"/job_timeout_ms":                                              true,
+	"/labels":                                                      true,
+	"/load/*/allow_jagged_rows":                                    true,
+	"/load/*/allow_quoted_newlines":                                true,
+	"/load/*/autodetect":                                           true,
+	"/load/*/create_disposition":                                   true,
+	"/load/*/destination_encryption_configuration/*/kms_key_name":  true,
+	"/load/*/destination_table/*/dataset_id":                       true,
+	"/load/*/destination_table/*/project_id":                       true,
+	"/load/*/destination_table/*/table_id":                         true,
+	"/load/*/encoding":                                             true,
+	"/load/*/field_delimiter":                                      true,
+	"/load/*/ignore_unknown_values":                                true,
+	"/load/*/max_bad_records":                                      true,
+	"/load/*/null_marker":                                          true,
+	"/load/*/projection_fields":                                    true,
+	"/load/*/quote":                                                true,
+	"/load/*/schema_update_options":                                true,
+	"/load/*/skip_leading_rows":                                    true,
+	"/load/*/source_format":                                        true,
+	"/load/*/source_uris":                                          true,
+	"/load/*/time_partitioning/*/expiration_ms":                    true,
+	"/load/*/time_partitioning/*/field":                            true,
+	"/load/*/time_partitioning/*/type":                             true,
+	"/load/*/write_disposition":                                    true,
+	"/location":                                                    true,
+	"/project":                                                     true,
+	"/query/*/allow_large_results":                                 true,
+	"/query/*/create_disposition":                                  true,
+	"/query/*/default_dataset/*/dataset_id":                        true,
+	"/query/*/default_dataset/*/project_id":                        true,
+	"/query/*/destination_encryption_configuration/*/kms_key_name": true,
+	"/query/*/destination_table/*/dataset_id":                      true,
+	"/query/*/destination_table/*/project_id":                      true,
+	"/query/*/destination_table/*/table_id":                        true,
+	"/query/*/flatten_results":                                     true,
+	"/query/*/maximum_billing_tier":                                true,
+	"/query/*/maximum_bytes_billed":                                true,
+	"/query/*/parameter_mode":                                      true,
+	"/query/*/priority":                                            true,
+	"/query/*/query":                                               true,
+	"/query/*/schema_update_options":                               true,
+	"/query/*/script_options/*/key_result_statement":               true,
+	"/query/*/script_options/*/statement_byte_budget":              true,
+	"/query/*/script_options/*/statement_timeout_ms":               true,
+	"/query/*/use_legacy_sql":                                      true,
+	"/query/*/use_query_cache":                                     true,
+	"/query/*/user_defined_function_resources/*/inline_code":       true,
+	"/query/*/user_defined_function_resources/*/resource_uri":      true,
+	"/query/*/write_disposition":                                   true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Job) ValidateCreate() error {
 	return nil
@@ -45,6 +123,53 @@ func (r *Job) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Job) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Job)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range jobForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`job "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
