@@ -20,9 +20,12 @@ package v1alpha1
 
 import (
 	"fmt"
+	"strings"
 
 	base "kubeform.dev/apimachinery/api/v1alpha1"
+	"kubeform.dev/apimachinery/pkg/util"
 
+	jsoniter "github.com/json-iterator/go"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -38,6 +41,59 @@ func (r *Job) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 var _ webhook.Validator = &Job{}
 
+var jobForceNewList = map[string]bool{
+	"/hadoop_config/*/archive_uris":                         true,
+	"/hadoop_config/*/args":                                 true,
+	"/hadoop_config/*/file_uris":                            true,
+	"/hadoop_config/*/jar_file_uris":                        true,
+	"/hadoop_config/*/logging_config/*/driver_log_levels":   true,
+	"/hadoop_config/*/main_class":                           true,
+	"/hadoop_config/*/main_jar_file_uri":                    true,
+	"/hadoop_config/*/properties":                           true,
+	"/hive_config/*/continue_on_failure":                    true,
+	"/hive_config/*/jar_file_uris":                          true,
+	"/hive_config/*/properties":                             true,
+	"/hive_config/*/query_file_uri":                         true,
+	"/hive_config/*/query_list":                             true,
+	"/hive_config/*/script_variables":                       true,
+	"/labels":                                               true,
+	"/pig_config/*/continue_on_failure":                     true,
+	"/pig_config/*/jar_file_uris":                           true,
+	"/pig_config/*/logging_config/*/driver_log_levels":      true,
+	"/pig_config/*/properties":                              true,
+	"/pig_config/*/query_file_uri":                          true,
+	"/pig_config/*/query_list":                              true,
+	"/pig_config/*/script_variables":                        true,
+	"/placement/*/cluster_name":                             true,
+	"/project":                                              true,
+	"/pyspark_config/*/archive_uris":                        true,
+	"/pyspark_config/*/args":                                true,
+	"/pyspark_config/*/file_uris":                           true,
+	"/pyspark_config/*/jar_file_uris":                       true,
+	"/pyspark_config/*/logging_config/*/driver_log_levels":  true,
+	"/pyspark_config/*/main_python_file_uri":                true,
+	"/pyspark_config/*/properties":                          true,
+	"/pyspark_config/*/python_file_uris":                    true,
+	"/reference/*/job_id":                                   true,
+	"/region":                                               true,
+	"/scheduling/*/max_failures_per_hour":                   true,
+	"/scheduling/*/max_failures_total":                      true,
+	"/spark_config/*/archive_uris":                          true,
+	"/spark_config/*/args":                                  true,
+	"/spark_config/*/file_uris":                             true,
+	"/spark_config/*/jar_file_uris":                         true,
+	"/spark_config/*/logging_config/*/driver_log_levels":    true,
+	"/spark_config/*/main_class":                            true,
+	"/spark_config/*/main_jar_file_uri":                     true,
+	"/spark_config/*/properties":                            true,
+	"/sparksql_config/*/jar_file_uris":                      true,
+	"/sparksql_config/*/logging_config/*/driver_log_levels": true,
+	"/sparksql_config/*/properties":                         true,
+	"/sparksql_config/*/query_file_uri":                     true,
+	"/sparksql_config/*/query_list":                         true,
+	"/sparksql_config/*/script_variables":                   true,
+}
+
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
 func (r *Job) ValidateCreate() error {
 	return nil
@@ -45,6 +101,53 @@ func (r *Job) ValidateCreate() error {
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
 func (r *Job) ValidateUpdate(old runtime.Object) error {
+	if r.Spec.Resource.ID == "" {
+		return nil
+	}
+	newObj := r.Spec.Resource
+	res := old.(*Job)
+	oldObj := res.Spec.Resource
+
+	jsnitr := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		TagKey:                 "tf",
+		ValidateJsonRawMessage: true,
+		TypeEncoders:           GetEncoder(),
+		TypeDecoders:           GetDecoder(),
+	}.Froze()
+
+	byteNew, err := jsnitr.Marshal(newObj)
+	if err != nil {
+		return err
+	}
+	tempNew := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteNew, &tempNew)
+	if err != nil {
+		return err
+	}
+
+	byteOld, err := jsnitr.Marshal(oldObj)
+	if err != nil {
+		return err
+	}
+	tempOld := make(map[string]interface{})
+	err = jsnitr.Unmarshal(byteOld, &tempOld)
+	if err != nil {
+		return err
+	}
+
+	for key := range jobForceNewList {
+		keySplit := strings.Split(key, "/*")
+		length := len(keySplit)
+		checkIfAnyDif := false
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempOld, tempOld, tempNew)
+		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
+
+		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
+			return fmt.Errorf(`job "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+		}
+	}
 	return nil
 }
 
