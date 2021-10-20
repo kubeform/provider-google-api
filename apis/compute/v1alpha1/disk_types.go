@@ -119,6 +119,8 @@ type DiskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
+	BackendRef *core.LocalObjectReference `json:"backendRef,omitempty" tf:"-"`
 }
 
 type DiskSpecResource struct {

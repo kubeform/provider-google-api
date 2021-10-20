@@ -133,6 +133,11 @@ func (in *DatabaseInstanceSpec) DeepCopyInto(out *DatabaseInstanceSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -916,6 +921,11 @@ func (in *DatabaseSpec) DeepCopyInto(out *DatabaseSpec) {
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1074,6 +1084,11 @@ func (in *SourceRepresentationInstanceSpec) DeepCopyInto(out *SourceRepresentati
 	}
 	in.Resource.DeepCopyInto(&out.Resource)
 	out.ProviderRef = in.ProviderRef
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
 	return
 }
 
@@ -1234,6 +1249,11 @@ func (in *SslCertSpec) DeepCopyInto(out *SslCertSpec) {
 	out.ProviderRef = in.ProviderRef
 	if in.SecretRef != nil {
 		in, out := &in.SecretRef, &out.SecretRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -1417,6 +1437,11 @@ func (in *UserSpec) DeepCopyInto(out *UserSpec) {
 	out.ProviderRef = in.ProviderRef
 	if in.SecretRef != nil {
 		in, out := &in.SecretRef, &out.SecretRef
+		*out = new(v1.LocalObjectReference)
+		**out = **in
+	}
+	if in.BackendRef != nil {
+		in, out := &in.BackendRef, &out.BackendRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
