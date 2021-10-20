@@ -58,6 +58,8 @@ type Hl7V2StoreIamBindingSpec struct {
 	TerminationPolicy base.TerminationPolicy `json:"terminationPolicy,omitempty" tf:"-"`
 
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	BackendRef *core.LocalObjectReference `json:"backendRef,omitempty" tf:"-"`
 }
 
 type Hl7V2StoreIamBindingSpecResource struct {
