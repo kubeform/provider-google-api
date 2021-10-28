@@ -28,6 +28,18 @@ type Interface interface {
 	Agents() AgentInformer
 	// CxAgents returns a CxAgentInformer.
 	CxAgents() CxAgentInformer
+	// CxEntityTypes returns a CxEntityTypeInformer.
+	CxEntityTypes() CxEntityTypeInformer
+	// CxEnvironments returns a CxEnvironmentInformer.
+	CxEnvironments() CxEnvironmentInformer
+	// CxFlows returns a CxFlowInformer.
+	CxFlows() CxFlowInformer
+	// CxIntents returns a CxIntentInformer.
+	CxIntents() CxIntentInformer
+	// CxPages returns a CxPageInformer.
+	CxPages() CxPageInformer
+	// CxVersions returns a CxVersionInformer.
+	CxVersions() CxVersionInformer
 	// EntityTypes returns a EntityTypeInformer.
 	EntityTypes() EntityTypeInformer
 	// Fulfillments returns a FulfillmentInformer.
@@ -55,6 +67,36 @@ func (v *version) Agents() AgentInformer {
 // CxAgents returns a CxAgentInformer.
 func (v *version) CxAgents() CxAgentInformer {
 	return &cxAgentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxEntityTypes returns a CxEntityTypeInformer.
+func (v *version) CxEntityTypes() CxEntityTypeInformer {
+	return &cxEntityTypeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxEnvironments returns a CxEnvironmentInformer.
+func (v *version) CxEnvironments() CxEnvironmentInformer {
+	return &cxEnvironmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxFlows returns a CxFlowInformer.
+func (v *version) CxFlows() CxFlowInformer {
+	return &cxFlowInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxIntents returns a CxIntentInformer.
+func (v *version) CxIntents() CxIntentInformer {
+	return &cxIntentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxPages returns a CxPageInformer.
+func (v *version) CxPages() CxPageInformer {
+	return &cxPageInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// CxVersions returns a CxVersionInformer.
+func (v *version) CxVersions() CxVersionInformer {
+	return &cxVersionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // EntityTypes returns a EntityTypeInformer.

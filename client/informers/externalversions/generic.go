@@ -25,6 +25,7 @@ import (
 	activev1alpha1 "kubeform.dev/provider-google-api/apis/active/v1alpha1"
 	apigeev1alpha1 "kubeform.dev/provider-google-api/apis/apigee/v1alpha1"
 	appenginev1alpha1 "kubeform.dev/provider-google-api/apis/appengine/v1alpha1"
+	assuredv1alpha1 "kubeform.dev/provider-google-api/apis/assured/v1alpha1"
 	bigqueryv1alpha1 "kubeform.dev/provider-google-api/apis/bigquery/v1alpha1"
 	bigtablev1alpha1 "kubeform.dev/provider-google-api/apis/bigtable/v1alpha1"
 	billingaccountv1alpha1 "kubeform.dev/provider-google-api/apis/billingaccount/v1alpha1"
@@ -46,11 +47,13 @@ import (
 	dialogflowv1alpha1 "kubeform.dev/provider-google-api/apis/dialogflow/v1alpha1"
 	dnsv1alpha1 "kubeform.dev/provider-google-api/apis/dns/v1alpha1"
 	endpointsv1alpha1 "kubeform.dev/provider-google-api/apis/endpoints/v1alpha1"
+	essentialv1alpha1 "kubeform.dev/provider-google-api/apis/essential/v1alpha1"
 	eventarcv1alpha1 "kubeform.dev/provider-google-api/apis/eventarc/v1alpha1"
 	filestorev1alpha1 "kubeform.dev/provider-google-api/apis/filestore/v1alpha1"
 	firestorev1alpha1 "kubeform.dev/provider-google-api/apis/firestore/v1alpha1"
 	folderv1alpha1 "kubeform.dev/provider-google-api/apis/folder/v1alpha1"
 	gamev1alpha1 "kubeform.dev/provider-google-api/apis/game/v1alpha1"
+	gkev1alpha1 "kubeform.dev/provider-google-api/apis/gke/v1alpha1"
 	healthcarev1alpha1 "kubeform.dev/provider-google-api/apis/healthcare/v1alpha1"
 	iapv1alpha1 "kubeform.dev/provider-google-api/apis/iap/v1alpha1"
 	identityv1alpha1 "kubeform.dev/provider-google-api/apis/identity/v1alpha1"
@@ -61,8 +64,10 @@ import (
 	monitoringv1alpha1 "kubeform.dev/provider-google-api/apis/monitoring/v1alpha1"
 	networkv1alpha1 "kubeform.dev/provider-google-api/apis/network/v1alpha1"
 	notebooksv1alpha1 "kubeform.dev/provider-google-api/apis/notebooks/v1alpha1"
+	orgv1alpha1 "kubeform.dev/provider-google-api/apis/org/v1alpha1"
 	organizationv1alpha1 "kubeform.dev/provider-google-api/apis/organization/v1alpha1"
 	osv1alpha1 "kubeform.dev/provider-google-api/apis/os/v1alpha1"
+	privatecav1alpha1 "kubeform.dev/provider-google-api/apis/privateca/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-google-api/apis/project/v1alpha1"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/apis/pubsub/v1alpha1"
 	redisv1alpha1 "kubeform.dev/provider-google-api/apis/redis/v1alpha1"
@@ -166,6 +171,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appengine().V1alpha1().ServiceSplitTraffics().Informer()}, nil
 	case appenginev1alpha1.SchemeGroupVersion.WithResource("standardappversions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Appengine().V1alpha1().StandardAppVersions().Informer()}, nil
+
+		// Group=assured.google.kubeform.com, Version=v1alpha1
+	case assuredv1alpha1.SchemeGroupVersion.WithResource("workloadsworkloads"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Assured().V1alpha1().WorkloadsWorkloads().Informer()}, nil
 
 		// Group=bigquery.google.kubeform.com, Version=v1alpha1
 	case bigqueryv1alpha1.SchemeGroupVersion.WithResource("datatransferconfigs"):
@@ -324,6 +333,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().ExternalVPNGateways().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("firewalls"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().Firewalls().Informer()}, nil
+	case computev1alpha1.SchemeGroupVersion.WithResource("firewallpolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().FirewallPolicies().Informer()}, nil
+	case computev1alpha1.SchemeGroupVersion.WithResource("firewallpolicyassociations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().FirewallPolicyAssociations().Informer()}, nil
+	case computev1alpha1.SchemeGroupVersion.WithResource("firewallpolicyrules"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().FirewallPolicyRules().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("forwardingrules"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().ForwardingRules().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("globaladdresses"):
@@ -442,6 +457,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().RouterPeers().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("securitypolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().SecurityPolicies().Informer()}, nil
+	case computev1alpha1.SchemeGroupVersion.WithResource("serviceattachments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().ServiceAttachments().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("sharedvpchostprojects"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Compute().V1alpha1().SharedVpcHostProjects().Informer()}, nil
 	case computev1alpha1.SchemeGroupVersion.WithResource("sharedvpcserviceprojects"):
@@ -562,6 +579,18 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().Agents().Informer()}, nil
 	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxagents"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxAgents().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxentitytypes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxEntityTypes().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxenvironments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxEnvironments().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxflows"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxFlows().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxintents"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxIntents().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxpages"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxPages().Informer()}, nil
+	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("cxversions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().CxVersions().Informer()}, nil
 	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("entitytypes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Dialogflow().V1alpha1().EntityTypes().Informer()}, nil
 	case dialogflowv1alpha1.SchemeGroupVersion.WithResource("fulfillments"):
@@ -586,6 +615,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Endpoints().V1alpha1().ServiceIamMembers().Informer()}, nil
 	case endpointsv1alpha1.SchemeGroupVersion.WithResource("serviceiampolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Endpoints().V1alpha1().ServiceIamPolicies().Informer()}, nil
+
+		// Group=essential.google.kubeform.com, Version=v1alpha1
+	case essentialv1alpha1.SchemeGroupVersion.WithResource("contactscontacts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Essential().V1alpha1().ContactsContacts().Informer()}, nil
 
 		// Group=eventarc.google.kubeform.com, Version=v1alpha1
 	case eventarcv1alpha1.SchemeGroupVersion.WithResource("triggers"):
@@ -628,6 +661,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Game().V1alpha1().ServicesGameServerDeploymentRollouts().Informer()}, nil
 	case gamev1alpha1.SchemeGroupVersion.WithResource("servicesrealms"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Game().V1alpha1().ServicesRealms().Informer()}, nil
+
+		// Group=gke.google.kubeform.com, Version=v1alpha1
+	case gkev1alpha1.SchemeGroupVersion.WithResource("hubmemberships"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Gke().V1alpha1().HubMemberships().Informer()}, nil
 
 		// Group=healthcare.google.kubeform.com, Version=v1alpha1
 	case healthcarev1alpha1.SchemeGroupVersion.WithResource("consentstores"):
@@ -820,6 +857,12 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=network.google.kubeform.com, Version=v1alpha1
 	case networkv1alpha1.SchemeGroupVersion.WithResource("managementconnectivitytests"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ManagementConnectivityTests().Informer()}, nil
+	case networkv1alpha1.SchemeGroupVersion.WithResource("servicesedgecachekeysets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ServicesEdgeCacheKeysets().Informer()}, nil
+	case networkv1alpha1.SchemeGroupVersion.WithResource("servicesedgecacheorigins"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ServicesEdgeCacheOrigins().Informer()}, nil
+	case networkv1alpha1.SchemeGroupVersion.WithResource("servicesedgecacheservices"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Network().V1alpha1().ServicesEdgeCacheServices().Informer()}, nil
 
 		// Group=notebooks.google.kubeform.com, Version=v1alpha1
 	case notebooksv1alpha1.SchemeGroupVersion.WithResource("environments"):
@@ -834,6 +877,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Notebooks().V1alpha1().InstanceIamPolicies().Informer()}, nil
 	case notebooksv1alpha1.SchemeGroupVersion.WithResource("locations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Notebooks().V1alpha1().Locations().Informer()}, nil
+
+		// Group=org.google.kubeform.com, Version=v1alpha1
+	case orgv1alpha1.SchemeGroupVersion.WithResource("policypolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Org().V1alpha1().PolicyPolicies().Informer()}, nil
 
 		// Group=organization.google.kubeform.com, Version=v1alpha1
 	case organizationv1alpha1.SchemeGroupVersion.WithResource("accessapprovalsettingses"):
@@ -856,6 +903,22 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Os().V1alpha1().ConfigPatchDeployments().Informer()}, nil
 	case osv1alpha1.SchemeGroupVersion.WithResource("loginsshpublickeys"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Os().V1alpha1().LoginSSHPublicKeys().Informer()}, nil
+
+		// Group=privateca.google.kubeform.com, Version=v1alpha1
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("capools"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CaPools().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("capooliambindings"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CaPoolIamBindings().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("capooliammembers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CaPoolIamMembers().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("capooliampolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CaPoolIamPolicies().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("certificates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().Certificates().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("certificateauthorities"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CertificateAuthorities().Informer()}, nil
+	case privatecav1alpha1.SchemeGroupVersion.WithResource("certificatetemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Privateca().V1alpha1().CertificateTemplates().Informer()}, nil
 
 		// Group=project.google.kubeform.com, Version=v1alpha1
 	case projectv1alpha1.SchemeGroupVersion.WithResource("accessapprovalsettingses"):
@@ -882,6 +945,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Project().V1alpha1().UsageExportBuckets().Informer()}, nil
 
 		// Group=pubsub.google.kubeform.com, Version=v1alpha1
+	case pubsubv1alpha1.SchemeGroupVersion.WithResource("litereservations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Pubsub().V1alpha1().LiteReservations().Informer()}, nil
 	case pubsubv1alpha1.SchemeGroupVersion.WithResource("litesubscriptions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Pubsub().V1alpha1().LiteSubscriptions().Informer()}, nil
 	case pubsubv1alpha1.SchemeGroupVersion.WithResource("litetopics"):
@@ -926,6 +991,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Runtimeconfig().V1alpha1().Variables().Informer()}, nil
 
 		// Group=scc.google.kubeform.com, Version=v1alpha1
+	case sccv1alpha1.SchemeGroupVersion.WithResource("notificationconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Scc().V1alpha1().NotificationConfigs().Informer()}, nil
 	case sccv1alpha1.SchemeGroupVersion.WithResource("sources"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Scc().V1alpha1().Sources().Informer()}, nil
 
@@ -954,6 +1021,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Service().V1alpha1().AccountKeys().Informer()}, nil
 	case servicev1alpha1.SchemeGroupVersion.WithResource("networkingconnections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Service().V1alpha1().NetworkingConnections().Informer()}, nil
+	case servicev1alpha1.SchemeGroupVersion.WithResource("networkingpeereddnsdomains"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Service().V1alpha1().NetworkingPeeredDNSDomains().Informer()}, nil
 
 		// Group=sourcereporepository.google.kubeform.com, Version=v1alpha1
 	case sourcereporepositoryv1alpha1.SchemeGroupVersion.WithResource("iambindings"):

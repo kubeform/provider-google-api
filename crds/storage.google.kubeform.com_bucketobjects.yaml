@@ -82,7 +82,15 @@ spec:
                     description: Base 64 CRC32 hash of the uploaded data.
                     type: string
                   detectMd5hash:
+                    description: Encryption key; encoded using base64.
                     type: string
+                  eventBasedHold:
+                    description: Whether an object is under event-based hold. Event-based
+                      hold is a way to retain objects until an event occurs, which
+                      is signified by the hold's release (i.e. this value is set to
+                      false). After being released (set to false), such objects will
+                      be subject to bucket-level retention (if any).
+                    type: boolean
                   id:
                     type: string
                   kmsKeyName:
@@ -123,6 +131,49 @@ spec:
                       ARCHIVE. If not provided, this defaults to the bucket''s default
                       storage class or to a standard class.'
                     type: string
+                  temporaryHold:
+                    description: Whether an object is under temporary hold. While
+                      this flag is set to true, the object is protected against deletion
+                      and overwrites.
+                    type: boolean
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
                 required:
                 - bucket
                 - name
@@ -163,7 +214,15 @@ spec:
                     description: Base 64 CRC32 hash of the uploaded data.
                     type: string
                   detectMd5hash:
+                    description: Encryption key; encoded using base64.
                     type: string
+                  eventBasedHold:
+                    description: Whether an object is under event-based hold. Event-based
+                      hold is a way to retain objects until an event occurs, which
+                      is signified by the hold's release (i.e. this value is set to
+                      false). After being released (set to false), such objects will
+                      be subject to bucket-level retention (if any).
+                    type: boolean
                   id:
                     type: string
                   kmsKeyName:
@@ -204,6 +263,49 @@ spec:
                       ARCHIVE. If not provided, this defaults to the bucket''s default
                       storage class or to a standard class.'
                     type: string
+                  temporaryHold:
+                    description: Whether an object is under temporary hold. While
+                      this flag is set to true, the object is protected against deletion
+                      and overwrites.
+                    type: boolean
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
                 required:
                 - bucket
                 - name

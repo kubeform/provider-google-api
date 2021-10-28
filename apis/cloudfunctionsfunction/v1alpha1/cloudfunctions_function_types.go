@@ -118,7 +118,7 @@ type CloudfunctionsFunctionSpecResource struct {
 	// Project of the function. If it is not provided, the provider project is used.
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
-	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
+	// Region of function. If it is not provided, the provider region is used.
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
 	// The runtime in which the function is going to run. Eg. "nodejs8", "nodejs10", "python37", "go111".

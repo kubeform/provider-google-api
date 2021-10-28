@@ -51,6 +51,7 @@ var globalforwardingruleForceNewList = map[string]bool{
 	"/metadata_filters/*/filter_labels/*/value": true,
 	"/metadata_filters/*/filter_match_criteria": true,
 	"/name":       true,
+	"/network":    true,
 	"/port_range": true,
 	"/project":    true,
 }

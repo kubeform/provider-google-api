@@ -19,3 +19,9 @@ limitations under the License.
 package v1alpha1
 
 type ManagementConnectivityTestExpansion interface{}
+
+type ServicesEdgeCacheKeysetExpansion interface{}
+
+type ServicesEdgeCacheOriginExpansion interface{}
+
+type ServicesEdgeCacheServiceExpansion interface{}

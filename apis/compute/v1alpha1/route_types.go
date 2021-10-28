@@ -86,11 +86,22 @@ type RouteSpecResource struct {
 	// * The string 'default-internet-gateway'.
 	// +optional
 	NextHopGateway *string `json:"nextHopGateway,omitempty" tf:"next_hop_gateway"`
-	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
-	// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
-	// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-	// regions/region/forwardingRules/forwardingRule
-	// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
 	// +optional
 	NextHopIlb *string `json:"nextHopIlb,omitempty" tf:"next_hop_ilb"`
 	// URL to an instance that should handle matching packets.

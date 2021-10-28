@@ -210,7 +210,6 @@ spec:
                     type: object
                 required:
                 - dataSourceID
-                - destinationDatasetID
                 - displayName
                 - params
                 type: object
@@ -378,7 +377,6 @@ spec:
                     type: object
                 required:
                 - dataSourceID
-                - destinationDatasetID
                 - displayName
                 - params
                 type: object

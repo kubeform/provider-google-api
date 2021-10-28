@@ -65,3 +65,11 @@ type NetworkingConnectionListerExpansion interface{}
 // NetworkingConnectionNamespaceListerExpansion allows custom methods to be added to
 // NetworkingConnectionNamespaceLister.
 type NetworkingConnectionNamespaceListerExpansion interface{}
+
+// NetworkingPeeredDNSDomainListerExpansion allows custom methods to be added to
+// NetworkingPeeredDNSDomainLister.
+type NetworkingPeeredDNSDomainListerExpansion interface{}
+
+// NetworkingPeeredDNSDomainNamespaceListerExpansion allows custom methods to be added to
+// NetworkingPeeredDNSDomainNamespaceLister.
+type NetworkingPeeredDNSDomainNamespaceListerExpansion interface{}

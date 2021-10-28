@@ -110,8 +110,8 @@ spec:
                             type: number
                           width:
                             description: Must be greater than 0.
-                            format: int64
-                            type: integer
+                            format: double
+                            type: number
                         type: object
                     type: object
                   description:
@@ -314,8 +314,8 @@ spec:
                             type: number
                           width:
                             description: Must be greater than 0.
-                            format: int64
-                            type: integer
+                            format: double
+                            type: number
                         type: object
                     type: object
                   description:

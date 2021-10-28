@@ -85,6 +85,18 @@ func (c *FakeComputeV1alpha1) Firewalls(namespace string) v1alpha1.FirewallInter
 	return &FakeFirewalls{c, namespace}
 }
 
+func (c *FakeComputeV1alpha1) FirewallPolicies(namespace string) v1alpha1.FirewallPolicyInterface {
+	return &FakeFirewallPolicies{c, namespace}
+}
+
+func (c *FakeComputeV1alpha1) FirewallPolicyAssociations(namespace string) v1alpha1.FirewallPolicyAssociationInterface {
+	return &FakeFirewallPolicyAssociations{c, namespace}
+}
+
+func (c *FakeComputeV1alpha1) FirewallPolicyRules(namespace string) v1alpha1.FirewallPolicyRuleInterface {
+	return &FakeFirewallPolicyRules{c, namespace}
+}
+
 func (c *FakeComputeV1alpha1) ForwardingRules(namespace string) v1alpha1.ForwardingRuleInterface {
 	return &FakeForwardingRules{c, namespace}
 }
@@ -319,6 +331,10 @@ func (c *FakeComputeV1alpha1) RouterPeers(namespace string) v1alpha1.RouterPeerI
 
 func (c *FakeComputeV1alpha1) SecurityPolicies(namespace string) v1alpha1.SecurityPolicyInterface {
 	return &FakeSecurityPolicies{c, namespace}
+}
+
+func (c *FakeComputeV1alpha1) ServiceAttachments(namespace string) v1alpha1.ServiceAttachmentInterface {
+	return &FakeServiceAttachments{c, namespace}
 }
 
 func (c *FakeComputeV1alpha1) SharedVpcHostProjects(namespace string) v1alpha1.SharedVpcHostProjectInterface {

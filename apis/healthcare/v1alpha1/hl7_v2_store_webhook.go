@@ -42,8 +42,9 @@ func (r *Hl7V2Store) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Hl7V2Store{}
 
 var hl7v2storeForceNewList = map[string]bool{
-	"/dataset": true,
-	"/name":    true,
+	"/dataset":                 true,
+	"/name":                    true,
+	"/parser_config/*/version": true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

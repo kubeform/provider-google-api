@@ -37,7 +37,9 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithub{}).Type1()):                   TriggerSpecGithubCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithubPullRequest{}).Type1()):        TriggerSpecGithubPullRequestCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithubPush{}).Type1()):               TriggerSpecGithubPushCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1()):             TriggerSpecPubsubConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecTriggerTemplate{}).Type1()):          TriggerSpecTriggerTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1()):            TriggerSpecWebhookConfigCodec{},
 	}
 }
 
@@ -53,7 +55,9 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithub{}).Type1()):                   TriggerSpecGithubCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithubPullRequest{}).Type1()):        TriggerSpecGithubPullRequestCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecGithubPush{}).Type1()):               TriggerSpecGithubPushCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1()):             TriggerSpecPubsubConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecTriggerTemplate{}).Type1()):          TriggerSpecTriggerTemplateCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1()):            TriggerSpecWebhookConfigCodec{},
 	}
 }
 
@@ -860,6 +864,85 @@ func (TriggerSpecGithubPushCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iter
 }
 
 // +k8s:deepcopy-gen=false
+type TriggerSpecPubsubConfigCodec struct {
+}
+
+func (TriggerSpecPubsubConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TriggerSpecPubsubConfig)(ptr) == nil
+}
+
+func (TriggerSpecPubsubConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TriggerSpecPubsubConfig)(ptr)
+	var objs []TriggerSpecPubsubConfig
+	if obj != nil {
+		objs = []TriggerSpecPubsubConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TriggerSpecPubsubConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TriggerSpecPubsubConfig)(ptr) = TriggerSpecPubsubConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TriggerSpecPubsubConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TriggerSpecPubsubConfig)(ptr) = objs[0]
+			} else {
+				*(*TriggerSpecPubsubConfig)(ptr) = TriggerSpecPubsubConfig{}
+			}
+		} else {
+			*(*TriggerSpecPubsubConfig)(ptr) = TriggerSpecPubsubConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TriggerSpecPubsubConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TriggerSpecPubsubConfig)(ptr) = obj
+		} else {
+			*(*TriggerSpecPubsubConfig)(ptr) = TriggerSpecPubsubConfig{}
+		}
+	default:
+		iter.ReportError("decode TriggerSpecPubsubConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type TriggerSpecTriggerTemplateCodec struct {
 }
 
@@ -935,5 +1018,84 @@ func (TriggerSpecTriggerTemplateCodec) Decode(ptr unsafe.Pointer, iter *jsoniter
 		}
 	default:
 		iter.ReportError("decode TriggerSpecTriggerTemplate", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TriggerSpecWebhookConfigCodec struct {
+}
+
+func (TriggerSpecWebhookConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TriggerSpecWebhookConfig)(ptr) == nil
+}
+
+func (TriggerSpecWebhookConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TriggerSpecWebhookConfig)(ptr)
+	var objs []TriggerSpecWebhookConfig
+	if obj != nil {
+		objs = []TriggerSpecWebhookConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TriggerSpecWebhookConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TriggerSpecWebhookConfig)(ptr) = TriggerSpecWebhookConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TriggerSpecWebhookConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TriggerSpecWebhookConfig)(ptr) = objs[0]
+			} else {
+				*(*TriggerSpecWebhookConfig)(ptr) = TriggerSpecWebhookConfig{}
+			}
+		} else {
+			*(*TriggerSpecWebhookConfig)(ptr) = TriggerSpecWebhookConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TriggerSpecWebhookConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TriggerSpecWebhookConfig)(ptr) = obj
+		} else {
+			*(*TriggerSpecWebhookConfig)(ptr) = TriggerSpecWebhookConfig{}
+		}
+	default:
+		iter.ReportError("decode TriggerSpecWebhookConfig", "unexpected JSON type")
 	}
 }

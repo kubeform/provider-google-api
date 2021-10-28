@@ -222,6 +222,9 @@ spec:
                           bucketName:
                             description: Google Cloud Storage bucket name.
                             type: string
+                          path:
+                            description: Google Cloud Storage path in bucket to transfer
+                            type: string
                         required:
                         - bucketName
                         type: object
@@ -230,6 +233,9 @@ spec:
                         properties:
                           bucketName:
                             description: Google Cloud Storage bucket name.
+                            type: string
+                          path:
+                            description: Google Cloud Storage path in bucket to transfer
                             type: string
                         required:
                         - bucketName
@@ -483,6 +489,9 @@ spec:
                           bucketName:
                             description: Google Cloud Storage bucket name.
                             type: string
+                          path:
+                            description: Google Cloud Storage path in bucket to transfer
+                            type: string
                         required:
                         - bucketName
                         type: object
@@ -491,6 +500,9 @@ spec:
                         properties:
                           bucketName:
                             description: Google Cloud Storage bucket name.
+                            type: string
+                          path:
+                            description: Google Cloud Storage path in bucket to transfer
                             type: string
                         required:
                         - bucketName

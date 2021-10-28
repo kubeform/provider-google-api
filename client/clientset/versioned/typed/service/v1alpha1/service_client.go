@@ -33,6 +33,7 @@ type ServiceV1alpha1Interface interface {
 	AccountIamPoliciesGetter
 	AccountKeysGetter
 	NetworkingConnectionsGetter
+	NetworkingPeeredDNSDomainsGetter
 }
 
 // ServiceV1alpha1Client is used to interact with features provided by the service.google.kubeform.com group.
@@ -62,6 +63,10 @@ func (c *ServiceV1alpha1Client) AccountKeys(namespace string) AccountKeyInterfac
 
 func (c *ServiceV1alpha1Client) NetworkingConnections(namespace string) NetworkingConnectionInterface {
 	return newNetworkingConnections(c, namespace)
+}
+
+func (c *ServiceV1alpha1Client) NetworkingPeeredDNSDomains(namespace string) NetworkingPeeredDNSDomainInterface {
+	return newNetworkingPeeredDNSDomains(c, namespace)
 }
 
 // NewForConfig creates a new ServiceV1alpha1Client for the given config.

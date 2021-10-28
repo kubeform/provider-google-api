@@ -82,7 +82,7 @@ type InstanceSpecResource struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format 'organizations/{{org_name}}'.
 	OrgID *string `json:"orgID" tf:"org_id"`
-	// The size of the CIDR block range that will be reserved by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_23"]
+	// The size of the CIDR block range that will be reserved by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_22"]
 	// +optional
 	PeeringCIDRRange *string `json:"peeringCIDRRange,omitempty" tf:"peering_cidr_range"`
 	// Output only. Port number of the exposed Apigee endpoint.

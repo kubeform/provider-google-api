@@ -28,6 +28,7 @@ import (
 	active "kubeform.dev/provider-google-api/client/informers/externalversions/active"
 	apigee "kubeform.dev/provider-google-api/client/informers/externalversions/apigee"
 	appengine "kubeform.dev/provider-google-api/client/informers/externalversions/appengine"
+	assured "kubeform.dev/provider-google-api/client/informers/externalversions/assured"
 	bigquery "kubeform.dev/provider-google-api/client/informers/externalversions/bigquery"
 	bigtable "kubeform.dev/provider-google-api/client/informers/externalversions/bigtable"
 	billingaccount "kubeform.dev/provider-google-api/client/informers/externalversions/billingaccount"
@@ -49,11 +50,13 @@ import (
 	dialogflow "kubeform.dev/provider-google-api/client/informers/externalversions/dialogflow"
 	dns "kubeform.dev/provider-google-api/client/informers/externalversions/dns"
 	endpoints "kubeform.dev/provider-google-api/client/informers/externalversions/endpoints"
+	essential "kubeform.dev/provider-google-api/client/informers/externalversions/essential"
 	eventarc "kubeform.dev/provider-google-api/client/informers/externalversions/eventarc"
 	filestore "kubeform.dev/provider-google-api/client/informers/externalversions/filestore"
 	firestore "kubeform.dev/provider-google-api/client/informers/externalversions/firestore"
 	folder "kubeform.dev/provider-google-api/client/informers/externalversions/folder"
 	game "kubeform.dev/provider-google-api/client/informers/externalversions/game"
+	gke "kubeform.dev/provider-google-api/client/informers/externalversions/gke"
 	healthcare "kubeform.dev/provider-google-api/client/informers/externalversions/healthcare"
 	iap "kubeform.dev/provider-google-api/client/informers/externalversions/iap"
 	identity "kubeform.dev/provider-google-api/client/informers/externalversions/identity"
@@ -65,8 +68,10 @@ import (
 	monitoring "kubeform.dev/provider-google-api/client/informers/externalversions/monitoring"
 	network "kubeform.dev/provider-google-api/client/informers/externalversions/network"
 	notebooks "kubeform.dev/provider-google-api/client/informers/externalversions/notebooks"
+	org "kubeform.dev/provider-google-api/client/informers/externalversions/org"
 	organization "kubeform.dev/provider-google-api/client/informers/externalversions/organization"
 	os "kubeform.dev/provider-google-api/client/informers/externalversions/os"
+	privateca "kubeform.dev/provider-google-api/client/informers/externalversions/privateca"
 	project "kubeform.dev/provider-google-api/client/informers/externalversions/project"
 	pubsub "kubeform.dev/provider-google-api/client/informers/externalversions/pubsub"
 	redis "kubeform.dev/provider-google-api/client/informers/externalversions/redis"
@@ -235,6 +240,7 @@ type SharedInformerFactory interface {
 	Active() active.Interface
 	Apigee() apigee.Interface
 	Appengine() appengine.Interface
+	Assured() assured.Interface
 	Bigquery() bigquery.Interface
 	Bigtable() bigtable.Interface
 	Billingaccount() billingaccount.Interface
@@ -256,11 +262,13 @@ type SharedInformerFactory interface {
 	Dialogflow() dialogflow.Interface
 	Dns() dns.Interface
 	Endpoints() endpoints.Interface
+	Essential() essential.Interface
 	Eventarc() eventarc.Interface
 	Filestore() filestore.Interface
 	Firestore() firestore.Interface
 	Folder() folder.Interface
 	Game() game.Interface
+	Gke() gke.Interface
 	Healthcare() healthcare.Interface
 	Iap() iap.Interface
 	Identity() identity.Interface
@@ -271,8 +279,10 @@ type SharedInformerFactory interface {
 	Monitoring() monitoring.Interface
 	Network() network.Interface
 	Notebooks() notebooks.Interface
+	Org() org.Interface
 	Organization() organization.Interface
 	Os() os.Interface
+	Privateca() privateca.Interface
 	Project() project.Interface
 	Pubsub() pubsub.Interface
 	Redis() redis.Interface
@@ -306,6 +316,10 @@ func (f *sharedInformerFactory) Apigee() apigee.Interface {
 
 func (f *sharedInformerFactory) Appengine() appengine.Interface {
 	return appengine.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Assured() assured.Interface {
+	return assured.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Bigquery() bigquery.Interface {
@@ -392,6 +406,10 @@ func (f *sharedInformerFactory) Endpoints() endpoints.Interface {
 	return endpoints.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Essential() essential.Interface {
+	return essential.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Eventarc() eventarc.Interface {
 	return eventarc.New(f, f.namespace, f.tweakListOptions)
 }
@@ -410,6 +428,10 @@ func (f *sharedInformerFactory) Folder() folder.Interface {
 
 func (f *sharedInformerFactory) Game() game.Interface {
 	return game.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Gke() gke.Interface {
+	return gke.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Healthcare() healthcare.Interface {
@@ -452,12 +474,20 @@ func (f *sharedInformerFactory) Notebooks() notebooks.Interface {
 	return notebooks.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Org() org.Interface {
+	return org.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Organization() organization.Interface {
 	return organization.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Os() os.Interface {
 	return os.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Privateca() privateca.Interface {
+	return privateca.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Project() project.Interface {

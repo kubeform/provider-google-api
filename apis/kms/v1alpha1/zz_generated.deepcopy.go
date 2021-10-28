@@ -637,6 +637,16 @@ func (in *CryptoKeySpecResource) DeepCopyInto(out *CryptoKeySpecResource) {
 		*out = new(apiv1alpha1.ResourceTimeout)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.DestroyScheduledDuration != nil {
+		in, out := &in.DestroyScheduledDuration, &out.DestroyScheduledDuration
+		*out = new(string)
+		**out = **in
+	}
+	if in.ImportOnly != nil {
+		in, out := &in.ImportOnly, &out.ImportOnly
+		*out = new(bool)
+		**out = **in
+	}
 	if in.KeyRing != nil {
 		in, out := &in.KeyRing, &out.KeyRing
 		*out = new(string)

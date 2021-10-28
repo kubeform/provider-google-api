@@ -60,6 +60,9 @@ type NodePoolSpecManagement struct {
 type NodePoolSpecNodeConfigGuestAccelerator struct {
 	// The number of the accelerator cards exposed to an instance.
 	Count *int64 `json:"count" tf:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+	// +optional
+	GpuPartitionSize *string `json:"gpuPartitionSize,omitempty" tf:"gpu_partition_size"`
 	// The accelerator type resource name.
 	Type *string `json:"type" tf:"type"`
 }
@@ -83,8 +86,13 @@ type NodePoolSpecNodeConfigTaint struct {
 }
 
 type NodePoolSpecNodeConfigWorkloadMetadataConfig struct {
+	// Mode is the configuration for how to expose metadata to workloads running on the node.
+	// +optional
+	Mode *string `json:"mode,omitempty" tf:"mode"`
 	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	NodeMetadata *string `json:"nodeMetadata" tf:"node_metadata"`
+	// +optional
+	// Deprecated
+	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
 }
 
 type NodePoolSpecNodeConfig struct {

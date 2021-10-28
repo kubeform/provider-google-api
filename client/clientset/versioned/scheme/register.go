@@ -23,6 +23,7 @@ import (
 	activev1alpha1 "kubeform.dev/provider-google-api/apis/active/v1alpha1"
 	apigeev1alpha1 "kubeform.dev/provider-google-api/apis/apigee/v1alpha1"
 	appenginev1alpha1 "kubeform.dev/provider-google-api/apis/appengine/v1alpha1"
+	assuredv1alpha1 "kubeform.dev/provider-google-api/apis/assured/v1alpha1"
 	bigqueryv1alpha1 "kubeform.dev/provider-google-api/apis/bigquery/v1alpha1"
 	bigtablev1alpha1 "kubeform.dev/provider-google-api/apis/bigtable/v1alpha1"
 	billingaccountv1alpha1 "kubeform.dev/provider-google-api/apis/billingaccount/v1alpha1"
@@ -44,11 +45,13 @@ import (
 	dialogflowv1alpha1 "kubeform.dev/provider-google-api/apis/dialogflow/v1alpha1"
 	dnsv1alpha1 "kubeform.dev/provider-google-api/apis/dns/v1alpha1"
 	endpointsv1alpha1 "kubeform.dev/provider-google-api/apis/endpoints/v1alpha1"
+	essentialv1alpha1 "kubeform.dev/provider-google-api/apis/essential/v1alpha1"
 	eventarcv1alpha1 "kubeform.dev/provider-google-api/apis/eventarc/v1alpha1"
 	filestorev1alpha1 "kubeform.dev/provider-google-api/apis/filestore/v1alpha1"
 	firestorev1alpha1 "kubeform.dev/provider-google-api/apis/firestore/v1alpha1"
 	folderv1alpha1 "kubeform.dev/provider-google-api/apis/folder/v1alpha1"
 	gamev1alpha1 "kubeform.dev/provider-google-api/apis/game/v1alpha1"
+	gkev1alpha1 "kubeform.dev/provider-google-api/apis/gke/v1alpha1"
 	healthcarev1alpha1 "kubeform.dev/provider-google-api/apis/healthcare/v1alpha1"
 	iapv1alpha1 "kubeform.dev/provider-google-api/apis/iap/v1alpha1"
 	identityv1alpha1 "kubeform.dev/provider-google-api/apis/identity/v1alpha1"
@@ -59,8 +62,10 @@ import (
 	monitoringv1alpha1 "kubeform.dev/provider-google-api/apis/monitoring/v1alpha1"
 	networkv1alpha1 "kubeform.dev/provider-google-api/apis/network/v1alpha1"
 	notebooksv1alpha1 "kubeform.dev/provider-google-api/apis/notebooks/v1alpha1"
+	orgv1alpha1 "kubeform.dev/provider-google-api/apis/org/v1alpha1"
 	organizationv1alpha1 "kubeform.dev/provider-google-api/apis/organization/v1alpha1"
 	osv1alpha1 "kubeform.dev/provider-google-api/apis/os/v1alpha1"
+	privatecav1alpha1 "kubeform.dev/provider-google-api/apis/privateca/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-google-api/apis/project/v1alpha1"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/apis/pubsub/v1alpha1"
 	redisv1alpha1 "kubeform.dev/provider-google-api/apis/redis/v1alpha1"
@@ -94,6 +99,7 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	activev1alpha1.AddToScheme,
 	apigeev1alpha1.AddToScheme,
 	appenginev1alpha1.AddToScheme,
+	assuredv1alpha1.AddToScheme,
 	bigqueryv1alpha1.AddToScheme,
 	bigtablev1alpha1.AddToScheme,
 	billingaccountv1alpha1.AddToScheme,
@@ -115,11 +121,13 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	dialogflowv1alpha1.AddToScheme,
 	dnsv1alpha1.AddToScheme,
 	endpointsv1alpha1.AddToScheme,
+	essentialv1alpha1.AddToScheme,
 	eventarcv1alpha1.AddToScheme,
 	filestorev1alpha1.AddToScheme,
 	firestorev1alpha1.AddToScheme,
 	folderv1alpha1.AddToScheme,
 	gamev1alpha1.AddToScheme,
+	gkev1alpha1.AddToScheme,
 	healthcarev1alpha1.AddToScheme,
 	iapv1alpha1.AddToScheme,
 	identityv1alpha1.AddToScheme,
@@ -130,8 +138,10 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	monitoringv1alpha1.AddToScheme,
 	networkv1alpha1.AddToScheme,
 	notebooksv1alpha1.AddToScheme,
+	orgv1alpha1.AddToScheme,
 	organizationv1alpha1.AddToScheme,
 	osv1alpha1.AddToScheme,
+	privatecav1alpha1.AddToScheme,
 	projectv1alpha1.AddToScheme,
 	pubsubv1alpha1.AddToScheme,
 	redisv1alpha1.AddToScheme,

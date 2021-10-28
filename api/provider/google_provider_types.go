@@ -39,6 +39,8 @@ type GoogleSpec struct {
 	// +optional
 	AppEngineCustomEndpoint *string `json:"appEngineCustomEndpoint,omitempty" tf:"app_engine_custom_endpoint"`
 	// +optional
+	AssuredWorkloadsCustomEndpoint *string `json:"assuredWorkloadsCustomEndpoint,omitempty" tf:"assured_workloads_custom_endpoint"`
+	// +optional
 	Batching *GoogleSpecBatching `json:"batching,omitempty" tf:"batching"`
 	// +optional
 	BigQueryCustomEndpoint *string `json:"bigQueryCustomEndpoint,omitempty" tf:"big_query_custom_endpoint"`
@@ -66,6 +68,8 @@ type GoogleSpec struct {
 	CloudIdentityCustomEndpoint *string `json:"cloudIdentityCustomEndpoint,omitempty" tf:"cloud_identity_custom_endpoint"`
 	// +optional
 	CloudIotCustomEndpoint *string `json:"cloudIotCustomEndpoint,omitempty" tf:"cloud_iot_custom_endpoint"`
+	// +optional
+	CloudResourceManagerCustomEndpoint *string `json:"cloudResourceManagerCustomEndpoint,omitempty" tf:"cloud_resource_manager_custom_endpoint"`
 	// +optional
 	CloudRunCustomEndpoint *string `json:"cloudRunCustomEndpoint,omitempty" tf:"cloud_run_custom_endpoint"`
 	// +optional
@@ -107,6 +111,8 @@ type GoogleSpec struct {
 	// +optional
 	DnsCustomEndpoint *string `json:"dnsCustomEndpoint,omitempty" tf:"dns_custom_endpoint"`
 	// +optional
+	EssentialContactsCustomEndpoint *string `json:"essentialContactsCustomEndpoint,omitempty" tf:"essential_contacts_custom_endpoint"`
+	// +optional
 	EventarcCustomEndpoint *string `json:"eventarcCustomEndpoint,omitempty" tf:"eventarc_custom_endpoint"`
 	// +optional
 	FilestoreCustomEndpoint *string `json:"filestoreCustomEndpoint,omitempty" tf:"filestore_custom_endpoint"`
@@ -114,6 +120,8 @@ type GoogleSpec struct {
 	FirestoreCustomEndpoint *string `json:"firestoreCustomEndpoint,omitempty" tf:"firestore_custom_endpoint"`
 	// +optional
 	GameServicesCustomEndpoint *string `json:"gameServicesCustomEndpoint,omitempty" tf:"game_services_custom_endpoint"`
+	// +optional
+	GkeHubCustomEndpoint *string `json:"gkeHubCustomEndpoint,omitempty" tf:"gke_hub_custom_endpoint"`
 	// +optional
 	GkehubFeatureCustomEndpoint *string `json:"gkehubFeatureCustomEndpoint,omitempty" tf:"gkehub_feature_custom_endpoint"`
 	// +optional
@@ -143,11 +151,17 @@ type GoogleSpec struct {
 	// +optional
 	NetworkManagementCustomEndpoint *string `json:"networkManagementCustomEndpoint,omitempty" tf:"network_management_custom_endpoint"`
 	// +optional
+	NetworkServicesCustomEndpoint *string `json:"networkServicesCustomEndpoint,omitempty" tf:"network_services_custom_endpoint"`
+	// +optional
 	NotebooksCustomEndpoint *string `json:"notebooksCustomEndpoint,omitempty" tf:"notebooks_custom_endpoint"`
+	// +optional
+	OrgPolicyCustomEndpoint *string `json:"orgPolicyCustomEndpoint,omitempty" tf:"org_policy_custom_endpoint"`
 	// +optional
 	OsConfigCustomEndpoint *string `json:"osConfigCustomEndpoint,omitempty" tf:"os_config_custom_endpoint"`
 	// +optional
 	OsLoginCustomEndpoint *string `json:"osLoginCustomEndpoint,omitempty" tf:"os_login_custom_endpoint"`
+	// +optional
+	PrivatecaCustomEndpoint *string `json:"privatecaCustomEndpoint,omitempty" tf:"privateca_custom_endpoint"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
 	// +optional
@@ -158,6 +172,8 @@ type GoogleSpec struct {
 	RedisCustomEndpoint *string `json:"redisCustomEndpoint,omitempty" tf:"redis_custom_endpoint"`
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
+	// +optional
+	RequestReason *string `json:"requestReason,omitempty" tf:"request_reason"`
 	// +optional
 	RequestTimeout *string `json:"requestTimeout,omitempty" tf:"request_timeout"`
 	// +optional

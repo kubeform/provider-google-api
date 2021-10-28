@@ -37,6 +37,30 @@ func (c *FakeDialogflowV1alpha1) CxAgents(namespace string) v1alpha1.CxAgentInte
 	return &FakeCxAgents{c, namespace}
 }
 
+func (c *FakeDialogflowV1alpha1) CxEntityTypes(namespace string) v1alpha1.CxEntityTypeInterface {
+	return &FakeCxEntityTypes{c, namespace}
+}
+
+func (c *FakeDialogflowV1alpha1) CxEnvironments(namespace string) v1alpha1.CxEnvironmentInterface {
+	return &FakeCxEnvironments{c, namespace}
+}
+
+func (c *FakeDialogflowV1alpha1) CxFlows(namespace string) v1alpha1.CxFlowInterface {
+	return &FakeCxFlows{c, namespace}
+}
+
+func (c *FakeDialogflowV1alpha1) CxIntents(namespace string) v1alpha1.CxIntentInterface {
+	return &FakeCxIntents{c, namespace}
+}
+
+func (c *FakeDialogflowV1alpha1) CxPages(namespace string) v1alpha1.CxPageInterface {
+	return &FakeCxPages{c, namespace}
+}
+
+func (c *FakeDialogflowV1alpha1) CxVersions(namespace string) v1alpha1.CxVersionInterface {
+	return &FakeCxVersions{c, namespace}
+}
+
 func (c *FakeDialogflowV1alpha1) EntityTypes(namespace string) v1alpha1.EntityTypeInterface {
 	return &FakeEntityTypes{c, namespace}
 }

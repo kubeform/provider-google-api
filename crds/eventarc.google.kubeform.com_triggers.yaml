@@ -58,39 +58,72 @@ spec:
               resource:
                 properties:
                   createTime:
+                    description: Output only. The creation time.
                     type: string
                   destination:
+                    description: Required. Destination specifies where the events
+                      should be sent to.
                     properties:
                       cloudFunction:
+                        description: 'The Cloud Function resource name. Only Cloud
+                          Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}'
                         type: string
                       cloudRunService:
+                        description: Cloud Run fully-managed service that receives
+                          the events. The service should be running in the same project
+                          of the trigger.
                         properties:
                           path:
+                            description: 'Optional. The relative path on the Cloud
+                              Run service the events should be sent to. The value
+                              must conform to the definition of URI path segment (section
+                              3.3 of RFC2396). Examples: "/route", "route", "route/subroute".'
                             type: string
                           region:
+                            description: Required. The region the Cloud Run service
+                              is deployed in.
                             type: string
                           service:
+                            description: Required. The name of the Cloud Run service
+                              being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services.
+                              Only services located in the same project of the trigger
+                              object can be addressed.
                             type: string
                         required:
                         - service
                         type: object
                     type: object
                   etag:
+                    description: Output only. This checksum is computed by the server
+                      based on the value of other fields, and may be sent only on
+                      create requests to ensure the client has an up-to-date value
+                      before proceeding.
                     type: string
                   id:
                     type: string
                   labels:
                     additionalProperties:
                       type: string
+                    description: Optional. User labels attached to the triggers that
+                      can be used to group resources.
                     type: object
                   location:
+                    description: The location for the resource
                     type: string
                   matchingCriteria:
+                    description: Required. null The list of filters that applies to
+                      event attributes. Only events that match all the provided filters
+                      will be sent to the destination.
                     items:
                       properties:
                         attribute:
+                          description: Required. The name of a CloudEvents attribute.
+                            Currently, only a subset of attributes are supported for
+                            filtering. All triggers MUST provide a filter for the
+                            'type' attribute.
                           type: string
                         value:
+                          description: Required. The value for the attribute.
                           type: string
                       required:
                       - attribute
@@ -98,10 +131,25 @@ spec:
                       type: object
                     type: array
                   name:
+                    description: Required. The resource name of the trigger. Must
+                      be unique within the location on the project and must be in
+                      `projects/{project}/locations/{location}/triggers/{trigger}`
+                      format.
                     type: string
                   project:
+                    description: The project for the resource
                     type: string
                   serviceAccount:
+                    description: Optional. The IAM service account email associated
+                      with the trigger. The service account represents the identity
+                      of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs`
+                      permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common
+                      for more information. For Cloud Run destinations, this service
+                      account is used to generate identity tokens when invoking the
+                      service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account
+                      for information on how to invoke authenticated Cloud Run services.
+                      In order to create Audit Log triggers, the service account should
+                      also have `roles/eventarc.eventReceiver` IAM role.
                     type: string
                   timeouts:
                     properties:
@@ -142,18 +190,38 @@ spec:
                         type: integer
                     type: object
                   transport:
+                    description: Optional. In order to deliver messages, Eventarc
+                      may use other GCP products as transport intermediary. This field
+                      contains a reference to that transport intermediary. This information
+                      can be used for debugging purposes.
                     properties:
                       pubsub:
+                        description: The Pub/Sub topic and subscription used by Eventarc
+                          as delivery intermediary.
                         properties:
                           subscription:
+                            description: 'Output only. The name of the Pub/Sub subscription
+                              created and managed by Eventarc system as a transport
+                              for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.'
                             type: string
                           topic:
+                            description: 'Optional. The name of the Pub/Sub topic
+                              created and managed by Eventarc system as a transport
+                              for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME
+                              You may set an existing topic for triggers of the type
+                              google.cloud.pubsub.topic.v1.messagePublished` only.
+                              The topic you provide here will not be deleted by Eventarc
+                              at trigger deletion.'
                             type: string
                         type: object
                     type: object
                   uid:
+                    description: Output only. Server assigned unique identifier for
+                      the trigger. The value is a UUID4 string and guaranteed to remain
+                      unchanged until the resource is deleted.
                     type: string
                   updateTime:
+                    description: Output only. The last-modified time.
                     type: string
                 required:
                 - destination
@@ -164,39 +232,72 @@ spec:
               state:
                 properties:
                   createTime:
+                    description: Output only. The creation time.
                     type: string
                   destination:
+                    description: Required. Destination specifies where the events
+                      should be sent to.
                     properties:
                       cloudFunction:
+                        description: 'The Cloud Function resource name. Only Cloud
+                          Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}'
                         type: string
                       cloudRunService:
+                        description: Cloud Run fully-managed service that receives
+                          the events. The service should be running in the same project
+                          of the trigger.
                         properties:
                           path:
+                            description: 'Optional. The relative path on the Cloud
+                              Run service the events should be sent to. The value
+                              must conform to the definition of URI path segment (section
+                              3.3 of RFC2396). Examples: "/route", "route", "route/subroute".'
                             type: string
                           region:
+                            description: Required. The region the Cloud Run service
+                              is deployed in.
                             type: string
                           service:
+                            description: Required. The name of the Cloud Run service
+                              being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services.
+                              Only services located in the same project of the trigger
+                              object can be addressed.
                             type: string
                         required:
                         - service
                         type: object
                     type: object
                   etag:
+                    description: Output only. This checksum is computed by the server
+                      based on the value of other fields, and may be sent only on
+                      create requests to ensure the client has an up-to-date value
+                      before proceeding.
                     type: string
                   id:
                     type: string
                   labels:
                     additionalProperties:
                       type: string
+                    description: Optional. User labels attached to the triggers that
+                      can be used to group resources.
                     type: object
                   location:
+                    description: The location for the resource
                     type: string
                   matchingCriteria:
+                    description: Required. null The list of filters that applies to
+                      event attributes. Only events that match all the provided filters
+                      will be sent to the destination.
                     items:
                       properties:
                         attribute:
+                          description: Required. The name of a CloudEvents attribute.
+                            Currently, only a subset of attributes are supported for
+                            filtering. All triggers MUST provide a filter for the
+                            'type' attribute.
                           type: string
                         value:
+                          description: Required. The value for the attribute.
                           type: string
                       required:
                       - attribute
@@ -204,10 +305,25 @@ spec:
                       type: object
                     type: array
                   name:
+                    description: Required. The resource name of the trigger. Must
+                      be unique within the location on the project and must be in
+                      `projects/{project}/locations/{location}/triggers/{trigger}`
+                      format.
                     type: string
                   project:
+                    description: The project for the resource
                     type: string
                   serviceAccount:
+                    description: Optional. The IAM service account email associated
+                      with the trigger. The service account represents the identity
+                      of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs`
+                      permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common
+                      for more information. For Cloud Run destinations, this service
+                      account is used to generate identity tokens when invoking the
+                      service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account
+                      for information on how to invoke authenticated Cloud Run services.
+                      In order to create Audit Log triggers, the service account should
+                      also have `roles/eventarc.eventReceiver` IAM role.
                     type: string
                   timeouts:
                     properties:
@@ -248,18 +364,38 @@ spec:
                         type: integer
                     type: object
                   transport:
+                    description: Optional. In order to deliver messages, Eventarc
+                      may use other GCP products as transport intermediary. This field
+                      contains a reference to that transport intermediary. This information
+                      can be used for debugging purposes.
                     properties:
                       pubsub:
+                        description: The Pub/Sub topic and subscription used by Eventarc
+                          as delivery intermediary.
                         properties:
                           subscription:
+                            description: 'Output only. The name of the Pub/Sub subscription
+                              created and managed by Eventarc system as a transport
+                              for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.'
                             type: string
                           topic:
+                            description: 'Optional. The name of the Pub/Sub topic
+                              created and managed by Eventarc system as a transport
+                              for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME
+                              You may set an existing topic for triggers of the type
+                              google.cloud.pubsub.topic.v1.messagePublished` only.
+                              The topic you provide here will not be deleted by Eventarc
+                              at trigger deletion.'
                             type: string
                         type: object
                     type: object
                   uid:
+                    description: Output only. Server assigned unique identifier for
+                      the trigger. The value is a UUID4 string and guaranteed to remain
+                      unchanged until the resource is deleted.
                     type: string
                   updateTime:
+                    description: Output only. The last-modified time.
                     type: string
                 required:
                 - destination

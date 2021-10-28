@@ -41,6 +41,15 @@ type InstanceFromTemplate struct {
 	Status            InstanceFromTemplateStatus `json:"status,omitempty"`
 }
 
+type InstanceFromTemplateSpecAdvancedMachineFeatures struct {
+	// Whether to enable nested virtualization or not.
+	// +optional
+	EnableNestedVirtualization *bool `json:"enableNestedVirtualization,omitempty" tf:"enable_nested_virtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	// +optional
+	ThreadsPerCore *int64 `json:"threadsPerCore,omitempty" tf:"threads_per_core"`
+}
+
 type InstanceFromTemplateSpecAttachedDisk struct {
 	// Name with which the attached disk is accessible under /dev/disk/by-id/
 	// +optional
@@ -135,6 +144,20 @@ type InstanceFromTemplateSpecNetworkInterfaceAliasIPRange struct {
 	SubnetworkRangeName *string `json:"subnetworkRangeName,omitempty" tf:"subnetwork_range_name"`
 }
 
+type InstanceFromTemplateSpecNetworkInterfaceIpv6AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// +optional
+	ExternalIpv6 *string `json:"externalIpv6,omitempty" tf:"external_ipv6"`
+	// The prefix length of the external IPv6 range.
+	// +optional
+	ExternalIpv6PrefixLength *string `json:"externalIpv6PrefixLength,omitempty" tf:"external_ipv6_prefix_length"`
+	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+	NetworkTier *string `json:"networkTier" tf:"network_tier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	// +optional
+	PublicPtrDomainName *string `json:"publicPtrDomainName,omitempty" tf:"public_ptr_domain_name"`
+}
+
 type InstanceFromTemplateSpecNetworkInterface struct {
 	// Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
 	// +optional
@@ -142,6 +165,12 @@ type InstanceFromTemplateSpecNetworkInterface struct {
 	// An array of alias IP ranges for this network interface.
 	// +optional
 	AliasIPRange []InstanceFromTemplateSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	// +optional
+	Ipv6AccessConfig []InstanceFromTemplateSpecNetworkInterfaceIpv6AccessConfig `json:"ipv6AccessConfig,omitempty" tf:"ipv6_access_config"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	// +optional
+	Ipv6AccessType *string `json:"ipv6AccessType,omitempty" tf:"ipv6_access_type"`
 	// The name of the interface
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
@@ -154,6 +183,9 @@ type InstanceFromTemplateSpecNetworkInterface struct {
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 	// +optional
 	NicType *string `json:"nicType,omitempty" tf:"nic_type"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// +optional
+	StackType *string `json:"stackType,omitempty" tf:"stack_type"`
 	// The name or self_link of the subnetwork attached to this interface.
 	// +optional
 	Subnetwork *string `json:"subnetwork,omitempty" tf:"subnetwork"`
@@ -246,6 +278,9 @@ type InstanceFromTemplateSpecResource struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Controls for advanced machine-related behavior features.
+	// +optional
+	AdvancedMachineFeatures *InstanceFromTemplateSpecAdvancedMachineFeatures `json:"advancedMachineFeatures,omitempty" tf:"advanced_machine_features"`
 	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	// +optional
 	AllowStoppingForUpdate *bool `json:"allowStoppingForUpdate,omitempty" tf:"allow_stopping_for_update"`
@@ -320,7 +355,7 @@ type InstanceFromTemplateSpecResource struct {
 	// Specifies the reservations that this instance can consume from.
 	// +optional
 	ReservationAffinity *InstanceFromTemplateSpecReservationAffinity `json:"reservationAffinity,omitempty" tf:"reservation_affinity"`
-	// A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
 	// +optional
 	ResourcePolicies []string `json:"resourcePolicies,omitempty" tf:"resource_policies"`
 	// The scheduling strategy being used by the instance.

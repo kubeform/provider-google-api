@@ -1,0 +1,439 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: workloadsworkloads.assured.google.kubeform.com
+spec:
+  group: assured.google.kubeform.com
+  names:
+    kind: WorkloadsWorkload
+    listKind: WorkloadsWorkloadList
+    plural: workloadsworkloads
+    singular: workloadsworkload
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  billingAccount:
+                    description: Required. Input only. The billing account used for
+                      the resources which are direct children of workload. This billing
+                      account is initially associated with the resources created as
+                      part of Workload creation. After the initial creation of these
+                      resources, the customer can change the assigned billing account.
+                      The resource name has the form `billingAccounts/{billing_account_id}`.
+                      For example, 'billingAccounts/012345-567890-ABCDEF`.
+                    type: string
+                  complianceRegime:
+                    description: 'Required. Immutable. Compliance Regime associated
+                      with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED,
+                      IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS'
+                    type: string
+                  createTime:
+                    description: Output only. Immutable. The Workload creation timestamp.
+                    type: string
+                  displayName:
+                    description: 'Required. The user-assigned display name of the
+                      Workload. When present it must be between 4 to 30 characters.
+                      Allowed characters are: lowercase and uppercase letters, numbers,
+                      hyphen, and spaces. Example: My Workload'
+                    type: string
+                  id:
+                    type: string
+                  kmsSettings:
+                    description: Input only. Settings used to create a CMEK crypto
+                      key. When set a project with a KMS CMEK key is provisioned.
+                      This field is mandatory for a subset of Compliance Regimes.
+                    properties:
+                      nextRotationTime:
+                        description: Required. Input only. Immutable. The time at
+                          which the Key Management Service will automatically create
+                          a new version of the crypto key and mark it as the primary.
+                        type: string
+                      rotationPeriod:
+                        description: Required. Input only. Immutable. will be advanced
+                          by this period when the Key Management Service automatically
+                          rotates a key. Must be at least 24 hours and at most 876,000
+                          hours.
+                        type: string
+                    required:
+                    - nextRotationTime
+                    - rotationPeriod
+                    type: object
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Optional. Labels applied to the workload.
+                    type: object
+                  location:
+                    description: The location for the resource
+                    type: string
+                  name:
+                    description: Output only. The resource name of the workload.
+                    type: string
+                  organization:
+                    description: The organization for the resource
+                    type: string
+                  provisionedResourcesParent:
+                    description: 'Input only. The parent resource for the resources
+                      managed by this Assured Workload. May be either an organization
+                      or a folder. Must be the same or a child of the Workload parent.
+                      If not specified all resources are created under the Workload
+                      parent. Formats: folders/{folder_id}, organizations/{organization_id}'
+                    type: string
+                  resourceSettings:
+                    description: Input only. Resource properties that are used to
+                      customize workload resources. These properties (such as custom
+                      project id) will be used to create workload resources if possible.
+                      This field is optional.
+                    items:
+                      properties:
+                        resourceID:
+                          description: Resource identifier. For a project this represents
+                            project_number. If the project is already taken, the workload
+                            creation will fail.
+                          type: string
+                        resourceType:
+                          description: 'Indicates the type of resource. This field
+                            should be specified to correspond the id to the right
+                            project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+                            Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT,
+                            ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER'
+                          type: string
+                      type: object
+                    type: array
+                  resources:
+                    description: Output only. The resources associated with this workload.
+                      These resources will be created when creating the workload.
+                      If any of the projects already exist, the workload creation
+                      will fail. Always read only.
+                    items:
+                      properties:
+                        resourceID:
+                          description: Resource identifier. For a project this represents
+                            project_number.
+                          format: int64
+                          type: integer
+                        resourceType:
+                          description: 'Indicates the type of resource. Possible values:
+                            RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT,
+                            KEYRING, CONSUMER_FOLDER'
+                          type: string
+                      type: object
+                    type: array
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - billingAccount
+                - complianceRegime
+                - displayName
+                - location
+                - organization
+                type: object
+              state:
+                properties:
+                  billingAccount:
+                    description: Required. Input only. The billing account used for
+                      the resources which are direct children of workload. This billing
+                      account is initially associated with the resources created as
+                      part of Workload creation. After the initial creation of these
+                      resources, the customer can change the assigned billing account.
+                      The resource name has the form `billingAccounts/{billing_account_id}`.
+                      For example, 'billingAccounts/012345-567890-ABCDEF`.
+                    type: string
+                  complianceRegime:
+                    description: 'Required. Immutable. Compliance Regime associated
+                      with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED,
+                      IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS'
+                    type: string
+                  createTime:
+                    description: Output only. Immutable. The Workload creation timestamp.
+                    type: string
+                  displayName:
+                    description: 'Required. The user-assigned display name of the
+                      Workload. When present it must be between 4 to 30 characters.
+                      Allowed characters are: lowercase and uppercase letters, numbers,
+                      hyphen, and spaces. Example: My Workload'
+                    type: string
+                  id:
+                    type: string
+                  kmsSettings:
+                    description: Input only. Settings used to create a CMEK crypto
+                      key. When set a project with a KMS CMEK key is provisioned.
+                      This field is mandatory for a subset of Compliance Regimes.
+                    properties:
+                      nextRotationTime:
+                        description: Required. Input only. Immutable. The time at
+                          which the Key Management Service will automatically create
+                          a new version of the crypto key and mark it as the primary.
+                        type: string
+                      rotationPeriod:
+                        description: Required. Input only. Immutable. will be advanced
+                          by this period when the Key Management Service automatically
+                          rotates a key. Must be at least 24 hours and at most 876,000
+                          hours.
+                        type: string
+                    required:
+                    - nextRotationTime
+                    - rotationPeriod
+                    type: object
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Optional. Labels applied to the workload.
+                    type: object
+                  location:
+                    description: The location for the resource
+                    type: string
+                  name:
+                    description: Output only. The resource name of the workload.
+                    type: string
+                  organization:
+                    description: The organization for the resource
+                    type: string
+                  provisionedResourcesParent:
+                    description: 'Input only. The parent resource for the resources
+                      managed by this Assured Workload. May be either an organization
+                      or a folder. Must be the same or a child of the Workload parent.
+                      If not specified all resources are created under the Workload
+                      parent. Formats: folders/{folder_id}, organizations/{organization_id}'
+                    type: string
+                  resourceSettings:
+                    description: Input only. Resource properties that are used to
+                      customize workload resources. These properties (such as custom
+                      project id) will be used to create workload resources if possible.
+                      This field is optional.
+                    items:
+                      properties:
+                        resourceID:
+                          description: Resource identifier. For a project this represents
+                            project_number. If the project is already taken, the workload
+                            creation will fail.
+                          type: string
+                        resourceType:
+                          description: 'Indicates the type of resource. This field
+                            should be specified to correspond the id to the right
+                            project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+                            Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT,
+                            ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER'
+                          type: string
+                      type: object
+                    type: array
+                  resources:
+                    description: Output only. The resources associated with this workload.
+                      These resources will be created when creating the workload.
+                      If any of the projects already exist, the workload creation
+                      will fail. Always read only.
+                    items:
+                      properties:
+                        resourceID:
+                          description: Resource identifier. For a project this represents
+                            project_number.
+                          format: int64
+                          type: integer
+                        resourceType:
+                          description: 'Indicates the type of resource. Possible values:
+                            RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT,
+                            KEYRING, CONSUMER_FOLDER'
+                          type: string
+                      type: object
+                    type: array
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - billingAccount
+                - complianceRegime
+                - displayName
+                - location
+                - organization
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

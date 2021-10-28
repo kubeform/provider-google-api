@@ -41,12 +41,14 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDatabaseEncryption{}).Type1()):                           ClusterSpecDatabaseEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDefaultSnatStatus{}).Type1()):                            ClusterSpecDefaultSnatStatusCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecIpAllocationPolicy{}).Type1()):                           ClusterSpecIpAllocationPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1()):                                ClusterSpecLoggingConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicy{}).Type1()):                            ClusterSpecMaintenancePolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicyDailyMaintenanceWindow{}).Type1()):      ClusterSpecMaintenancePolicyDailyMaintenanceWindowCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicyRecurringWindow{}).Type1()):             ClusterSpecMaintenancePolicyRecurringWindowCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuth{}).Type1()):                                   ClusterSpecMasterAuthCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuthClientCertificateConfig{}).Type1()):            ClusterSpecMasterAuthClientCertificateConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuthorizedNetworksConfig{}).Type1()):               ClusterSpecMasterAuthorizedNetworksConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1()):                             ClusterSpecMonitoringConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNetworkPolicy{}).Type1()):                                ClusterSpecNetworkPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfig{}).Type1()):                                   ClusterSpecNodeConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigShieldedInstanceConfig{}).Type1()):             ClusterSpecNodeConfigShieldedInstanceConfigCodec{},
@@ -90,12 +92,14 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDatabaseEncryption{}).Type1()):                           ClusterSpecDatabaseEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDefaultSnatStatus{}).Type1()):                            ClusterSpecDefaultSnatStatusCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecIpAllocationPolicy{}).Type1()):                           ClusterSpecIpAllocationPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1()):                                ClusterSpecLoggingConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicy{}).Type1()):                            ClusterSpecMaintenancePolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicyDailyMaintenanceWindow{}).Type1()):      ClusterSpecMaintenancePolicyDailyMaintenanceWindowCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicyRecurringWindow{}).Type1()):             ClusterSpecMaintenancePolicyRecurringWindowCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuth{}).Type1()):                                   ClusterSpecMasterAuthCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuthClientCertificateConfig{}).Type1()):            ClusterSpecMasterAuthClientCertificateConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMasterAuthorizedNetworksConfig{}).Type1()):               ClusterSpecMasterAuthorizedNetworksConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1()):                             ClusterSpecMonitoringConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNetworkPolicy{}).Type1()):                                ClusterSpecNetworkPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfig{}).Type1()):                                   ClusterSpecNodeConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigShieldedInstanceConfig{}).Type1()):             ClusterSpecNodeConfigShieldedInstanceConfigCodec{},
@@ -1242,6 +1246,85 @@ func (ClusterSpecIpAllocationPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoni
 }
 
 // +k8s:deepcopy-gen=false
+type ClusterSpecLoggingConfigCodec struct {
+}
+
+func (ClusterSpecLoggingConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecLoggingConfig)(ptr) == nil
+}
+
+func (ClusterSpecLoggingConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecLoggingConfig)(ptr)
+	var objs []ClusterSpecLoggingConfig
+	if obj != nil {
+		objs = []ClusterSpecLoggingConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecLoggingConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecLoggingConfig)(ptr) = ClusterSpecLoggingConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecLoggingConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecLoggingConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecLoggingConfig)(ptr) = ClusterSpecLoggingConfig{}
+			}
+		} else {
+			*(*ClusterSpecLoggingConfig)(ptr) = ClusterSpecLoggingConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecLoggingConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecLoggingConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecLoggingConfig)(ptr) = ClusterSpecLoggingConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecLoggingConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ClusterSpecMaintenancePolicyCodec struct {
 }
 
@@ -1712,6 +1795,85 @@ func (ClusterSpecMasterAuthorizedNetworksConfigCodec) Decode(ptr unsafe.Pointer,
 		}
 	default:
 		iter.ReportError("decode ClusterSpecMasterAuthorizedNetworksConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ClusterSpecMonitoringConfigCodec struct {
+}
+
+func (ClusterSpecMonitoringConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecMonitoringConfig)(ptr) == nil
+}
+
+func (ClusterSpecMonitoringConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecMonitoringConfig)(ptr)
+	var objs []ClusterSpecMonitoringConfig
+	if obj != nil {
+		objs = []ClusterSpecMonitoringConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecMonitoringConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecMonitoringConfig)(ptr) = ClusterSpecMonitoringConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecMonitoringConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecMonitoringConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecMonitoringConfig)(ptr) = ClusterSpecMonitoringConfig{}
+			}
+		} else {
+			*(*ClusterSpecMonitoringConfig)(ptr) = ClusterSpecMonitoringConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecMonitoringConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecMonitoringConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecMonitoringConfig)(ptr) = ClusterSpecMonitoringConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecMonitoringConfig", "unexpected JSON type")
 	}
 }
 

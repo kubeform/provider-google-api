@@ -43,7 +43,6 @@ var _ webhook.Validator = &InstanceGroupManager{}
 
 var instancegroupmanagerForceNewList = map[string]bool{
 	"/base_instance_name": true,
-	"/description":        true,
 	"/name":               true,
 	"/project":            true,
 	"/zone":               true,

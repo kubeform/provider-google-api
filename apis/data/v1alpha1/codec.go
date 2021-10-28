@@ -27,131 +27,159 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntrySpecGcsFilesetSpec{}).Type1()):                                                                                                                  CatalogEntrySpecGcsFilesetSpecCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamBindingSpecCondition{}).Type1()):                                                                                                        CatalogEntryGroupIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamMemberSpecCondition{}).Type1()):                                                                                                         CatalogEntryGroupIamMemberSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsType{}).Type1()):                                                                                                                CatalogTagTemplateSpecFieldsTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                        CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                       CatalogTagTemplateIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                        CatalogTagTemplateIamMemberSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                            LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                     LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfig{}).Type1()):            LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfig{}).Type1()):                  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValue{}).Type1()):          LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValue{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValue{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfig{}).Type1()):                                                                                                  LossPreventionInspectTemplateSpecInspectConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionary{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePath{}).Type1()):                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordList{}).Type1()):                                                                 LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoType{}).Type1()):                                                                           LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegex{}).Type1()):                                                                              LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredType{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimits{}).Type1()):                                                                                            LossPreventionInspectTemplateSpecInspectConfigLimitsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoType{}).Type1()):                                                              LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRule{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionary{}).Type1()):                                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath{}).Type1()):                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordList{}).Type1()):                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypes{}).Type1()):                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegex{}).Type1()):                                                                    LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRule{}).Type1()):                                                                           LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegex{}).Type1()):                                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment{}).Type1()):                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustmentCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximity{}).Type1()):                                                                  LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximityCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJob{}).Type1()):                                                                                                          LossPreventionJobTriggerSpecInspectJobCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindings{}).Type1()):                                                                                       LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfig{}).Type1()):                                                                           LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTable{}).Type1()):                                                                      LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTableCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfig{}).Type1()):                                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptions{}).Type1()):                                                                              LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReference{}).Type1()):                                                                LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptions{}).Type1()):                                                                          LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSet{}).Type1()):                                                                   LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet{}).Type1()):                                                       LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptions{}).Type1()):                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKind{}).Type1()):                                                                         LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKindCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionID{}).Type1()):                                                                  LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionIDCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfig{}).Type1()):                                                                               LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampField{}).Type1()):                                                                 LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecTriggersSchedule{}).Type1()):                                                                                                    LossPreventionJobTriggerSpecTriggersScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionary{}).Type1()):                                                                                                      LossPreventionStoredInfoTypeSpecDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePath{}).Type1()):                                                                                      LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryWordList{}).Type1()):                                                                                              LossPreventionStoredInfoTypeSpecDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionary{}).Type1()):                                                                                           LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryField{}).Type1()):                                                                              LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldField{}).Type1()):                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTable{}).Type1()):                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSet{}).Type1()):                                                                        LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPath{}).Type1()):                                                                                 LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecRegex{}).Type1()):                                                                                                           LossPreventionStoredInfoTypeSpecRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntrySpecGcsFilesetSpec{}).Type1()):                                                                                                                                CatalogEntrySpecGcsFilesetSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamBindingSpecCondition{}).Type1()):                                                                                                                      CatalogEntryGroupIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamMemberSpecCondition{}).Type1()):                                                                                                                       CatalogEntryGroupIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsType{}).Type1()):                                                                                                                              CatalogTagTemplateSpecFieldsTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                                      CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                                     CatalogTagTemplateIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                                      CatalogTagTemplateIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                                   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                                             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfig{}).Type1()):                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}).Type1()):                    LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}).Type1()):             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}).Type1()):           LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}).Type1()):   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}).Type1()):                    LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}).Type1()):             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}).Type1()):           LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}).Type1()):   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfig{}).Type1()):                                LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValue{}).Type1()):                        LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValue{}).Type1()):               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValue{}).Type1()):               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfig{}).Type1()):                                                                                                                LossPreventionInspectTemplateSpecInspectConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionary{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePath{}).Type1()):                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordList{}).Type1()):                                                                               LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoType{}).Type1()):                                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegex{}).Type1()):                                                                                            LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredType{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimits{}).Type1()):                                                                                                          LossPreventionInspectTemplateSpecInspectConfigLimitsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoType{}).Type1()):                                                                            LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRule{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionary{}).Type1()):                                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath{}).Type1()):                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordList{}).Type1()):                                                                     LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypes{}).Type1()):                                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegex{}).Type1()):                                                                                  LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRule{}).Type1()):                                                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegex{}).Type1()):                                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment{}).Type1()):                                                                     LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximity{}).Type1()):                                                                                LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximityCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJob{}).Type1()):                                                                                                                        LossPreventionJobTriggerSpecInspectJobCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindings{}).Type1()):                                                                                                     LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfig{}).Type1()):                                                                                         LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTable{}).Type1()):                                                                                    LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTableCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfig{}).Type1()):                                                                                                           LossPreventionJobTriggerSpecInspectJobStorageConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptions{}).Type1()):                                                                                            LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReference{}).Type1()):                                                                              LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptions{}).Type1()):                                                                                        LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSet{}).Type1()):                                                                                 LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet{}).Type1()):                                                                     LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptions{}).Type1()):                                                                                           LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKind{}).Type1()):                                                                                       LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKindCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionID{}).Type1()):                                                                                LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionIDCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfig{}).Type1()):                                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampField{}).Type1()):                                                                               LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecTriggersSchedule{}).Type1()):                                                                                                                  LossPreventionJobTriggerSpecTriggersScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionary{}).Type1()):                                                                                                                    LossPreventionStoredInfoTypeSpecDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePath{}).Type1()):                                                                                                    LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryWordList{}).Type1()):                                                                                                            LossPreventionStoredInfoTypeSpecDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionary{}).Type1()):                                                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryField{}).Type1()):                                                                                            LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldField{}).Type1()):                                                                                       LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTable{}).Type1()):                                                                                       LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSet{}).Type1()):                                                                                      LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPath{}).Type1()):                                                                                               LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecRegex{}).Type1()):                                                                                                                         LossPreventionStoredInfoTypeSpecRegexCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntrySpecGcsFilesetSpec{}).Type1()):                                                                                                                  CatalogEntrySpecGcsFilesetSpecCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamBindingSpecCondition{}).Type1()):                                                                                                        CatalogEntryGroupIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamMemberSpecCondition{}).Type1()):                                                                                                         CatalogEntryGroupIamMemberSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsType{}).Type1()):                                                                                                                CatalogTagTemplateSpecFieldsTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                        CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                       CatalogTagTemplateIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                        CatalogTagTemplateIamMemberSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                            LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                     LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfig{}).Type1()):            LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfig{}).Type1()):                  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValue{}).Type1()):          LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValue{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValue{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValueCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfig{}).Type1()):                                                                                                  LossPreventionInspectTemplateSpecInspectConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionary{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePath{}).Type1()):                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordList{}).Type1()):                                                                 LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoType{}).Type1()):                                                                           LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegex{}).Type1()):                                                                              LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredType{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimits{}).Type1()):                                                                                            LossPreventionInspectTemplateSpecInspectConfigLimitsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoType{}).Type1()):                                                              LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRule{}).Type1()):                                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionary{}).Type1()):                                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath{}).Type1()):                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordList{}).Type1()):                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypes{}).Type1()):                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegex{}).Type1()):                                                                    LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRule{}).Type1()):                                                                           LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegex{}).Type1()):                                                               LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegexCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment{}).Type1()):                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustmentCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximity{}).Type1()):                                                                  LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximityCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJob{}).Type1()):                                                                                                          LossPreventionJobTriggerSpecInspectJobCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindings{}).Type1()):                                                                                       LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfig{}).Type1()):                                                                           LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTable{}).Type1()):                                                                      LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTableCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfig{}).Type1()):                                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptions{}).Type1()):                                                                              LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReference{}).Type1()):                                                                LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptions{}).Type1()):                                                                          LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSet{}).Type1()):                                                                   LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet{}).Type1()):                                                       LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptions{}).Type1()):                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKind{}).Type1()):                                                                         LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKindCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionID{}).Type1()):                                                                  LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionIDCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfig{}).Type1()):                                                                               LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampField{}).Type1()):                                                                 LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecTriggersSchedule{}).Type1()):                                                                                                    LossPreventionJobTriggerSpecTriggersScheduleCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionary{}).Type1()):                                                                                                      LossPreventionStoredInfoTypeSpecDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePath{}).Type1()):                                                                                      LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryWordList{}).Type1()):                                                                                              LossPreventionStoredInfoTypeSpecDictionaryWordListCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionary{}).Type1()):                                                                                           LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryField{}).Type1()):                                                                              LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldField{}).Type1()):                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldFieldCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTable{}).Type1()):                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSet{}).Type1()):                                                                        LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSetCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPath{}).Type1()):                                                                                 LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPathCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecRegex{}).Type1()):                                                                                                           LossPreventionStoredInfoTypeSpecRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntrySpecGcsFilesetSpec{}).Type1()):                                                                                                                                CatalogEntrySpecGcsFilesetSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamBindingSpecCondition{}).Type1()):                                                                                                                      CatalogEntryGroupIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogEntryGroupIamMemberSpecCondition{}).Type1()):                                                                                                                       CatalogEntryGroupIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsType{}).Type1()):                                                                                                                              CatalogTagTemplateSpecFieldsTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                                      CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                                     CatalogTagTemplateIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                                      CatalogTagTemplateIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                                   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                                             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfig{}).Type1()):                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}).Type1()):                    LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}).Type1()):             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}).Type1()):           LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}).Type1()):   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}).Type1()):                    LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}).Type1()):             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}).Type1()):           LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}).Type1()): LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}).Type1()):  LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}).Type1()):   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfig{}).Type1()):                                LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValue{}).Type1()):                        LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValue{}).Type1()):               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueDateValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValue{}).Type1()):               LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationReplaceConfigNewValueTimeValueCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfig{}).Type1()):                                                                                                                LossPreventionInspectTemplateSpecInspectConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionary{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePath{}).Type1()):                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordList{}).Type1()):                                                                               LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoType{}).Type1()):                                                                                         LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegex{}).Type1()):                                                                                            LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredType{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigCustomInfoTypesStoredTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimits{}).Type1()):                                                                                                          LossPreventionInspectTemplateSpecInspectConfigLimitsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoType{}).Type1()):                                                                            LossPreventionInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRule{}).Type1()):                                                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionary{}).Type1()):                                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePath{}).Type1()):                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordList{}).Type1()):                                                                     LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypes{}).Type1()):                                                                       LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleExcludeInfoTypesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegex{}).Type1()):                                                                                  LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesExclusionRuleRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRule{}).Type1()):                                                                                         LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegex{}).Type1()):                                                                             LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleHotwordRegexCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustment{}).Type1()):                                                                     LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleLikelihoodAdjustmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximity{}).Type1()):                                                                                LossPreventionInspectTemplateSpecInspectConfigRuleSetRulesHotwordRuleProximityCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJob{}).Type1()):                                                                                                                        LossPreventionJobTriggerSpecInspectJobCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindings{}).Type1()):                                                                                                     LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfig{}).Type1()):                                                                                         LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTable{}).Type1()):                                                                                    LossPreventionJobTriggerSpecInspectJobActionsSaveFindingsOutputConfigTableCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfig{}).Type1()):                                                                                                           LossPreventionJobTriggerSpecInspectJobStorageConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptions{}).Type1()):                                                                                            LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReference{}).Type1()):                                                                              LossPreventionJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptions{}).Type1()):                                                                                        LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSet{}).Type1()):                                                                                 LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet{}).Type1()):                                                                     LossPreventionJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptions{}).Type1()):                                                                                           LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKind{}).Type1()):                                                                                       LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKindCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionID{}).Type1()):                                                                                LossPreventionJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionIDCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfig{}).Type1()):                                                                                             LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampField{}).Type1()):                                                                               LossPreventionJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionJobTriggerSpecTriggersSchedule{}).Type1()):                                                                                                                  LossPreventionJobTriggerSpecTriggersScheduleCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionary{}).Type1()):                                                                                                                    LossPreventionStoredInfoTypeSpecDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePath{}).Type1()):                                                                                                    LossPreventionStoredInfoTypeSpecDictionaryCloudStoragePathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecDictionaryWordList{}).Type1()):                                                                                                            LossPreventionStoredInfoTypeSpecDictionaryWordListCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionary{}).Type1()):                                                                                                         LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryField{}).Type1()):                                                                                            LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldField{}).Type1()):                                                                                       LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldFieldCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTable{}).Type1()):                                                                                       LossPreventionStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSet{}).Type1()):                                                                                      LossPreventionStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPath{}).Type1()):                                                                                               LossPreventionStoredInfoTypeSpecLargeCustomDictionaryOutputPathCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionStoredInfoTypeSpecRegex{}).Type1()):                                                                                                                         LossPreventionStoredInfoTypeSpecRegexCodec{},
 	}
 }
 
@@ -1033,6 +1061,1112 @@ func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformation
 		}
 	default:
 		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigContext", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKey", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigContext", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec struct {
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) == nil
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr)
+	var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType
+	if obj != nil {
+		objs = []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = objs[0]
+			} else {
+				*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}
+			}
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = obj
+		} else {
+			*(*LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType)(ptr) = LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType{}
+		}
+	default:
+		iter.ReportError("decode LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType", "unexpected JSON type")
 	}
 }
 

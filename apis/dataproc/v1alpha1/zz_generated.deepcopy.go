@@ -5006,6 +5006,11 @@ func (in *WorkflowTemplateSpecPlacementManagedClusterConfigSoftwareConfig) DeepC
 		*out = new(string)
 		**out = **in
 	}
+	if in.OptionalComponents != nil {
+		in, out := &in.OptionalComponents, &out.OptionalComponents
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	if in.Properties != nil {
 		in, out := &in.Properties, &out.Properties
 		*out = new(map[string]string)
@@ -5193,6 +5198,11 @@ func (in *WorkflowTemplateSpecResource) DeepCopyInto(out *WorkflowTemplateSpecRe
 	}
 	if in.CreateTime != nil {
 		in, out := &in.CreateTime, &out.CreateTime
+		*out = new(string)
+		**out = **in
+	}
+	if in.DagTimeout != nil {
+		in, out := &in.DagTimeout, &out.DagTimeout
 		*out = new(string)
 		**out = **in
 	}

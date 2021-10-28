@@ -428,6 +428,21 @@ type TriggerSpecGithub struct {
 	Push *TriggerSpecGithubPush `json:"push,omitempty" tf:"push"`
 }
 
+type TriggerSpecPubsubConfig struct {
+	// Service account that will make the push request.
+	// +optional
+	ServiceAccountEmail *string `json:"serviceAccountEmail,omitempty" tf:"service_account_email"`
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	// +optional
+	State *string `json:"state,omitempty" tf:"state"`
+	// Output only. Name of the subscription.
+	// +optional
+	Subscription *string `json:"subscription,omitempty" tf:"subscription"`
+	// The name of the topic from which this subscription is receiving messages.
+	Topic *string `json:"topic" tf:"topic"`
+}
+
 type TriggerSpecTriggerTemplate struct {
 	// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	// This field is a regular expression.
@@ -457,6 +472,15 @@ type TriggerSpecTriggerTemplate struct {
 	// This field is a regular expression.
 	// +optional
 	TagName *string `json:"tagName,omitempty" tf:"tag_name"`
+}
+
+type TriggerSpecWebhookConfig struct {
+	// Resource name for the secret required as a URL parameter.
+	Secret *string `json:"secret" tf:"secret"`
+	// Potential issues with the underlying Pub/Sub subscription configuration.
+	// Only populated on get requests.
+	// +optional
+	State *string `json:"state,omitempty" tf:"state"`
 }
 
 type TriggerSpec struct {
@@ -495,7 +519,7 @@ type TriggerSpecResource struct {
 	Filename *string `json:"filename,omitempty" tf:"filename"`
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 	//
-	// One of 'trigger_template' or 'github' must be provided.
+	// One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config' must be provided.
 	// +optional
 	Github *TriggerSpecGithub `json:"github,omitempty" tf:"github"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
@@ -527,6 +551,21 @@ type TriggerSpecResource struct {
 	Name *string `json:"name,omitempty" tf:"name"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
+	// PubsubConfig describes the configuration of a trigger that creates
+	// a build whenever a Pub/Sub message is published.
+	//
+	// One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config' must be provided.
+	// +optional
+	PubsubConfig *TriggerSpecPubsubConfig `json:"pubsubConfig,omitempty" tf:"pubsub_config"`
+	// The service account used for all user-controlled operations including
+	// triggers.patch, triggers.run, builds.create, and builds.cancel.
+	//
+	// If no service account is set, then the standard Cloud Build service account
+	// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
+	//
+	// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
+	// +optional
+	ServiceAccount *string `json:"serviceAccount,omitempty" tf:"service_account"`
 	// Substitutions data for Build resource.
 	// +optional
 	Substitutions *map[string]string `json:"substitutions,omitempty" tf:"substitutions"`
@@ -542,9 +581,15 @@ type TriggerSpecResource struct {
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
 	//
-	// One of 'trigger_template' or 'github' must be provided.
+	// One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config' must be provided.
 	// +optional
 	TriggerTemplate *TriggerSpecTriggerTemplate `json:"triggerTemplate,omitempty" tf:"trigger_template"`
+	// WebhookConfig describes the configuration of a trigger that creates
+	// a build whenever a webhook is sent to a trigger's webhook URL.
+	//
+	// One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config' must be provided.
+	// +optional
+	WebhookConfig *TriggerSpecWebhookConfig `json:"webhookConfig,omitempty" tf:"webhook_config"`
 }
 
 type TriggerStatus struct {

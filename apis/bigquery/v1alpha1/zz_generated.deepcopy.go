@@ -1515,6 +1515,11 @@ func (in *JobSpecCopyDestinationEncryptionConfiguration) DeepCopyInto(out *JobSp
 		*out = new(string)
 		**out = **in
 	}
+	if in.KmsKeyVersion != nil {
+		in, out := &in.KmsKeyVersion, &out.KmsKeyVersion
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
@@ -1827,6 +1832,11 @@ func (in *JobSpecLoadDestinationEncryptionConfiguration) DeepCopyInto(out *JobSp
 		*out = new(string)
 		**out = **in
 	}
+	if in.KmsKeyVersion != nil {
+		in, out := &in.KmsKeyVersion, &out.KmsKeyVersion
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
@@ -2036,6 +2046,11 @@ func (in *JobSpecQueryDestinationEncryptionConfiguration) DeepCopyInto(out *JobS
 	*out = *in
 	if in.KmsKeyName != nil {
 		in, out := &in.KmsKeyName, &out.KmsKeyName
+		*out = new(string)
+		**out = **in
+	}
+	if in.KmsKeyVersion != nil {
+		in, out := &in.KmsKeyVersion, &out.KmsKeyVersion
 		*out = new(string)
 		**out = **in
 	}
@@ -3378,6 +3393,11 @@ func (in *TableSpecEncryptionConfiguration) DeepCopyInto(out *TableSpecEncryptio
 	*out = *in
 	if in.KmsKeyName != nil {
 		in, out := &in.KmsKeyName, &out.KmsKeyName
+		*out = new(string)
+		**out = **in
+	}
+	if in.KmsKeyVersion != nil {
+		in, out := &in.KmsKeyVersion, &out.KmsKeyVersion
 		*out = new(string)
 		**out = **in
 	}

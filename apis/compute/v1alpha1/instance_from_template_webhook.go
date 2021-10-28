@@ -63,7 +63,6 @@ var instancefromtemplateForceNewList = map[string]bool{
 	"/reservation_affinity/*/specific_reservation/*/key":    true,
 	"/reservation_affinity/*/specific_reservation/*/values": true,
 	"/reservation_affinity/*/type":                          true,
-	"/resource_policies":                                    true,
 	"/scheduling/*/preemptible":                             true,
 	"/source_instance_template":                             true,
 	"/zone":                                                 true,

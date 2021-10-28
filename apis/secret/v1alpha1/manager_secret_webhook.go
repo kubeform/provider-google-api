@@ -42,10 +42,13 @@ func (r *ManagerSecret) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &ManagerSecret{}
 
 var managersecretForceNewList = map[string]bool{
-	"/project":                    true,
-	"/rotation/*/rotation_period": true,
-	"/secret_id":                  true,
-	"/ttl":                        true,
+	"/project":                 true,
+	"/replication/*/automatic": true,
+	"/replication/*/user_managed/*/replicas/*/customer_managed_encryption/*/kms_key_name": true,
+	"/replication/*/user_managed/*/replicas/*/location":                                   true,
+	"/rotation/*/rotation_period":                                                         true,
+	"/secret_id":                                                                          true,
+	"/ttl":                                                                                true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

@@ -68,6 +68,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&AccountKeyList{},
 		&NetworkingConnection{},
 		&NetworkingConnectionList{},
+		&NetworkingPeeredDNSDomain{},
+		&NetworkingPeeredDNSDomainList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

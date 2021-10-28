@@ -56,27 +56,21 @@ type RecordSetSpec struct {
 }
 
 type RecordSetSpecResource struct {
-	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
-
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// Identifies the managed zone addressed by this request.
+	// The name of the zone in which this record set will reside.
 	ManagedZone *string `json:"managedZone" tf:"managed_zone"`
-	// For example, www.example.com.
+	// The DNS name this record set will apply to.
 	Name *string `json:"name" tf:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
-	// The string data for the records in this record set whose meaning depends on the DNS type.
-	// For TXT record, if the string data contains spaces, add surrounding \" if you don't want your string to get
-	// split on spaces. To specify a single record value longer than 255 characters such as a TXT record for
-	// DKIM, add \"\" inside the Terraform configuration string (e.g. "first255characters\"\"morecharacters").
-	// +optional
-	Rrdatas []string `json:"rrdatas,omitempty" tf:"rrdatas"`
-	// Number of seconds that this ResourceRecordSet can be cached by
-	// resolvers.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration string (e.g. "first255characters\"\"morecharacters").
+	Rrdatas []string `json:"rrdatas" tf:"rrdatas"`
+	// The time-to-live of this record set (seconds).
 	// +optional
 	Ttl *int64 `json:"ttl,omitempty" tf:"ttl"`
-	// One of valid DNS resource types. Possible values: ["A", "AAAA", "CAA", "CNAME", "DNSKEY", "DS", "IPSECVPNKEY", "MX", "NAPTR", "NS", "PTR", "SOA", "SPF", "SRV", "SSHFP", "TLSA", "TXT"]
+	// The DNS record set type.
 	Type *string `json:"type" tf:"type"`
 }
 

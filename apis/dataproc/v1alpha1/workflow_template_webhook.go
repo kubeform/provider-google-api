@@ -42,6 +42,7 @@ func (r *WorkflowTemplate) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &WorkflowTemplate{}
 
 var workflowtemplateForceNewList = map[string]bool{
+	"/dag_timeout":                                                                      true,
 	"/jobs/*/hadoop_job/*/archive_uris":                                                 true,
 	"/jobs/*/hadoop_job/*/args":                                                         true,
 	"/jobs/*/hadoop_job/*/file_uris":                                                    true,
@@ -128,6 +129,7 @@ var workflowtemplateForceNewList = map[string]bool{
 	"/placement/*/managed_cluster/*/config/*/gce_cluster_config/*/service_account":                                  true,
 	"/placement/*/managed_cluster/*/config/*/gce_cluster_config/*/service_account_scopes":                           true,
 	"/placement/*/managed_cluster/*/config/*/gce_cluster_config/*/subnetwork":                                       true,
+	"/placement/*/managed_cluster/*/config/*/gce_cluster_config/*/tags":                                             true,
 	"/placement/*/managed_cluster/*/config/*/gce_cluster_config/*/zone":                                             true,
 	"/placement/*/managed_cluster/*/config/*/initialization_actions/*/executable_file":                              true,
 	"/placement/*/managed_cluster/*/config/*/initialization_actions/*/execution_timeout":                            true,
@@ -170,6 +172,7 @@ var workflowtemplateForceNewList = map[string]bool{
 	"/placement/*/managed_cluster/*/config/*/security_config/*/kerberos_config/*/truststore":                        true,
 	"/placement/*/managed_cluster/*/config/*/security_config/*/kerberos_config/*/truststore_password":               true,
 	"/placement/*/managed_cluster/*/config/*/software_config/*/image_version":                                       true,
+	"/placement/*/managed_cluster/*/config/*/software_config/*/optional_components":                                 true,
 	"/placement/*/managed_cluster/*/config/*/software_config/*/properties":                                          true,
 	"/placement/*/managed_cluster/*/config/*/staging_bucket":                                                        true,
 	"/placement/*/managed_cluster/*/config/*/temp_bucket":                                                           true,

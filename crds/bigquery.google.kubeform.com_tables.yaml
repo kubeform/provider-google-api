@@ -95,6 +95,10 @@ spec:
                           on this key - you may want to see the google_bigquery_default_service_account
                           datasource and the google_kms_crypto_key_iam_binding resource.
                         type: string
+                      kmsKeyVersion:
+                        description: The self link or full name of the kms key version
+                          used to encrypt this table.
+                        type: string
                     required:
                     - kmsKeyName
                     type: object
@@ -422,6 +426,10 @@ spec:
                           service account will need to have encrypt/decrypt permissions
                           on this key - you may want to see the google_bigquery_default_service_account
                           datasource and the google_kms_crypto_key_iam_binding resource.
+                        type: string
+                      kmsKeyVersion:
+                        description: The self link or full name of the kms key version
+                          used to encrypt this table.
                         type: string
                     required:
                     - kmsKeyName

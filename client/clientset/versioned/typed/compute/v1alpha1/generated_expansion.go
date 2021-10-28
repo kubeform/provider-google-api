@@ -46,6 +46,12 @@ type ExternalVPNGatewayExpansion interface{}
 
 type FirewallExpansion interface{}
 
+type FirewallPolicyExpansion interface{}
+
+type FirewallPolicyAssociationExpansion interface{}
+
+type FirewallPolicyRuleExpansion interface{}
+
 type ForwardingRuleExpansion interface{}
 
 type GlobalAddressExpansion interface{}
@@ -163,6 +169,8 @@ type RouterNATExpansion interface{}
 type RouterPeerExpansion interface{}
 
 type SecurityPolicyExpansion interface{}
+
+type ServiceAttachmentExpansion interface{}
 
 type SharedVpcHostProjectExpansion interface{}
 

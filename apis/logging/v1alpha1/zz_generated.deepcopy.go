@@ -1317,7 +1317,7 @@ func (in *MetricSpecBucketOptionsLinearBuckets) DeepCopyInto(out *MetricSpecBuck
 	}
 	if in.Width != nil {
 		in, out := &in.Width, &out.Width
-		*out = new(int64)
+		*out = new(float64)
 		**out = **in
 	}
 	return

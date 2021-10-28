@@ -44,7 +44,7 @@ type UptimeCheckConfig struct {
 type UptimeCheckConfigSpecContentMatchers struct {
 	// String or regex content to match (max 1024 bytes)
 	Content *string `json:"content" tf:"content"`
-	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run. Default value: "CONTAINS_STRING" Possible values: ["CONTAINS_STRING", "NOT_CONTAINS_STRING", "MATCHES_REGEX", "NON_MATCHES_REGEX"]
+	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run. Default value: "CONTAINS_STRING" Possible values: ["CONTAINS_STRING", "NOT_CONTAINS_STRING", "MATCHES_REGEX", "NOT_MATCHES_REGEX"]
 	// +optional
 	Matcher *string `json:"matcher,omitempty" tf:"matcher"`
 }

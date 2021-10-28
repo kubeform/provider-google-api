@@ -84,9 +84,14 @@ type InstanceSpecResource struct {
 	// If not provided, a random string starting with 'tf-' will be selected.
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
-	// The number of nodes allocated to this instance.
+	// The number of nodes allocated to this instance. At most one of either node_count or processing_units
+	// can be present in terraform.
 	// +optional
 	NumNodes *int64 `json:"numNodes,omitempty" tf:"num_nodes"`
+	// The number of processing units allocated to this instance. At most one of processing_units
+	// or node_count can be present in terraform.
+	// +optional
+	ProcessingUnits *int64 `json:"processingUnits,omitempty" tf:"processing_units"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
 	// Instance status: 'CREATING' or 'READY'.

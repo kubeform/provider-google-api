@@ -25,3 +25,27 @@ type ManagementConnectivityTestListerExpansion interface{}
 // ManagementConnectivityTestNamespaceListerExpansion allows custom methods to be added to
 // ManagementConnectivityTestNamespaceLister.
 type ManagementConnectivityTestNamespaceListerExpansion interface{}
+
+// ServicesEdgeCacheKeysetListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheKeysetLister.
+type ServicesEdgeCacheKeysetListerExpansion interface{}
+
+// ServicesEdgeCacheKeysetNamespaceListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheKeysetNamespaceLister.
+type ServicesEdgeCacheKeysetNamespaceListerExpansion interface{}
+
+// ServicesEdgeCacheOriginListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheOriginLister.
+type ServicesEdgeCacheOriginListerExpansion interface{}
+
+// ServicesEdgeCacheOriginNamespaceListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheOriginNamespaceLister.
+type ServicesEdgeCacheOriginNamespaceListerExpansion interface{}
+
+// ServicesEdgeCacheServiceListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheServiceLister.
+type ServicesEdgeCacheServiceListerExpansion interface{}
+
+// ServicesEdgeCacheServiceNamespaceListerExpansion allows custom methods to be added to
+// ServicesEdgeCacheServiceNamespaceLister.
+type ServicesEdgeCacheServiceNamespaceListerExpansion interface{}

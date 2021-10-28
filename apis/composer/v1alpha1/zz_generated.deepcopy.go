@@ -353,6 +353,11 @@ func (in *EnvironmentSpecConfigSoftwareConfig) DeepCopyInto(out *EnvironmentSpec
 		*out = new(string)
 		**out = **in
 	}
+	if in.SchedulerCount != nil {
+		in, out := &in.SchedulerCount, &out.SchedulerCount
+		*out = new(int64)
+		**out = **in
+	}
 	return
 }
 

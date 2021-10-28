@@ -109,8 +109,8 @@ type SloSpecRequestBasedSliDistributionCut struct {
 	DistributionFilter *string `json:"distributionFilter" tf:"distribution_filter"`
 	// Range of numerical values. The computed good_service
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max.
 	Range *SloSpecRequestBasedSliDistributionCutRange `json:"range" tf:"range"`
 }
@@ -238,8 +238,8 @@ type SloSpecWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut str
 	DistributionFilter *string `json:"distributionFilter" tf:"distribution_filter"`
 	// Range of numerical values. The computed good_service
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max.
 	Range *SloSpecWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange `json:"range" tf:"range"`
 }
@@ -322,17 +322,17 @@ type SloSpecWindowsBasedSliMetricMeanInRangeRange struct {
 type SloSpecWindowsBasedSliMetricMeanInRange struct {
 	// Range of numerical values. The computed good_service
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Mean value 'X' of 'time_series'
-	// values should satisfy 'range.min <= X < range.max' for a
+	// values should satisfy 'range.min <= X <= range.max' for a
 	// good service.
 	Range *SloSpecWindowsBasedSliMetricMeanInRangeRange `json:"range" tf:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
 	// The provided TimeSeries must have ValueType = INT64 or
 	// ValueType = DOUBLE and MetricKind = GAUGE. Mean value 'X'
-	// should satisfy 'range.min <= X < range.max'
+	// should satisfy 'range.min <= X <= range.max'
 	// under good service.
 	TimeSeries *string `json:"timeSeries" tf:"time_series"`
 }
@@ -353,10 +353,10 @@ type SloSpecWindowsBasedSliMetricSumInRangeRange struct {
 type SloSpecWindowsBasedSliMetricSumInRange struct {
 	// Range of numerical values. The computed good_service
 	// will be the count of values x in the Distribution such
-	// that range.min <= x < range.max. inclusive of min and
-	// exclusive of max. Open ranges can be defined by setting
+	// that range.min <= x <= range.max. inclusive of min and
+	// max. Open ranges can be defined by setting
 	// just one of min or max. Summed value 'X' should satisfy
-	// 'range.min <= X < range.max' for a good window.
+	// 'range.min <= X <= range.max' for a good window.
 	Range *SloSpecWindowsBasedSliMetricSumInRangeRange `json:"range" tf:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
@@ -365,7 +365,7 @@ type SloSpecWindowsBasedSliMetricSumInRange struct {
 	// MetricKind = GAUGE.
 	//
 	// Summed value 'X' should satisfy
-	// 'range.min <= X < range.max' for a good window.
+	// 'range.min <= X <= range.max' for a good window.
 	TimeSeries *string `json:"timeSeries" tf:"time_series"`
 }
 
@@ -390,13 +390,13 @@ type SloSpecWindowsBasedSli struct {
 	// 'good_total_ratio_threshold', 'metric_mean_in_range',
 	// 'metric_sum_in_range' must be set for 'windows_based_sli'.
 	// Average value X of 'time_series' should satisfy
-	// 'range.min <= X < range.max' for a good window.
+	// 'range.min <= X <= range.max' for a good window.
 	// +optional
 	MetricMeanInRange *SloSpecWindowsBasedSliMetricMeanInRange `json:"metricMeanInRange,omitempty" tf:"metric_mean_in_range"`
 	// Criterion that describes a window as good if the metric's value
 	// is in a good range, *summed* across returned streams.
 	// Summed value 'X' of 'time_series' should satisfy
-	// 'range.min <= X < range.max' for a good window.
+	// 'range.min <= X <= range.max' for a good window.
 	//
 	// One of 'good_bad_metric_filter',
 	// 'good_total_ratio_threshold', 'metric_mean_in_range',

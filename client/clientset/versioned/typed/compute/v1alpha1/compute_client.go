@@ -41,6 +41,9 @@ type ComputeV1alpha1Interface interface {
 	DiskResourcePolicyAttachmentsGetter
 	ExternalVPNGatewaysGetter
 	FirewallsGetter
+	FirewallPoliciesGetter
+	FirewallPolicyAssociationsGetter
+	FirewallPolicyRulesGetter
 	ForwardingRulesGetter
 	GlobalAddressesGetter
 	GlobalForwardingRulesGetter
@@ -100,6 +103,7 @@ type ComputeV1alpha1Interface interface {
 	RouterNATsGetter
 	RouterPeersGetter
 	SecurityPoliciesGetter
+	ServiceAttachmentsGetter
 	SharedVpcHostProjectsGetter
 	SharedVpcServiceProjectsGetter
 	SnapshotsGetter
@@ -180,6 +184,18 @@ func (c *ComputeV1alpha1Client) ExternalVPNGateways(namespace string) ExternalVP
 
 func (c *ComputeV1alpha1Client) Firewalls(namespace string) FirewallInterface {
 	return newFirewalls(c, namespace)
+}
+
+func (c *ComputeV1alpha1Client) FirewallPolicies(namespace string) FirewallPolicyInterface {
+	return newFirewallPolicies(c, namespace)
+}
+
+func (c *ComputeV1alpha1Client) FirewallPolicyAssociations(namespace string) FirewallPolicyAssociationInterface {
+	return newFirewallPolicyAssociations(c, namespace)
+}
+
+func (c *ComputeV1alpha1Client) FirewallPolicyRules(namespace string) FirewallPolicyRuleInterface {
+	return newFirewallPolicyRules(c, namespace)
 }
 
 func (c *ComputeV1alpha1Client) ForwardingRules(namespace string) ForwardingRuleInterface {
@@ -416,6 +432,10 @@ func (c *ComputeV1alpha1Client) RouterPeers(namespace string) RouterPeerInterfac
 
 func (c *ComputeV1alpha1Client) SecurityPolicies(namespace string) SecurityPolicyInterface {
 	return newSecurityPolicies(c, namespace)
+}
+
+func (c *ComputeV1alpha1Client) ServiceAttachments(namespace string) ServiceAttachmentInterface {
+	return newServiceAttachments(c, namespace)
 }
 
 func (c *ComputeV1alpha1Client) SharedVpcHostProjects(namespace string) SharedVpcHostProjectInterface {

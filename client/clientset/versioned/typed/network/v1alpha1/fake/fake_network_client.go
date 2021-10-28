@@ -33,6 +33,18 @@ func (c *FakeNetworkV1alpha1) ManagementConnectivityTests(namespace string) v1al
 	return &FakeManagementConnectivityTests{c, namespace}
 }
 
+func (c *FakeNetworkV1alpha1) ServicesEdgeCacheKeysets(namespace string) v1alpha1.ServicesEdgeCacheKeysetInterface {
+	return &FakeServicesEdgeCacheKeysets{c, namespace}
+}
+
+func (c *FakeNetworkV1alpha1) ServicesEdgeCacheOrigins(namespace string) v1alpha1.ServicesEdgeCacheOriginInterface {
+	return &FakeServicesEdgeCacheOrigins{c, namespace}
+}
+
+func (c *FakeNetworkV1alpha1) ServicesEdgeCacheServices(namespace string) v1alpha1.ServicesEdgeCacheServiceInterface {
+	return &FakeServicesEdgeCacheServices{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeNetworkV1alpha1) RESTClient() rest.Interface {

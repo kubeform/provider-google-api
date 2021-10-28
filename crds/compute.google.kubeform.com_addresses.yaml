@@ -110,8 +110,10 @@ spec:
                       \n * IPSEC_INTERCONNECT for addresses created from a private
                       IP range   that are reserved for a VLAN attachment in an IPsec-encrypted
                       Cloud   Interconnect configuration. These addresses are regional
-                      resources. \n This should only be set when using an Internal
-                      address."
+                      resources. \n * PRIVATE_SERVICE_CONNECT for a private network
+                      address that is used to configure Private Service Connect. Only
+                      global internal addresses can use this purpose. \n This should
+                      only be set when using an Internal address."
                     type: string
                   region:
                     description: The Region in which the created address should reside.
@@ -226,8 +228,10 @@ spec:
                       \n * IPSEC_INTERCONNECT for addresses created from a private
                       IP range   that are reserved for a VLAN attachment in an IPsec-encrypted
                       Cloud   Interconnect configuration. These addresses are regional
-                      resources. \n This should only be set when using an Internal
-                      address."
+                      resources. \n * PRIVATE_SERVICE_CONNECT for a private network
+                      address that is used to configure Private Service Connect. Only
+                      global internal addresses can use this purpose. \n This should
+                      only be set when using an Internal address."
                     type: string
                   region:
                     description: The Region in which the created address should reside.

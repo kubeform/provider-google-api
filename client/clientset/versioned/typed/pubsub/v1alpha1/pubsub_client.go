@@ -27,6 +27,7 @@ import (
 
 type PubsubV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	LiteReservationsGetter
 	LiteSubscriptionsGetter
 	LiteTopicsGetter
 	SchemasGetter
@@ -43,6 +44,10 @@ type PubsubV1alpha1Interface interface {
 // PubsubV1alpha1Client is used to interact with features provided by the pubsub.google.kubeform.com group.
 type PubsubV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *PubsubV1alpha1Client) LiteReservations(namespace string) LiteReservationInterface {
+	return newLiteReservations(c, namespace)
 }
 
 func (c *PubsubV1alpha1Client) LiteSubscriptions(namespace string) LiteSubscriptionInterface {

@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// NotificationConfigListerExpansion allows custom methods to be added to
+// NotificationConfigLister.
+type NotificationConfigListerExpansion interface{}
+
+// NotificationConfigNamespaceListerExpansion allows custom methods to be added to
+// NotificationConfigNamespaceLister.
+type NotificationConfigNamespaceListerExpansion interface{}
+
 // SourceListerExpansion allows custom methods to be added to
 // SourceLister.
 type SourceListerExpansion interface{}

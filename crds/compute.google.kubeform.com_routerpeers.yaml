@@ -102,6 +102,13 @@ spec:
                       the routes with the lowest priority value win.
                     format: int64
                     type: integer
+                  enable:
+                    description: The status of the BGP peer connection. If set to
+                      false, any active session with the peer is terminated and all
+                      associated routing information is removed. If set to true, the
+                      peer connection can be established with routing information.
+                      The default is true.
+                    type: boolean
                   id:
                     type: string
                   interface:
@@ -241,6 +248,13 @@ spec:
                       the routes with the lowest priority value win.
                     format: int64
                     type: integer
+                  enable:
+                    description: The status of the BGP peer connection. If set to
+                      false, any active session with the peer is terminated and all
+                      associated routing information is removed. If set to true, the
+                      peer connection can be established with routing information.
+                      The default is true.
+                    type: boolean
                   id:
                     type: string
                   interface:

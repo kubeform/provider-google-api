@@ -58,6 +58,12 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&ManagementConnectivityTest{},
 		&ManagementConnectivityTestList{},
+		&ServicesEdgeCacheKeyset{},
+		&ServicesEdgeCacheKeysetList{},
+		&ServicesEdgeCacheOrigin{},
+		&ServicesEdgeCacheOriginList{},
+		&ServicesEdgeCacheService{},
+		&ServicesEdgeCacheServiceList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

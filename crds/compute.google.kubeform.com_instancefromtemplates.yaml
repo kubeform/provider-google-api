@@ -57,6 +57,20 @@ spec:
                 type: object
               resource:
                 properties:
+                  advancedMachineFeatures:
+                    description: Controls for advanced machine-related behavior features.
+                    properties:
+                      enableNestedVirtualization:
+                        description: Whether to enable nested virtualization or not.
+                        type: boolean
+                      threadsPerCore:
+                        description: The number of threads per physical core. To disable
+                          simultaneous multithreading (SMT) set this to 1. If unset,
+                          the maximum number of threads supported per core by the
+                          underlying processor is assumed.
+                        format: int64
+                        type: integer
+                    type: object
                   allowStoppingForUpdate:
                     description: If true, allows Terraform to stop the instance to
                       update its properties. If you try to update a property that
@@ -283,6 +297,44 @@ spec:
                             - ipCIDRRange
                             type: object
                           type: array
+                        ipv6AccessConfig:
+                          description: An array of IPv6 access configurations for
+                            this interface. Currently, only one IPv6 access config,
+                            DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+                            specified, then this instance will have no external IPv6
+                            Internet access.
+                          items:
+                            properties:
+                              externalIpv6:
+                                description: The first IPv6 address of the external
+                                  IPv6 range associated with this instance, prefix
+                                  length is stored in externalIpv6PrefixLength in
+                                  ipv6AccessConfig. The field is output only, an IPv6
+                                  address from a subnetwork associated with the instance
+                                  will be allocated dynamically.
+                                type: string
+                              externalIpv6PrefixLength:
+                                description: The prefix length of the external IPv6
+                                  range.
+                                type: string
+                              networkTier:
+                                description: The service-level to be provided for
+                                  IPv6 traffic when the subnet has an external subnet.
+                                  Only PREMIUM tier is valid for IPv6
+                                type: string
+                              publicPtrDomainName:
+                                description: The domain name to be used when creating
+                                  DNSv6 records for the external IPv6 ranges.
+                                type: string
+                            required:
+                            - networkTier
+                            type: object
+                          type: array
+                        ipv6AccessType:
+                          description: One of EXTERNAL, INTERNAL to indicate whether
+                            the IP can be accessed from the Internet. This field is
+                            always inherited from its subnetwork.
+                          type: string
                         name:
                           description: The name of the interface
                           type: string
@@ -296,6 +348,11 @@ spec:
                         nicType:
                           description: The type of vNIC to be used on this interface.
                             Possible values:GVNIC, VIRTIO_NET
+                          type: string
+                        stackType:
+                          description: The stack type for this network interface to
+                            identify whether the IPv6 feature is enabled or not. If
+                            not specified, IPV4_ONLY will be used.
                           type: string
                         subnetwork:
                           description: The name or self_link of the subnetwork attached
@@ -346,9 +403,8 @@ spec:
                     type: object
                   resourcePolicies:
                     description: A list of short names or self_links of resource policies
-                      to attach to the instance. Modifying this list will cause the
-                      instance to recreate. Currently a max of 1 resource policy is
-                      supported.
+                      to attach to the instance. Currently a max of 1 resource policy
+                      is supported.
                     items:
                       type: string
                     type: array
@@ -503,6 +559,20 @@ spec:
                 type: object
               state:
                 properties:
+                  advancedMachineFeatures:
+                    description: Controls for advanced machine-related behavior features.
+                    properties:
+                      enableNestedVirtualization:
+                        description: Whether to enable nested virtualization or not.
+                        type: boolean
+                      threadsPerCore:
+                        description: The number of threads per physical core. To disable
+                          simultaneous multithreading (SMT) set this to 1. If unset,
+                          the maximum number of threads supported per core by the
+                          underlying processor is assumed.
+                        format: int64
+                        type: integer
+                    type: object
                   allowStoppingForUpdate:
                     description: If true, allows Terraform to stop the instance to
                       update its properties. If you try to update a property that
@@ -729,6 +799,44 @@ spec:
                             - ipCIDRRange
                             type: object
                           type: array
+                        ipv6AccessConfig:
+                          description: An array of IPv6 access configurations for
+                            this interface. Currently, only one IPv6 access config,
+                            DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+                            specified, then this instance will have no external IPv6
+                            Internet access.
+                          items:
+                            properties:
+                              externalIpv6:
+                                description: The first IPv6 address of the external
+                                  IPv6 range associated with this instance, prefix
+                                  length is stored in externalIpv6PrefixLength in
+                                  ipv6AccessConfig. The field is output only, an IPv6
+                                  address from a subnetwork associated with the instance
+                                  will be allocated dynamically.
+                                type: string
+                              externalIpv6PrefixLength:
+                                description: The prefix length of the external IPv6
+                                  range.
+                                type: string
+                              networkTier:
+                                description: The service-level to be provided for
+                                  IPv6 traffic when the subnet has an external subnet.
+                                  Only PREMIUM tier is valid for IPv6
+                                type: string
+                              publicPtrDomainName:
+                                description: The domain name to be used when creating
+                                  DNSv6 records for the external IPv6 ranges.
+                                type: string
+                            required:
+                            - networkTier
+                            type: object
+                          type: array
+                        ipv6AccessType:
+                          description: One of EXTERNAL, INTERNAL to indicate whether
+                            the IP can be accessed from the Internet. This field is
+                            always inherited from its subnetwork.
+                          type: string
                         name:
                           description: The name of the interface
                           type: string
@@ -742,6 +850,11 @@ spec:
                         nicType:
                           description: The type of vNIC to be used on this interface.
                             Possible values:GVNIC, VIRTIO_NET
+                          type: string
+                        stackType:
+                          description: The stack type for this network interface to
+                            identify whether the IPv6 feature is enabled or not. If
+                            not specified, IPV4_ONLY will be used.
                           type: string
                         subnetwork:
                           description: The name or self_link of the subnetwork attached
@@ -792,9 +905,8 @@ spec:
                     type: object
                   resourcePolicies:
                     description: A list of short names or self_links of resource policies
-                      to attach to the instance. Modifying this list will cause the
-                      instance to recreate. Currently a max of 1 resource policy is
-                      supported.
+                      to attach to the instance. Currently a max of 1 resource policy
+                      is supported.
                     items:
                       type: string
                     type: array

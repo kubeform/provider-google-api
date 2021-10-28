@@ -327,6 +327,16 @@ type RegionBackendServiceSpecFailoverPolicy struct {
 	FailoverRatio *float64 `json:"failoverRatio,omitempty" tf:"failover_ratio"`
 }
 
+type RegionBackendServiceSpecIap struct {
+	// OAuth2 Client ID for IAP
+	Oauth2ClientID *string `json:"oauth2ClientID" tf:"oauth2_client_id"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret *string `json:"-" sensitive:"true" tf:"oauth2_client_secret"`
+	// OAuth2 Client Secret SHA-256 for IAP
+	// +optional
+	Oauth2ClientSecretSha256 *string `json:"-" sensitive:"true" tf:"oauth2_client_secret_sha256"`
+}
+
 type RegionBackendServiceSpecLogConfig struct {
 	// Whether to enable logging for the load balancer traffic served by this backend service.
 	// +optional
@@ -434,6 +444,8 @@ type RegionBackendServiceSpec struct {
 
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
+
 	BackendRef *core.LocalObjectReference `json:"backendRef,omitempty" tf:"-"`
 }
 
@@ -501,6 +513,9 @@ type RegionBackendServiceSpecResource struct {
 	// or serverless NEG as a backend.
 	// +optional
 	HealthChecks []string `json:"healthChecks,omitempty" tf:"health_checks"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	// +optional
+	Iap *RegionBackendServiceSpecIap `json:"iap,omitempty" tf:"iap"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). Default value: "INTERNAL" Possible values: ["EXTERNAL", "INTERNAL", "INTERNAL_MANAGED"]
@@ -571,7 +586,7 @@ type RegionBackendServiceSpecResource struct {
 	Project *string `json:"project,omitempty" tf:"project"`
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API. Possible values: ["HTTP", "HTTPS", "HTTP2", "SSL", "TCP", "UDP", "GRPC"]
+	// types and may result in errors if used with the GA API. Possible values: ["HTTP", "HTTPS", "HTTP2", "SSL", "TCP", "UDP", "GRPC", "UNSPECIFIED"]
 	// +optional
 	Protocol *string `json:"protocol,omitempty" tf:"protocol"`
 	// The Region in which the created backend service should reside.
@@ -581,7 +596,7 @@ type RegionBackendServiceSpecResource struct {
 	// +optional
 	SelfLink *string `json:"selfLink,omitempty" tf:"self_link"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
-	// not applicable if the protocol is UDP. Possible values: ["NONE", "CLIENT_IP", "CLIENT_IP_PORT_PROTO", "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE"]
+	// not applicable if the protocol is UDP. Possible values: ["NONE", "CLIENT_IP", "CLIENT_IP_PORT_PROTO", "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE", "CLIENT_IP_NO_DESTINATION"]
 	// +optional
 	SessionAffinity *string `json:"sessionAffinity,omitempty" tf:"session_affinity"`
 	// How many seconds to wait for the backend before considering it a

@@ -80,6 +80,10 @@ spec:
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
                             type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
+                            type: string
                         required:
                         - kmsKeyName
                         type: object
@@ -270,6 +274,10 @@ spec:
                               will be used to protect destination BigQuery table.
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
+                            type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
                             type: string
                         required:
                         - kmsKeyName
@@ -510,6 +518,10 @@ spec:
                               will be used to protect destination BigQuery table.
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
+                            type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
                             type: string
                         required:
                         - kmsKeyName
@@ -767,6 +779,10 @@ spec:
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
                             type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
+                            type: string
                         required:
                         - kmsKeyName
                         type: object
@@ -957,6 +973,10 @@ spec:
                               will be used to protect destination BigQuery table.
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
+                            type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
                             type: string
                         required:
                         - kmsKeyName
@@ -1197,6 +1217,10 @@ spec:
                               will be used to protect destination BigQuery table.
                               The BigQuery Service Account associated with your project
                               requires access to this encryption key.
+                            type: string
+                          kmsKeyVersion:
+                            description: Describes the Cloud KMS encryption key version
+                              used to protect destination BigQuery table.
                             type: string
                         required:
                         - kmsKeyName

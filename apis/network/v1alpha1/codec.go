@@ -27,15 +27,35 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()): ManagementConnectivityTestSpecDestinationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()):                                                 ManagementConnectivityTestSpecDestinationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):                                                      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1()):                                                        ServicesEdgeCacheOriginSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecLogConfig{}).Type1()):                                                     ServicesEdgeCacheServiceSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRouting{}).Type1()):                                                       ServicesEdgeCacheServiceSpecRoutingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}).Type1()):                       ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}).Type1()):                        ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}).Type1()):               ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}).Type1()): ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}).Type1()):              ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}).Type1()):              ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}).Type1()):                        ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()): ManagementConnectivityTestSpecDestinationCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()):                                                 ManagementConnectivityTestSpecDestinationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):                                                      ManagementConnectivityTestSpecSourceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1()):                                                        ServicesEdgeCacheOriginSpecTimeoutCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecLogConfig{}).Type1()):                                                     ServicesEdgeCacheServiceSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRouting{}).Type1()):                                                       ServicesEdgeCacheServiceSpecRoutingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}).Type1()):                       ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}).Type1()):                        ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}).Type1()):               ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}).Type1()): ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}).Type1()):              ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}).Type1()):              ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}).Type1()):                        ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec{},
 	}
 }
 
@@ -206,5 +226,795 @@ func (ManagementConnectivityTestSpecSourceCodec) Decode(ptr unsafe.Pointer, iter
 		}
 	default:
 		iter.ReportError("decode ManagementConnectivityTestSpecSource", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheOriginSpecTimeoutCodec struct {
+}
+
+func (ServicesEdgeCacheOriginSpecTimeoutCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheOriginSpecTimeout)(ptr) == nil
+}
+
+func (ServicesEdgeCacheOriginSpecTimeoutCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheOriginSpecTimeout)(ptr)
+	var objs []ServicesEdgeCacheOriginSpecTimeout
+	if obj != nil {
+		objs = []ServicesEdgeCacheOriginSpecTimeout{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheOriginSpecTimeoutCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = ServicesEdgeCacheOriginSpecTimeout{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheOriginSpecTimeout
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = ServicesEdgeCacheOriginSpecTimeout{}
+			}
+		} else {
+			*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = ServicesEdgeCacheOriginSpecTimeout{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheOriginSpecTimeout
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheOriginSpecTimeout)(ptr) = ServicesEdgeCacheOriginSpecTimeout{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheOriginSpecTimeout", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecLogConfigCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecLogConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecLogConfig)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecLogConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecLogConfig)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecLogConfig
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecLogConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecLogConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecLogConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = ServicesEdgeCacheServiceSpecLogConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecLogConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecLogConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = ServicesEdgeCacheServiceSpecLogConfig{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = ServicesEdgeCacheServiceSpecLogConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecLogConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecLogConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecLogConfig)(ptr) = ServicesEdgeCacheServiceSpecLogConfig{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecLogConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRouting)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRouting)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRouting
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRouting{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRouting{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = ServicesEdgeCacheServiceSpecRouting{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRouting
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRouting{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = ServicesEdgeCacheServiceSpecRouting{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = ServicesEdgeCacheServiceSpecRouting{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRouting
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRouting{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRouting)(ptr) = ServicesEdgeCacheServiceSpecRouting{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRouting", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderActionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleHeaderAction", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteAction", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionCorsPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewriteCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleRouteActionUrlRewrite", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec struct {
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) == nil
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr)
+	var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect
+	if obj != nil {
+		objs = []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirectCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = objs[0]
+			} else {
+				*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}
+			}
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = obj
+		} else {
+			*(*ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect)(ptr) = ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect{}
+		}
+	default:
+		iter.ReportError("decode ServicesEdgeCacheServiceSpecRoutingPathMatcherRouteRuleUrlRedirect", "unexpected JSON type")
 	}
 }
