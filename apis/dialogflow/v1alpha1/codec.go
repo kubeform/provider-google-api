@@ -27,15 +27,45 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CxAgentSpecSpeechToTextSettings{}).Type1()):  CxAgentSpecSpeechToTextSettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(FulfillmentSpecGenericWebService{}).Type1()): FulfillmentSpecGenericWebServiceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxAgentSpecSpeechToTextSettings{}).Type1()):                                          CxAgentSpecSpeechToTextSettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillment{}).Type1()):                                CxFlowSpecEventHandlersTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1()):                    CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecNluSettings{}).Type1()):                                                    CxFlowSpecNluSettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillment{}).Type1()):                             CxFlowSpecTransitionRoutesTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1()):                 CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillment{}).Type1()):                                               CxPageSpecEntryFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillmentMessagesText{}).Type1()):                                   CxPageSpecEntryFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillment{}).Type1()):                                CxPageSpecEventHandlersTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1()):                    CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecForm{}).Type1()):                                                           CxPageSpecFormCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehavior{}).Type1()):                                     CxPageSpecFormParametersFillBehaviorCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}).Type1()):             CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}).Type1()): CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillment{}).Type1()):                             CxPageSpecTransitionRoutesTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1()):                 CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FulfillmentSpecGenericWebService{}).Type1()):                                         FulfillmentSpecGenericWebServiceCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(CxAgentSpecSpeechToTextSettings{}).Type1()):  CxAgentSpecSpeechToTextSettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(FulfillmentSpecGenericWebService{}).Type1()): FulfillmentSpecGenericWebServiceCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxAgentSpecSpeechToTextSettings{}).Type1()):                                          CxAgentSpecSpeechToTextSettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillment{}).Type1()):                                CxFlowSpecEventHandlersTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1()):                    CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecNluSettings{}).Type1()):                                                    CxFlowSpecNluSettingsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillment{}).Type1()):                             CxFlowSpecTransitionRoutesTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1()):                 CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillment{}).Type1()):                                               CxPageSpecEntryFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillmentMessagesText{}).Type1()):                                   CxPageSpecEntryFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillment{}).Type1()):                                CxPageSpecEventHandlersTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1()):                    CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecForm{}).Type1()):                                                           CxPageSpecFormCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehavior{}).Type1()):                                     CxPageSpecFormParametersFillBehaviorCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}).Type1()):             CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}).Type1()): CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillment{}).Type1()):                             CxPageSpecTransitionRoutesTriggerFulfillmentCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1()):                 CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FulfillmentSpecGenericWebService{}).Type1()):                                         FulfillmentSpecGenericWebServiceCodec{},
 	}
 }
 
@@ -127,6 +157,1191 @@ func (CxAgentSpecSpeechToTextSettingsCodec) Decode(ptr unsafe.Pointer, iter *jso
 		}
 	default:
 		iter.ReportError("decode CxAgentSpecSpeechToTextSettings", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxFlowSpecEventHandlersTriggerFulfillmentCodec struct {
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) == nil
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxFlowSpecEventHandlersTriggerFulfillment)(ptr)
+	var objs []CxFlowSpecEventHandlersTriggerFulfillment
+	if obj != nil {
+		objs = []CxFlowSpecEventHandlersTriggerFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = CxFlowSpecEventHandlersTriggerFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxFlowSpecEventHandlersTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = CxFlowSpecEventHandlersTriggerFulfillment{}
+			}
+		} else {
+			*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = CxFlowSpecEventHandlersTriggerFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxFlowSpecEventHandlersTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = obj
+		} else {
+			*(*CxFlowSpecEventHandlersTriggerFulfillment)(ptr) = CxFlowSpecEventHandlersTriggerFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxFlowSpecEventHandlersTriggerFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec struct {
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr)
+	var objs []CxFlowSpecEventHandlersTriggerFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxFlowSpecEventHandlersTriggerFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxFlowSpecEventHandlersTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxFlowSpecEventHandlersTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxFlowSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecEventHandlersTriggerFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxFlowSpecEventHandlersTriggerFulfillmentMessagesText", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxFlowSpecNluSettingsCodec struct {
+}
+
+func (CxFlowSpecNluSettingsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxFlowSpecNluSettings)(ptr) == nil
+}
+
+func (CxFlowSpecNluSettingsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxFlowSpecNluSettings)(ptr)
+	var objs []CxFlowSpecNluSettings
+	if obj != nil {
+		objs = []CxFlowSpecNluSettings{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecNluSettings{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxFlowSpecNluSettingsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxFlowSpecNluSettings)(ptr) = CxFlowSpecNluSettings{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxFlowSpecNluSettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecNluSettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxFlowSpecNluSettings)(ptr) = objs[0]
+			} else {
+				*(*CxFlowSpecNluSettings)(ptr) = CxFlowSpecNluSettings{}
+			}
+		} else {
+			*(*CxFlowSpecNluSettings)(ptr) = CxFlowSpecNluSettings{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxFlowSpecNluSettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecNluSettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxFlowSpecNluSettings)(ptr) = obj
+		} else {
+			*(*CxFlowSpecNluSettings)(ptr) = CxFlowSpecNluSettings{}
+		}
+	default:
+		iter.ReportError("decode CxFlowSpecNluSettings", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxFlowSpecTransitionRoutesTriggerFulfillmentCodec struct {
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) == nil
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr)
+	var objs []CxFlowSpecTransitionRoutesTriggerFulfillment
+	if obj != nil {
+		objs = []CxFlowSpecTransitionRoutesTriggerFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxFlowSpecTransitionRoutesTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillment{}
+			}
+		} else {
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxFlowSpecTransitionRoutesTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = obj
+		} else {
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillment)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxFlowSpecTransitionRoutesTriggerFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec struct {
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr)
+	var objs []CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxFlowSpecTransitionRoutesTriggerFulfillmentMessagesText", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecEntryFulfillmentCodec struct {
+}
+
+func (CxPageSpecEntryFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecEntryFulfillment)(ptr) == nil
+}
+
+func (CxPageSpecEntryFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecEntryFulfillment)(ptr)
+	var objs []CxPageSpecEntryFulfillment
+	if obj != nil {
+		objs = []CxPageSpecEntryFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecEntryFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecEntryFulfillment)(ptr) = CxPageSpecEntryFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecEntryFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecEntryFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecEntryFulfillment)(ptr) = CxPageSpecEntryFulfillment{}
+			}
+		} else {
+			*(*CxPageSpecEntryFulfillment)(ptr) = CxPageSpecEntryFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecEntryFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecEntryFulfillment)(ptr) = obj
+		} else {
+			*(*CxPageSpecEntryFulfillment)(ptr) = CxPageSpecEntryFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecEntryFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecEntryFulfillmentMessagesTextCodec struct {
+}
+
+func (CxPageSpecEntryFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecEntryFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxPageSpecEntryFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecEntryFulfillmentMessagesText)(ptr)
+	var objs []CxPageSpecEntryFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxPageSpecEntryFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecEntryFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = CxPageSpecEntryFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecEntryFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = CxPageSpecEntryFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = CxPageSpecEntryFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecEntryFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEntryFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxPageSpecEntryFulfillmentMessagesText)(ptr) = CxPageSpecEntryFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecEntryFulfillmentMessagesText", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecEventHandlersTriggerFulfillmentCodec struct {
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecEventHandlersTriggerFulfillment)(ptr) == nil
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecEventHandlersTriggerFulfillment)(ptr)
+	var objs []CxPageSpecEventHandlersTriggerFulfillment
+	if obj != nil {
+		objs = []CxPageSpecEventHandlersTriggerFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = CxPageSpecEventHandlersTriggerFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecEventHandlersTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = CxPageSpecEventHandlersTriggerFulfillment{}
+			}
+		} else {
+			*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = CxPageSpecEventHandlersTriggerFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecEventHandlersTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = obj
+		} else {
+			*(*CxPageSpecEventHandlersTriggerFulfillment)(ptr) = CxPageSpecEventHandlersTriggerFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecEventHandlersTriggerFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec struct {
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr)
+	var objs []CxPageSpecEventHandlersTriggerFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxPageSpecEventHandlersTriggerFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecEventHandlersTriggerFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecEventHandlersTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecEventHandlersTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxPageSpecEventHandlersTriggerFulfillmentMessagesText)(ptr) = CxPageSpecEventHandlersTriggerFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecEventHandlersTriggerFulfillmentMessagesText", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecFormCodec struct {
+}
+
+func (CxPageSpecFormCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecForm)(ptr) == nil
+}
+
+func (CxPageSpecFormCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecForm)(ptr)
+	var objs []CxPageSpecForm
+	if obj != nil {
+		objs = []CxPageSpecForm{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecForm{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecFormCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecForm)(ptr) = CxPageSpecForm{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecForm
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecForm{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecForm)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecForm)(ptr) = CxPageSpecForm{}
+			}
+		} else {
+			*(*CxPageSpecForm)(ptr) = CxPageSpecForm{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecForm
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecForm{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecForm)(ptr) = obj
+		} else {
+			*(*CxPageSpecForm)(ptr) = CxPageSpecForm{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecForm", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecFormParametersFillBehaviorCodec struct {
+}
+
+func (CxPageSpecFormParametersFillBehaviorCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecFormParametersFillBehavior)(ptr) == nil
+}
+
+func (CxPageSpecFormParametersFillBehaviorCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecFormParametersFillBehavior)(ptr)
+	var objs []CxPageSpecFormParametersFillBehavior
+	if obj != nil {
+		objs = []CxPageSpecFormParametersFillBehavior{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehavior{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecFormParametersFillBehaviorCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecFormParametersFillBehavior)(ptr) = CxPageSpecFormParametersFillBehavior{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecFormParametersFillBehavior
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehavior{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecFormParametersFillBehavior)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecFormParametersFillBehavior)(ptr) = CxPageSpecFormParametersFillBehavior{}
+			}
+		} else {
+			*(*CxPageSpecFormParametersFillBehavior)(ptr) = CxPageSpecFormParametersFillBehavior{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecFormParametersFillBehavior
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehavior{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecFormParametersFillBehavior)(ptr) = obj
+		} else {
+			*(*CxPageSpecFormParametersFillBehavior)(ptr) = CxPageSpecFormParametersFillBehavior{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecFormParametersFillBehavior", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec struct {
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) == nil
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr)
+	var objs []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment
+	if obj != nil {
+		objs = []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}
+			}
+		} else {
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = obj
+		} else {
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecFormParametersFillBehaviorInitialPromptFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec struct {
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr)
+	var objs []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText)(ptr) = CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecFormParametersFillBehaviorInitialPromptFulfillmentMessagesText", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecTransitionRoutesTriggerFulfillmentCodec struct {
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) == nil
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr)
+	var objs []CxPageSpecTransitionRoutesTriggerFulfillment
+	if obj != nil {
+		objs = []CxPageSpecTransitionRoutesTriggerFulfillment{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillment{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecTransitionRoutesTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillment{}
+			}
+		} else {
+			*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillment{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecTransitionRoutesTriggerFulfillment
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillment{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = obj
+		} else {
+			*(*CxPageSpecTransitionRoutesTriggerFulfillment)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillment{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecTransitionRoutesTriggerFulfillment", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec struct {
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) == nil
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr)
+	var objs []CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText
+	if obj != nil {
+		objs = []CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (CxPageSpecTransitionRoutesTriggerFulfillmentMessagesTextCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = objs[0]
+			} else {
+				*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+			}
+		} else {
+			*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = obj
+		} else {
+			*(*CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText)(ptr) = CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText{}
+		}
+	default:
+		iter.ReportError("decode CxPageSpecTransitionRoutesTriggerFulfillmentMessagesText", "unexpected JSON type")
 	}
 }
 

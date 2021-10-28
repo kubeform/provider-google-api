@@ -56,6 +56,12 @@ type LiteTopicSpecPartitionConfig struct {
 	Count *int64 `json:"count" tf:"count"`
 }
 
+type LiteTopicSpecReservationConfig struct {
+	// The Reservation to use for this topic's throughput capacity.
+	// +optional
+	ThroughputReservation *string `json:"throughputReservation,omitempty" tf:"throughput_reservation"`
+}
+
 type LiteTopicSpecRetentionConfig struct {
 	// The provisioned storage, in bytes, per partition. If the number of bytes stored
 	// in any of the topic's partitions grows beyond this value, older messages will be
@@ -96,6 +102,9 @@ type LiteTopicSpecResource struct {
 	// The region of the pubsub lite topic.
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
+	// The settings for this topic's Reservation usage.
+	// +optional
+	ReservationConfig *LiteTopicSpecReservationConfig `json:"reservationConfig,omitempty" tf:"reservation_config"`
 	// The settings for a topic's message retention.
 	// +optional
 	RetentionConfig *LiteTopicSpecRetentionConfig `json:"retentionConfig,omitempty" tf:"retention_config"`

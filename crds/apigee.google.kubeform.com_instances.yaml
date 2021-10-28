@@ -89,7 +89,7 @@ spec:
                     type: string
                   peeringCIDRRange:
                     description: 'The size of the CIDR block range that will be reserved
-                      by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_23"]'
+                      by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_22"]'
                     type: string
                   port:
                     description: Output only. Port number of the exposed Apigee endpoint.
@@ -171,7 +171,7 @@ spec:
                     type: string
                   peeringCIDRRange:
                     description: 'The size of the CIDR block range that will be reserved
-                      by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_23"]'
+                      by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_22"]'
                     type: string
                   port:
                     description: Output only. Port number of the exposed Apigee endpoint.

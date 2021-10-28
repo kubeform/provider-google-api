@@ -29,6 +29,10 @@ type FakePubsubV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakePubsubV1alpha1) LiteReservations(namespace string) v1alpha1.LiteReservationInterface {
+	return &FakeLiteReservations{c, namespace}
+}
+
 func (c *FakePubsubV1alpha1) LiteSubscriptions(namespace string) v1alpha1.LiteSubscriptionInterface {
 	return &FakeLiteSubscriptions{c, namespace}
 }

@@ -44,6 +44,9 @@ type Table struct {
 type TableSpecEncryptionConfiguration struct {
 	// The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the google_bigquery_default_service_account datasource and the google_kms_crypto_key_iam_binding resource.
 	KmsKeyName *string `json:"kmsKeyName" tf:"kms_key_name"`
+	// The self link or full name of the kms key version used to encrypt this table.
+	// +optional
+	KmsKeyVersion *string `json:"kmsKeyVersion,omitempty" tf:"kms_key_version"`
 }
 
 type TableSpecExternalDataConfigurationCsvOptions struct {

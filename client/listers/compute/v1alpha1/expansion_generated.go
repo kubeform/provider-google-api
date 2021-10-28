@@ -130,6 +130,30 @@ type FirewallListerExpansion interface{}
 // FirewallNamespaceLister.
 type FirewallNamespaceListerExpansion interface{}
 
+// FirewallPolicyListerExpansion allows custom methods to be added to
+// FirewallPolicyLister.
+type FirewallPolicyListerExpansion interface{}
+
+// FirewallPolicyNamespaceListerExpansion allows custom methods to be added to
+// FirewallPolicyNamespaceLister.
+type FirewallPolicyNamespaceListerExpansion interface{}
+
+// FirewallPolicyAssociationListerExpansion allows custom methods to be added to
+// FirewallPolicyAssociationLister.
+type FirewallPolicyAssociationListerExpansion interface{}
+
+// FirewallPolicyAssociationNamespaceListerExpansion allows custom methods to be added to
+// FirewallPolicyAssociationNamespaceLister.
+type FirewallPolicyAssociationNamespaceListerExpansion interface{}
+
+// FirewallPolicyRuleListerExpansion allows custom methods to be added to
+// FirewallPolicyRuleLister.
+type FirewallPolicyRuleListerExpansion interface{}
+
+// FirewallPolicyRuleNamespaceListerExpansion allows custom methods to be added to
+// FirewallPolicyRuleNamespaceLister.
+type FirewallPolicyRuleNamespaceListerExpansion interface{}
+
 // ForwardingRuleListerExpansion allows custom methods to be added to
 // ForwardingRuleLister.
 type ForwardingRuleListerExpansion interface{}
@@ -601,6 +625,14 @@ type SecurityPolicyListerExpansion interface{}
 // SecurityPolicyNamespaceListerExpansion allows custom methods to be added to
 // SecurityPolicyNamespaceLister.
 type SecurityPolicyNamespaceListerExpansion interface{}
+
+// ServiceAttachmentListerExpansion allows custom methods to be added to
+// ServiceAttachmentLister.
+type ServiceAttachmentListerExpansion interface{}
+
+// ServiceAttachmentNamespaceListerExpansion allows custom methods to be added to
+// ServiceAttachmentNamespaceLister.
+type ServiceAttachmentNamespaceListerExpansion interface{}
 
 // SharedVpcHostProjectListerExpansion allows custom methods to be added to
 // SharedVpcHostProjectLister.

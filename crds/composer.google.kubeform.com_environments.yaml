@@ -83,7 +83,8 @@ spec:
                           diskSizeGb:
                             description: The disk size in GB used for node VMs. Minimum
                               size is 20GB. If unspecified, defaults to 100GB. Cannot
-                              be updated.
+                              be updated. This field is supported for Cloud Composer
+                              environments in versions composer-1.*.*-airflow-*.*.*.
                             format: int64
                             type: integer
                           ipAllocationPolicy:
@@ -92,47 +93,56 @@ spec:
                             properties:
                               clusterIpv4CIDRBlock:
                                 description: The IP address range used to allocate
-                                  IP addresses to pods in the cluster. Set to blank
-                                  to have GKE choose a range with the default size.
-                                  Set to /netmask (e.g. /14) to have GKE choose a
-                                  range with a specific netmask. Set to a CIDR notation
-                                  (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-                                  (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
-                                  to pick a specific range to use. Specify either
-                                  cluster_secondary_range_name or cluster_ipv4_cidr_block
-                                  but not both.
+                                  IP addresses to pods in the cluster. For Cloud Composer
+                                  environments in versions composer-1.*.*-airflow-*.*.*,
+                                  this field is applicable only when use_ip_aliases
+                                  is true. Set to blank to have GKE choose a range
+                                  with the default size. Set to /netmask (e.g. /14)
+                                  to have GKE choose a range with a specific netmask.
+                                  Set to a CIDR notation (e.g. 10.96.0.0/14) from
+                                  the RFC-1918 private networks (e.g. 10.0.0.0/8,
+                                  172.16.0.0/12, 192.168.0.0/16) to pick a specific
+                                  range to use. Specify either cluster_secondary_range_name
+                                  or cluster_ipv4_cidr_block but not both.
                                 type: string
                               clusterSecondaryRangeName:
                                 description: The name of the cluster's secondary range
                                   used to allocate IP addresses to pods. Specify either
                                   cluster_secondary_range_name or cluster_ipv4_cidr_block
-                                  but not both. This field is applicable only when
-                                  use_ip_aliases is true.
+                                  but not both. For Cloud Composer environments in
+                                  versions composer-1.*.*-airflow-*.*.*, this field
+                                  is applicable only when use_ip_aliases is true.
                                 type: string
                               servicesIpv4CIDRBlock:
                                 description: The IP address range used to allocate
-                                  IP addresses in this cluster. Set to blank to have
-                                  GKE choose a range with the default size. Set to
-                                  /netmask (e.g. /14) to have GKE choose a range with
-                                  a specific netmask. Set to a CIDR notation (e.g.
-                                  10.96.0.0/14) from the RFC-1918 private networks
-                                  (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
-                                  to pick a specific range to use. Specify either
-                                  services_secondary_range_name or services_ipv4_cidr_block
-                                  but not both.
+                                  IP addresses in this cluster. For Cloud Composer
+                                  environments in versions composer-1.*.*-airflow-*.*.*,
+                                  this field is applicable only when use_ip_aliases
+                                  is true. Set to blank to have GKE choose a range
+                                  with the default size. Set to /netmask (e.g. /14)
+                                  to have GKE choose a range with a specific netmask.
+                                  Set to a CIDR notation (e.g. 10.96.0.0/14) from
+                                  the RFC-1918 private networks (e.g. 10.0.0.0/8,
+                                  172.16.0.0/12, 192.168.0.0/16) to pick a specific
+                                  range to use. Specify either services_secondary_range_name
+                                  or services_ipv4_cidr_block but not both.
                                 type: string
                               servicesSecondaryRangeName:
                                 description: The name of the services' secondary range
                                   used to allocate IP addresses to the cluster. Specify
                                   either services_secondary_range_name or services_ipv4_cidr_block
-                                  but not both. This field is applicable only when
-                                  use_ip_aliases is true.
+                                  but not both. For Cloud Composer environments in
+                                  versions composer-1.*.*-airflow-*.*.*, this field
+                                  is applicable only when use_ip_aliases is true.
                                 type: string
                               useIPAliases:
                                 description: Whether or not to enable Alias IPs in
                                   the GKE cluster. If true, a VPC-native cluster is
                                   created. Defaults to true if the ip_allocation_policy
-                                  block is present in config.
+                                  block is present in config. This field is only supported
+                                  for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                                  Environments in newer versions always use VPC-native
+                                  GKE clusters.
                                 type: boolean
                             required:
                             - useIPAliases
@@ -142,7 +152,8 @@ spec:
                               cluster instances, specified as a name or relative resource
                               name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}".
                               Must belong to the enclosing environment''s project
-                              and region/zone.'
+                              and region/zone. This field is supported for Cloud Composer
+                              environments in versions composer-1.*.*-airflow-*.*.*.'
                             type: string
                           network:
                             description: 'The Compute Engine machine type used for
@@ -158,6 +169,8 @@ spec:
                             description: The set of Google API scopes to be made available
                               on all node VMs. Cannot be updated. If empty, defaults
                               to ["https://www.googleapis.com/auth/cloud-platform"].
+                              This field is supported for Cloud Composer environments
+                              in versions composer-1.*.*-airflow-*.*.*.
                             items:
                               type: string
                             type: array
@@ -182,7 +195,9 @@ spec:
                             description: The list of instance tags applied to all
                               node VMs. Tags are used to identify valid sources or
                               targets for network firewalls. Each tag within the list
-                              must comply with RFC1035. Cannot be updated.
+                              must comply with RFC1035. Cannot be updated. This field
+                              is supported for Cloud Composer environments in versions
+                              composer-1.*.*-airflow-*.*.*.
                             items:
                               type: string
                             type: array
@@ -191,14 +206,15 @@ spec:
                               the VMs running the Apache Airflow software, specified
                               as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}").
                               Must belong to the enclosing environment's project and
-                              region.
+                              region. This field is supported for Cloud Composer environments
+                              in versions composer-1.*.*-airflow-*.*.*.
                             type: string
-                        required:
-                        - zone
                         type: object
                       nodeCount:
                         description: The number of nodes in the Kubernetes Engine
-                          cluster that will be used to run this environment.
+                          cluster that will be used to run this environment. This
+                          field is supported for Cloud Composer environments in versions
+                          composer-1.*.*-airflow-*.*.*.
                         format: int64
                         type: integer
                       privateEnvironmentConfig:
@@ -212,7 +228,9 @@ spec:
                             type: string
                           enablePrivateEndpoint:
                             description: If true, access to the public endpoint of
-                              the GKE cluster is denied.
+                              the GKE cluster is denied. If this field is set to true,
+                              ip_allocation_policy.use_ip_aliases must be set to true
+                              for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
                             type: boolean
                           masterIpv4CIDRBlock:
                             description: The IP range in CIDR notation to use for
@@ -226,7 +244,8 @@ spec:
                           webServerIpv4CIDRBlock:
                             description: The CIDR block from which IP range for web
                               server will be reserved. Needs to be disjoint from master_ipv4_cidr_block
-                              and cloud_sql_ipv4_cidr_block.
+                              and cloud_sql_ipv4_cidr_block. This field is supported
+                              for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
                             type: string
                         type: object
                       softwareConfig:
@@ -253,7 +272,7 @@ spec:
                             additionalProperties:
                               type: string
                             description: 'Additional environment variables to provide
-                              to the Apache Airflow scheduler, worker, and webserver
+                              to the Apache Airflow schedulerf, worker, and webserver
                               processes. Environment variable names must match the
                               regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot
                               specify Apache Airflow software configuration overrides
@@ -289,8 +308,17 @@ spec:
                             description: The major version of Python used to run the
                               Apache Airflow scheduler, worker, and webserver processes.
                               Can be set to '2' or '3'. If not specified, the default
-                              is '2'. Cannot be updated.
+                              is '2'. Cannot be updated. This field is supported for
+                              Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                              Environments in newer versions always use Python major
+                              version 3.
                             type: string
+                          schedulerCount:
+                            description: The number of schedulers for Airflow. This
+                              field is supported for Cloud Composer environments in
+                              versions composer-1.*.*-airflow-2.*.*.
+                            format: int64
+                            type: integer
                         type: object
                     type: object
                   id:
@@ -387,7 +415,8 @@ spec:
                           diskSizeGb:
                             description: The disk size in GB used for node VMs. Minimum
                               size is 20GB. If unspecified, defaults to 100GB. Cannot
-                              be updated.
+                              be updated. This field is supported for Cloud Composer
+                              environments in versions composer-1.*.*-airflow-*.*.*.
                             format: int64
                             type: integer
                           ipAllocationPolicy:
@@ -396,47 +425,56 @@ spec:
                             properties:
                               clusterIpv4CIDRBlock:
                                 description: The IP address range used to allocate
-                                  IP addresses to pods in the cluster. Set to blank
-                                  to have GKE choose a range with the default size.
-                                  Set to /netmask (e.g. /14) to have GKE choose a
-                                  range with a specific netmask. Set to a CIDR notation
-                                  (e.g. 10.96.0.0/14) from the RFC-1918 private networks
-                                  (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
-                                  to pick a specific range to use. Specify either
-                                  cluster_secondary_range_name or cluster_ipv4_cidr_block
-                                  but not both.
+                                  IP addresses to pods in the cluster. For Cloud Composer
+                                  environments in versions composer-1.*.*-airflow-*.*.*,
+                                  this field is applicable only when use_ip_aliases
+                                  is true. Set to blank to have GKE choose a range
+                                  with the default size. Set to /netmask (e.g. /14)
+                                  to have GKE choose a range with a specific netmask.
+                                  Set to a CIDR notation (e.g. 10.96.0.0/14) from
+                                  the RFC-1918 private networks (e.g. 10.0.0.0/8,
+                                  172.16.0.0/12, 192.168.0.0/16) to pick a specific
+                                  range to use. Specify either cluster_secondary_range_name
+                                  or cluster_ipv4_cidr_block but not both.
                                 type: string
                               clusterSecondaryRangeName:
                                 description: The name of the cluster's secondary range
                                   used to allocate IP addresses to pods. Specify either
                                   cluster_secondary_range_name or cluster_ipv4_cidr_block
-                                  but not both. This field is applicable only when
-                                  use_ip_aliases is true.
+                                  but not both. For Cloud Composer environments in
+                                  versions composer-1.*.*-airflow-*.*.*, this field
+                                  is applicable only when use_ip_aliases is true.
                                 type: string
                               servicesIpv4CIDRBlock:
                                 description: The IP address range used to allocate
-                                  IP addresses in this cluster. Set to blank to have
-                                  GKE choose a range with the default size. Set to
-                                  /netmask (e.g. /14) to have GKE choose a range with
-                                  a specific netmask. Set to a CIDR notation (e.g.
-                                  10.96.0.0/14) from the RFC-1918 private networks
-                                  (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
-                                  to pick a specific range to use. Specify either
-                                  services_secondary_range_name or services_ipv4_cidr_block
-                                  but not both.
+                                  IP addresses in this cluster. For Cloud Composer
+                                  environments in versions composer-1.*.*-airflow-*.*.*,
+                                  this field is applicable only when use_ip_aliases
+                                  is true. Set to blank to have GKE choose a range
+                                  with the default size. Set to /netmask (e.g. /14)
+                                  to have GKE choose a range with a specific netmask.
+                                  Set to a CIDR notation (e.g. 10.96.0.0/14) from
+                                  the RFC-1918 private networks (e.g. 10.0.0.0/8,
+                                  172.16.0.0/12, 192.168.0.0/16) to pick a specific
+                                  range to use. Specify either services_secondary_range_name
+                                  or services_ipv4_cidr_block but not both.
                                 type: string
                               servicesSecondaryRangeName:
                                 description: The name of the services' secondary range
                                   used to allocate IP addresses to the cluster. Specify
                                   either services_secondary_range_name or services_ipv4_cidr_block
-                                  but not both. This field is applicable only when
-                                  use_ip_aliases is true.
+                                  but not both. For Cloud Composer environments in
+                                  versions composer-1.*.*-airflow-*.*.*, this field
+                                  is applicable only when use_ip_aliases is true.
                                 type: string
                               useIPAliases:
                                 description: Whether or not to enable Alias IPs in
                                   the GKE cluster. If true, a VPC-native cluster is
                                   created. Defaults to true if the ip_allocation_policy
-                                  block is present in config.
+                                  block is present in config. This field is only supported
+                                  for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                                  Environments in newer versions always use VPC-native
+                                  GKE clusters.
                                 type: boolean
                             required:
                             - useIPAliases
@@ -446,7 +484,8 @@ spec:
                               cluster instances, specified as a name or relative resource
                               name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}".
                               Must belong to the enclosing environment''s project
-                              and region/zone.'
+                              and region/zone. This field is supported for Cloud Composer
+                              environments in versions composer-1.*.*-airflow-*.*.*.'
                             type: string
                           network:
                             description: 'The Compute Engine machine type used for
@@ -462,6 +501,8 @@ spec:
                             description: The set of Google API scopes to be made available
                               on all node VMs. Cannot be updated. If empty, defaults
                               to ["https://www.googleapis.com/auth/cloud-platform"].
+                              This field is supported for Cloud Composer environments
+                              in versions composer-1.*.*-airflow-*.*.*.
                             items:
                               type: string
                             type: array
@@ -486,7 +527,9 @@ spec:
                             description: The list of instance tags applied to all
                               node VMs. Tags are used to identify valid sources or
                               targets for network firewalls. Each tag within the list
-                              must comply with RFC1035. Cannot be updated.
+                              must comply with RFC1035. Cannot be updated. This field
+                              is supported for Cloud Composer environments in versions
+                              composer-1.*.*-airflow-*.*.*.
                             items:
                               type: string
                             type: array
@@ -495,14 +538,15 @@ spec:
                               the VMs running the Apache Airflow software, specified
                               as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}").
                               Must belong to the enclosing environment's project and
-                              region.
+                              region. This field is supported for Cloud Composer environments
+                              in versions composer-1.*.*-airflow-*.*.*.
                             type: string
-                        required:
-                        - zone
                         type: object
                       nodeCount:
                         description: The number of nodes in the Kubernetes Engine
-                          cluster that will be used to run this environment.
+                          cluster that will be used to run this environment. This
+                          field is supported for Cloud Composer environments in versions
+                          composer-1.*.*-airflow-*.*.*.
                         format: int64
                         type: integer
                       privateEnvironmentConfig:
@@ -516,7 +560,9 @@ spec:
                             type: string
                           enablePrivateEndpoint:
                             description: If true, access to the public endpoint of
-                              the GKE cluster is denied.
+                              the GKE cluster is denied. If this field is set to true,
+                              ip_allocation_policy.use_ip_aliases must be set to true
+                              for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
                             type: boolean
                           masterIpv4CIDRBlock:
                             description: The IP range in CIDR notation to use for
@@ -530,7 +576,8 @@ spec:
                           webServerIpv4CIDRBlock:
                             description: The CIDR block from which IP range for web
                               server will be reserved. Needs to be disjoint from master_ipv4_cidr_block
-                              and cloud_sql_ipv4_cidr_block.
+                              and cloud_sql_ipv4_cidr_block. This field is supported
+                              for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
                             type: string
                         type: object
                       softwareConfig:
@@ -557,7 +604,7 @@ spec:
                             additionalProperties:
                               type: string
                             description: 'Additional environment variables to provide
-                              to the Apache Airflow scheduler, worker, and webserver
+                              to the Apache Airflow schedulerf, worker, and webserver
                               processes. Environment variable names must match the
                               regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot
                               specify Apache Airflow software configuration overrides
@@ -593,8 +640,17 @@ spec:
                             description: The major version of Python used to run the
                               Apache Airflow scheduler, worker, and webserver processes.
                               Can be set to '2' or '3'. If not specified, the default
-                              is '2'. Cannot be updated.
+                              is '2'. Cannot be updated. This field is supported for
+                              Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                              Environments in newer versions always use Python major
+                              version 3.
                             type: string
+                          schedulerCount:
+                            description: The number of schedulers for Airflow. This
+                              field is supported for Cloud Composer environments in
+                              versions composer-1.*.*-airflow-2.*.*.
+                            format: int64
+                            type: integer
                         type: object
                     type: object
                   id:

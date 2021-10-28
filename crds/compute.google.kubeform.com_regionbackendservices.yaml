@@ -432,6 +432,15 @@ spec:
                     items:
                       type: string
                     type: array
+                  iap:
+                    description: Settings for enabling Cloud Identity Aware Proxy
+                    properties:
+                      oauth2ClientID:
+                        description: OAuth2 Client ID for IAP
+                        type: string
+                    required:
+                    - oauth2ClientID
+                    type: object
                   id:
                     type: string
                   loadBalancingScheme:
@@ -634,7 +643,7 @@ spec:
                       with backends. The default is HTTP. **NOTE**: HTTP2 is only
                       valid for beta HTTP/2 load balancer types and may result in
                       errors if used with the GA API. Possible values: ["HTTP", "HTTPS",
-                      "HTTP2", "SSL", "TCP", "UDP", "GRPC"]'
+                      "HTTP2", "SSL", "TCP", "UDP", "GRPC", "UNSPECIFIED"]'
                     type: string
                   region:
                     description: The Region in which the created backend service should
@@ -646,7 +655,8 @@ spec:
                     description: 'Type of session affinity to use. The default is
                       NONE. Session affinity is not applicable if the protocol is
                       UDP. Possible values: ["NONE", "CLIENT_IP", "CLIENT_IP_PORT_PROTO",
-                      "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE"]'
+                      "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE",
+                      "CLIENT_IP_NO_DESTINATION"]'
                     type: string
                   timeoutSec:
                     description: How many seconds to wait for the backend before considering
@@ -694,6 +704,15 @@ spec:
                     type: object
                 required:
                 - name
+                type: object
+              secretRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
                 type: object
               state:
                 properties:
@@ -1072,6 +1091,15 @@ spec:
                     items:
                       type: string
                     type: array
+                  iap:
+                    description: Settings for enabling Cloud Identity Aware Proxy
+                    properties:
+                      oauth2ClientID:
+                        description: OAuth2 Client ID for IAP
+                        type: string
+                    required:
+                    - oauth2ClientID
+                    type: object
                   id:
                     type: string
                   loadBalancingScheme:
@@ -1274,7 +1302,7 @@ spec:
                       with backends. The default is HTTP. **NOTE**: HTTP2 is only
                       valid for beta HTTP/2 load balancer types and may result in
                       errors if used with the GA API. Possible values: ["HTTP", "HTTPS",
-                      "HTTP2", "SSL", "TCP", "UDP", "GRPC"]'
+                      "HTTP2", "SSL", "TCP", "UDP", "GRPC", "UNSPECIFIED"]'
                     type: string
                   region:
                     description: The Region in which the created backend service should
@@ -1286,7 +1314,8 @@ spec:
                     description: 'Type of session affinity to use. The default is
                       NONE. Session affinity is not applicable if the protocol is
                       UDP. Possible values: ["NONE", "CLIENT_IP", "CLIENT_IP_PORT_PROTO",
-                      "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE"]'
+                      "CLIENT_IP_PROTO", "GENERATED_COOKIE", "HEADER_FIELD", "HTTP_COOKIE",
+                      "CLIENT_IP_NO_DESTINATION"]'
                     type: string
                   timeoutSec:
                     description: How many seconds to wait for the backend before considering

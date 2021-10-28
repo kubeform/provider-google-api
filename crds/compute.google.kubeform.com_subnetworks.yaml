@@ -65,6 +65,10 @@ spec:
                       this property when you create the resource. This field can be
                       set only at resource creation time.
                     type: string
+                  externalIpv6Prefix:
+                    description: The range of external IPv6 addresses that are owned
+                      by this subnetwork.
+                    type: string
                   fingerprint:
                     description: Fingerprint of this resource. This field is used
                       internally during updates of this resource. Deprecated
@@ -80,6 +84,17 @@ spec:
                       this subnetwork. Provide this property when you create the subnetwork.
                       For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique
                       and non-overlapping within a network. Only IPv4 is supported.
+                    type: string
+                  ipv6AccessType:
+                    description: 'The access type of IPv6 address this subnet holds.
+                      It''s immutable and can only be specified during creation or
+                      the first time the subnet is updated into IPV4_IPV6 dual stack.
+                      If the ipv6_type is EXTERNAL then this subnet cannot enable
+                      direct path. Possible values: ["EXTERNAL"]'
+                    type: string
+                  ipv6CIDRRange:
+                    description: The range of internal IPv6 addresses that are owned
+                      by this subnetwork.
                     type: string
                   logConfig:
                     description: Denotes the logging options for the subnetwork flow
@@ -153,8 +168,24 @@ spec:
                     type: string
                   project:
                     type: string
+                  purpose:
+                    description: "The purpose of the resource. This field can be either
+                      PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
+                      set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork
+                      that is reserved for Internal HTTP(S) Load Balancing. If unspecified,
+                      the purpose defaults to PRIVATE. \n If set to INTERNAL_HTTPS_LOAD_BALANCER
+                      you must also set 'role'."
+                    type: string
                   region:
                     description: The GCP region for this subnetwork.
+                    type: string
+                  role:
+                    description: 'The role of subnetwork. Currently, this field is
+                      only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value
+                      can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one
+                      that is currently being used for Internal HTTP(S) Load Balancing.
+                      A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+                      or is currently draining. Possible values: ["ACTIVE", "BACKUP"]'
                     type: string
                   secondaryIPRange:
                     description: "An array of configurations for secondary IP ranges
@@ -187,6 +218,11 @@ spec:
                       type: object
                     type: array
                   selfLink:
+                    type: string
+                  stackType:
+                    description: 'The stack type for this subnet to identify whether
+                      the IPv6 feature is enabled or not. If not specified IPV4_ONLY
+                      will be used. Possible values: ["IPV4_ONLY", "IPV4_IPV6"]'
                     type: string
                   timeouts:
                     properties:
@@ -241,6 +277,10 @@ spec:
                       this property when you create the resource. This field can be
                       set only at resource creation time.
                     type: string
+                  externalIpv6Prefix:
+                    description: The range of external IPv6 addresses that are owned
+                      by this subnetwork.
+                    type: string
                   fingerprint:
                     description: Fingerprint of this resource. This field is used
                       internally during updates of this resource. Deprecated
@@ -256,6 +296,17 @@ spec:
                       this subnetwork. Provide this property when you create the subnetwork.
                       For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique
                       and non-overlapping within a network. Only IPv4 is supported.
+                    type: string
+                  ipv6AccessType:
+                    description: 'The access type of IPv6 address this subnet holds.
+                      It''s immutable and can only be specified during creation or
+                      the first time the subnet is updated into IPV4_IPV6 dual stack.
+                      If the ipv6_type is EXTERNAL then this subnet cannot enable
+                      direct path. Possible values: ["EXTERNAL"]'
+                    type: string
+                  ipv6CIDRRange:
+                    description: The range of internal IPv6 addresses that are owned
+                      by this subnetwork.
                     type: string
                   logConfig:
                     description: Denotes the logging options for the subnetwork flow
@@ -329,8 +380,24 @@ spec:
                     type: string
                   project:
                     type: string
+                  purpose:
+                    description: "The purpose of the resource. This field can be either
+                      PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
+                      set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork
+                      that is reserved for Internal HTTP(S) Load Balancing. If unspecified,
+                      the purpose defaults to PRIVATE. \n If set to INTERNAL_HTTPS_LOAD_BALANCER
+                      you must also set 'role'."
+                    type: string
                   region:
                     description: The GCP region for this subnetwork.
+                    type: string
+                  role:
+                    description: 'The role of subnetwork. Currently, this field is
+                      only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value
+                      can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one
+                      that is currently being used for Internal HTTP(S) Load Balancing.
+                      A BACKUP subnetwork is one that is ready to be promoted to ACTIVE
+                      or is currently draining. Possible values: ["ACTIVE", "BACKUP"]'
                     type: string
                   secondaryIPRange:
                     description: "An array of configurations for secondary IP ranges
@@ -363,6 +430,11 @@ spec:
                       type: object
                     type: array
                   selfLink:
+                    type: string
+                  stackType:
+                    description: 'The stack type for this subnet to identify whether
+                      the IPv6 feature is enabled or not. If not specified IPV4_ONLY
+                      will be used. Possible values: ["IPV4_ONLY", "IPV4_IPV6"]'
                     type: string
                   timeouts:
                     properties:

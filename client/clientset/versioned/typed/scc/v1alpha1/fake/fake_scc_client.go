@@ -29,6 +29,10 @@ type FakeSccV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeSccV1alpha1) NotificationConfigs(namespace string) v1alpha1.NotificationConfigInterface {
+	return &FakeNotificationConfigs{c, namespace}
+}
+
 func (c *FakeSccV1alpha1) Sources(namespace string) v1alpha1.SourceInterface {
 	return &FakeSources{c, namespace}
 }

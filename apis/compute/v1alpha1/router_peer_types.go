@@ -99,6 +99,12 @@ type RouterPeerSpecResource struct {
 	// length, the routes with the lowest priority value win.
 	// +optional
 	AdvertisedRoutePriority *int64 `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority"`
+	// The status of the BGP peer connection. If set to false, any active session
+	// with the peer is terminated and all associated routing information is removed.
+	// If set to true, the peer connection can be established with routing information.
+	// The default is true.
+	// +optional
+	Enable *bool `json:"enable,omitempty" tf:"enable"`
 	// Name of the interface the BGP peer is associated with.
 	Interface *string `json:"interface" tf:"interface"`
 	// IP address of the interface inside Google Cloud Platform.

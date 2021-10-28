@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// LiteReservationListerExpansion allows custom methods to be added to
+// LiteReservationLister.
+type LiteReservationListerExpansion interface{}
+
+// LiteReservationNamespaceListerExpansion allows custom methods to be added to
+// LiteReservationNamespaceLister.
+type LiteReservationNamespaceListerExpansion interface{}
+
 // LiteSubscriptionListerExpansion allows custom methods to be added to
 // LiteSubscriptionLister.
 type LiteSubscriptionListerExpansion interface{}

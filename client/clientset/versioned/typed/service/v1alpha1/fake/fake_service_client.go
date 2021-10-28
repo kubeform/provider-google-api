@@ -53,6 +53,10 @@ func (c *FakeServiceV1alpha1) NetworkingConnections(namespace string) v1alpha1.N
 	return &FakeNetworkingConnections{c, namespace}
 }
 
+func (c *FakeServiceV1alpha1) NetworkingPeeredDNSDomains(namespace string) v1alpha1.NetworkingPeeredDNSDomainInterface {
+	return &FakeNetworkingPeeredDNSDomains{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeServiceV1alpha1) RESTClient() rest.Interface {

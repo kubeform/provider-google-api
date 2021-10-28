@@ -95,6 +95,14 @@ spec:
                   region:
                     description: The region of the pubsub lite topic.
                     type: string
+                  reservationConfig:
+                    description: The settings for this topic's Reservation usage.
+                    properties:
+                      throughputReservation:
+                        description: The Reservation to use for this topic's throughput
+                          capacity.
+                        type: string
+                    type: object
                   retentionConfig:
                     description: The settings for a topic's message retention.
                     properties:
@@ -197,6 +205,14 @@ spec:
                   region:
                     description: The region of the pubsub lite topic.
                     type: string
+                  reservationConfig:
+                    description: The settings for this topic's Reservation usage.
+                    properties:
+                      throughputReservation:
+                        description: The Reservation to use for this topic's throughput
+                          capacity.
+                        type: string
+                    type: object
                   retentionConfig:
                     description: The settings for a topic's message retention.
                     properties:

@@ -57,8 +57,17 @@ spec:
                 type: object
               resource:
                 properties:
+                  destroyScheduledDuration:
+                    description: The period of time that versions of this key spend
+                      in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+                      If not specified at creation time, the default duration is 24
+                      hours.
+                    type: string
                   id:
                     type: string
+                  importOnly:
+                    description: Whether this key may contain imported versions only.
+                    type: boolean
                   keyRing:
                     description: 'The KeyRing that this key belongs to. Format: ''''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''''.'
                     type: string
@@ -155,8 +164,17 @@ spec:
                 type: object
               state:
                 properties:
+                  destroyScheduledDuration:
+                    description: The period of time that versions of this key spend
+                      in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+                      If not specified at creation time, the default duration is 24
+                      hours.
+                    type: string
                   id:
                     type: string
+                  importOnly:
+                    description: Whether this key may contain imported versions only.
+                    type: boolean
                   keyRing:
                     description: 'The KeyRing that this key belongs to. Format: ''''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''''.'
                     type: string

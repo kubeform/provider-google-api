@@ -25,6 +25,7 @@ import (
 	activev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/active/v1alpha1"
 	apigeev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/apigee/v1alpha1"
 	appenginev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/appengine/v1alpha1"
+	assuredv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/assured/v1alpha1"
 	bigqueryv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigquery/v1alpha1"
 	bigtablev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigtable/v1alpha1"
 	billingaccountv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/billingaccount/v1alpha1"
@@ -46,11 +47,13 @@ import (
 	dialogflowv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/dialogflow/v1alpha1"
 	dnsv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/dns/v1alpha1"
 	endpointsv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/endpoints/v1alpha1"
+	essentialv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/essential/v1alpha1"
 	eventarcv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/eventarc/v1alpha1"
 	filestorev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/filestore/v1alpha1"
 	firestorev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/firestore/v1alpha1"
 	folderv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/folder/v1alpha1"
 	gamev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/game/v1alpha1"
+	gkev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/gke/v1alpha1"
 	healthcarev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/healthcare/v1alpha1"
 	iapv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/iap/v1alpha1"
 	identityv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/identity/v1alpha1"
@@ -61,8 +64,10 @@ import (
 	monitoringv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/monitoring/v1alpha1"
 	networkv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/network/v1alpha1"
 	notebooksv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/notebooks/v1alpha1"
+	orgv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/org/v1alpha1"
 	organizationv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/organization/v1alpha1"
 	osv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/os/v1alpha1"
+	privatecav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/privateca/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/project/v1alpha1"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/pubsub/v1alpha1"
 	redisv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/redis/v1alpha1"
@@ -92,6 +97,7 @@ type Interface interface {
 	ActiveV1alpha1() activev1alpha1.ActiveV1alpha1Interface
 	ApigeeV1alpha1() apigeev1alpha1.ApigeeV1alpha1Interface
 	AppengineV1alpha1() appenginev1alpha1.AppengineV1alpha1Interface
+	AssuredV1alpha1() assuredv1alpha1.AssuredV1alpha1Interface
 	BigqueryV1alpha1() bigqueryv1alpha1.BigqueryV1alpha1Interface
 	BigtableV1alpha1() bigtablev1alpha1.BigtableV1alpha1Interface
 	BillingaccountV1alpha1() billingaccountv1alpha1.BillingaccountV1alpha1Interface
@@ -113,11 +119,13 @@ type Interface interface {
 	DialogflowV1alpha1() dialogflowv1alpha1.DialogflowV1alpha1Interface
 	DnsV1alpha1() dnsv1alpha1.DnsV1alpha1Interface
 	EndpointsV1alpha1() endpointsv1alpha1.EndpointsV1alpha1Interface
+	EssentialV1alpha1() essentialv1alpha1.EssentialV1alpha1Interface
 	EventarcV1alpha1() eventarcv1alpha1.EventarcV1alpha1Interface
 	FilestoreV1alpha1() filestorev1alpha1.FilestoreV1alpha1Interface
 	FirestoreV1alpha1() firestorev1alpha1.FirestoreV1alpha1Interface
 	FolderV1alpha1() folderv1alpha1.FolderV1alpha1Interface
 	GameV1alpha1() gamev1alpha1.GameV1alpha1Interface
+	GkeV1alpha1() gkev1alpha1.GkeV1alpha1Interface
 	HealthcareV1alpha1() healthcarev1alpha1.HealthcareV1alpha1Interface
 	IapV1alpha1() iapv1alpha1.IapV1alpha1Interface
 	IdentityV1alpha1() identityv1alpha1.IdentityV1alpha1Interface
@@ -128,8 +136,10 @@ type Interface interface {
 	MonitoringV1alpha1() monitoringv1alpha1.MonitoringV1alpha1Interface
 	NetworkV1alpha1() networkv1alpha1.NetworkV1alpha1Interface
 	NotebooksV1alpha1() notebooksv1alpha1.NotebooksV1alpha1Interface
+	OrgV1alpha1() orgv1alpha1.OrgV1alpha1Interface
 	OrganizationV1alpha1() organizationv1alpha1.OrganizationV1alpha1Interface
 	OsV1alpha1() osv1alpha1.OsV1alpha1Interface
+	PrivatecaV1alpha1() privatecav1alpha1.PrivatecaV1alpha1Interface
 	ProjectV1alpha1() projectv1alpha1.ProjectV1alpha1Interface
 	PubsubV1alpha1() pubsubv1alpha1.PubsubV1alpha1Interface
 	RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface
@@ -157,6 +167,7 @@ type Clientset struct {
 	activeV1alpha1                 *activev1alpha1.ActiveV1alpha1Client
 	apigeeV1alpha1                 *apigeev1alpha1.ApigeeV1alpha1Client
 	appengineV1alpha1              *appenginev1alpha1.AppengineV1alpha1Client
+	assuredV1alpha1                *assuredv1alpha1.AssuredV1alpha1Client
 	bigqueryV1alpha1               *bigqueryv1alpha1.BigqueryV1alpha1Client
 	bigtableV1alpha1               *bigtablev1alpha1.BigtableV1alpha1Client
 	billingaccountV1alpha1         *billingaccountv1alpha1.BillingaccountV1alpha1Client
@@ -178,11 +189,13 @@ type Clientset struct {
 	dialogflowV1alpha1             *dialogflowv1alpha1.DialogflowV1alpha1Client
 	dnsV1alpha1                    *dnsv1alpha1.DnsV1alpha1Client
 	endpointsV1alpha1              *endpointsv1alpha1.EndpointsV1alpha1Client
+	essentialV1alpha1              *essentialv1alpha1.EssentialV1alpha1Client
 	eventarcV1alpha1               *eventarcv1alpha1.EventarcV1alpha1Client
 	filestoreV1alpha1              *filestorev1alpha1.FilestoreV1alpha1Client
 	firestoreV1alpha1              *firestorev1alpha1.FirestoreV1alpha1Client
 	folderV1alpha1                 *folderv1alpha1.FolderV1alpha1Client
 	gameV1alpha1                   *gamev1alpha1.GameV1alpha1Client
+	gkeV1alpha1                    *gkev1alpha1.GkeV1alpha1Client
 	healthcareV1alpha1             *healthcarev1alpha1.HealthcareV1alpha1Client
 	iapV1alpha1                    *iapv1alpha1.IapV1alpha1Client
 	identityV1alpha1               *identityv1alpha1.IdentityV1alpha1Client
@@ -193,8 +206,10 @@ type Clientset struct {
 	monitoringV1alpha1             *monitoringv1alpha1.MonitoringV1alpha1Client
 	networkV1alpha1                *networkv1alpha1.NetworkV1alpha1Client
 	notebooksV1alpha1              *notebooksv1alpha1.NotebooksV1alpha1Client
+	orgV1alpha1                    *orgv1alpha1.OrgV1alpha1Client
 	organizationV1alpha1           *organizationv1alpha1.OrganizationV1alpha1Client
 	osV1alpha1                     *osv1alpha1.OsV1alpha1Client
+	privatecaV1alpha1              *privatecav1alpha1.PrivatecaV1alpha1Client
 	projectV1alpha1                *projectv1alpha1.ProjectV1alpha1Client
 	pubsubV1alpha1                 *pubsubv1alpha1.PubsubV1alpha1Client
 	redisV1alpha1                  *redisv1alpha1.RedisV1alpha1Client
@@ -232,6 +247,11 @@ func (c *Clientset) ApigeeV1alpha1() apigeev1alpha1.ApigeeV1alpha1Interface {
 // AppengineV1alpha1 retrieves the AppengineV1alpha1Client
 func (c *Clientset) AppengineV1alpha1() appenginev1alpha1.AppengineV1alpha1Interface {
 	return c.appengineV1alpha1
+}
+
+// AssuredV1alpha1 retrieves the AssuredV1alpha1Client
+func (c *Clientset) AssuredV1alpha1() assuredv1alpha1.AssuredV1alpha1Interface {
+	return c.assuredV1alpha1
 }
 
 // BigqueryV1alpha1 retrieves the BigqueryV1alpha1Client
@@ -339,6 +359,11 @@ func (c *Clientset) EndpointsV1alpha1() endpointsv1alpha1.EndpointsV1alpha1Inter
 	return c.endpointsV1alpha1
 }
 
+// EssentialV1alpha1 retrieves the EssentialV1alpha1Client
+func (c *Clientset) EssentialV1alpha1() essentialv1alpha1.EssentialV1alpha1Interface {
+	return c.essentialV1alpha1
+}
+
 // EventarcV1alpha1 retrieves the EventarcV1alpha1Client
 func (c *Clientset) EventarcV1alpha1() eventarcv1alpha1.EventarcV1alpha1Interface {
 	return c.eventarcV1alpha1
@@ -362,6 +387,11 @@ func (c *Clientset) FolderV1alpha1() folderv1alpha1.FolderV1alpha1Interface {
 // GameV1alpha1 retrieves the GameV1alpha1Client
 func (c *Clientset) GameV1alpha1() gamev1alpha1.GameV1alpha1Interface {
 	return c.gameV1alpha1
+}
+
+// GkeV1alpha1 retrieves the GkeV1alpha1Client
+func (c *Clientset) GkeV1alpha1() gkev1alpha1.GkeV1alpha1Interface {
+	return c.gkeV1alpha1
 }
 
 // HealthcareV1alpha1 retrieves the HealthcareV1alpha1Client
@@ -414,6 +444,11 @@ func (c *Clientset) NotebooksV1alpha1() notebooksv1alpha1.NotebooksV1alpha1Inter
 	return c.notebooksV1alpha1
 }
 
+// OrgV1alpha1 retrieves the OrgV1alpha1Client
+func (c *Clientset) OrgV1alpha1() orgv1alpha1.OrgV1alpha1Interface {
+	return c.orgV1alpha1
+}
+
 // OrganizationV1alpha1 retrieves the OrganizationV1alpha1Client
 func (c *Clientset) OrganizationV1alpha1() organizationv1alpha1.OrganizationV1alpha1Interface {
 	return c.organizationV1alpha1
@@ -422,6 +457,11 @@ func (c *Clientset) OrganizationV1alpha1() organizationv1alpha1.OrganizationV1al
 // OsV1alpha1 retrieves the OsV1alpha1Client
 func (c *Clientset) OsV1alpha1() osv1alpha1.OsV1alpha1Interface {
 	return c.osV1alpha1
+}
+
+// PrivatecaV1alpha1 retrieves the PrivatecaV1alpha1Client
+func (c *Clientset) PrivatecaV1alpha1() privatecav1alpha1.PrivatecaV1alpha1Interface {
+	return c.privatecaV1alpha1
 }
 
 // ProjectV1alpha1 retrieves the ProjectV1alpha1Client
@@ -546,6 +586,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.assuredV1alpha1, err = assuredv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.bigqueryV1alpha1, err = bigqueryv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -630,6 +674,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.essentialV1alpha1, err = essentialv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.eventarcV1alpha1, err = eventarcv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -647,6 +695,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 		return nil, err
 	}
 	cs.gameV1alpha1, err = gamev1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.gkeV1alpha1, err = gkev1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -690,11 +742,19 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.orgV1alpha1, err = orgv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.organizationV1alpha1, err = organizationv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
 	cs.osV1alpha1, err = osv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
+	cs.privatecaV1alpha1, err = privatecav1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -782,6 +842,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.activeV1alpha1 = activev1alpha1.NewForConfigOrDie(c)
 	cs.apigeeV1alpha1 = apigeev1alpha1.NewForConfigOrDie(c)
 	cs.appengineV1alpha1 = appenginev1alpha1.NewForConfigOrDie(c)
+	cs.assuredV1alpha1 = assuredv1alpha1.NewForConfigOrDie(c)
 	cs.bigqueryV1alpha1 = bigqueryv1alpha1.NewForConfigOrDie(c)
 	cs.bigtableV1alpha1 = bigtablev1alpha1.NewForConfigOrDie(c)
 	cs.billingaccountV1alpha1 = billingaccountv1alpha1.NewForConfigOrDie(c)
@@ -803,11 +864,13 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.dialogflowV1alpha1 = dialogflowv1alpha1.NewForConfigOrDie(c)
 	cs.dnsV1alpha1 = dnsv1alpha1.NewForConfigOrDie(c)
 	cs.endpointsV1alpha1 = endpointsv1alpha1.NewForConfigOrDie(c)
+	cs.essentialV1alpha1 = essentialv1alpha1.NewForConfigOrDie(c)
 	cs.eventarcV1alpha1 = eventarcv1alpha1.NewForConfigOrDie(c)
 	cs.filestoreV1alpha1 = filestorev1alpha1.NewForConfigOrDie(c)
 	cs.firestoreV1alpha1 = firestorev1alpha1.NewForConfigOrDie(c)
 	cs.folderV1alpha1 = folderv1alpha1.NewForConfigOrDie(c)
 	cs.gameV1alpha1 = gamev1alpha1.NewForConfigOrDie(c)
+	cs.gkeV1alpha1 = gkev1alpha1.NewForConfigOrDie(c)
 	cs.healthcareV1alpha1 = healthcarev1alpha1.NewForConfigOrDie(c)
 	cs.iapV1alpha1 = iapv1alpha1.NewForConfigOrDie(c)
 	cs.identityV1alpha1 = identityv1alpha1.NewForConfigOrDie(c)
@@ -818,8 +881,10 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.monitoringV1alpha1 = monitoringv1alpha1.NewForConfigOrDie(c)
 	cs.networkV1alpha1 = networkv1alpha1.NewForConfigOrDie(c)
 	cs.notebooksV1alpha1 = notebooksv1alpha1.NewForConfigOrDie(c)
+	cs.orgV1alpha1 = orgv1alpha1.NewForConfigOrDie(c)
 	cs.organizationV1alpha1 = organizationv1alpha1.NewForConfigOrDie(c)
 	cs.osV1alpha1 = osv1alpha1.NewForConfigOrDie(c)
+	cs.privatecaV1alpha1 = privatecav1alpha1.NewForConfigOrDie(c)
 	cs.projectV1alpha1 = projectv1alpha1.NewForConfigOrDie(c)
 	cs.pubsubV1alpha1 = pubsubv1alpha1.NewForConfigOrDie(c)
 	cs.redisV1alpha1 = redisv1alpha1.NewForConfigOrDie(c)
@@ -849,6 +914,7 @@ func New(c rest.Interface) *Clientset {
 	cs.activeV1alpha1 = activev1alpha1.New(c)
 	cs.apigeeV1alpha1 = apigeev1alpha1.New(c)
 	cs.appengineV1alpha1 = appenginev1alpha1.New(c)
+	cs.assuredV1alpha1 = assuredv1alpha1.New(c)
 	cs.bigqueryV1alpha1 = bigqueryv1alpha1.New(c)
 	cs.bigtableV1alpha1 = bigtablev1alpha1.New(c)
 	cs.billingaccountV1alpha1 = billingaccountv1alpha1.New(c)
@@ -870,11 +936,13 @@ func New(c rest.Interface) *Clientset {
 	cs.dialogflowV1alpha1 = dialogflowv1alpha1.New(c)
 	cs.dnsV1alpha1 = dnsv1alpha1.New(c)
 	cs.endpointsV1alpha1 = endpointsv1alpha1.New(c)
+	cs.essentialV1alpha1 = essentialv1alpha1.New(c)
 	cs.eventarcV1alpha1 = eventarcv1alpha1.New(c)
 	cs.filestoreV1alpha1 = filestorev1alpha1.New(c)
 	cs.firestoreV1alpha1 = firestorev1alpha1.New(c)
 	cs.folderV1alpha1 = folderv1alpha1.New(c)
 	cs.gameV1alpha1 = gamev1alpha1.New(c)
+	cs.gkeV1alpha1 = gkev1alpha1.New(c)
 	cs.healthcareV1alpha1 = healthcarev1alpha1.New(c)
 	cs.iapV1alpha1 = iapv1alpha1.New(c)
 	cs.identityV1alpha1 = identityv1alpha1.New(c)
@@ -885,8 +953,10 @@ func New(c rest.Interface) *Clientset {
 	cs.monitoringV1alpha1 = monitoringv1alpha1.New(c)
 	cs.networkV1alpha1 = networkv1alpha1.New(c)
 	cs.notebooksV1alpha1 = notebooksv1alpha1.New(c)
+	cs.orgV1alpha1 = orgv1alpha1.New(c)
 	cs.organizationV1alpha1 = organizationv1alpha1.New(c)
 	cs.osV1alpha1 = osv1alpha1.New(c)
+	cs.privatecaV1alpha1 = privatecav1alpha1.New(c)
 	cs.projectV1alpha1 = projectv1alpha1.New(c)
 	cs.pubsubV1alpha1 = pubsubv1alpha1.New(c)
 	cs.redisV1alpha1 = redisv1alpha1.New(c)

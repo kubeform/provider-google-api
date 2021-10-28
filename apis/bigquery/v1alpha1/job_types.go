@@ -45,6 +45,9 @@ type JobSpecCopyDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName *string `json:"kmsKeyName" tf:"kms_key_name"`
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	// +optional
+	KmsKeyVersion *string `json:"kmsKeyVersion,omitempty" tf:"kms_key_version"`
 }
 
 type JobSpecCopyDestinationTable struct {
@@ -151,6 +154,9 @@ type JobSpecLoadDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName *string `json:"kmsKeyName" tf:"kms_key_name"`
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	// +optional
+	KmsKeyVersion *string `json:"kmsKeyVersion,omitempty" tf:"kms_key_version"`
 }
 
 type JobSpecLoadDestinationTable struct {
@@ -301,6 +307,9 @@ type JobSpecQueryDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName *string `json:"kmsKeyName" tf:"kms_key_name"`
+	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+	// +optional
+	KmsKeyVersion *string `json:"kmsKeyVersion,omitempty" tf:"kms_key_version"`
 }
 
 type JobSpecQueryDestinationTable struct {

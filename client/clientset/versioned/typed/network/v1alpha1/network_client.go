@@ -28,6 +28,9 @@ import (
 type NetworkV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ManagementConnectivityTestsGetter
+	ServicesEdgeCacheKeysetsGetter
+	ServicesEdgeCacheOriginsGetter
+	ServicesEdgeCacheServicesGetter
 }
 
 // NetworkV1alpha1Client is used to interact with features provided by the network.google.kubeform.com group.
@@ -37,6 +40,18 @@ type NetworkV1alpha1Client struct {
 
 func (c *NetworkV1alpha1Client) ManagementConnectivityTests(namespace string) ManagementConnectivityTestInterface {
 	return newManagementConnectivityTests(c, namespace)
+}
+
+func (c *NetworkV1alpha1Client) ServicesEdgeCacheKeysets(namespace string) ServicesEdgeCacheKeysetInterface {
+	return newServicesEdgeCacheKeysets(c, namespace)
+}
+
+func (c *NetworkV1alpha1Client) ServicesEdgeCacheOrigins(namespace string) ServicesEdgeCacheOriginInterface {
+	return newServicesEdgeCacheOrigins(c, namespace)
+}
+
+func (c *NetworkV1alpha1Client) ServicesEdgeCacheServices(namespace string) ServicesEdgeCacheServiceInterface {
+	return newServicesEdgeCacheServices(c, namespace)
 }
 
 // NewForConfig creates a new NetworkV1alpha1Client for the given config.

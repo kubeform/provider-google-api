@@ -89,6 +89,9 @@ type Hl7V2StoreSpecParserConfig struct {
 	// A base64-encoded string.
 	// +optional
 	SegmentTerminator *string `json:"segmentTerminator,omitempty" tf:"segment_terminator"`
+	// The version of the unschematized parser to be used when a custom 'schema' is not set. Default value: "V1" Possible values: ["V1", "V2"]
+	// +optional
+	Version *string `json:"version,omitempty" tf:"version"`
 }
 
 type Hl7V2StoreSpec struct {

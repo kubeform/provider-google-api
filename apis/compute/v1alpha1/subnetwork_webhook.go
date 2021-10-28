@@ -42,11 +42,13 @@ func (r *Subnetwork) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Subnetwork{}
 
 var subnetworkForceNewList = map[string]bool{
-	"/description": true,
-	"/name":        true,
-	"/network":     true,
-	"/project":     true,
-	"/region":      true,
+	"/description":      true,
+	"/ipv6_access_type": true,
+	"/name":             true,
+	"/network":          true,
+	"/project":          true,
+	"/purpose":          true,
+	"/region":           true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

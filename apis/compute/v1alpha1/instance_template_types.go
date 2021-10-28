@@ -132,6 +132,20 @@ type InstanceTemplateSpecNetworkInterfaceAliasIPRange struct {
 	SubnetworkRangeName *string `json:"subnetworkRangeName,omitempty" tf:"subnetwork_range_name"`
 }
 
+type InstanceTemplateSpecNetworkInterfaceIpv6AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// +optional
+	ExternalIpv6 *string `json:"externalIpv6,omitempty" tf:"external_ipv6"`
+	// The prefix length of the external IPv6 range.
+	// +optional
+	ExternalIpv6PrefixLength *string `json:"externalIpv6PrefixLength,omitempty" tf:"external_ipv6_prefix_length"`
+	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+	NetworkTier *string `json:"networkTier" tf:"network_tier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	// +optional
+	PublicPtrDomainName *string `json:"publicPtrDomainName,omitempty" tf:"public_ptr_domain_name"`
+}
+
 type InstanceTemplateSpecNetworkInterface struct {
 	// Access configurations, i.e. IPs via which this instance can be accessed via the Internet. Omit to ensure that the instance is not accessible from the Internet (this means that ssh provisioners will not work unless you are running Terraform can send traffic to the instance's network (e.g. via tunnel or because it is running on another cloud instance on that network). This block can be repeated multiple times.
 	// +optional
@@ -139,6 +153,12 @@ type InstanceTemplateSpecNetworkInterface struct {
 	// An array of alias IP ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 	// +optional
 	AliasIPRange []InstanceTemplateSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	// +optional
+	Ipv6AccessConfig []InstanceTemplateSpecNetworkInterfaceIpv6AccessConfig `json:"ipv6AccessConfig,omitempty" tf:"ipv6_access_config"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	// +optional
+	Ipv6AccessType *string `json:"ipv6AccessType,omitempty" tf:"ipv6_access_type"`
 	// The name of the network_interface.
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
@@ -151,6 +171,9 @@ type InstanceTemplateSpecNetworkInterface struct {
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 	// +optional
 	NicType *string `json:"nicType,omitempty" tf:"nic_type"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// +optional
+	StackType *string `json:"stackType,omitempty" tf:"stack_type"`
 	// The name of the subnetwork to attach this interface to. The subnetwork must exist in the same region this instance will be created in. Either network or subnetwork must be provided.
 	// +optional
 	Subnetwork *string `json:"subnetwork,omitempty" tf:"subnetwork"`
@@ -253,6 +276,7 @@ type InstanceTemplateSpecResource struct {
 	Disk []InstanceTemplateSpecDisk `json:"disk" tf:"disk"`
 	// Enable Virtual Displays on this instance. Note: allow_stopping_for_update must be set to true in order to update this field.
 	// +optional
+	// Deprecated
 	EnableDisplay *bool `json:"enableDisplay,omitempty" tf:"enable_display"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// +optional

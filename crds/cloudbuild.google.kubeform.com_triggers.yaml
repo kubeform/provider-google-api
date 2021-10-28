@@ -507,8 +507,8 @@ spec:
                     type: string
                   github:
                     description: "Describes the configuration of a trigger that creates
-                      a build whenever a GitHub event is received. \n One of 'trigger_template'
-                      or 'github' must be provided."
+                      a build whenever a GitHub event is received. \n One of 'trigger_template',
+                      'github', 'pubsub_config' or 'webhook_config' must be provided."
                     properties:
                       name:
                         description: 'Name of the repository. For example: The name
@@ -589,6 +589,36 @@ spec:
                     type: string
                   project:
                     type: string
+                  pubsubConfig:
+                    description: "PubsubConfig describes the configuration of a trigger
+                      that creates a build whenever a Pub/Sub message is published.
+                      \n One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config'
+                      must be provided."
+                    properties:
+                      serviceAccountEmail:
+                        description: Service account that will make the push request.
+                        type: string
+                      state:
+                        description: Potential issues with the underlying Pub/Sub
+                          subscription configuration. Only populated on get requests.
+                        type: string
+                      subscription:
+                        description: Output only. Name of the subscription.
+                        type: string
+                      topic:
+                        description: The name of the topic from which this subscription
+                          is receiving messages.
+                        type: string
+                    required:
+                    - topic
+                    type: object
+                  serviceAccount:
+                    description: "The service account used for all user-controlled
+                      operations including triggers.patch, triggers.run, builds.create,
+                      and builds.cancel. \n If no service account is set, then the
+                      standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com)
+                      will be used instead. \n Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}"
+                    type: string
                   substitutions:
                     additionalProperties:
                       type: string
@@ -645,7 +675,8 @@ spec:
                       to trigger a build. \n Branch and tag names in trigger templates
                       are interpreted as regular expressions. Any branch or tag change
                       that matches that regular expression will trigger a build. \n
-                      One of 'trigger_template' or 'github' must be provided."
+                      One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config'
+                      must be provided."
                     properties:
                       branchName:
                         description: Name of the branch to build. Exactly one a of
@@ -680,6 +711,23 @@ spec:
                           name, tag, or commit SHA must be provided. This field is
                           a regular expression.
                         type: string
+                    type: object
+                  webhookConfig:
+                    description: "WebhookConfig describes the configuration of a trigger
+                      that creates a build whenever a webhook is sent to a trigger's
+                      webhook URL. \n One of 'trigger_template', 'github', 'pubsub_config'
+                      or 'webhook_config' must be provided."
+                    properties:
+                      secret:
+                        description: Resource name for the secret required as a URL
+                          parameter.
+                        type: string
+                      state:
+                        description: Potential issues with the underlying Pub/Sub
+                          subscription configuration. Only populated on get requests.
+                        type: string
+                    required:
+                    - secret
                     type: object
                 type: object
               state:
@@ -1134,8 +1182,8 @@ spec:
                     type: string
                   github:
                     description: "Describes the configuration of a trigger that creates
-                      a build whenever a GitHub event is received. \n One of 'trigger_template'
-                      or 'github' must be provided."
+                      a build whenever a GitHub event is received. \n One of 'trigger_template',
+                      'github', 'pubsub_config' or 'webhook_config' must be provided."
                     properties:
                       name:
                         description: 'Name of the repository. For example: The name
@@ -1216,6 +1264,36 @@ spec:
                     type: string
                   project:
                     type: string
+                  pubsubConfig:
+                    description: "PubsubConfig describes the configuration of a trigger
+                      that creates a build whenever a Pub/Sub message is published.
+                      \n One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config'
+                      must be provided."
+                    properties:
+                      serviceAccountEmail:
+                        description: Service account that will make the push request.
+                        type: string
+                      state:
+                        description: Potential issues with the underlying Pub/Sub
+                          subscription configuration. Only populated on get requests.
+                        type: string
+                      subscription:
+                        description: Output only. Name of the subscription.
+                        type: string
+                      topic:
+                        description: The name of the topic from which this subscription
+                          is receiving messages.
+                        type: string
+                    required:
+                    - topic
+                    type: object
+                  serviceAccount:
+                    description: "The service account used for all user-controlled
+                      operations including triggers.patch, triggers.run, builds.create,
+                      and builds.cancel. \n If no service account is set, then the
+                      standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com)
+                      will be used instead. \n Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}"
+                    type: string
                   substitutions:
                     additionalProperties:
                       type: string
@@ -1272,7 +1350,8 @@ spec:
                       to trigger a build. \n Branch and tag names in trigger templates
                       are interpreted as regular expressions. Any branch or tag change
                       that matches that regular expression will trigger a build. \n
-                      One of 'trigger_template' or 'github' must be provided."
+                      One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config'
+                      must be provided."
                     properties:
                       branchName:
                         description: Name of the branch to build. Exactly one a of
@@ -1307,6 +1386,23 @@ spec:
                           name, tag, or commit SHA must be provided. This field is
                           a regular expression.
                         type: string
+                    type: object
+                  webhookConfig:
+                    description: "WebhookConfig describes the configuration of a trigger
+                      that creates a build whenever a webhook is sent to a trigger's
+                      webhook URL. \n One of 'trigger_template', 'github', 'pubsub_config'
+                      or 'webhook_config' must be provided."
+                    properties:
+                      secret:
+                        description: Resource name for the secret required as a URL
+                          parameter.
+                        type: string
+                      state:
+                        description: Potential issues with the underlying Pub/Sub
+                          subscription configuration. Only populated on get requests.
+                        type: string
+                    required:
+                    - secret
                     type: object
                 type: object
               terminationPolicy:

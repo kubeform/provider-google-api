@@ -234,6 +234,9 @@ type DatabaseInstanceSpecSettings struct {
 	AvailabilityType *string `json:"availabilityType,omitempty" tf:"availability_type"`
 	// +optional
 	BackupConfiguration *DatabaseInstanceSpecSettingsBackupConfiguration `json:"backupConfiguration,omitempty" tf:"backup_configuration"`
+	// The name of server instance collation.
+	// +optional
+	Collation *string `json:"collation,omitempty" tf:"collation"`
 	// This property is only applicable to First Generation instances. First Generation instances are now deprecated, see here for information on how to upgrade to Second Generation instances. Specific to read instances, indicates when crash-safe replication flags are enabled.
 	// +optional
 	// Deprecated

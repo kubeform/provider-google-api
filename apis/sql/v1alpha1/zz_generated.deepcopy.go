@@ -494,6 +494,11 @@ func (in *DatabaseInstanceSpecSettings) DeepCopyInto(out *DatabaseInstanceSpecSe
 		*out = new(DatabaseInstanceSpecSettingsBackupConfiguration)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.Collation != nil {
+		in, out := &in.Collation, &out.Collation
+		*out = new(string)
+		**out = **in
+	}
 	if in.CrashSafeReplication != nil {
 		in, out := &in.CrashSafeReplication, &out.CrashSafeReplication
 		*out = new(bool)

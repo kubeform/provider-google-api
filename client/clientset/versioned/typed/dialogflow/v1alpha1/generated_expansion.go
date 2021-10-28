@@ -22,6 +22,18 @@ type AgentExpansion interface{}
 
 type CxAgentExpansion interface{}
 
+type CxEntityTypeExpansion interface{}
+
+type CxEnvironmentExpansion interface{}
+
+type CxFlowExpansion interface{}
+
+type CxIntentExpansion interface{}
+
+type CxPageExpansion interface{}
+
+type CxVersionExpansion interface{}
+
 type EntityTypeExpansion interface{}
 
 type FulfillmentExpansion interface{}

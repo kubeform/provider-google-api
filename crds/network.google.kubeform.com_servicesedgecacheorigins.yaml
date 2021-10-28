@@ -1,0 +1,459 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: servicesedgecacheorigins.network.google.kubeform.com
+spec:
+  group: network.google.kubeform.com
+  names:
+    kind: ServicesEdgeCacheOrigin
+    listKind: ServicesEdgeCacheOriginList
+    plural: servicesedgecacheorigins
+    singular: servicesedgecacheorigin
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  description:
+                    description: A human-readable description of the resource.
+                    type: string
+                  failoverOrigin:
+                    description: "The Origin resource to try when the current origin
+                      cannot be reached. After maxAttempts is reached, the configured
+                      failoverOrigin will be used to fulfil the request. \n The value
+                      of timeout.maxAttemptsTimeout dictates the timeout across all
+                      origins. A reference to a Topic resource."
+                    type: string
+                  id:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Set of label tags associated with the EdgeCache resource.
+                    type: object
+                  maxAttempts:
+                    description: "The maximum number of attempts to cache fill from
+                      this origin. Another attempt is made when a cache fill fails
+                      with one of the retryConditions. \n Once maxAttempts to this
+                      origin have failed the failoverOrigin will be used, if one is
+                      specified. That failoverOrigin may specify its own maxAttempts,
+                      retryConditions and failoverOrigin to control its own cache
+                      fill failures. \n The total number of allowed attempts to cache
+                      fill across this and failover origins is limited to four. The
+                      total time allowed for cache fill attempts across this and failover
+                      origins can be controlled with maxAttemptsTimeout. \n The last
+                      valid response from an origin will be returned to the client.
+                      If no origin returns a valid response, an HTTP 503 will be returned
+                      to the client. \n Defaults to 1. Must be a value greater than
+                      0 and less than 4."
+                    format: int64
+                    type: integer
+                  name:
+                    description: Name of the resource; provided by the client when
+                      the resource is created. The name must be 1-64 characters long,
+                      and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which
+                      means the first character must be a letter, and all following
+                      characters must be a dash, underscore, letter or digit.
+                    type: string
+                  originAddress:
+                    description: "A fully qualified domain name (FQDN) or IP address
+                      reachable over the public Internet, or the address of a Google
+                      Cloud Storage bucket. \n This address will be used as the origin
+                      for cache requests - e.g. FQDN: media-backend.example.com IPv4:35.218.1.1
+                      IPv6:[2607:f8b0:4012:809::200e] Cloud Storage: gs://bucketname
+                      \n When providing an FQDN (hostname), it must be publicly resolvable
+                      (e.g. via Google public DNS) and IP addresses must be publicly
+                      routable. If a Cloud Storage bucket is provided, it must be
+                      in the canonical \"gs://bucketname\" format. Other forms, such
+                      as \"storage.googleapis.com\", will be rejected."
+                    type: string
+                  port:
+                    description: The port to connect to the origin on. Defaults to
+                      port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
+                    format: int64
+                    type: integer
+                  project:
+                    type: string
+                  protocol:
+                    description: "The protocol to use to connect to the configured
+                      origin. Defaults to HTTP2, and it is strongly recommended that
+                      users use HTTP2 for both security & performance. \n When using
+                      HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired
+                      TLS (SSL) certificate must be presented by the origin server.
+                      Possible values: [\"HTTP2\", \"HTTPS\", \"HTTP\"]"
+                    type: string
+                  retryConditions:
+                    description: "Specifies one or more retry conditions for the configured
+                      origin. \n If the failure mode during a connection attempt to
+                      the origin matches the configured retryCondition(s), the origin
+                      request will be retried up to maxAttempts times. The failoverOrigin,
+                      if configured, will then be used to satisfy the request. \n
+                      The default retryCondition is \"CONNECT_FAILURE\". \n retryConditions
+                      apply to this origin, and not subsequent failoverOrigin(s),
+                      which may specify their own retryConditions and maxAttempts.
+                      \n Valid values are: \n - CONNECT_FAILURE: Retry on failures
+                      connecting to origins, for example due to connection timeouts.
+                      - HTTP_5XX: Retry if the origin responds with any 5xx response
+                      code, or if the origin does not respond at all, example: disconnects,
+                      reset, read timeout, connection failure, and refused streams.
+                      - GATEWAY_ERROR: Similar to 5xx, but only applies to response
+                      codes 502, 503 or 504. - RETRIABLE_4XX: Retry for retriable
+                      4xx response codes, which include HTTP 409 (Conflict) and HTTP
+                      429 (Too Many Requests) - NOT_FOUND: Retry if the origin returns
+                      a HTTP 404 (Not Found). This can be useful when generating video
+                      content, and the segment is not available yet. Possible values:
+                      [\"CONNECT_FAILURE\", \"HTTP_5XX\", \"GATEWAY_ERROR\", \"RETRIABLE_4XX\",
+                      \"NOT_FOUND\"]"
+                    items:
+                      type: string
+                    type: array
+                  timeout:
+                    description: The connection and HTTP timeout configuration for
+                      this origin.
+                    properties:
+                      connectTimeout:
+                        description: "The maximum duration to wait for the origin
+                          connection to be established, including DNS lookup, TLS
+                          handshake and TCP/QUIC connection establishment. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          15s."
+                        type: string
+                      maxAttemptsTimeout:
+                        description: "The maximum time across all connection attempts
+                          to the origin, including failover origins, before returning
+                          an error to the client. A HTTP 503 will be returned if the
+                          timeout is reached before a response is returned. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          15s."
+                        type: string
+                      responseTimeout:
+                        description: "The maximum duration to wait for data to arrive
+                          when reading from the HTTP connection/stream. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          30s."
+                        type: string
+                    type: object
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - name
+                - originAddress
+                type: object
+              state:
+                properties:
+                  description:
+                    description: A human-readable description of the resource.
+                    type: string
+                  failoverOrigin:
+                    description: "The Origin resource to try when the current origin
+                      cannot be reached. After maxAttempts is reached, the configured
+                      failoverOrigin will be used to fulfil the request. \n The value
+                      of timeout.maxAttemptsTimeout dictates the timeout across all
+                      origins. A reference to a Topic resource."
+                    type: string
+                  id:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    description: Set of label tags associated with the EdgeCache resource.
+                    type: object
+                  maxAttempts:
+                    description: "The maximum number of attempts to cache fill from
+                      this origin. Another attempt is made when a cache fill fails
+                      with one of the retryConditions. \n Once maxAttempts to this
+                      origin have failed the failoverOrigin will be used, if one is
+                      specified. That failoverOrigin may specify its own maxAttempts,
+                      retryConditions and failoverOrigin to control its own cache
+                      fill failures. \n The total number of allowed attempts to cache
+                      fill across this and failover origins is limited to four. The
+                      total time allowed for cache fill attempts across this and failover
+                      origins can be controlled with maxAttemptsTimeout. \n The last
+                      valid response from an origin will be returned to the client.
+                      If no origin returns a valid response, an HTTP 503 will be returned
+                      to the client. \n Defaults to 1. Must be a value greater than
+                      0 and less than 4."
+                    format: int64
+                    type: integer
+                  name:
+                    description: Name of the resource; provided by the client when
+                      the resource is created. The name must be 1-64 characters long,
+                      and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which
+                      means the first character must be a letter, and all following
+                      characters must be a dash, underscore, letter or digit.
+                    type: string
+                  originAddress:
+                    description: "A fully qualified domain name (FQDN) or IP address
+                      reachable over the public Internet, or the address of a Google
+                      Cloud Storage bucket. \n This address will be used as the origin
+                      for cache requests - e.g. FQDN: media-backend.example.com IPv4:35.218.1.1
+                      IPv6:[2607:f8b0:4012:809::200e] Cloud Storage: gs://bucketname
+                      \n When providing an FQDN (hostname), it must be publicly resolvable
+                      (e.g. via Google public DNS) and IP addresses must be publicly
+                      routable. If a Cloud Storage bucket is provided, it must be
+                      in the canonical \"gs://bucketname\" format. Other forms, such
+                      as \"storage.googleapis.com\", will be rejected."
+                    type: string
+                  port:
+                    description: The port to connect to the origin on. Defaults to
+                      port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
+                    format: int64
+                    type: integer
+                  project:
+                    type: string
+                  protocol:
+                    description: "The protocol to use to connect to the configured
+                      origin. Defaults to HTTP2, and it is strongly recommended that
+                      users use HTTP2 for both security & performance. \n When using
+                      HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired
+                      TLS (SSL) certificate must be presented by the origin server.
+                      Possible values: [\"HTTP2\", \"HTTPS\", \"HTTP\"]"
+                    type: string
+                  retryConditions:
+                    description: "Specifies one or more retry conditions for the configured
+                      origin. \n If the failure mode during a connection attempt to
+                      the origin matches the configured retryCondition(s), the origin
+                      request will be retried up to maxAttempts times. The failoverOrigin,
+                      if configured, will then be used to satisfy the request. \n
+                      The default retryCondition is \"CONNECT_FAILURE\". \n retryConditions
+                      apply to this origin, and not subsequent failoverOrigin(s),
+                      which may specify their own retryConditions and maxAttempts.
+                      \n Valid values are: \n - CONNECT_FAILURE: Retry on failures
+                      connecting to origins, for example due to connection timeouts.
+                      - HTTP_5XX: Retry if the origin responds with any 5xx response
+                      code, or if the origin does not respond at all, example: disconnects,
+                      reset, read timeout, connection failure, and refused streams.
+                      - GATEWAY_ERROR: Similar to 5xx, but only applies to response
+                      codes 502, 503 or 504. - RETRIABLE_4XX: Retry for retriable
+                      4xx response codes, which include HTTP 409 (Conflict) and HTTP
+                      429 (Too Many Requests) - NOT_FOUND: Retry if the origin returns
+                      a HTTP 404 (Not Found). This can be useful when generating video
+                      content, and the segment is not available yet. Possible values:
+                      [\"CONNECT_FAILURE\", \"HTTP_5XX\", \"GATEWAY_ERROR\", \"RETRIABLE_4XX\",
+                      \"NOT_FOUND\"]"
+                    items:
+                      type: string
+                    type: array
+                  timeout:
+                    description: The connection and HTTP timeout configuration for
+                      this origin.
+                    properties:
+                      connectTimeout:
+                        description: "The maximum duration to wait for the origin
+                          connection to be established, including DNS lookup, TLS
+                          handshake and TCP/QUIC connection establishment. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          15s."
+                        type: string
+                      maxAttemptsTimeout:
+                        description: "The maximum time across all connection attempts
+                          to the origin, including failover origins, before returning
+                          an error to the client. A HTTP 503 will be returned if the
+                          timeout is reached before a response is returned. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          15s."
+                        type: string
+                      responseTimeout:
+                        description: "The maximum duration to wait for data to arrive
+                          when reading from the HTTP connection/stream. \n Defaults
+                          to 5 seconds. The timeout must be a value between 1s and
+                          30s."
+                        type: string
+                    type: object
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - name
+                - originAddress
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

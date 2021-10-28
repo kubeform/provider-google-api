@@ -36,6 +36,8 @@ type Interface interface {
 	AccountKeys() AccountKeyInformer
 	// NetworkingConnections returns a NetworkingConnectionInformer.
 	NetworkingConnections() NetworkingConnectionInformer
+	// NetworkingPeeredDNSDomains returns a NetworkingPeeredDNSDomainInformer.
+	NetworkingPeeredDNSDomains() NetworkingPeeredDNSDomainInformer
 }
 
 type version struct {
@@ -77,4 +79,9 @@ func (v *version) AccountKeys() AccountKeyInformer {
 // NetworkingConnections returns a NetworkingConnectionInformer.
 func (v *version) NetworkingConnections() NetworkingConnectionInformer {
 	return &networkingConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// NetworkingPeeredDNSDomains returns a NetworkingPeeredDNSDomainInformer.
+func (v *version) NetworkingPeeredDNSDomains() NetworkingPeeredDNSDomainInformer {
+	return &networkingPeeredDNSDomainInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

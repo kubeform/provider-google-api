@@ -65,6 +65,9 @@ type AccountSpecResource struct {
 	// A text description of the service account. Must be less than or equal to 256 UTF-8 bytes.
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
+	// Whether the service account is disabled. Defaults to false
+	// +optional
+	Disabled *bool `json:"disabled,omitempty" tf:"disabled"`
 	// The display name for the service account. Can be updated without creating a new resource.
 	// +optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name"`

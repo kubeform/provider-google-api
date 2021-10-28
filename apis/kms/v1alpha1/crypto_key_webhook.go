@@ -42,6 +42,8 @@ func (r *CryptoKey) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &CryptoKey{}
 
 var cryptokeyForceNewList = map[string]bool{
+	"/destroy_scheduled_duration":          true,
+	"/import_only":                         true,
 	"/key_ring":                            true,
 	"/name":                                true,
 	"/purpose":                             true,

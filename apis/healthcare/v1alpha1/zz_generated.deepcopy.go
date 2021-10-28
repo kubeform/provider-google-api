@@ -3555,6 +3555,11 @@ func (in *Hl7V2StoreSpecParserConfig) DeepCopyInto(out *Hl7V2StoreSpecParserConf
 		*out = new(string)
 		**out = **in
 	}
+	if in.Version != nil {
+		in, out := &in.Version, &out.Version
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 

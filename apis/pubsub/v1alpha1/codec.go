@@ -30,6 +30,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteSubscriptionSpecDeliveryConfig{}).Type1()):   LiteSubscriptionSpecDeliveryConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecPartitionConfig{}).Type1()):         LiteTopicSpecPartitionConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecPartitionConfigCapacity{}).Type1()): LiteTopicSpecPartitionConfigCapacityCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecReservationConfig{}).Type1()):       LiteTopicSpecReservationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecRetentionConfig{}).Type1()):         LiteTopicSpecRetentionConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SubscriptionSpecDeadLetterPolicy{}).Type1()):     SubscriptionSpecDeadLetterPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SubscriptionSpecExpirationPolicy{}).Type1()):     SubscriptionSpecExpirationPolicyCodec{},
@@ -50,6 +51,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteSubscriptionSpecDeliveryConfig{}).Type1()):   LiteSubscriptionSpecDeliveryConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecPartitionConfig{}).Type1()):         LiteTopicSpecPartitionConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecPartitionConfigCapacity{}).Type1()): LiteTopicSpecPartitionConfigCapacityCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecReservationConfig{}).Type1()):       LiteTopicSpecReservationConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecRetentionConfig{}).Type1()):         LiteTopicSpecRetentionConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SubscriptionSpecDeadLetterPolicy{}).Type1()):     SubscriptionSpecDeadLetterPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SubscriptionSpecExpirationPolicy{}).Type1()):     SubscriptionSpecExpirationPolicyCodec{},
@@ -311,6 +313,85 @@ func (LiteTopicSpecPartitionConfigCapacityCodec) Decode(ptr unsafe.Pointer, iter
 		}
 	default:
 		iter.ReportError("decode LiteTopicSpecPartitionConfigCapacity", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type LiteTopicSpecReservationConfigCodec struct {
+}
+
+func (LiteTopicSpecReservationConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*LiteTopicSpecReservationConfig)(ptr) == nil
+}
+
+func (LiteTopicSpecReservationConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*LiteTopicSpecReservationConfig)(ptr)
+	var objs []LiteTopicSpecReservationConfig
+	if obj != nil {
+		objs = []LiteTopicSpecReservationConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecReservationConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (LiteTopicSpecReservationConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*LiteTopicSpecReservationConfig)(ptr) = LiteTopicSpecReservationConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []LiteTopicSpecReservationConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecReservationConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*LiteTopicSpecReservationConfig)(ptr) = objs[0]
+			} else {
+				*(*LiteTopicSpecReservationConfig)(ptr) = LiteTopicSpecReservationConfig{}
+			}
+		} else {
+			*(*LiteTopicSpecReservationConfig)(ptr) = LiteTopicSpecReservationConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj LiteTopicSpecReservationConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(LiteTopicSpecReservationConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*LiteTopicSpecReservationConfig)(ptr) = obj
+		} else {
+			*(*LiteTopicSpecReservationConfig)(ptr) = LiteTopicSpecReservationConfig{}
+		}
+	default:
+		iter.ReportError("decode LiteTopicSpecReservationConfig", "unexpected JSON type")
 	}
 }
 

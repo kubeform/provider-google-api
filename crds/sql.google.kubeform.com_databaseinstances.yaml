@@ -293,6 +293,9 @@ spec:
                             format: int64
                             type: integer
                         type: object
+                      collation:
+                        description: The name of server instance collation.
+                        type: string
                       crashSafeReplication:
                         description: This property is only applicable to First Generation
                           instances. First Generation instances are now deprecated,
@@ -731,6 +734,9 @@ spec:
                             format: int64
                             type: integer
                         type: object
+                      collation:
+                        description: The name of server instance collation.
+                        type: string
                       crashSafeReplication:
                         description: This property is only applicable to First Generation
                           instances. First Generation instances are now deprecated,

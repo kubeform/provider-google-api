@@ -67,7 +67,7 @@ type AiDatasetSpecResource struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// +optional
 	CreateTime *string `json:"createTime,omitempty" tf:"create_time"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -88,7 +88,7 @@ type AiDatasetSpecResource struct {
 	// The region of the dataset. eg us-central1
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
-	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// +optional
 	UpdateTime *string `json:"updateTime,omitempty" tf:"update_time"`
 }

@@ -139,8 +139,8 @@ spec:
                       provider project is used.
                     type: string
                   region:
-                    description: Region of function. Currently can be only "us-central1".
-                      If it is not provided, the provider region is used.
+                    description: Region of function. If it is not provided, the provider
+                      region is used.
                     type: string
                   runtime:
                     description: The runtime in which the function is going to run.
@@ -323,8 +323,8 @@ spec:
                       provider project is used.
                     type: string
                   region:
-                    description: Region of function. Currently can be only "us-central1".
-                      If it is not provided, the provider region is used.
+                    description: Region of function. If it is not provided, the provider
+                      region is used.
                     type: string
                   runtime:
                     description: The runtime in which the function is going to run.

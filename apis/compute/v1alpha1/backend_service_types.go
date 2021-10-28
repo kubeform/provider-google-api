@@ -127,8 +127,7 @@ type BackendServiceSpecBackend struct {
 	// +optional
 	MaxRatePerInstance *float64 `json:"maxRatePerInstance,omitempty" tf:"max_rate_per_instance"`
 	// Used when balancingMode is UTILIZATION. This ratio defines the
-	// CPU utilization target for the group. The default is 0.8. Valid
-	// range is [0.0, 1.0].
+	// CPU utilization target for the group. Valid range is [0.0, 1.0].
 	// +optional
 	MaxUtilization *float64 `json:"maxUtilization,omitempty" tf:"max_utilization"`
 }

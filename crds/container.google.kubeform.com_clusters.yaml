@@ -273,7 +273,7 @@ spec:
                     type: integer
                   instanceGroupUrls:
                     description: List of instance group URLs which have been assigned
-                      to the cluster.
+                      to the cluster. Deprecated
                     items:
                       type: string
                     type: array
@@ -323,6 +323,18 @@ spec:
                       cluster with multiple masters spread across zones in the region,
                       and with default node locations in those zones as well.
                     type: string
+                  loggingConfig:
+                    description: Logging configuration for the cluster.
+                    properties:
+                      enableComponents:
+                        description: GKE components exposing logs. Valid values include
+                          SYSTEM_COMPONENTS and WORKLOADS.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - enableComponents
+                    type: object
                   loggingService:
                     description: The logging service that the cluster should write
                       logs to. Available options include logging.googleapis.com(Legacy
@@ -383,7 +395,7 @@ spec:
                       by the API if your service account has permission to get credentials
                       for your GKE cluster. If you see an unexpected diff removing
                       a username/password or unsetting your client cert, ensure you
-                      have the container.clusters.getCredentials permission.
+                      have the container.clusters.getCredentials permission. Deprecated
                     properties:
                       clientCertificate:
                         description: Base64 encoded public certificate used by clients
@@ -446,6 +458,18 @@ spec:
                       the version of the most recent official release (which is not
                       necessarily the latest version).
                     type: string
+                  monitoringConfig:
+                    description: Monitoring configuration for the cluster.
+                    properties:
+                      enableComponents:
+                        description: GKE components exposing metrics. Valid values
+                          include SYSTEM_COMPONENTS.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - enableComponents
+                    type: object
                   monitoringService:
                     description: The monitoring service that the cluster should write
                       metrics to. Automatically send metrics from pods in the cluster
@@ -502,6 +526,11 @@ spec:
                                 to an instance.
                               format: int64
                               type: integer
+                            gpuPartitionSize:
+                              description: Size of partitions to create on the GPU.
+                                Valid values are described in the NVIDIA mig user
+                                guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+                              type: string
                             type:
                               description: The accelerator type resource name.
                               type: string
@@ -597,12 +626,15 @@ spec:
                         description: The workload metadata configuration for this
                           node.
                         properties:
+                          mode:
+                            description: Mode is the configuration for how to expose
+                              metadata to workloads running on the node.
+                            type: string
                           nodeMetadata:
                             description: NodeMetadata is the configuration for how
                               to expose metadata to the workloads running on the node.
+                              Deprecated
                             type: string
-                        required:
-                        - nodeMetadata
                         type: object
                     type: object
                   nodeLocations:
@@ -706,6 +738,11 @@ spec:
                                       exposed to an instance.
                                     format: int64
                                     type: integer
+                                  gpuPartitionSize:
+                                    description: Size of partitions to create on the
+                                      GPU. Valid values are described in the NVIDIA
+                                      mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+                                    type: string
                                   type:
                                     description: The accelerator type resource name.
                                     type: string
@@ -803,13 +840,15 @@ spec:
                               description: The workload metadata configuration for
                                 this node.
                               properties:
+                                mode:
+                                  description: Mode is the configuration for how to
+                                    expose metadata to workloads running on the node.
+                                  type: string
                                 nodeMetadata:
                                   description: NodeMetadata is the configuration for
                                     how to expose metadata to the workloads running
-                                    on the node.
+                                    on the node. Deprecated
                                   type: string
-                              required:
-                              - nodeMetadata
                               type: object
                           type: object
                         nodeCount:
@@ -1081,10 +1120,12 @@ spec:
                       in GCP IAM policies.
                     properties:
                       identityNamespace:
-                        description: Enables workload identity.
+                        description: Enables workload identity. Deprecated
                         type: string
-                    required:
-                    - identityNamespace
+                      workloadPool:
+                        description: The workload pool to attach all Kubernetes service
+                          accounts to.
+                        type: string
                     type: object
                 required:
                 - name
@@ -1316,7 +1357,7 @@ spec:
                     type: integer
                   instanceGroupUrls:
                     description: List of instance group URLs which have been assigned
-                      to the cluster.
+                      to the cluster. Deprecated
                     items:
                       type: string
                     type: array
@@ -1366,6 +1407,18 @@ spec:
                       cluster with multiple masters spread across zones in the region,
                       and with default node locations in those zones as well.
                     type: string
+                  loggingConfig:
+                    description: Logging configuration for the cluster.
+                    properties:
+                      enableComponents:
+                        description: GKE components exposing logs. Valid values include
+                          SYSTEM_COMPONENTS and WORKLOADS.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - enableComponents
+                    type: object
                   loggingService:
                     description: The logging service that the cluster should write
                       logs to. Available options include logging.googleapis.com(Legacy
@@ -1426,7 +1479,7 @@ spec:
                       by the API if your service account has permission to get credentials
                       for your GKE cluster. If you see an unexpected diff removing
                       a username/password or unsetting your client cert, ensure you
-                      have the container.clusters.getCredentials permission.
+                      have the container.clusters.getCredentials permission. Deprecated
                     properties:
                       clientCertificate:
                         description: Base64 encoded public certificate used by clients
@@ -1489,6 +1542,18 @@ spec:
                       the version of the most recent official release (which is not
                       necessarily the latest version).
                     type: string
+                  monitoringConfig:
+                    description: Monitoring configuration for the cluster.
+                    properties:
+                      enableComponents:
+                        description: GKE components exposing metrics. Valid values
+                          include SYSTEM_COMPONENTS.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - enableComponents
+                    type: object
                   monitoringService:
                     description: The monitoring service that the cluster should write
                       metrics to. Automatically send metrics from pods in the cluster
@@ -1545,6 +1610,11 @@ spec:
                                 to an instance.
                               format: int64
                               type: integer
+                            gpuPartitionSize:
+                              description: Size of partitions to create on the GPU.
+                                Valid values are described in the NVIDIA mig user
+                                guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+                              type: string
                             type:
                               description: The accelerator type resource name.
                               type: string
@@ -1640,12 +1710,15 @@ spec:
                         description: The workload metadata configuration for this
                           node.
                         properties:
+                          mode:
+                            description: Mode is the configuration for how to expose
+                              metadata to workloads running on the node.
+                            type: string
                           nodeMetadata:
                             description: NodeMetadata is the configuration for how
                               to expose metadata to the workloads running on the node.
+                              Deprecated
                             type: string
-                        required:
-                        - nodeMetadata
                         type: object
                     type: object
                   nodeLocations:
@@ -1749,6 +1822,11 @@ spec:
                                       exposed to an instance.
                                     format: int64
                                     type: integer
+                                  gpuPartitionSize:
+                                    description: Size of partitions to create on the
+                                      GPU. Valid values are described in the NVIDIA
+                                      mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+                                    type: string
                                   type:
                                     description: The accelerator type resource name.
                                     type: string
@@ -1846,13 +1924,15 @@ spec:
                               description: The workload metadata configuration for
                                 this node.
                               properties:
+                                mode:
+                                  description: Mode is the configuration for how to
+                                    expose metadata to workloads running on the node.
+                                  type: string
                                 nodeMetadata:
                                   description: NodeMetadata is the configuration for
                                     how to expose metadata to the workloads running
-                                    on the node.
+                                    on the node. Deprecated
                                   type: string
-                              required:
-                              - nodeMetadata
                               type: object
                           type: object
                         nodeCount:
@@ -2124,10 +2204,12 @@ spec:
                       in GCP IAM policies.
                     properties:
                       identityNamespace:
-                        description: Enables workload identity.
+                        description: Enables workload identity. Deprecated
                         type: string
-                    required:
-                    - identityNamespace
+                      workloadPool:
+                        description: The workload pool to attach all Kubernetes service
+                          accounts to.
+                        type: string
                     type: object
                 required:
                 - name

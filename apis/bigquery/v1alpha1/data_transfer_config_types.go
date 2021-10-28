@@ -105,7 +105,8 @@ type DataTransferConfigSpecResource struct {
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceID *string `json:"dataSourceID" tf:"data_source_id"`
 	// The BigQuery target dataset id.
-	DestinationDatasetID *string `json:"destinationDatasetID" tf:"destination_dataset_id"`
+	// +optional
+	DestinationDatasetID *string `json:"destinationDatasetID,omitempty" tf:"destination_dataset_id"`
 	// When set to true, no runs are scheduled for a given transfer.
 	// +optional
 	Disabled *bool `json:"disabled,omitempty" tf:"disabled"`

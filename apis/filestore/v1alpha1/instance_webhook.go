@@ -42,12 +42,13 @@ func (r *Instance) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Instance{}
 
 var instanceForceNewList = map[string]bool{
-	"/file_shares/*/name": true,
-	"/networks/*/modes":   true,
-	"/networks/*/network": true,
-	"/project":            true,
-	"/tier":               true,
-	"/zone":               true,
+	"/file_shares/*/name":           true,
+	"/networks/*/modes":             true,
+	"/networks/*/network":           true,
+	"/networks/*/reserved_ip_range": true,
+	"/project":                      true,
+	"/tier":                         true,
+	"/zone":                         true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

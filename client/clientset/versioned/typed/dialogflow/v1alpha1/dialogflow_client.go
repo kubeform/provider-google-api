@@ -29,6 +29,12 @@ type DialogflowV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AgentsGetter
 	CxAgentsGetter
+	CxEntityTypesGetter
+	CxEnvironmentsGetter
+	CxFlowsGetter
+	CxIntentsGetter
+	CxPagesGetter
+	CxVersionsGetter
 	EntityTypesGetter
 	FulfillmentsGetter
 	IntentsGetter
@@ -45,6 +51,30 @@ func (c *DialogflowV1alpha1Client) Agents(namespace string) AgentInterface {
 
 func (c *DialogflowV1alpha1Client) CxAgents(namespace string) CxAgentInterface {
 	return newCxAgents(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxEntityTypes(namespace string) CxEntityTypeInterface {
+	return newCxEntityTypes(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxEnvironments(namespace string) CxEnvironmentInterface {
+	return newCxEnvironments(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxFlows(namespace string) CxFlowInterface {
+	return newCxFlows(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxIntents(namespace string) CxIntentInterface {
+	return newCxIntents(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxPages(namespace string) CxPageInterface {
+	return newCxPages(c, namespace)
+}
+
+func (c *DialogflowV1alpha1Client) CxVersions(namespace string) CxVersionInterface {
+	return newCxVersions(c, namespace)
 }
 
 func (c *DialogflowV1alpha1Client) EntityTypes(namespace string) EntityTypeInterface {

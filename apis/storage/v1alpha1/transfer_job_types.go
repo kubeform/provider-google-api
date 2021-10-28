@@ -115,11 +115,17 @@ type TransferJobSpecTransferSpecAzureBlobStorageDataSource struct {
 type TransferJobSpecTransferSpecGcsDataSink struct {
 	// Google Cloud Storage bucket name.
 	BucketName *string `json:"bucketName" tf:"bucket_name"`
+	// Google Cloud Storage path in bucket to transfer
+	// +optional
+	Path *string `json:"path,omitempty" tf:"path"`
 }
 
 type TransferJobSpecTransferSpecGcsDataSource struct {
 	// Google Cloud Storage bucket name.
 	BucketName *string `json:"bucketName" tf:"bucket_name"`
+	// Google Cloud Storage path in bucket to transfer
+	// +optional
+	Path *string `json:"path,omitempty" tf:"path"`
 }
 
 type TransferJobSpecTransferSpecHttpDataSource struct {

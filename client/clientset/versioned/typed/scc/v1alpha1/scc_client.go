@@ -27,12 +27,17 @@ import (
 
 type SccV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	NotificationConfigsGetter
 	SourcesGetter
 }
 
 // SccV1alpha1Client is used to interact with features provided by the scc.google.kubeform.com group.
 type SccV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *SccV1alpha1Client) NotificationConfigs(namespace string) NotificationConfigInterface {
+	return newNotificationConfigs(c, namespace)
 }
 
 func (c *SccV1alpha1Client) Sources(namespace string) SourceInterface {

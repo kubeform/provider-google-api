@@ -29,3 +29,5 @@ type AccountIamPolicyExpansion interface{}
 type AccountKeyExpansion interface{}
 
 type NetworkingConnectionExpansion interface{}
+
+type NetworkingPeeredDNSDomainExpansion interface{}

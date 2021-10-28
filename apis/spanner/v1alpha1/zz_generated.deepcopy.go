@@ -1418,6 +1418,11 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.ProcessingUnits != nil {
+		in, out := &in.ProcessingUnits, &out.ProcessingUnits
+		*out = new(int64)
+		**out = **in
+	}
 	if in.Project != nil {
 		in, out := &in.Project, &out.Project
 		*out = new(string)

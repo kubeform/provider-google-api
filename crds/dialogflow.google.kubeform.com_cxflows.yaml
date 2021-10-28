@@ -1,0 +1,701 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: cxflows.dialogflow.google.kubeform.com
+spec:
+  group: dialogflow.google.kubeform.com
+  names:
+    kind: CxFlow
+    listKind: CxFlowList
+    plural: cxflows
+    singular: cxflow
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  description:
+                    description: The description of the flow. The maximum length is
+                      500 characters. If exceeded, the request is rejected.
+                    type: string
+                  displayName:
+                    description: The human-readable name of the flow.
+                    type: string
+                  eventHandlers:
+                    description: 'A flow''s event handlers serve two purposes: They
+                      are responsible for handling events (e.g. no match, webhook
+                      errors) in the flow. They are inherited by every page''s [event
+                      handlers][Page.event_handlers], which can be used to handle
+                      common events regardless of the current page. Event handlers
+                      defined in the page have higher priority than those defined
+                      in the flow. Unlike transitionRoutes, these handlers are evaluated
+                      on a first-match basis. The first one that matches the event
+                      get executed, with the rest being ignored.'
+                    items:
+                      properties:
+                        event:
+                          description: The name of the event to handle.
+                          type: string
+                        name:
+                          description: The unique identifier of this event handler.
+                          type: string
+                        targetFlow:
+                          description: 'The target flow to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>.'
+                          type: string
+                        targetPage:
+                          description: 'The target page to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>/pages/<Page ID>.'
+                          type: string
+                        triggerFulfillment:
+                          description: The fulfillment to call when the event occurs.
+                            Handling webhook errors with a fulfillment enabled with
+                            webhook could cause infinite loop. It is invalid to specify
+                            such fulfillment for a handler handling webhooks.
+                          properties:
+                            messages:
+                              description: The list of rich message responses to present
+                                to the user.
+                              items:
+                                properties:
+                                  text:
+                                    description: The text response message.
+                                    properties:
+                                      allowPlaybackInterruption:
+                                        description: Whether the playback of this
+                                          message can be interrupted by the end user's
+                                          speech and the client can then starts the
+                                          next Dialogflow request.
+                                        type: boolean
+                                      text:
+                                        description: A collection of text responses.
+                                        items:
+                                          type: string
+                                        type: array
+                                    type: object
+                                type: object
+                              type: array
+                            returnPartialResponses:
+                              description: 'Whether Dialogflow should return currently
+                                queued fulfillment response messages in streaming
+                                APIs. If a webhook is specified, it happens before
+                                Dialogflow invokes webhook. Warning: 1) This flag
+                                only affects streaming API. Responses are still queued
+                                and returned once in non-streaming API. 2) The flag
+                                can be enabled in any fulfillment but only the first
+                                3 partial responses will be returned. You may only
+                                want to apply it to fulfillments that have slow webhooks.'
+                              type: boolean
+                            tag:
+                              description: The tag used by the webhook to identify
+                                which fulfillment is being called. This field is required
+                                if webhook is specified.
+                              type: string
+                            webhook:
+                              description: 'The webhook to call. Format: projects/<Project
+                                ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook
+                                ID>.'
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  id:
+                    type: string
+                  languageCode:
+                    description: 'The language of the following fields in flow: Flow.event_handlers.trigger_fulfillment.messages
+                      Flow.event_handlers.trigger_fulfillment.conditional_cases Flow.transition_routes.trigger_fulfillment.messages
+                      Flow.transition_routes.trigger_fulfillment.conditional_cases
+                      If not specified, the agent''s default language is used. Many
+                      languages are supported. Note: languages must be enabled in
+                      the agent before they can be used.'
+                    type: string
+                  name:
+                    description: 'The unique identifier of the flow. Format: projects/<Project
+                      ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.'
+                    type: string
+                  nluSettings:
+                    description: NLU related settings of the flow.
+                    properties:
+                      classificationThreshold:
+                        description: To filter out false positive results and still
+                          get variety in matched natural language inputs for your
+                          agent, you can tune the machine learning classification
+                          threshold. If the returned score value is less than the
+                          threshold value, then a no-match event will be triggered.
+                          The score values range from 0.0 (completely uncertain) to
+                          1.0 (completely certain). If set to 0.0, the default of
+                          0.3 is used.
+                        format: double
+                        type: number
+                      modelTrainingMode:
+                        description: 'Indicates NLU model training mode. * MODEL_TRAINING_MODE_AUTOMATIC:
+                          NLU model training is automatically triggered when a flow
+                          gets modified. User can also manually trigger model training
+                          in this mode. * MODEL_TRAINING_MODE_MANUAL: User needs to
+                          manually trigger NLU model training. Best for large flows
+                          whose models take long time to train. Possible values: ["MODEL_TRAINING_MODE_AUTOMATIC",
+                          "MODEL_TRAINING_MODE_MANUAL"]'
+                        type: string
+                      modelType:
+                        description: 'Indicates the type of NLU model. * MODEL_TYPE_STANDARD:
+                          Use standard NLU model. * MODEL_TYPE_ADVANCED: Use advanced
+                          NLU model. Possible values: ["MODEL_TYPE_STANDARD", "MODEL_TYPE_ADVANCED"]'
+                        type: string
+                    type: object
+                  parent:
+                    description: 'The agent to create a flow for. Format: projects/<Project
+                      ID>/locations/<Location ID>/agents/<Agent ID>.'
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  transitionRouteGroups:
+                    description: 'A flow''s transition route group serve two purposes:
+                      They are responsible for matching the user''s first utterances
+                      in the flow. They are inherited by every page''s [transition
+                      route groups][Page.transition_route_groups]. Transition route
+                      groups defined in the page have higher priority than those defined
+                      in the flow. Format:projects/<Project ID>/locations/<Location
+                      ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup
+                      ID>.'
+                    items:
+                      type: string
+                    type: array
+                  transitionRoutes:
+                    description: "A flow's transition routes serve two purposes: They
+                      are responsible for matching the user's first utterances in
+                      the flow. They are inherited by every page's [transition routes][Page.transition_routes]
+                      and can support use cases such as the user saying \"help\" or
+                      \"can I talk to a human?\", which can be handled in a common
+                      way regardless of the current page. Transition routes defined
+                      in the page have higher priority than those defined in the flow.
+                      \n TransitionRoutes are evalauted in the following order:   TransitionRoutes
+                      with intent specified.   TransitionRoutes with only condition
+                      specified.   TransitionRoutes with intent specified are inherited
+                      by pages in the flow."
+                    items:
+                      properties:
+                        condition:
+                          description: The condition to evaluate against form parameters
+                            or session parameters. At least one of intent or condition
+                            must be specified. When both intent and condition are
+                            specified, the transition can only happen when both are
+                            fulfilled.
+                          type: string
+                        intent:
+                          description: 'The unique identifier of an Intent. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/intents/<Intent ID>. Indicates that the transition
+                            can only happen when the given intent is matched. At least
+                            one of intent or condition must be specified. When both
+                            intent and condition are specified, the transition can
+                            only happen when both are fulfilled.'
+                          type: string
+                        name:
+                          description: The unique identifier of this transition route.
+                          type: string
+                        targetFlow:
+                          description: 'The target flow to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>.'
+                          type: string
+                        targetPage:
+                          description: 'The target page to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>/pages/<Page ID>.'
+                          type: string
+                        triggerFulfillment:
+                          description: The fulfillment to call when the condition
+                            is satisfied. At least one of triggerFulfillment and target
+                            must be specified. When both are defined, triggerFulfillment
+                            is executed first.
+                          properties:
+                            messages:
+                              description: The list of rich message responses to present
+                                to the user.
+                              items:
+                                properties:
+                                  text:
+                                    description: The text response message.
+                                    properties:
+                                      allowPlaybackInterruption:
+                                        description: Whether the playback of this
+                                          message can be interrupted by the end user's
+                                          speech and the client can then starts the
+                                          next Dialogflow request.
+                                        type: boolean
+                                      text:
+                                        description: A collection of text responses.
+                                        items:
+                                          type: string
+                                        type: array
+                                    type: object
+                                type: object
+                              type: array
+                            returnPartialResponses:
+                              description: 'Whether Dialogflow should return currently
+                                queued fulfillment response messages in streaming
+                                APIs. If a webhook is specified, it happens before
+                                Dialogflow invokes webhook. Warning: 1) This flag
+                                only affects streaming API. Responses are still queued
+                                and returned once in non-streaming API. 2) The flag
+                                can be enabled in any fulfillment but only the first
+                                3 partial responses will be returned. You may only
+                                want to apply it to fulfillments that have slow webhooks.'
+                              type: boolean
+                            tag:
+                              description: The tag used by the webhook to identify
+                                which fulfillment is being called. This field is required
+                                if webhook is specified.
+                              type: string
+                            webhook:
+                              description: 'The webhook to call. Format: projects/<Project
+                                ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook
+                                ID>.'
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - displayName
+                type: object
+              state:
+                properties:
+                  description:
+                    description: The description of the flow. The maximum length is
+                      500 characters. If exceeded, the request is rejected.
+                    type: string
+                  displayName:
+                    description: The human-readable name of the flow.
+                    type: string
+                  eventHandlers:
+                    description: 'A flow''s event handlers serve two purposes: They
+                      are responsible for handling events (e.g. no match, webhook
+                      errors) in the flow. They are inherited by every page''s [event
+                      handlers][Page.event_handlers], which can be used to handle
+                      common events regardless of the current page. Event handlers
+                      defined in the page have higher priority than those defined
+                      in the flow. Unlike transitionRoutes, these handlers are evaluated
+                      on a first-match basis. The first one that matches the event
+                      get executed, with the rest being ignored.'
+                    items:
+                      properties:
+                        event:
+                          description: The name of the event to handle.
+                          type: string
+                        name:
+                          description: The unique identifier of this event handler.
+                          type: string
+                        targetFlow:
+                          description: 'The target flow to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>.'
+                          type: string
+                        targetPage:
+                          description: 'The target page to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>/pages/<Page ID>.'
+                          type: string
+                        triggerFulfillment:
+                          description: The fulfillment to call when the event occurs.
+                            Handling webhook errors with a fulfillment enabled with
+                            webhook could cause infinite loop. It is invalid to specify
+                            such fulfillment for a handler handling webhooks.
+                          properties:
+                            messages:
+                              description: The list of rich message responses to present
+                                to the user.
+                              items:
+                                properties:
+                                  text:
+                                    description: The text response message.
+                                    properties:
+                                      allowPlaybackInterruption:
+                                        description: Whether the playback of this
+                                          message can be interrupted by the end user's
+                                          speech and the client can then starts the
+                                          next Dialogflow request.
+                                        type: boolean
+                                      text:
+                                        description: A collection of text responses.
+                                        items:
+                                          type: string
+                                        type: array
+                                    type: object
+                                type: object
+                              type: array
+                            returnPartialResponses:
+                              description: 'Whether Dialogflow should return currently
+                                queued fulfillment response messages in streaming
+                                APIs. If a webhook is specified, it happens before
+                                Dialogflow invokes webhook. Warning: 1) This flag
+                                only affects streaming API. Responses are still queued
+                                and returned once in non-streaming API. 2) The flag
+                                can be enabled in any fulfillment but only the first
+                                3 partial responses will be returned. You may only
+                                want to apply it to fulfillments that have slow webhooks.'
+                              type: boolean
+                            tag:
+                              description: The tag used by the webhook to identify
+                                which fulfillment is being called. This field is required
+                                if webhook is specified.
+                              type: string
+                            webhook:
+                              description: 'The webhook to call. Format: projects/<Project
+                                ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook
+                                ID>.'
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  id:
+                    type: string
+                  languageCode:
+                    description: 'The language of the following fields in flow: Flow.event_handlers.trigger_fulfillment.messages
+                      Flow.event_handlers.trigger_fulfillment.conditional_cases Flow.transition_routes.trigger_fulfillment.messages
+                      Flow.transition_routes.trigger_fulfillment.conditional_cases
+                      If not specified, the agent''s default language is used. Many
+                      languages are supported. Note: languages must be enabled in
+                      the agent before they can be used.'
+                    type: string
+                  name:
+                    description: 'The unique identifier of the flow. Format: projects/<Project
+                      ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.'
+                    type: string
+                  nluSettings:
+                    description: NLU related settings of the flow.
+                    properties:
+                      classificationThreshold:
+                        description: To filter out false positive results and still
+                          get variety in matched natural language inputs for your
+                          agent, you can tune the machine learning classification
+                          threshold. If the returned score value is less than the
+                          threshold value, then a no-match event will be triggered.
+                          The score values range from 0.0 (completely uncertain) to
+                          1.0 (completely certain). If set to 0.0, the default of
+                          0.3 is used.
+                        format: double
+                        type: number
+                      modelTrainingMode:
+                        description: 'Indicates NLU model training mode. * MODEL_TRAINING_MODE_AUTOMATIC:
+                          NLU model training is automatically triggered when a flow
+                          gets modified. User can also manually trigger model training
+                          in this mode. * MODEL_TRAINING_MODE_MANUAL: User needs to
+                          manually trigger NLU model training. Best for large flows
+                          whose models take long time to train. Possible values: ["MODEL_TRAINING_MODE_AUTOMATIC",
+                          "MODEL_TRAINING_MODE_MANUAL"]'
+                        type: string
+                      modelType:
+                        description: 'Indicates the type of NLU model. * MODEL_TYPE_STANDARD:
+                          Use standard NLU model. * MODEL_TYPE_ADVANCED: Use advanced
+                          NLU model. Possible values: ["MODEL_TYPE_STANDARD", "MODEL_TYPE_ADVANCED"]'
+                        type: string
+                    type: object
+                  parent:
+                    description: 'The agent to create a flow for. Format: projects/<Project
+                      ID>/locations/<Location ID>/agents/<Agent ID>.'
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  transitionRouteGroups:
+                    description: 'A flow''s transition route group serve two purposes:
+                      They are responsible for matching the user''s first utterances
+                      in the flow. They are inherited by every page''s [transition
+                      route groups][Page.transition_route_groups]. Transition route
+                      groups defined in the page have higher priority than those defined
+                      in the flow. Format:projects/<Project ID>/locations/<Location
+                      ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup
+                      ID>.'
+                    items:
+                      type: string
+                    type: array
+                  transitionRoutes:
+                    description: "A flow's transition routes serve two purposes: They
+                      are responsible for matching the user's first utterances in
+                      the flow. They are inherited by every page's [transition routes][Page.transition_routes]
+                      and can support use cases such as the user saying \"help\" or
+                      \"can I talk to a human?\", which can be handled in a common
+                      way regardless of the current page. Transition routes defined
+                      in the page have higher priority than those defined in the flow.
+                      \n TransitionRoutes are evalauted in the following order:   TransitionRoutes
+                      with intent specified.   TransitionRoutes with only condition
+                      specified.   TransitionRoutes with intent specified are inherited
+                      by pages in the flow."
+                    items:
+                      properties:
+                        condition:
+                          description: The condition to evaluate against form parameters
+                            or session parameters. At least one of intent or condition
+                            must be specified. When both intent and condition are
+                            specified, the transition can only happen when both are
+                            fulfilled.
+                          type: string
+                        intent:
+                          description: 'The unique identifier of an Intent. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/intents/<Intent ID>. Indicates that the transition
+                            can only happen when the given intent is matched. At least
+                            one of intent or condition must be specified. When both
+                            intent and condition are specified, the transition can
+                            only happen when both are fulfilled.'
+                          type: string
+                        name:
+                          description: The unique identifier of this transition route.
+                          type: string
+                        targetFlow:
+                          description: 'The target flow to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>.'
+                          type: string
+                        targetPage:
+                          description: 'The target page to transition to. Format:
+                            projects/<Project ID>/locations/<Location ID>/agents/<Agent
+                            ID>/flows/<Flow ID>/pages/<Page ID>.'
+                          type: string
+                        triggerFulfillment:
+                          description: The fulfillment to call when the condition
+                            is satisfied. At least one of triggerFulfillment and target
+                            must be specified. When both are defined, triggerFulfillment
+                            is executed first.
+                          properties:
+                            messages:
+                              description: The list of rich message responses to present
+                                to the user.
+                              items:
+                                properties:
+                                  text:
+                                    description: The text response message.
+                                    properties:
+                                      allowPlaybackInterruption:
+                                        description: Whether the playback of this
+                                          message can be interrupted by the end user's
+                                          speech and the client can then starts the
+                                          next Dialogflow request.
+                                        type: boolean
+                                      text:
+                                        description: A collection of text responses.
+                                        items:
+                                          type: string
+                                        type: array
+                                    type: object
+                                type: object
+                              type: array
+                            returnPartialResponses:
+                              description: 'Whether Dialogflow should return currently
+                                queued fulfillment response messages in streaming
+                                APIs. If a webhook is specified, it happens before
+                                Dialogflow invokes webhook. Warning: 1) This flag
+                                only affects streaming API. Responses are still queued
+                                and returned once in non-streaming API. 2) The flag
+                                can be enabled in any fulfillment but only the first
+                                3 partial responses will be returned. You may only
+                                want to apply it to fulfillments that have slow webhooks.'
+                              type: boolean
+                            tag:
+                              description: The tag used by the webhook to identify
+                                which fulfillment is being called. This field is required
+                                if webhook is specified.
+                              type: string
+                            webhook:
+                              description: 'The webhook to call. Format: projects/<Project
+                                ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook
+                                ID>.'
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                required:
+                - displayName
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -34,6 +34,54 @@ type CxAgentListerExpansion interface{}
 // CxAgentNamespaceLister.
 type CxAgentNamespaceListerExpansion interface{}
 
+// CxEntityTypeListerExpansion allows custom methods to be added to
+// CxEntityTypeLister.
+type CxEntityTypeListerExpansion interface{}
+
+// CxEntityTypeNamespaceListerExpansion allows custom methods to be added to
+// CxEntityTypeNamespaceLister.
+type CxEntityTypeNamespaceListerExpansion interface{}
+
+// CxEnvironmentListerExpansion allows custom methods to be added to
+// CxEnvironmentLister.
+type CxEnvironmentListerExpansion interface{}
+
+// CxEnvironmentNamespaceListerExpansion allows custom methods to be added to
+// CxEnvironmentNamespaceLister.
+type CxEnvironmentNamespaceListerExpansion interface{}
+
+// CxFlowListerExpansion allows custom methods to be added to
+// CxFlowLister.
+type CxFlowListerExpansion interface{}
+
+// CxFlowNamespaceListerExpansion allows custom methods to be added to
+// CxFlowNamespaceLister.
+type CxFlowNamespaceListerExpansion interface{}
+
+// CxIntentListerExpansion allows custom methods to be added to
+// CxIntentLister.
+type CxIntentListerExpansion interface{}
+
+// CxIntentNamespaceListerExpansion allows custom methods to be added to
+// CxIntentNamespaceLister.
+type CxIntentNamespaceListerExpansion interface{}
+
+// CxPageListerExpansion allows custom methods to be added to
+// CxPageLister.
+type CxPageListerExpansion interface{}
+
+// CxPageNamespaceListerExpansion allows custom methods to be added to
+// CxPageNamespaceLister.
+type CxPageNamespaceListerExpansion interface{}
+
+// CxVersionListerExpansion allows custom methods to be added to
+// CxVersionLister.
+type CxVersionListerExpansion interface{}
+
+// CxVersionNamespaceListerExpansion allows custom methods to be added to
+// CxVersionNamespaceLister.
+type CxVersionNamespaceListerExpansion interface{}
+
 // EntityTypeListerExpansion allows custom methods to be added to
 // EntityTypeLister.
 type EntityTypeListerExpansion interface{}

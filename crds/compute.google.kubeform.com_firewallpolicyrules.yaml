@@ -1,0 +1,437 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: firewallpolicyrules.compute.google.kubeform.com
+spec:
+  group: compute.google.kubeform.com
+  names:
+    kind: FirewallPolicyRule
+    listKind: FirewallPolicyRuleList
+    plural: firewallpolicyrules
+    singular: firewallpolicyrule
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  action:
+                    description: The Action to perform when the client connection
+                      triggers the rule. Can currently be either "allow" or "deny()"
+                      where valid values for status are 403, 404, and 502.
+                    type: string
+                  description:
+                    description: An optional description for this resource.
+                    type: string
+                  direction:
+                    description: 'The direction in which this rule applies. Possible
+                      values: INGRESS, EGRESS'
+                    type: string
+                  disabled:
+                    description: Denotes whether the firewall policy rule is disabled.
+                      When set to true, the firewall policy rule is not enforced and
+                      traffic behaves as if it did not exist. If this is unspecified,
+                      the firewall policy rule will be enabled.
+                    type: boolean
+                  enableLogging:
+                    description: 'Denotes whether to enable logging for a particular
+                      rule. If logging is enabled, logs will be exported to the configured
+                      export destination in Stackdriver. Logs may be exported to BigQuery
+                      or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.'
+                    type: boolean
+                  firewallPolicy:
+                    description: The firewall policy of the resource.
+                    type: string
+                  id:
+                    type: string
+                  kind:
+                    description: Type of the resource. Always `compute#firewallPolicyRule`
+                      for firewall policy rules
+                    type: string
+                  match:
+                    description: A match condition that incoming traffic is evaluated
+                      against. If it evaluates to true, the corresponding 'action'
+                      is enforced.
+                    properties:
+                      destIPRanges:
+                        description: CIDR IP address range. Maximum number of destination
+                          CIDR IP ranges allowed is 256.
+                        items:
+                          type: string
+                        type: array
+                      layer4Configs:
+                        description: Pairs of IP protocols and ports that the rule
+                          should match.
+                        items:
+                          properties:
+                            ipProtocol:
+                              description: The IP protocol to which this rule applies.
+                                The protocol type is required when creating a firewall
+                                rule. This value can either be one of the following
+                                well known protocol strings (`tcp`, `udp`, `icmp`,
+                                `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+                              type: string
+                            ports:
+                              description: 'An optional list of ports to which this
+                                rule applies. This field is only applicable for UDP
+                                or TCP protocol. Each entry must be either an integer
+                                or a range. If not specified, this rule applies to
+                                connections through any port. Example inputs include:
+                                ``.'
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - ipProtocol
+                          type: object
+                        type: array
+                      srcIPRanges:
+                        description: CIDR IP address range. Maximum number of source
+                          CIDR IP ranges allowed is 256.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - layer4Configs
+                    type: object
+                  priority:
+                    description: An integer indicating the priority of a rule in the
+                      list. The priority must be a positive value between 0 and 2147483647.
+                      Rules are evaluated from highest to lowest priority where 0
+                      is the highest priority and 2147483647 is the lowest prority.
+                    format: int64
+                    type: integer
+                  ruleTupleCount:
+                    description: Calculation of the complexity of a single firewall
+                      policy rule.
+                    format: int64
+                    type: integer
+                  targetResources:
+                    description: A list of network resource URLs to which this rule
+                      applies. This field allows you to control which network's VMs
+                      get this rule. If this field is left blank, all VMs within the
+                      organization will receive the rule.
+                    items:
+                      type: string
+                    type: array
+                  targetServiceAccounts:
+                    description: A list of service accounts indicating the sets of
+                      instances that are applied with this rule.
+                    items:
+                      type: string
+                    type: array
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - action
+                - direction
+                - firewallPolicy
+                - match
+                - priority
+                type: object
+              state:
+                properties:
+                  action:
+                    description: The Action to perform when the client connection
+                      triggers the rule. Can currently be either "allow" or "deny()"
+                      where valid values for status are 403, 404, and 502.
+                    type: string
+                  description:
+                    description: An optional description for this resource.
+                    type: string
+                  direction:
+                    description: 'The direction in which this rule applies. Possible
+                      values: INGRESS, EGRESS'
+                    type: string
+                  disabled:
+                    description: Denotes whether the firewall policy rule is disabled.
+                      When set to true, the firewall policy rule is not enforced and
+                      traffic behaves as if it did not exist. If this is unspecified,
+                      the firewall policy rule will be enabled.
+                    type: boolean
+                  enableLogging:
+                    description: 'Denotes whether to enable logging for a particular
+                      rule. If logging is enabled, logs will be exported to the configured
+                      export destination in Stackdriver. Logs may be exported to BigQuery
+                      or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.'
+                    type: boolean
+                  firewallPolicy:
+                    description: The firewall policy of the resource.
+                    type: string
+                  id:
+                    type: string
+                  kind:
+                    description: Type of the resource. Always `compute#firewallPolicyRule`
+                      for firewall policy rules
+                    type: string
+                  match:
+                    description: A match condition that incoming traffic is evaluated
+                      against. If it evaluates to true, the corresponding 'action'
+                      is enforced.
+                    properties:
+                      destIPRanges:
+                        description: CIDR IP address range. Maximum number of destination
+                          CIDR IP ranges allowed is 256.
+                        items:
+                          type: string
+                        type: array
+                      layer4Configs:
+                        description: Pairs of IP protocols and ports that the rule
+                          should match.
+                        items:
+                          properties:
+                            ipProtocol:
+                              description: The IP protocol to which this rule applies.
+                                The protocol type is required when creating a firewall
+                                rule. This value can either be one of the following
+                                well known protocol strings (`tcp`, `udp`, `icmp`,
+                                `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+                              type: string
+                            ports:
+                              description: 'An optional list of ports to which this
+                                rule applies. This field is only applicable for UDP
+                                or TCP protocol. Each entry must be either an integer
+                                or a range. If not specified, this rule applies to
+                                connections through any port. Example inputs include:
+                                ``.'
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - ipProtocol
+                          type: object
+                        type: array
+                      srcIPRanges:
+                        description: CIDR IP address range. Maximum number of source
+                          CIDR IP ranges allowed is 256.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - layer4Configs
+                    type: object
+                  priority:
+                    description: An integer indicating the priority of a rule in the
+                      list. The priority must be a positive value between 0 and 2147483647.
+                      Rules are evaluated from highest to lowest priority where 0
+                      is the highest priority and 2147483647 is the lowest prority.
+                    format: int64
+                    type: integer
+                  ruleTupleCount:
+                    description: Calculation of the complexity of a single firewall
+                      policy rule.
+                    format: int64
+                    type: integer
+                  targetResources:
+                    description: A list of network resource URLs to which this rule
+                      applies. This field allows you to control which network's VMs
+                      get this rule. If this field is left blank, all VMs within the
+                      organization will receive the rule.
+                    items:
+                      type: string
+                    type: array
+                  targetServiceAccounts:
+                    description: A list of service accounts indicating the sets of
+                      instances that are applied with this rule.
+                    items:
+                      type: string
+                    type: array
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                required:
+                - action
+                - direction
+                - firewallPolicy
+                - match
+                - priority
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

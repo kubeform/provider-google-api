@@ -69,6 +69,13 @@ type CryptoKeySpecResource struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 24 hours.
+	// +optional
+	DestroyScheduledDuration *string `json:"destroyScheduledDuration,omitempty" tf:"destroy_scheduled_duration"`
+	// Whether this key may contain imported versions only.
+	// +optional
+	ImportOnly *bool `json:"importOnly,omitempty" tf:"import_only"`
 	// The KeyRing that this key belongs to.
 	// Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
 	KeyRing *string `json:"keyRing" tf:"key_ring"`

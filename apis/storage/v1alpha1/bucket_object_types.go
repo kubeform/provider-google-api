@@ -58,6 +58,8 @@ type BucketObjectSpec struct {
 }
 
 type BucketObjectSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The name of the containing bucket.
@@ -83,8 +85,13 @@ type BucketObjectSpecResource struct {
 	// Base 64 CRC32 hash of the uploaded data.
 	// +optional
 	Crc32c *string `json:"crc32c,omitempty" tf:"crc32c"`
+	// Encryption key; encoded using base64.
+	// +optional
 	// +optional
 	DetectMd5hash *string `json:"detectMd5hash,omitempty" tf:"detect_md5hash"`
+	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+	// +optional
+	EventBasedHold *bool `json:"eventBasedHold,omitempty" tf:"event_based_hold"`
 	// Resource name of the Cloud KMS key that will be used to encrypt the object. Overrides the object metadata's kmsKeyName value, if any.
 	// +optional
 	KmsKeyName *string `json:"kmsKeyName,omitempty" tf:"kms_key_name"`
@@ -111,6 +118,9 @@ type BucketObjectSpecResource struct {
 	// The StorageClass of the new bucket object. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE. If not provided, this defaults to the bucket's default storage class or to a standard class.
 	// +optional
 	StorageClass *string `json:"storageClass,omitempty" tf:"storage_class"`
+	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites.
+	// +optional
+	TemporaryHold *bool `json:"temporaryHold,omitempty" tf:"temporary_hold"`
 }
 
 type BucketObjectStatus struct {

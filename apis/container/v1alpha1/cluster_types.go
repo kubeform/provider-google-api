@@ -138,6 +138,11 @@ type ClusterSpecIpAllocationPolicy struct {
 	ServicesSecondaryRangeName *string `json:"servicesSecondaryRangeName,omitempty" tf:"services_secondary_range_name"`
 }
 
+type ClusterSpecLoggingConfig struct {
+	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS and WORKLOADS.
+	EnableComponents []string `json:"enableComponents" tf:"enable_components"`
+}
+
 type ClusterSpecMaintenancePolicyDailyMaintenanceWindow struct {
 	// +optional
 	Duration  *string `json:"duration,omitempty" tf:"duration"`
@@ -209,6 +214,11 @@ type ClusterSpecMasterAuthorizedNetworksConfig struct {
 	CidrBlocks []ClusterSpecMasterAuthorizedNetworksConfigCidrBlocks `json:"cidrBlocks,omitempty" tf:"cidr_blocks"`
 }
 
+type ClusterSpecMonitoringConfig struct {
+	// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS.
+	EnableComponents []string `json:"enableComponents" tf:"enable_components"`
+}
+
 type ClusterSpecNetworkPolicy struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled *bool `json:"enabled" tf:"enabled"`
@@ -220,6 +230,9 @@ type ClusterSpecNetworkPolicy struct {
 type ClusterSpecNodeConfigGuestAccelerator struct {
 	// The number of the accelerator cards exposed to an instance.
 	Count *int64 `json:"count" tf:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+	// +optional
+	GpuPartitionSize *string `json:"gpuPartitionSize,omitempty" tf:"gpu_partition_size"`
 	// The accelerator type resource name.
 	Type *string `json:"type" tf:"type"`
 }
@@ -243,8 +256,13 @@ type ClusterSpecNodeConfigTaint struct {
 }
 
 type ClusterSpecNodeConfigWorkloadMetadataConfig struct {
+	// Mode is the configuration for how to expose metadata to workloads running on the node.
+	// +optional
+	Mode *string `json:"mode,omitempty" tf:"mode"`
 	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	NodeMetadata *string `json:"nodeMetadata" tf:"node_metadata"`
+	// +optional
+	// Deprecated
+	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
 }
 
 type ClusterSpecNodeConfig struct {
@@ -317,6 +335,9 @@ type ClusterSpecNodePoolManagement struct {
 type ClusterSpecNodePoolNodeConfigGuestAccelerator struct {
 	// The number of the accelerator cards exposed to an instance.
 	Count *int64 `json:"count" tf:"count"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+	// +optional
+	GpuPartitionSize *string `json:"gpuPartitionSize,omitempty" tf:"gpu_partition_size"`
 	// The accelerator type resource name.
 	Type *string `json:"type" tf:"type"`
 }
@@ -340,8 +361,13 @@ type ClusterSpecNodePoolNodeConfigTaint struct {
 }
 
 type ClusterSpecNodePoolNodeConfigWorkloadMetadataConfig struct {
+	// Mode is the configuration for how to expose metadata to workloads running on the node.
+	// +optional
+	Mode *string `json:"mode,omitempty" tf:"mode"`
 	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	NodeMetadata *string `json:"nodeMetadata" tf:"node_metadata"`
+	// +optional
+	// Deprecated
+	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
 }
 
 type ClusterSpecNodePoolNodeConfig struct {
@@ -506,7 +532,12 @@ type ClusterSpecVerticalPodAutoscaling struct {
 
 type ClusterSpecWorkloadIdentityConfig struct {
 	// Enables workload identity.
-	IdentityNamespace *string `json:"identityNamespace" tf:"identity_namespace"`
+	// +optional
+	// Deprecated
+	IdentityNamespace *string `json:"identityNamespace,omitempty" tf:"identity_namespace"`
+	// The workload pool to attach all Kubernetes service accounts to.
+	// +optional
+	WorkloadPool *string `json:"workloadPool,omitempty" tf:"workload_pool"`
 }
 
 type ClusterSpec struct {
@@ -586,6 +617,7 @@ type ClusterSpecResource struct {
 	InitialNodeCount *int64 `json:"initialNodeCount,omitempty" tf:"initial_node_count"`
 	// List of instance group URLs which have been assigned to the cluster.
 	// +optional
+	// Deprecated
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls"`
 	// Configuration of cluster IP allocation for VPC-native clusters. Adding this block enables IP aliasing, making the cluster VPC-native instead of routes-based.
 	// +optional
@@ -596,6 +628,9 @@ type ClusterSpecResource struct {
 	// The location (region or zone) in which the cluster master will be created, as well as the default node location. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region, and with default node locations in those zones as well.
 	// +optional
 	Location *string `json:"location,omitempty" tf:"location"`
+	// Logging configuration for the cluster.
+	// +optional
+	LoggingConfig *ClusterSpecLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config"`
 	// The logging service that the cluster should write logs to. Available options include logging.googleapis.com(Legacy Stackdriver), logging.googleapis.com/kubernetes(Stackdriver Kubernetes Engine Logging), and none. Defaults to logging.googleapis.com/kubernetes.
 	// +optional
 	LoggingService *string `json:"loggingService,omitempty" tf:"logging_service"`
@@ -604,6 +639,7 @@ type ClusterSpecResource struct {
 	MaintenancePolicy *ClusterSpecMaintenancePolicy `json:"maintenancePolicy,omitempty" tf:"maintenance_policy"`
 	// The authentication information for accessing the Kubernetes master. Some values in this block are only returned by the API if your service account has permission to get credentials for your GKE cluster. If you see an unexpected diff removing a username/password or unsetting your client cert, ensure you have the container.clusters.getCredentials permission.
 	// +optional
+	// Deprecated
 	MasterAuth *ClusterSpecMasterAuth `json:"masterAuth,omitempty" tf:"master_auth"`
 	// The desired configuration options for master authorized networks. Omit the nested cidr_blocks attribute to disallow external access (except the cluster node IPs, which GKE automatically whitelists).
 	// +optional
@@ -614,6 +650,9 @@ type ClusterSpecResource struct {
 	// The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the current master version--use the read-only master_version field to obtain that. If unset, the cluster's version will be set by GKE to the version of the most recent official release (which is not necessarily the latest version).
 	// +optional
 	MinMasterVersion *string `json:"minMasterVersion,omitempty" tf:"min_master_version"`
+	// Monitoring configuration for the cluster.
+	// +optional
+	MonitoringConfig *ClusterSpecMonitoringConfig `json:"monitoringConfig,omitempty" tf:"monitoring_config"`
 	// The monitoring service that the cluster should write metrics to. Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API. VM metrics will be collected by Google Compute Engine regardless of this setting Available options include monitoring.googleapis.com(Legacy Stackdriver), monitoring.googleapis.com/kubernetes(Stackdriver Kubernetes Engine Monitoring), and none. Defaults to monitoring.googleapis.com/kubernetes.
 	// +optional
 	MonitoringService *string `json:"monitoringService,omitempty" tf:"monitoring_service"`

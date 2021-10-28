@@ -67,7 +67,7 @@ type MetricSpecBucketOptionsLinearBuckets struct {
 	Offset *float64 `json:"offset,omitempty" tf:"offset"`
 	// Must be greater than 0.
 	// +optional
-	Width *int64 `json:"width,omitempty" tf:"width"`
+	Width *float64 `json:"width,omitempty" tf:"width"`
 }
 
 type MetricSpecBucketOptions struct {

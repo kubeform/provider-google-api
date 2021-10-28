@@ -168,6 +168,11 @@ spec:
                           If this is unset, '\\r' will be used as segment terminator.
                           \n A base64-encoded string."
                         type: string
+                      version:
+                        description: 'The version of the unschematized parser to be
+                          used when a custom ''schema'' is not set. Default value:
+                          "V1" Possible values: ["V1", "V2"]'
+                        type: string
                     type: object
                   selfLink:
                     description: The fully qualified name of this dataset
@@ -326,6 +331,11 @@ spec:
                         description: "Byte(s) to be used as the segment terminator.
                           If this is unset, '\\r' will be used as segment terminator.
                           \n A base64-encoded string."
+                        type: string
+                      version:
+                        description: 'The version of the unschematized parser to be
+                          used when a custom ''schema'' is not set. Default value:
+                          "V1" Possible values: ["V1", "V2"]'
                         type: string
                     type: object
                   selfLink:

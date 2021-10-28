@@ -26,6 +26,12 @@ import (
 type Interface interface {
 	// ManagementConnectivityTests returns a ManagementConnectivityTestInformer.
 	ManagementConnectivityTests() ManagementConnectivityTestInformer
+	// ServicesEdgeCacheKeysets returns a ServicesEdgeCacheKeysetInformer.
+	ServicesEdgeCacheKeysets() ServicesEdgeCacheKeysetInformer
+	// ServicesEdgeCacheOrigins returns a ServicesEdgeCacheOriginInformer.
+	ServicesEdgeCacheOrigins() ServicesEdgeCacheOriginInformer
+	// ServicesEdgeCacheServices returns a ServicesEdgeCacheServiceInformer.
+	ServicesEdgeCacheServices() ServicesEdgeCacheServiceInformer
 }
 
 type version struct {
@@ -42,4 +48,19 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // ManagementConnectivityTests returns a ManagementConnectivityTestInformer.
 func (v *version) ManagementConnectivityTests() ManagementConnectivityTestInformer {
 	return &managementConnectivityTestInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ServicesEdgeCacheKeysets returns a ServicesEdgeCacheKeysetInformer.
+func (v *version) ServicesEdgeCacheKeysets() ServicesEdgeCacheKeysetInformer {
+	return &servicesEdgeCacheKeysetInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ServicesEdgeCacheOrigins returns a ServicesEdgeCacheOriginInformer.
+func (v *version) ServicesEdgeCacheOrigins() ServicesEdgeCacheOriginInformer {
+	return &servicesEdgeCacheOriginInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ServicesEdgeCacheServices returns a ServicesEdgeCacheServiceInformer.
+func (v *version) ServicesEdgeCacheServices() ServicesEdgeCacheServiceInformer {
+	return &servicesEdgeCacheServiceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

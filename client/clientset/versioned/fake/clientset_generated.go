@@ -28,6 +28,8 @@ import (
 	fakeapigeev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/apigee/v1alpha1/fake"
 	appenginev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/appengine/v1alpha1"
 	fakeappenginev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/appengine/v1alpha1/fake"
+	assuredv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/assured/v1alpha1"
+	fakeassuredv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/assured/v1alpha1/fake"
 	bigqueryv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigquery/v1alpha1"
 	fakebigqueryv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigquery/v1alpha1/fake"
 	bigtablev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/bigtable/v1alpha1"
@@ -70,6 +72,8 @@ import (
 	fakednsv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/dns/v1alpha1/fake"
 	endpointsv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/endpoints/v1alpha1"
 	fakeendpointsv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/endpoints/v1alpha1/fake"
+	essentialv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/essential/v1alpha1"
+	fakeessentialv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/essential/v1alpha1/fake"
 	eventarcv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/eventarc/v1alpha1"
 	fakeeventarcv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/eventarc/v1alpha1/fake"
 	filestorev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/filestore/v1alpha1"
@@ -80,6 +84,8 @@ import (
 	fakefolderv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/folder/v1alpha1/fake"
 	gamev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/game/v1alpha1"
 	fakegamev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/game/v1alpha1/fake"
+	gkev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/gke/v1alpha1"
+	fakegkev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/gke/v1alpha1/fake"
 	healthcarev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/healthcare/v1alpha1"
 	fakehealthcarev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/healthcare/v1alpha1/fake"
 	iapv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/iap/v1alpha1"
@@ -100,10 +106,14 @@ import (
 	fakenetworkv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/network/v1alpha1/fake"
 	notebooksv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/notebooks/v1alpha1"
 	fakenotebooksv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/notebooks/v1alpha1/fake"
+	orgv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/org/v1alpha1"
+	fakeorgv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/org/v1alpha1/fake"
 	organizationv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/organization/v1alpha1"
 	fakeorganizationv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/organization/v1alpha1/fake"
 	osv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/os/v1alpha1"
 	fakeosv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/os/v1alpha1/fake"
+	privatecav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/privateca/v1alpha1"
+	fakeprivatecav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/privateca/v1alpha1/fake"
 	projectv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/project/v1alpha1"
 	fakeprojectv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/project/v1alpha1/fake"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/pubsub/v1alpha1"
@@ -213,6 +223,11 @@ func (c *Clientset) AppengineV1alpha1() appenginev1alpha1.AppengineV1alpha1Inter
 	return &fakeappenginev1alpha1.FakeAppengineV1alpha1{Fake: &c.Fake}
 }
 
+// AssuredV1alpha1 retrieves the AssuredV1alpha1Client
+func (c *Clientset) AssuredV1alpha1() assuredv1alpha1.AssuredV1alpha1Interface {
+	return &fakeassuredv1alpha1.FakeAssuredV1alpha1{Fake: &c.Fake}
+}
+
 // BigqueryV1alpha1 retrieves the BigqueryV1alpha1Client
 func (c *Clientset) BigqueryV1alpha1() bigqueryv1alpha1.BigqueryV1alpha1Interface {
 	return &fakebigqueryv1alpha1.FakeBigqueryV1alpha1{Fake: &c.Fake}
@@ -318,6 +333,11 @@ func (c *Clientset) EndpointsV1alpha1() endpointsv1alpha1.EndpointsV1alpha1Inter
 	return &fakeendpointsv1alpha1.FakeEndpointsV1alpha1{Fake: &c.Fake}
 }
 
+// EssentialV1alpha1 retrieves the EssentialV1alpha1Client
+func (c *Clientset) EssentialV1alpha1() essentialv1alpha1.EssentialV1alpha1Interface {
+	return &fakeessentialv1alpha1.FakeEssentialV1alpha1{Fake: &c.Fake}
+}
+
 // EventarcV1alpha1 retrieves the EventarcV1alpha1Client
 func (c *Clientset) EventarcV1alpha1() eventarcv1alpha1.EventarcV1alpha1Interface {
 	return &fakeeventarcv1alpha1.FakeEventarcV1alpha1{Fake: &c.Fake}
@@ -341,6 +361,11 @@ func (c *Clientset) FolderV1alpha1() folderv1alpha1.FolderV1alpha1Interface {
 // GameV1alpha1 retrieves the GameV1alpha1Client
 func (c *Clientset) GameV1alpha1() gamev1alpha1.GameV1alpha1Interface {
 	return &fakegamev1alpha1.FakeGameV1alpha1{Fake: &c.Fake}
+}
+
+// GkeV1alpha1 retrieves the GkeV1alpha1Client
+func (c *Clientset) GkeV1alpha1() gkev1alpha1.GkeV1alpha1Interface {
+	return &fakegkev1alpha1.FakeGkeV1alpha1{Fake: &c.Fake}
 }
 
 // HealthcareV1alpha1 retrieves the HealthcareV1alpha1Client
@@ -393,6 +418,11 @@ func (c *Clientset) NotebooksV1alpha1() notebooksv1alpha1.NotebooksV1alpha1Inter
 	return &fakenotebooksv1alpha1.FakeNotebooksV1alpha1{Fake: &c.Fake}
 }
 
+// OrgV1alpha1 retrieves the OrgV1alpha1Client
+func (c *Clientset) OrgV1alpha1() orgv1alpha1.OrgV1alpha1Interface {
+	return &fakeorgv1alpha1.FakeOrgV1alpha1{Fake: &c.Fake}
+}
+
 // OrganizationV1alpha1 retrieves the OrganizationV1alpha1Client
 func (c *Clientset) OrganizationV1alpha1() organizationv1alpha1.OrganizationV1alpha1Interface {
 	return &fakeorganizationv1alpha1.FakeOrganizationV1alpha1{Fake: &c.Fake}
@@ -401,6 +431,11 @@ func (c *Clientset) OrganizationV1alpha1() organizationv1alpha1.OrganizationV1al
 // OsV1alpha1 retrieves the OsV1alpha1Client
 func (c *Clientset) OsV1alpha1() osv1alpha1.OsV1alpha1Interface {
 	return &fakeosv1alpha1.FakeOsV1alpha1{Fake: &c.Fake}
+}
+
+// PrivatecaV1alpha1 retrieves the PrivatecaV1alpha1Client
+func (c *Clientset) PrivatecaV1alpha1() privatecav1alpha1.PrivatecaV1alpha1Interface {
+	return &fakeprivatecav1alpha1.FakePrivatecaV1alpha1{Fake: &c.Fake}
 }
 
 // ProjectV1alpha1 retrieves the ProjectV1alpha1Client

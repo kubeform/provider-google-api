@@ -60,12 +60,15 @@ spec:
                   id:
                     type: string
                   managedZone:
-                    description: Identifies the managed zone addressed by this request.
+                    description: The name of the zone in which this record set will
+                      reside.
                     type: string
                   name:
-                    description: For example, www.example.com.
+                    description: The DNS name this record set will apply to.
                     type: string
                   project:
+                    description: The ID of the project in which the resource belongs.
+                      If it is not provided, the provider project is used.
                     type: string
                   rrdatas:
                     description: The string data for the records in this record set
@@ -78,58 +81,17 @@ spec:
                     items:
                       type: string
                     type: array
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
                   ttl:
-                    description: Number of seconds that this ResourceRecordSet can
-                      be cached by resolvers.
+                    description: The time-to-live of this record set (seconds).
                     format: int64
                     type: integer
                   type:
-                    description: 'One of valid DNS resource types. Possible values:
-                      ["A", "AAAA", "CAA", "CNAME", "DNSKEY", "DS", "IPSECVPNKEY",
-                      "MX", "NAPTR", "NS", "PTR", "SOA", "SPF", "SRV", "SSHFP", "TLSA",
-                      "TXT"]'
+                    description: The DNS record set type.
                     type: string
                 required:
                 - managedZone
                 - name
+                - rrdatas
                 - type
                 type: object
               state:
@@ -137,12 +99,15 @@ spec:
                   id:
                     type: string
                   managedZone:
-                    description: Identifies the managed zone addressed by this request.
+                    description: The name of the zone in which this record set will
+                      reside.
                     type: string
                   name:
-                    description: For example, www.example.com.
+                    description: The DNS name this record set will apply to.
                     type: string
                   project:
+                    description: The ID of the project in which the resource belongs.
+                      If it is not provided, the provider project is used.
                     type: string
                   rrdatas:
                     description: The string data for the records in this record set
@@ -155,58 +120,17 @@ spec:
                     items:
                       type: string
                     type: array
-                  timeouts:
-                    properties:
-                      create:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      default:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      delete:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      read:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                      update:
-                        description: A Duration represents the elapsed time between
-                          two instants as an int64 nanosecond count. The representation
-                          limits the largest representable duration to approximately
-                          290 years.
-                        format: int64
-                        type: integer
-                    type: object
                   ttl:
-                    description: Number of seconds that this ResourceRecordSet can
-                      be cached by resolvers.
+                    description: The time-to-live of this record set (seconds).
                     format: int64
                     type: integer
                   type:
-                    description: 'One of valid DNS resource types. Possible values:
-                      ["A", "AAAA", "CAA", "CNAME", "DNSKEY", "DS", "IPSECVPNKEY",
-                      "MX", "NAPTR", "NS", "PTR", "SOA", "SPF", "SRV", "SSHFP", "TLSA",
-                      "TXT"]'
+                    description: The DNS record set type.
                     type: string
                 required:
                 - managedZone
                 - name
+                - rrdatas
                 - type
                 type: object
               terminationPolicy:

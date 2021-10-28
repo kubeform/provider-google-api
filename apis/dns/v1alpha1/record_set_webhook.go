@@ -45,7 +45,6 @@ var recordsetForceNewList = map[string]bool{
 	"/managed_zone": true,
 	"/name":         true,
 	"/project":      true,
-	"/rrdatas":      true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

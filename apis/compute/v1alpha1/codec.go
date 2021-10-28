@@ -50,6 +50,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskIamBindingSpecCondition{}).Type1()):                                                         DiskIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskIamMemberSpecCondition{}).Type1()):                                                          DiskIamMemberSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallSpecLogConfig{}).Type1()):                                                               FirewallSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicyRuleSpecMatch{}).Type1()):                                                         FirewallPolicyRuleSpecMatchCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecGrpcHealthCheck{}).Type1()):                                                      HealthCheckSpecGrpcHealthCheckCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecHttp2HealthCheck{}).Type1()):                                                     HealthCheckSpecHttp2HealthCheckCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecHttpHealthCheck{}).Type1()):                                                      HealthCheckSpecHttpHealthCheckCodec{},
@@ -60,6 +61,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecRawDisk{}).Type1()):                                                                    ImageSpecRawDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageIamBindingSpecCondition{}).Type1()):                                                        ImageIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageIamMemberSpecCondition{}).Type1()):                                                         ImageIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAdvancedMachineFeatures{}).Type1()):                                                 InstanceSpecAdvancedMachineFeaturesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecBootDisk{}).Type1()):                                                                InstanceSpecBootDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecBootDiskInitializeParams{}).Type1()):                                                InstanceSpecBootDiskInitializeParamsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecConfidentialInstanceConfig{}).Type1()):                                              InstanceSpecConfidentialInstanceConfigCodec{},
@@ -68,6 +70,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecScheduling{}).Type1()):                                                              InstanceSpecSchedulingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecServiceAccount{}).Type1()):                                                          InstanceSpecServiceAccountCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()):                                                  InstanceSpecShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecAdvancedMachineFeatures{}).Type1()):                                     InstanceFromTemplateSpecAdvancedMachineFeaturesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecBootDisk{}).Type1()):                                                    InstanceFromTemplateSpecBootDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecBootDiskInitializeParams{}).Type1()):                                    InstanceFromTemplateSpecBootDiskInitializeParamsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecConfidentialInstanceConfig{}).Type1()):                                  InstanceFromTemplateSpecConfidentialInstanceConfigCodec{},
@@ -111,6 +114,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecConsistentHashHttpCookie{}).Type1()):                                    RegionBackendServiceSpecConsistentHashHttpCookieCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecConsistentHashHttpCookieTtl{}).Type1()):                                 RegionBackendServiceSpecConsistentHashHttpCookieTtlCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecFailoverPolicy{}).Type1()):                                              RegionBackendServiceSpecFailoverPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecIap{}).Type1()):                                                         RegionBackendServiceSpecIapCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecLogConfig{}).Type1()):                                                   RegionBackendServiceSpecLogConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecOutlierDetection{}).Type1()):                                            RegionBackendServiceSpecOutlierDetectionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecOutlierDetectionBaseEjectionTime{}).Type1()):                            RegionBackendServiceSpecOutlierDetectionBaseEjectionTimeCodec{},
@@ -270,6 +274,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskIamBindingSpecCondition{}).Type1()):                                                         DiskIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskIamMemberSpecCondition{}).Type1()):                                                          DiskIamMemberSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(FirewallSpecLogConfig{}).Type1()):                                                               FirewallSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicyRuleSpecMatch{}).Type1()):                                                         FirewallPolicyRuleSpecMatchCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecGrpcHealthCheck{}).Type1()):                                                      HealthCheckSpecGrpcHealthCheckCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecHttp2HealthCheck{}).Type1()):                                                     HealthCheckSpecHttp2HealthCheckCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(HealthCheckSpecHttpHealthCheck{}).Type1()):                                                      HealthCheckSpecHttpHealthCheckCodec{},
@@ -280,6 +285,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageSpecRawDisk{}).Type1()):                                                                    ImageSpecRawDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageIamBindingSpecCondition{}).Type1()):                                                        ImageIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ImageIamMemberSpecCondition{}).Type1()):                                                         ImageIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAdvancedMachineFeatures{}).Type1()):                                                 InstanceSpecAdvancedMachineFeaturesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecBootDisk{}).Type1()):                                                                InstanceSpecBootDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecBootDiskInitializeParams{}).Type1()):                                                InstanceSpecBootDiskInitializeParamsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecConfidentialInstanceConfig{}).Type1()):                                              InstanceSpecConfidentialInstanceConfigCodec{},
@@ -288,6 +294,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecScheduling{}).Type1()):                                                              InstanceSpecSchedulingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecServiceAccount{}).Type1()):                                                          InstanceSpecServiceAccountCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()):                                                  InstanceSpecShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecAdvancedMachineFeatures{}).Type1()):                                     InstanceFromTemplateSpecAdvancedMachineFeaturesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecBootDisk{}).Type1()):                                                    InstanceFromTemplateSpecBootDiskCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecBootDiskInitializeParams{}).Type1()):                                    InstanceFromTemplateSpecBootDiskInitializeParamsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecConfidentialInstanceConfig{}).Type1()):                                  InstanceFromTemplateSpecConfidentialInstanceConfigCodec{},
@@ -331,6 +338,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecConsistentHashHttpCookie{}).Type1()):                                    RegionBackendServiceSpecConsistentHashHttpCookieCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecConsistentHashHttpCookieTtl{}).Type1()):                                 RegionBackendServiceSpecConsistentHashHttpCookieTtlCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecFailoverPolicy{}).Type1()):                                              RegionBackendServiceSpecFailoverPolicyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecIap{}).Type1()):                                                         RegionBackendServiceSpecIapCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecLogConfig{}).Type1()):                                                   RegionBackendServiceSpecLogConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecOutlierDetection{}).Type1()):                                            RegionBackendServiceSpecOutlierDetectionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecOutlierDetectionBaseEjectionTime{}).Type1()):                            RegionBackendServiceSpecOutlierDetectionBaseEjectionTimeCodec{},
@@ -2295,6 +2303,85 @@ func (FirewallSpecLogConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iter
 }
 
 // +k8s:deepcopy-gen=false
+type FirewallPolicyRuleSpecMatchCodec struct {
+}
+
+func (FirewallPolicyRuleSpecMatchCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FirewallPolicyRuleSpecMatch)(ptr) == nil
+}
+
+func (FirewallPolicyRuleSpecMatchCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FirewallPolicyRuleSpecMatch)(ptr)
+	var objs []FirewallPolicyRuleSpecMatch
+	if obj != nil {
+		objs = []FirewallPolicyRuleSpecMatch{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicyRuleSpecMatch{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FirewallPolicyRuleSpecMatchCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FirewallPolicyRuleSpecMatch)(ptr) = FirewallPolicyRuleSpecMatch{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FirewallPolicyRuleSpecMatch
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicyRuleSpecMatch{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FirewallPolicyRuleSpecMatch)(ptr) = objs[0]
+			} else {
+				*(*FirewallPolicyRuleSpecMatch)(ptr) = FirewallPolicyRuleSpecMatch{}
+			}
+		} else {
+			*(*FirewallPolicyRuleSpecMatch)(ptr) = FirewallPolicyRuleSpecMatch{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FirewallPolicyRuleSpecMatch
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FirewallPolicyRuleSpecMatch{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FirewallPolicyRuleSpecMatch)(ptr) = obj
+		} else {
+			*(*FirewallPolicyRuleSpecMatch)(ptr) = FirewallPolicyRuleSpecMatch{}
+		}
+	default:
+		iter.ReportError("decode FirewallPolicyRuleSpecMatch", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type HealthCheckSpecGrpcHealthCheckCodec struct {
 }
 
@@ -3085,6 +3172,85 @@ func (ImageIamMemberSpecConditionCodec) Decode(ptr unsafe.Pointer, iter *jsonite
 }
 
 // +k8s:deepcopy-gen=false
+type InstanceSpecAdvancedMachineFeaturesCodec struct {
+}
+
+func (InstanceSpecAdvancedMachineFeaturesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*InstanceSpecAdvancedMachineFeatures)(ptr) == nil
+}
+
+func (InstanceSpecAdvancedMachineFeaturesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*InstanceSpecAdvancedMachineFeatures)(ptr)
+	var objs []InstanceSpecAdvancedMachineFeatures
+	if obj != nil {
+		objs = []InstanceSpecAdvancedMachineFeatures{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAdvancedMachineFeatures{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (InstanceSpecAdvancedMachineFeaturesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*InstanceSpecAdvancedMachineFeatures)(ptr) = InstanceSpecAdvancedMachineFeatures{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []InstanceSpecAdvancedMachineFeatures
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAdvancedMachineFeatures{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*InstanceSpecAdvancedMachineFeatures)(ptr) = objs[0]
+			} else {
+				*(*InstanceSpecAdvancedMachineFeatures)(ptr) = InstanceSpecAdvancedMachineFeatures{}
+			}
+		} else {
+			*(*InstanceSpecAdvancedMachineFeatures)(ptr) = InstanceSpecAdvancedMachineFeatures{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj InstanceSpecAdvancedMachineFeatures
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAdvancedMachineFeatures{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*InstanceSpecAdvancedMachineFeatures)(ptr) = obj
+		} else {
+			*(*InstanceSpecAdvancedMachineFeatures)(ptr) = InstanceSpecAdvancedMachineFeatures{}
+		}
+	default:
+		iter.ReportError("decode InstanceSpecAdvancedMachineFeatures", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type InstanceSpecBootDiskCodec struct {
 }
 
@@ -3713,6 +3879,85 @@ func (InstanceSpecShieldedInstanceConfigCodec) Decode(ptr unsafe.Pointer, iter *
 		}
 	default:
 		iter.ReportError("decode InstanceSpecShieldedInstanceConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type InstanceFromTemplateSpecAdvancedMachineFeaturesCodec struct {
+}
+
+func (InstanceFromTemplateSpecAdvancedMachineFeaturesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) == nil
+}
+
+func (InstanceFromTemplateSpecAdvancedMachineFeaturesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr)
+	var objs []InstanceFromTemplateSpecAdvancedMachineFeatures
+	if obj != nil {
+		objs = []InstanceFromTemplateSpecAdvancedMachineFeatures{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecAdvancedMachineFeatures{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (InstanceFromTemplateSpecAdvancedMachineFeaturesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = InstanceFromTemplateSpecAdvancedMachineFeatures{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []InstanceFromTemplateSpecAdvancedMachineFeatures
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecAdvancedMachineFeatures{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = objs[0]
+			} else {
+				*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = InstanceFromTemplateSpecAdvancedMachineFeatures{}
+			}
+		} else {
+			*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = InstanceFromTemplateSpecAdvancedMachineFeatures{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj InstanceFromTemplateSpecAdvancedMachineFeatures
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(InstanceFromTemplateSpecAdvancedMachineFeatures{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = obj
+		} else {
+			*(*InstanceFromTemplateSpecAdvancedMachineFeatures)(ptr) = InstanceFromTemplateSpecAdvancedMachineFeatures{}
+		}
+	default:
+		iter.ReportError("decode InstanceFromTemplateSpecAdvancedMachineFeatures", "unexpected JSON type")
 	}
 }
 
@@ -7110,6 +7355,85 @@ func (RegionBackendServiceSpecFailoverPolicyCodec) Decode(ptr unsafe.Pointer, it
 		}
 	default:
 		iter.ReportError("decode RegionBackendServiceSpecFailoverPolicy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RegionBackendServiceSpecIapCodec struct {
+}
+
+func (RegionBackendServiceSpecIapCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RegionBackendServiceSpecIap)(ptr) == nil
+}
+
+func (RegionBackendServiceSpecIapCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RegionBackendServiceSpecIap)(ptr)
+	var objs []RegionBackendServiceSpecIap
+	if obj != nil {
+		objs = []RegionBackendServiceSpecIap{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecIap{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RegionBackendServiceSpecIapCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RegionBackendServiceSpecIap)(ptr) = RegionBackendServiceSpecIap{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RegionBackendServiceSpecIap
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecIap{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RegionBackendServiceSpecIap)(ptr) = objs[0]
+			} else {
+				*(*RegionBackendServiceSpecIap)(ptr) = RegionBackendServiceSpecIap{}
+			}
+		} else {
+			*(*RegionBackendServiceSpecIap)(ptr) = RegionBackendServiceSpecIap{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RegionBackendServiceSpecIap
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RegionBackendServiceSpecIap{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RegionBackendServiceSpecIap)(ptr) = obj
+		} else {
+			*(*RegionBackendServiceSpecIap)(ptr) = RegionBackendServiceSpecIap{}
+		}
+	default:
+		iter.ReportError("decode RegionBackendServiceSpecIap", "unexpected JSON type")
 	}
 }
 

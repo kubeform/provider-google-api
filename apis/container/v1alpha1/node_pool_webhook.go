@@ -51,6 +51,7 @@ var nodepoolForceNewList = map[string]bool{
 	"/node_config/*/disk_size_gb": true,
 	"/node_config/*/disk_type":    true,
 	"/node_config/*/guest_accelerator/*/count":                              true,
+	"/node_config/*/guest_accelerator/*/gpu_partition_size":                 true,
 	"/node_config/*/guest_accelerator/*/type":                               true,
 	"/node_config/*/labels":                                                 true,
 	"/node_config/*/local_ssd_count":                                        true,

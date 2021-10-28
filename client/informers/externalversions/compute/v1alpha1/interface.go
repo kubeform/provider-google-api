@@ -52,6 +52,12 @@ type Interface interface {
 	ExternalVPNGateways() ExternalVPNGatewayInformer
 	// Firewalls returns a FirewallInformer.
 	Firewalls() FirewallInformer
+	// FirewallPolicies returns a FirewallPolicyInformer.
+	FirewallPolicies() FirewallPolicyInformer
+	// FirewallPolicyAssociations returns a FirewallPolicyAssociationInformer.
+	FirewallPolicyAssociations() FirewallPolicyAssociationInformer
+	// FirewallPolicyRules returns a FirewallPolicyRuleInformer.
+	FirewallPolicyRules() FirewallPolicyRuleInformer
 	// ForwardingRules returns a ForwardingRuleInformer.
 	ForwardingRules() ForwardingRuleInformer
 	// GlobalAddresses returns a GlobalAddressInformer.
@@ -170,6 +176,8 @@ type Interface interface {
 	RouterPeers() RouterPeerInformer
 	// SecurityPolicies returns a SecurityPolicyInformer.
 	SecurityPolicies() SecurityPolicyInformer
+	// ServiceAttachments returns a ServiceAttachmentInformer.
+	ServiceAttachments() ServiceAttachmentInformer
 	// SharedVpcHostProjects returns a SharedVpcHostProjectInformer.
 	SharedVpcHostProjects() SharedVpcHostProjectInformer
 	// SharedVpcServiceProjects returns a SharedVpcServiceProjectInformer.
@@ -289,6 +297,21 @@ func (v *version) ExternalVPNGateways() ExternalVPNGatewayInformer {
 // Firewalls returns a FirewallInformer.
 func (v *version) Firewalls() FirewallInformer {
 	return &firewallInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FirewallPolicies returns a FirewallPolicyInformer.
+func (v *version) FirewallPolicies() FirewallPolicyInformer {
+	return &firewallPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FirewallPolicyAssociations returns a FirewallPolicyAssociationInformer.
+func (v *version) FirewallPolicyAssociations() FirewallPolicyAssociationInformer {
+	return &firewallPolicyAssociationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FirewallPolicyRules returns a FirewallPolicyRuleInformer.
+func (v *version) FirewallPolicyRules() FirewallPolicyRuleInformer {
+	return &firewallPolicyRuleInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ForwardingRules returns a ForwardingRuleInformer.
@@ -584,6 +607,11 @@ func (v *version) RouterPeers() RouterPeerInformer {
 // SecurityPolicies returns a SecurityPolicyInformer.
 func (v *version) SecurityPolicies() SecurityPolicyInformer {
 	return &securityPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ServiceAttachments returns a ServiceAttachmentInformer.
+func (v *version) ServiceAttachments() ServiceAttachmentInformer {
+	return &serviceAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // SharedVpcHostProjects returns a SharedVpcHostProjectInformer.
