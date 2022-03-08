@@ -24,12 +24,20 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// EndpointAttachments returns a EndpointAttachmentInformer.
+	EndpointAttachments() EndpointAttachmentInformer
 	// Envgroups returns a EnvgroupInformer.
 	Envgroups() EnvgroupInformer
 	// EnvgroupAttachments returns a EnvgroupAttachmentInformer.
 	EnvgroupAttachments() EnvgroupAttachmentInformer
 	// Environments returns a EnvironmentInformer.
 	Environments() EnvironmentInformer
+	// EnvironmentIamBindings returns a EnvironmentIamBindingInformer.
+	EnvironmentIamBindings() EnvironmentIamBindingInformer
+	// EnvironmentIamMembers returns a EnvironmentIamMemberInformer.
+	EnvironmentIamMembers() EnvironmentIamMemberInformer
+	// EnvironmentIamPolicies returns a EnvironmentIamPolicyInformer.
+	EnvironmentIamPolicies() EnvironmentIamPolicyInformer
 	// Instances returns a InstanceInformer.
 	Instances() InstanceInformer
 	// InstanceAttachments returns a InstanceAttachmentInformer.
@@ -49,6 +57,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
+// EndpointAttachments returns a EndpointAttachmentInformer.
+func (v *version) EndpointAttachments() EndpointAttachmentInformer {
+	return &endpointAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // Envgroups returns a EnvgroupInformer.
 func (v *version) Envgroups() EnvgroupInformer {
 	return &envgroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -62,6 +75,21 @@ func (v *version) EnvgroupAttachments() EnvgroupAttachmentInformer {
 // Environments returns a EnvironmentInformer.
 func (v *version) Environments() EnvironmentInformer {
 	return &environmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EnvironmentIamBindings returns a EnvironmentIamBindingInformer.
+func (v *version) EnvironmentIamBindings() EnvironmentIamBindingInformer {
+	return &environmentIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EnvironmentIamMembers returns a EnvironmentIamMemberInformer.
+func (v *version) EnvironmentIamMembers() EnvironmentIamMemberInformer {
+	return &environmentIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// EnvironmentIamPolicies returns a EnvironmentIamPolicyInformer.
+func (v *version) EnvironmentIamPolicies() EnvironmentIamPolicyInformer {
+	return &environmentIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Instances returns a InstanceInformer.

@@ -69,6 +69,10 @@ func (c *FakeDataV1alpha1) CatalogTagTemplateIamPolicies(namespace string) v1alp
 	return &FakeCatalogTagTemplateIamPolicies{c, namespace}
 }
 
+func (c *FakeDataV1alpha1) FusionInstances(namespace string) v1alpha1.FusionInstanceInterface {
+	return &FakeFusionInstances{c, namespace}
+}
+
 func (c *FakeDataV1alpha1) LossPreventionDeidentifyTemplates(namespace string) v1alpha1.LossPreventionDeidentifyTemplateInterface {
 	return &FakeLossPreventionDeidentifyTemplates{c, namespace}
 }

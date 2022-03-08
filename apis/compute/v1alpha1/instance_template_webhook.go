@@ -61,7 +61,6 @@ var instancetemplateForceNewList = map[string]bool{
 	"/disk/*/source":             true,
 	"/disk/*/source_image":       true,
 	"/disk/*/type":               true,
-	"/enable_display":            true,
 	"/guest_accelerator/*/count": true,
 	"/guest_accelerator/*/type":  true,
 	"/instance_description":      true,
@@ -79,6 +78,7 @@ var instancetemplateForceNewList = map[string]bool{
 	"/network_interface/*/network":                                true,
 	"/network_interface/*/network_ip":                             true,
 	"/network_interface/*/nic_type":                               true,
+	"/network_interface/*/queue_count":                            true,
 	"/network_interface/*/subnetwork":                             true,
 	"/network_interface/*/subnetwork_project":                     true,
 	"/project": true,
@@ -140,7 +140,7 @@ func (r *InstanceTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancetemplateForceNewList {
+	for key, _ := range instancetemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

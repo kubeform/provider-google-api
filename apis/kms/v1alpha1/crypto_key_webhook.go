@@ -94,7 +94,7 @@ func (r *CryptoKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cryptokeyForceNewList {
+	for key, _ := range cryptokeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -94,7 +94,7 @@ func (r *Subnetwork) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subnetworkForceNewList {
+	for key, _ := range subnetworkForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

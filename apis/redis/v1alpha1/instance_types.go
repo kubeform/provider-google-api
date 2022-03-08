@@ -41,8 +41,89 @@ type Instance struct {
 	Status            InstanceStatus `json:"status,omitempty"`
 }
 
+type InstanceSpecMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	// +optional
+	Hours *int64 `json:"hours,omitempty" tf:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	// +optional
+	Minutes *int64 `json:"minutes,omitempty" tf:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// +optional
+	Nanos *int64 `json:"nanos,omitempty" tf:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
+	// +optional
+	Seconds *int64 `json:"seconds,omitempty" tf:"seconds"`
+}
+
+type InstanceSpecMaintenancePolicyWeeklyMaintenanceWindow struct {
+	// Required. The day of week that maintenance updates occur.
+	//
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day *string `json:"day" tf:"day"`
+	// Output only. Duration of the maintenance window.
+	// The current window is fixed at 1 hour.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	// +optional
+	Duration *string `json:"duration,omitempty" tf:"duration"`
+	// Required. Start time of the window in UTC time.
+	StartTime *InstanceSpecMaintenancePolicyWeeklyMaintenanceWindowStartTime `json:"startTime" tf:"start_time"`
+}
+
+type InstanceSpecMaintenancePolicy struct {
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// +optional
+	CreateTime *string `json:"createTime,omitempty" tf:"create_time"`
+	// Optional. Description of what this policy is for.
+	// Create/Update methods return INVALID_ARGUMENT if the
+	// length is greater than 512.
+	// +optional
+	Description *string `json:"description,omitempty" tf:"description"`
+	// Output only. The time when the policy was last updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// +optional
+	UpdateTime *string `json:"updateTime,omitempty" tf:"update_time"`
+	// Optional. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number
+	// of weekly_window is expected to be one.
+	// +optional
+	WeeklyMaintenanceWindow []InstanceSpecMaintenancePolicyWeeklyMaintenanceWindow `json:"weeklyMaintenanceWindow,omitempty" tf:"weekly_maintenance_window"`
+}
+
+type InstanceSpecMaintenanceSchedule struct {
+	// Output only. The end time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// +optional
+	EndTime *string `json:"endTime,omitempty" tf:"end_time"`
+	// Output only. The deadline that the maintenance schedule start time
+	// can not go beyond, including reschedule.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// +optional
+	ScheduleDeadlineTime *string `json:"scheduleDeadlineTime,omitempty" tf:"schedule_deadline_time"`
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// +optional
+	StartTime *string `json:"startTime,omitempty" tf:"start_time"`
+}
+
 type InstanceSpecServerCaCerts struct {
-	// Serial number, as extracted from the certificate.
+	// The certificate data in PEM format.
 	// +optional
 	Cert *string `json:"cert,omitempty" tf:"cert"`
 	// The time when the certificate was created.
@@ -130,6 +211,12 @@ type InstanceSpecResource struct {
 	// be different from [locationId].
 	// +optional
 	LocationID *string `json:"locationID,omitempty" tf:"location_id"`
+	// Maintenance policy for an instance.
+	// +optional
+	MaintenancePolicy *InstanceSpecMaintenancePolicy `json:"maintenancePolicy,omitempty" tf:"maintenance_policy"`
+	// Upcoming maintenance schedule.
+	// +optional
+	MaintenanceSchedule *InstanceSpecMaintenanceSchedule `json:"maintenanceSchedule,omitempty" tf:"maintenance_schedule"`
 	// Redis memory size in GiB.
 	MemorySizeGb *int64 `json:"memorySizeGb" tf:"memory_size_gb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
@@ -176,7 +263,7 @@ type InstanceSpecResource struct {
 	Tier *string `json:"tier,omitempty" tf:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	//
-	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values: ["SERVER_AUTHENTICATION", "DISABLED"]
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication Default value: "DISABLED" Possible values: ["SERVER_AUTHENTICATION", "DISABLED"]
 	// +optional
 	TransitEncryptionMode *string `json:"transitEncryptionMode,omitempty" tf:"transit_encryption_mode"`
 }

@@ -89,7 +89,7 @@ func (r *CustomService) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range customserviceForceNewList {
+	for key, _ := range customserviceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

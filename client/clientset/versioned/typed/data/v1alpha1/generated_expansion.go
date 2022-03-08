@@ -38,6 +38,8 @@ type CatalogTagTemplateIamMemberExpansion interface{}
 
 type CatalogTagTemplateIamPolicyExpansion interface{}
 
+type FusionInstanceExpansion interface{}
+
 type LossPreventionDeidentifyTemplateExpansion interface{}
 
 type LossPreventionInspectTemplateExpansion interface{}

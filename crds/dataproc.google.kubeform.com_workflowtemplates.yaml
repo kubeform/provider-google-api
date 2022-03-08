@@ -965,6 +965,8 @@ spec:
                                         period) if the executable is not completed
                                         at end of the timeout period.
                                       type: string
+                                  required:
+                                  - executableFile
                                   type: object
                                 type: array
                               lifecycleConfig:
@@ -999,7 +1001,7 @@ spec:
                                 type: object
                               masterConfig:
                                 description: Optional. The Compute Engine config settings
-                                  for worker instances in a cluster.
+                                  for the master instance in a cluster.
                                 properties:
                                   accelerators:
                                     description: Optional. The Compute Engine accelerator
@@ -1135,7 +1137,7 @@ spec:
                                 type: object
                               secondaryWorkerConfig:
                                 description: Optional. The Compute Engine config settings
-                                  for worker instances in a cluster.
+                                  for additional worker instances in a cluster.
                                 properties:
                                   accelerators:
                                     description: Optional. The Compute Engine accelerator
@@ -2543,6 +2545,8 @@ spec:
                                         period) if the executable is not completed
                                         at end of the timeout period.
                                       type: string
+                                  required:
+                                  - executableFile
                                   type: object
                                 type: array
                               lifecycleConfig:
@@ -2577,7 +2581,7 @@ spec:
                                 type: object
                               masterConfig:
                                 description: Optional. The Compute Engine config settings
-                                  for worker instances in a cluster.
+                                  for the master instance in a cluster.
                                 properties:
                                   accelerators:
                                     description: Optional. The Compute Engine accelerator
@@ -2713,7 +2717,7 @@ spec:
                                 type: object
                               secondaryWorkerConfig:
                                 description: Optional. The Compute Engine config settings
-                                  for worker instances in a cluster.
+                                  for additional worker instances in a cluster.
                                 properties:
                                   accelerators:
                                     description: Optional. The Compute Engine accelerator

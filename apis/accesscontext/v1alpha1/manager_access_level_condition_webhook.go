@@ -100,7 +100,7 @@ func (r *ManagerAccessLevelCondition) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range manageraccesslevelconditionForceNewList {
+	for key, _ := range manageraccesslevelconditionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

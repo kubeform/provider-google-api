@@ -56,6 +56,38 @@ type CloudfunctionsFunctionSpecEventTrigger struct {
 	Resource *string `json:"resource" tf:"resource"`
 }
 
+type CloudfunctionsFunctionSpecSecretEnvironmentVariables struct {
+	// Name of the environment variable.
+	Key *string `json:"key" tf:"key"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+	// +optional
+	ProjectID *string `json:"projectID,omitempty" tf:"project_id"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret *string `json:"secret" tf:"secret"`
+	// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version *string `json:"version" tf:"version"`
+}
+
+type CloudfunctionsFunctionSpecSecretVolumesVersions struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+	Path *string `json:"path" tf:"path"`
+	// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+	Version *string `json:"version" tf:"version"`
+}
+
+type CloudfunctionsFunctionSpecSecretVolumes struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+	MountPath *string `json:"mountPath" tf:"mount_path"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+	// +optional
+	ProjectID *string `json:"projectID,omitempty" tf:"project_id"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret *string `json:"secret" tf:"secret"`
+	// List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+	// +optional
+	Versions []CloudfunctionsFunctionSpecSecretVolumesVersions `json:"versions,omitempty" tf:"versions"`
+}
+
 type CloudfunctionsFunctionSpecSourceRepository struct {
 	// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 	// +optional
@@ -113,6 +145,9 @@ type CloudfunctionsFunctionSpecResource struct {
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	// +optional
 	MaxInstances *int64 `json:"maxInstances,omitempty" tf:"max_instances"`
+	// The limit on the minimum number of function instances that may coexist at a given time.
+	// +optional
+	MinInstances *int64 `json:"minInstances,omitempty" tf:"min_instances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name *string `json:"name" tf:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
@@ -123,6 +158,12 @@ type CloudfunctionsFunctionSpecResource struct {
 	Region *string `json:"region,omitempty" tf:"region"`
 	// The runtime in which the function is going to run. Eg. "nodejs8", "nodejs10", "python37", "go111".
 	Runtime *string `json:"runtime" tf:"runtime"`
+	// Secret environment variables configuration
+	// +optional
+	SecretEnvironmentVariables []CloudfunctionsFunctionSpecSecretEnvironmentVariables `json:"secretEnvironmentVariables,omitempty" tf:"secret_environment_variables"`
+	// Secret volumes configuration.
+	// +optional
+	SecretVolumes []CloudfunctionsFunctionSpecSecretVolumes `json:"secretVolumes,omitempty" tf:"secret_volumes"`
 	//  If provided, the self-provided service account to run the function with.
 	// +optional
 	ServiceAccountEmail *string `json:"serviceAccountEmail,omitempty" tf:"service_account_email"`

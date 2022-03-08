@@ -61,6 +61,8 @@ var certificateauthorityForceNewList = map[string]bool{
 	"/config/*/x509_config/*/aia_ocsp_servers":                                         true,
 	"/config/*/x509_config/*/ca_options/*/is_ca":                                       true,
 	"/config/*/x509_config/*/ca_options/*/max_issuer_path_length":                      true,
+	"/config/*/x509_config/*/ca_options/*/non_ca":                                      true,
+	"/config/*/x509_config/*/ca_options/*/zero_max_issuer_path_length":                 true,
 	"/config/*/x509_config/*/key_usage/*/base_key_usage/*/cert_sign":                   true,
 	"/config/*/x509_config/*/key_usage/*/base_key_usage/*/content_commitment":          true,
 	"/config/*/x509_config/*/key_usage/*/base_key_usage/*/crl_sign":                    true,
@@ -133,7 +135,7 @@ func (r *CertificateAuthority) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range certificateauthorityForceNewList {
+	for key, _ := range certificateauthorityForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

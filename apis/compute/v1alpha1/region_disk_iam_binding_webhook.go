@@ -94,7 +94,7 @@ func (r *RegionDiskIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regiondiskiambindingForceNewList {
+	for key, _ := range regiondiskiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

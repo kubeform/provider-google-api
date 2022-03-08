@@ -94,7 +94,7 @@ func (r *RouterInterface) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routerinterfaceForceNewList {
+	for key, _ := range routerinterfaceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -93,7 +93,7 @@ func (r *ExternalVPNGateway) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range externalvpngatewayForceNewList {
+	for key, _ := range externalvpngatewayForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

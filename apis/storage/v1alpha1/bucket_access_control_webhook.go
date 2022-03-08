@@ -89,7 +89,7 @@ func (r *BucketAccessControl) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketaccesscontrolForceNewList {
+	for key, _ := range bucketaccesscontrolForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

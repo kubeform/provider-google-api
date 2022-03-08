@@ -90,7 +90,7 @@ func (r *RecordSet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range recordsetForceNewList {
+	for key, _ := range recordsetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

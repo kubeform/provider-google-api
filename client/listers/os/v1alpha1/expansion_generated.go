@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// ConfigOsPolicyAssignmentListerExpansion allows custom methods to be added to
+// ConfigOsPolicyAssignmentLister.
+type ConfigOsPolicyAssignmentListerExpansion interface{}
+
+// ConfigOsPolicyAssignmentNamespaceListerExpansion allows custom methods to be added to
+// ConfigOsPolicyAssignmentNamespaceLister.
+type ConfigOsPolicyAssignmentNamespaceListerExpansion interface{}
+
 // ConfigPatchDeploymentListerExpansion allows custom methods to be added to
 // ConfigPatchDeploymentLister.
 type ConfigPatchDeploymentListerExpansion interface{}

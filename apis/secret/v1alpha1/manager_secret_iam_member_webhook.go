@@ -94,7 +94,7 @@ func (r *ManagerSecretIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managersecretiammemberForceNewList {
+	for key, _ := range managersecretiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -152,15 +152,14 @@ type BucketSpec struct {
 }
 
 type BucketSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// Enables Bucket Policy Only access to a bucket.
-	// +optional
-	// Deprecated
-	BucketPolicyOnly *bool `json:"bucketPolicyOnly,omitempty" tf:"bucket_policy_only"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	// +optional
 	Cors []BucketSpecCors `json:"cors,omitempty" tf:"cors"`
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	// +optional
 	DefaultEventBasedHold *bool `json:"defaultEventBasedHold,omitempty" tf:"default_event_based_hold"`
 	// The bucket's encryption configuration.
@@ -177,8 +176,7 @@ type BucketSpecResource struct {
 	// +kubebuilder:validation:MaxItems=100
 	LifecycleRule []BucketSpecLifecycleRule `json:"lifecycleRule,omitempty" tf:"lifecycle_rule"`
 	// The Google Cloud Storage location
-	// +optional
-	Location *string `json:"location,omitempty" tf:"location"`
+	Location *string `json:"location" tf:"location"`
 	// The bucket's Access & Storage Logs configuration.
 	// +optional
 	Logging *BucketSpecLogging `json:"logging,omitempty" tf:"logging"`

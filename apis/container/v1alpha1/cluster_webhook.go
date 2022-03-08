@@ -44,6 +44,7 @@ var _ webhook.Validator = &Cluster{}
 var clusterForceNewList = map[string]bool{
 	"/authenticator_groups_config/*/security_group":         true,
 	"/cluster_ipv4_cidr":                                    true,
+	"/confidential_nodes/*/enabled":                         true,
 	"/default_max_pods_per_node":                            true,
 	"/description":                                          true,
 	"/enable_autopilot":                                     true,
@@ -56,12 +57,14 @@ var clusterForceNewList = map[string]bool{
 	"/ip_allocation_policy/*/services_secondary_range_name": true,
 	"/location": true,
 	"/master_auth/*/client_certificate_config/*/issue_client_certificate": true,
-	"/name":                       true,
-	"/network":                    true,
-	"/networking_mode":            true,
-	"/node_config/*/disk_size_gb": true,
-	"/node_config/*/disk_type":    true,
-	"/node_config/*/guest_accelerator/*/count":                                          true,
+	"/name":                                    true,
+	"/network":                                 true,
+	"/networking_mode":                         true,
+	"/node_config/*/boot_disk_kms_key":         true,
+	"/node_config/*/disk_size_gb":              true,
+	"/node_config/*/disk_type":                 true,
+	"/node_config/*/gcfs_config/*/enabled":     true,
+	"/node_config/*/guest_accelerator/*/count": true,
 	"/node_config/*/guest_accelerator/*/gpu_partition_size":                             true,
 	"/node_config/*/guest_accelerator/*/type":                                           true,
 	"/node_config/*/labels":                                                             true,
@@ -69,6 +72,7 @@ var clusterForceNewList = map[string]bool{
 	"/node_config/*/machine_type":                                                       true,
 	"/node_config/*/metadata":                                                           true,
 	"/node_config/*/min_cpu_platform":                                                   true,
+	"/node_config/*/node_group":                                                         true,
 	"/node_config/*/oauth_scopes":                                                       true,
 	"/node_config/*/preemptible":                                                        true,
 	"/node_config/*/service_account":                                                    true,
@@ -82,8 +86,10 @@ var clusterForceNewList = map[string]bool{
 	"/node_pool/*/max_pods_per_node":                                                    true,
 	"/node_pool/*/name":                                                                 true,
 	"/node_pool/*/name_prefix":                                                          true,
+	"/node_pool/*/node_config/*/boot_disk_kms_key":                                      true,
 	"/node_pool/*/node_config/*/disk_size_gb":                                           true,
 	"/node_pool/*/node_config/*/disk_type":                                              true,
+	"/node_pool/*/node_config/*/gcfs_config/*/enabled":                                  true,
 	"/node_pool/*/node_config/*/guest_accelerator/*/count":                              true,
 	"/node_pool/*/node_config/*/guest_accelerator/*/gpu_partition_size":                 true,
 	"/node_pool/*/node_config/*/guest_accelerator/*/type":                               true,
@@ -92,6 +98,7 @@ var clusterForceNewList = map[string]bool{
 	"/node_pool/*/node_config/*/machine_type":                                           true,
 	"/node_pool/*/node_config/*/metadata":                                               true,
 	"/node_pool/*/node_config/*/min_cpu_platform":                                       true,
+	"/node_pool/*/node_config/*/node_group":                                             true,
 	"/node_pool/*/node_config/*/oauth_scopes":                                           true,
 	"/node_pool/*/node_config/*/preemptible":                                            true,
 	"/node_pool/*/node_config/*/service_account":                                        true,
@@ -151,7 +158,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key, _ := range clusterForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

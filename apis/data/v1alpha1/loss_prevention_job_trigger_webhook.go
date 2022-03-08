@@ -88,7 +88,7 @@ func (r *LossPreventionJobTrigger) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range losspreventionjobtriggerForceNewList {
+	for key, _ := range losspreventionjobtriggerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

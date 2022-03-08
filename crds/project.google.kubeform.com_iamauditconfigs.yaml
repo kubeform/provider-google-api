@@ -98,6 +98,7 @@ spec:
                     type: string
                 required:
                 - auditLogConfig
+                - project
                 - service
                 type: object
               state:
@@ -143,6 +144,7 @@ spec:
                     type: string
                 required:
                 - auditLogConfig
+                - project
                 - service
                 type: object
               terminationPolicy:

@@ -50,6 +50,34 @@ type RouterPeerSpecAdvertisedIPRanges struct {
 	Range *string `json:"range" tf:"range"`
 }
 
+type RouterPeerSpecBfd struct {
+	// The minimum interval, in milliseconds, between BFD control packets
+	// received from the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the transmit interval of the other router. If set, this value
+	// must be between 1000 and 30000.
+	// +optional
+	MinReceiveInterval *int64 `json:"minReceiveInterval,omitempty" tf:"min_receive_interval"`
+	// The minimum interval, in milliseconds, between BFD control packets
+	// transmitted to the peer router. The actual value is negotiated
+	// between the two routers and is equal to the greater of this value
+	// and the corresponding receive interval of the other router. If set,
+	// this value must be between 1000 and 30000.
+	// +optional
+	MinTransmitInterval *int64 `json:"minTransmitInterval,omitempty" tf:"min_transmit_interval"`
+	// The number of consecutive BFD packets that must be missed before
+	// BFD declares that a peer is unavailable. If set, the value must
+	// be a value between 5 and 16.
+	// +optional
+	Multiplier *int64 `json:"multiplier,omitempty" tf:"multiplier"`
+	// The BFD session initialization mode for this BGP peer.
+	// If set to 'ACTIVE', the Cloud Router will initiate the BFD session
+	// for this BGP peer. If set to 'PASSIVE', the Cloud Router will wait
+	// for the peer router to initiate the BFD session for this BGP peer.
+	// If set to 'DISABLED', BFD is disabled for this BGP peer. Possible values: ["ACTIVE", "DISABLED", "PASSIVE"]
+	SessionInitializationMode *string `json:"sessionInitializationMode" tf:"session_initialization_mode"`
+}
+
 type RouterPeerSpec struct {
 	State *RouterPeerSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -99,6 +127,9 @@ type RouterPeerSpecResource struct {
 	// length, the routes with the lowest priority value win.
 	// +optional
 	AdvertisedRoutePriority *int64 `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority"`
+	// BFD configuration for the BGP peering.
+	// +optional
+	Bfd *RouterPeerSpecBfd `json:"bfd,omitempty" tf:"bfd"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.

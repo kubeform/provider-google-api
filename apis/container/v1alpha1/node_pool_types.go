@@ -57,6 +57,11 @@ type NodePoolSpecManagement struct {
 	AutoUpgrade *bool `json:"autoUpgrade,omitempty" tf:"auto_upgrade"`
 }
 
+type NodePoolSpecNodeConfigGcfsConfig struct {
+	// Whether or not GCFS is enabled
+	Enabled *bool `json:"enabled" tf:"enabled"`
+}
+
 type NodePoolSpecNodeConfigGuestAccelerator struct {
 	// The number of the accelerator cards exposed to an instance.
 	Count *int64 `json:"count" tf:"count"`
@@ -87,21 +92,22 @@ type NodePoolSpecNodeConfigTaint struct {
 
 type NodePoolSpecNodeConfigWorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node.
-	// +optional
-	Mode *string `json:"mode,omitempty" tf:"mode"`
-	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	// +optional
-	// Deprecated
-	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
+	Mode *string `json:"mode" tf:"mode"`
 }
 
 type NodePoolSpecNodeConfig struct {
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+	// +optional
+	BootDiskKmsKey *string `json:"bootDiskKmsKey,omitempty" tf:"boot_disk_kms_key"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	// +optional
 	DiskSizeGb *int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb"`
 	// Type of the disk attached to each node.
 	// +optional
 	DiskType *string `json:"diskType,omitempty" tf:"disk_type"`
+	// GCFS configuration for this node.
+	// +optional
+	GcfsConfig *NodePoolSpecNodeConfigGcfsConfig `json:"gcfsConfig,omitempty" tf:"gcfs_config"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// +optional
 	GuestAccelerator []NodePoolSpecNodeConfigGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator"`
@@ -123,6 +129,9 @@ type NodePoolSpecNodeConfig struct {
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
 	// +optional
 	MinCPUPlatform *string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+	// +optional
+	NodeGroup *string `json:"nodeGroup,omitempty" tf:"node_group"`
 	// The set of Google API scopes to be made available on all of the node VMs.
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes"`
@@ -186,6 +195,9 @@ type NodePoolSpecResource struct {
 	// The location (region or zone) of the cluster.
 	// +optional
 	Location *string `json:"location,omitempty" tf:"location"`
+	// List of instance group URLs which have been assigned to this node pool.
+	// +optional
+	ManagedInstanceGroupUrls []string `json:"managedInstanceGroupUrls,omitempty" tf:"managed_instance_group_urls"`
 	// Node management configuration, wherein auto-repair and auto-upgrade is configured.
 	// +optional
 	Management *NodePoolSpecManagement `json:"management,omitempty" tf:"management"`

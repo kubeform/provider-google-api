@@ -94,7 +94,7 @@ func (r *UptimeCheckConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range uptimecheckconfigForceNewList {
+	for key, _ := range uptimecheckconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

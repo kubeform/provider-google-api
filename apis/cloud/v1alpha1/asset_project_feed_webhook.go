@@ -90,7 +90,7 @@ func (r *AssetProjectFeed) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range assetprojectfeedForceNewList {
+	for key, _ := range assetprojectfeedForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

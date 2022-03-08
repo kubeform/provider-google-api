@@ -94,7 +94,7 @@ func (r *CaPoolIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range capooliambindingForceNewList {
+	for key, _ := range capooliambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

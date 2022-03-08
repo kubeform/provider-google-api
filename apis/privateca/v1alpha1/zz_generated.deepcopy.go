@@ -911,6 +911,16 @@ func (in *CaPoolSpecIssuancePolicyBaselineValuesCaOptions) DeepCopyInto(out *CaP
 		*out = new(int64)
 		**out = **in
 	}
+	if in.NonCa != nil {
+		in, out := &in.NonCa, &out.NonCa
+		*out = new(bool)
+		**out = **in
+	}
+	if in.ZeroMaxIssuerPathLength != nil {
+		in, out := &in.ZeroMaxIssuerPathLength, &out.ZeroMaxIssuerPathLength
+		*out = new(bool)
+		**out = **in
+	}
 	return
 }
 
@@ -1409,10 +1419,10 @@ func (in *CertificateAuthoritySpecAccessUrls) DeepCopyInto(out *CertificateAutho
 		*out = new(string)
 		**out = **in
 	}
-	if in.CrlAccessURL != nil {
-		in, out := &in.CrlAccessURL, &out.CrlAccessURL
-		*out = new(string)
-		**out = **in
+	if in.CrlAccessUrls != nil {
+		in, out := &in.CrlAccessUrls, &out.CrlAccessUrls
+		*out = make([]string, len(*in))
+		copy(*out, *in)
 	}
 	return
 }
@@ -1679,6 +1689,16 @@ func (in *CertificateAuthoritySpecConfigX509ConfigCaOptions) DeepCopyInto(out *C
 	if in.MaxIssuerPathLength != nil {
 		in, out := &in.MaxIssuerPathLength, &out.MaxIssuerPathLength
 		*out = new(int64)
+		**out = **in
+	}
+	if in.NonCa != nil {
+		in, out := &in.NonCa, &out.NonCa
+		*out = new(bool)
+		**out = **in
+	}
+	if in.ZeroMaxIssuerPathLength != nil {
+		in, out := &in.ZeroMaxIssuerPathLength, &out.ZeroMaxIssuerPathLength
+		*out = new(bool)
 		**out = **in
 	}
 	return
@@ -2977,6 +2997,16 @@ func (in *CertificateSpecConfigX509ConfigCaOptions) DeepCopyInto(out *Certificat
 	if in.MaxIssuerPathLength != nil {
 		in, out := &in.MaxIssuerPathLength, &out.MaxIssuerPathLength
 		*out = new(int64)
+		**out = **in
+	}
+	if in.NonCa != nil {
+		in, out := &in.NonCa, &out.NonCa
+		*out = new(bool)
+		**out = **in
+	}
+	if in.ZeroMaxIssuerPathLength != nil {
+		in, out := &in.ZeroMaxIssuerPathLength, &out.ZeroMaxIssuerPathLength
+		*out = new(bool)
 		**out = **in
 	}
 	return

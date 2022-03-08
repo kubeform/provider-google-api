@@ -95,7 +95,7 @@ func (r *GcPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range gcpolicyForceNewList {
+	for key, _ := range gcpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

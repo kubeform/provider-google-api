@@ -94,7 +94,7 @@ func (r *ImageIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range imageiammemberForceNewList {
+	for key, _ := range imageiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

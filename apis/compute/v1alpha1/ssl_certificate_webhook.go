@@ -91,7 +91,7 @@ func (r *SslCertificate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sslcertificateForceNewList {
+	for key, _ := range sslcertificateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -94,10 +94,6 @@ spec:
                       by the letter 's' (seconds). It must be greater than a day (ie,
                       86400).
                     type: string
-                  selfLink:
-                    description: The self link of the created KeyRing in the format
-                      projects/{project}/locations/{location}/keyRings/{name}. Deprecated
-                    type: string
                   skipInitialVersionCreation:
                     description: If set to true, the request will create a CryptoKey
                       without any CryptoKeyVersions. You must use the 'google_kms_key_ring_import_job'
@@ -151,9 +147,9 @@ spec:
                           for possible inputs.
                         type: string
                       protectionLevel:
-                        description: 'The protection level to use when creating a
-                          version based on this template. Default value: "SOFTWARE"
-                          Possible values: ["SOFTWARE", "HSM"]'
+                        description: The protection level to use when creating a version
+                          based on this template. Possible values include "SOFTWARE",
+                          "HSM", "EXTERNAL". Defaults to "SOFTWARE".
                         type: string
                     required:
                     - algorithm
@@ -201,10 +197,6 @@ spec:
                       by the letter 's' (seconds). It must be greater than a day (ie,
                       86400).
                     type: string
-                  selfLink:
-                    description: The self link of the created KeyRing in the format
-                      projects/{project}/locations/{location}/keyRings/{name}. Deprecated
-                    type: string
                   skipInitialVersionCreation:
                     description: If set to true, the request will create a CryptoKey
                       without any CryptoKeyVersions. You must use the 'google_kms_key_ring_import_job'
@@ -258,9 +250,9 @@ spec:
                           for possible inputs.
                         type: string
                       protectionLevel:
-                        description: 'The protection level to use when creating a
-                          version based on this template. Default value: "SOFTWARE"
-                          Possible values: ["SOFTWARE", "HSM"]'
+                        description: The protection level to use when creating a version
+                          based on this template. Possible values include "SOFTWARE",
+                          "HSM", "EXTERNAL". Defaults to "SOFTWARE".
                         type: string
                     required:
                     - algorithm

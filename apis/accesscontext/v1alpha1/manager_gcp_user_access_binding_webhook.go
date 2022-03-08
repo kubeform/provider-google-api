@@ -89,7 +89,7 @@ func (r *ManagerGcpUserAccessBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managergcpuseraccessbindingForceNewList {
+	for key, _ := range managergcpuseraccessbindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

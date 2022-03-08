@@ -97,7 +97,7 @@ func (r *NodeTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range nodetemplateForceNewList {
+	for key, _ := range nodetemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

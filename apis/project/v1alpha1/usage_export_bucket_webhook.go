@@ -90,7 +90,7 @@ func (r *UsageExportBucket) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range usageexportbucketForceNewList {
+	for key, _ := range usageexportbucketForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -423,32 +423,40 @@ spec:
                     description: 'Indicates whether the backend service will be used
                       with internal or external load balancing. A backend service
                       created for one type of load balancing cannot be used with the
-                      other. Default value: "EXTERNAL" Possible values: ["EXTERNAL",
-                      "INTERNAL_SELF_MANAGED"]'
+                      other. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+                      Default value: "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED",
+                      "EXTERNAL_MANAGED"]'
                     type: string
                   localityLbPolicy:
                     description: "The load balancing algorithm used within the scope
-                      of the locality. The possible values are - \n * ROUND_ROBIN
-                      - This is a simple policy in which each healthy backend                 is
-                      selected in round robin order. \n * LEAST_REQUEST - An O(1)
-                      algorithm which selects two random healthy                   hosts
-                      and picks the host which has fewer active requests. \n * RING_HASH
-                      - The ring/modulo hash load balancer implements consistent               hashing
-                      to backends. The algorithm has the property that the               addition/removal
-                      of a host from a set of N hosts only affects               1/N
-                      of the requests. \n * RANDOM - The load balancer selects a random
-                      healthy host. \n * ORIGINAL_DESTINATION - Backend host is selected
-                      based on the client                          connection metadata,
-                      i.e., connections are opened                          to the
-                      same address as the destination address of                          the
-                      incoming connection before the connection                          was
-                      redirected to the load balancer. \n * MAGLEV - used as a drop
-                      in replacement for the ring hash load balancer.            Maglev
-                      is not as stable as ring hash but has faster table lookup            build
-                      times and host selection times. For more information about            Maglev,
+                      of the locality. The possible values are: \n * 'ROUND_ROBIN':
+                      This is a simple policy in which each healthy backend                  is
+                      selected in round robin order. \n * 'LEAST_REQUEST': An O(1)
+                      algorithm which selects two random healthy                    hosts
+                      and picks the host which has fewer active requests. \n * 'RING_HASH':
+                      The ring/modulo hash load balancer implements consistent                hashing
+                      to backends. The algorithm has the property that the                addition/removal
+                      of a host from a set of N hosts only affects                1/N
+                      of the requests. \n * 'RANDOM': The load balancer selects a
+                      random healthy host. \n * 'ORIGINAL_DESTINATION': Backend host
+                      is selected based on the client                           connection
+                      metadata, i.e., connections are opened                           to
+                      the same address as the destination address of                           the
+                      incoming connection before the connection                           was
+                      redirected to the load balancer. \n * 'MAGLEV': used as a drop
+                      in replacement for the ring hash load balancer.             Maglev
+                      is not as stable as ring hash but has faster table lookup             build
+                      times and host selection times. For more information about             Maglev,
                       refer to https://ai.google/research/pubs/pub44824 \n This field
-                      is applicable only when the load_balancing_scheme is set to
-                      INTERNAL_SELF_MANAGED. Possible values: [\"ROUND_ROBIN\", \"LEAST_REQUEST\",
+                      is applicable to either: \n * A regional backend service with
+                      the service_protocol set to HTTP, HTTPS, or HTTP2,   and loadBalancingScheme
+                      set to INTERNAL_MANAGED. * A global backend service with the
+                      load_balancing_scheme set to INTERNAL_SELF_MANAGED. \n If session_affinity
+                      is not NONE, and this field is not set to MAGLEV or RING_HASH,
+                      session affinity settings will not take effect. \n Only ROUND_ROBIN
+                      and RING_HASH are supported when the backend service is referenced
+                      by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+                      field set to true. Possible values: [\"ROUND_ROBIN\", \"LEAST_REQUEST\",
                       \"RING_HASH\", \"RANDOM\", \"ORIGINAL_DESTINATION\", \"MAGLEV\"]"
                     type: string
                   logConfig:
@@ -613,6 +621,31 @@ spec:
                     description: The security policy associated with this backend
                       service.
                     type: string
+                  securitySettings:
+                    description: The security settings that apply to this backend
+                      service. This field is applicable to either a regional backend
+                      service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+                      and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+                      backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+                    properties:
+                      clientTlsPolicy:
+                        description: ClientTlsPolicy is a resource that specifies
+                          how a client should authenticate connections to backends
+                          of a service. This resource itself does not affect configuration
+                          unless it is attached to a backend service resource.
+                        type: string
+                      subjectAltNames:
+                        description: A list of alternate names to verify the subject
+                          identity in the certificate. If specified, the client will
+                          verify that the server certificate's subject alt name matches
+                          one of the specified values.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - clientTlsPolicy
+                    - subjectAltNames
+                    type: object
                   selfLink:
                     type: string
                   sessionAffinity:
@@ -1045,32 +1078,40 @@ spec:
                     description: 'Indicates whether the backend service will be used
                       with internal or external load balancing. A backend service
                       created for one type of load balancing cannot be used with the
-                      other. Default value: "EXTERNAL" Possible values: ["EXTERNAL",
-                      "INTERNAL_SELF_MANAGED"]'
+                      other. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+                      Default value: "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED",
+                      "EXTERNAL_MANAGED"]'
                     type: string
                   localityLbPolicy:
                     description: "The load balancing algorithm used within the scope
-                      of the locality. The possible values are - \n * ROUND_ROBIN
-                      - This is a simple policy in which each healthy backend                 is
-                      selected in round robin order. \n * LEAST_REQUEST - An O(1)
-                      algorithm which selects two random healthy                   hosts
-                      and picks the host which has fewer active requests. \n * RING_HASH
-                      - The ring/modulo hash load balancer implements consistent               hashing
-                      to backends. The algorithm has the property that the               addition/removal
-                      of a host from a set of N hosts only affects               1/N
-                      of the requests. \n * RANDOM - The load balancer selects a random
-                      healthy host. \n * ORIGINAL_DESTINATION - Backend host is selected
-                      based on the client                          connection metadata,
-                      i.e., connections are opened                          to the
-                      same address as the destination address of                          the
-                      incoming connection before the connection                          was
-                      redirected to the load balancer. \n * MAGLEV - used as a drop
-                      in replacement for the ring hash load balancer.            Maglev
-                      is not as stable as ring hash but has faster table lookup            build
-                      times and host selection times. For more information about            Maglev,
+                      of the locality. The possible values are: \n * 'ROUND_ROBIN':
+                      This is a simple policy in which each healthy backend                  is
+                      selected in round robin order. \n * 'LEAST_REQUEST': An O(1)
+                      algorithm which selects two random healthy                    hosts
+                      and picks the host which has fewer active requests. \n * 'RING_HASH':
+                      The ring/modulo hash load balancer implements consistent                hashing
+                      to backends. The algorithm has the property that the                addition/removal
+                      of a host from a set of N hosts only affects                1/N
+                      of the requests. \n * 'RANDOM': The load balancer selects a
+                      random healthy host. \n * 'ORIGINAL_DESTINATION': Backend host
+                      is selected based on the client                           connection
+                      metadata, i.e., connections are opened                           to
+                      the same address as the destination address of                           the
+                      incoming connection before the connection                           was
+                      redirected to the load balancer. \n * 'MAGLEV': used as a drop
+                      in replacement for the ring hash load balancer.             Maglev
+                      is not as stable as ring hash but has faster table lookup             build
+                      times and host selection times. For more information about             Maglev,
                       refer to https://ai.google/research/pubs/pub44824 \n This field
-                      is applicable only when the load_balancing_scheme is set to
-                      INTERNAL_SELF_MANAGED. Possible values: [\"ROUND_ROBIN\", \"LEAST_REQUEST\",
+                      is applicable to either: \n * A regional backend service with
+                      the service_protocol set to HTTP, HTTPS, or HTTP2,   and loadBalancingScheme
+                      set to INTERNAL_MANAGED. * A global backend service with the
+                      load_balancing_scheme set to INTERNAL_SELF_MANAGED. \n If session_affinity
+                      is not NONE, and this field is not set to MAGLEV or RING_HASH,
+                      session affinity settings will not take effect. \n Only ROUND_ROBIN
+                      and RING_HASH are supported when the backend service is referenced
+                      by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+                      field set to true. Possible values: [\"ROUND_ROBIN\", \"LEAST_REQUEST\",
                       \"RING_HASH\", \"RANDOM\", \"ORIGINAL_DESTINATION\", \"MAGLEV\"]"
                     type: string
                   logConfig:
@@ -1235,6 +1276,31 @@ spec:
                     description: The security policy associated with this backend
                       service.
                     type: string
+                  securitySettings:
+                    description: The security settings that apply to this backend
+                      service. This field is applicable to either a regional backend
+                      service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+                      and load_balancing_scheme set to INTERNAL_MANAGED; or a global
+                      backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+                    properties:
+                      clientTlsPolicy:
+                        description: ClientTlsPolicy is a resource that specifies
+                          how a client should authenticate connections to backends
+                          of a service. This resource itself does not affect configuration
+                          unless it is attached to a backend service resource.
+                        type: string
+                      subjectAltNames:
+                        description: A list of alternate names to verify the subject
+                          identity in the certificate. If specified, the client will
+                          verify that the server certificate's subject alt name matches
+                          one of the specified values.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - clientTlsPolicy
+                    - subjectAltNames
+                    type: object
                   selfLink:
                     type: string
                   sessionAffinity:

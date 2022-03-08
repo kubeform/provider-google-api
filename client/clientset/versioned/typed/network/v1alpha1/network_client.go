@@ -27,6 +27,8 @@ import (
 
 type NetworkV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	ConnectivityHubsGetter
+	ConnectivitySpokesGetter
 	ManagementConnectivityTestsGetter
 	ServicesEdgeCacheKeysetsGetter
 	ServicesEdgeCacheOriginsGetter
@@ -36,6 +38,14 @@ type NetworkV1alpha1Interface interface {
 // NetworkV1alpha1Client is used to interact with features provided by the network.google.kubeform.com group.
 type NetworkV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *NetworkV1alpha1Client) ConnectivityHubs(namespace string) ConnectivityHubInterface {
+	return newConnectivityHubs(c, namespace)
+}
+
+func (c *NetworkV1alpha1Client) ConnectivitySpokes(namespace string) ConnectivitySpokeInterface {
+	return newConnectivitySpokes(c, namespace)
 }
 
 func (c *NetworkV1alpha1Client) ManagementConnectivityTests(namespace string) ManagementConnectivityTestInterface {

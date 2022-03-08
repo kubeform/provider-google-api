@@ -44,6 +44,8 @@ type Interface interface {
 	CatalogTagTemplateIamMembers() CatalogTagTemplateIamMemberInformer
 	// CatalogTagTemplateIamPolicies returns a CatalogTagTemplateIamPolicyInformer.
 	CatalogTagTemplateIamPolicies() CatalogTagTemplateIamPolicyInformer
+	// FusionInstances returns a FusionInstanceInformer.
+	FusionInstances() FusionInstanceInformer
 	// LossPreventionDeidentifyTemplates returns a LossPreventionDeidentifyTemplateInformer.
 	LossPreventionDeidentifyTemplates() LossPreventionDeidentifyTemplateInformer
 	// LossPreventionInspectTemplates returns a LossPreventionInspectTemplateInformer.
@@ -113,6 +115,11 @@ func (v *version) CatalogTagTemplateIamMembers() CatalogTagTemplateIamMemberInfo
 // CatalogTagTemplateIamPolicies returns a CatalogTagTemplateIamPolicyInformer.
 func (v *version) CatalogTagTemplateIamPolicies() CatalogTagTemplateIamPolicyInformer {
 	return &catalogTagTemplateIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// FusionInstances returns a FusionInstanceInformer.
+func (v *version) FusionInstances() FusionInstanceInformer {
+	return &fusionInstanceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // LossPreventionDeidentifyTemplates returns a LossPreventionDeidentifyTemplateInformer.

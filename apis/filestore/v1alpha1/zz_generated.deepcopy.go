@@ -219,6 +219,11 @@ func (in *InstanceSpecResource) DeepCopyInto(out *InstanceSpecResource) {
 			}
 		}
 	}
+	if in.Location != nil {
+		in, out := &in.Location, &out.Location
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)

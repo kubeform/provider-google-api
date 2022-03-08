@@ -90,7 +90,7 @@ func (r *ClusterIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusteriampolicyForceNewList {
+	for key, _ := range clusteriampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

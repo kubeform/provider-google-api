@@ -58,6 +58,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&Trigger{},
 		&TriggerList{},
+		&WorkerPool{},
+		&WorkerPoolList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

@@ -90,7 +90,7 @@ func (r *PacketMirroring) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range packetmirroringForceNewList {
+	for key, _ := range packetmirroringForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

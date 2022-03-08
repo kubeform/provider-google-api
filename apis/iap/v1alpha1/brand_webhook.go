@@ -90,7 +90,7 @@ func (r *Brand) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range brandForceNewList {
+	for key, _ := range brandForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

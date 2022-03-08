@@ -183,6 +183,26 @@ type RunServiceSpecTemplateMetadata struct {
 	Uid *string `json:"uid,omitempty" tf:"uid"`
 }
 
+type RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef struct {
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest
+	// version or an integer for a specific version.
+	Key *string `json:"key" tf:"key"`
+	// The name of the secret in Cloud Secret Manager. By default, the secret
+	// is assumed to be in the same project.
+	// If the secret is in another project, you must define an alias.
+	// You set the <alias> in this field, and create an annotation with the
+	// following structure
+	// "run.googleapis.com/secrets" = "<alias>:projects/<project-id|project-number>/secrets/<secret-name>".
+	// If multiple alias definitions are needed, they must be separated by
+	// commas in the annotation field.
+	Name *string `json:"name" tf:"name"`
+}
+
+type RunServiceSpecTemplateSpecContainersEnvValueFrom struct {
+	// Selects a key (version) of a secret in Secret Manager.
+	SecretKeyRef *RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef `json:"secretKeyRef" tf:"secret_key_ref"`
+}
+
 type RunServiceSpecTemplateSpecContainersEnv struct {
 	// Name of the environment variable.
 	// +optional
@@ -197,6 +217,9 @@ type RunServiceSpecTemplateSpecContainersEnv struct {
 	// Defaults to "".
 	// +optional
 	Value *string `json:"value,omitempty" tf:"value"`
+	// Source for the environment variable's value. Only supports secret_key_ref.
+	// +optional
+	ValueFrom *RunServiceSpecTemplateSpecContainersEnvValueFrom `json:"valueFrom,omitempty" tf:"value_from"`
 }
 
 type RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefLocalObjectReference struct {
@@ -244,12 +267,13 @@ type RunServiceSpecTemplateSpecContainersEnvFrom struct {
 }
 
 type RunServiceSpecTemplateSpecContainersPorts struct {
-	// Port number.
-	ContainerPort *int64 `json:"containerPort" tf:"container_port"`
-	// Name of the port.
+	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// +optional
+	ContainerPort *int64 `json:"containerPort,omitempty" tf:"container_port"`
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	// +optional
 	Name *string `json:"name,omitempty" tf:"name"`
-	// Protocol used on port. Defaults to TCP.
+	// Protocol for port. Must be "TCP". Defaults to "TCP".
 	// +optional
 	Protocol *string `json:"protocol,omitempty" tf:"protocol"`
 }
@@ -267,6 +291,14 @@ type RunServiceSpecTemplateSpecContainersResources struct {
 	// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	// +optional
 	Requests *map[string]string `json:"requests,omitempty" tf:"requests"`
+}
+
+type RunServiceSpecTemplateSpecContainersVolumeMounts struct {
+	// Path within the container at which the volume should be mounted.  Must
+	// not contain ':'.
+	MountPath *string `json:"mountPath" tf:"mount_path"`
+	// This must match the Name of a Volume.
+	Name *string `json:"name" tf:"name"`
 }
 
 type RunServiceSpecTemplateSpecContainers struct {
@@ -317,12 +349,68 @@ type RunServiceSpecTemplateSpecContainers struct {
 	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// +optional
 	Resources *RunServiceSpecTemplateSpecContainersResources `json:"resources,omitempty" tf:"resources"`
+	// Volume to mount into the container's filesystem.
+	// Only supports SecretVolumeSources.
+	// +optional
+	VolumeMounts []RunServiceSpecTemplateSpecContainersVolumeMounts `json:"volumeMounts,omitempty" tf:"volume_mounts"`
 	// Container's working directory.
 	// If not specified, the container runtime's default will be used, which
 	// might be configured in the container image.
 	// +optional
 	// Deprecated
 	WorkingDir *string `json:"workingDir,omitempty" tf:"working_dir"`
+}
+
+type RunServiceSpecTemplateSpecVolumesSecretItems struct {
+	// The Cloud Secret Manager secret version.
+	// Can be 'latest' for the latest value or an integer for a specific version.
+	Key *string `json:"key" tf:"key"`
+	// Mode bits to use on this file, must be a value between 0000 and 0777. If
+	// not specified, the volume defaultMode will be used. This might be in
+	// conflict with other options that affect the file mode, like fsGroup, and
+	// the result can be other mode bits set.
+	// +optional
+	Mode *int64 `json:"mode,omitempty" tf:"mode"`
+	// The relative path of the file to map the key to.
+	// May not be an absolute path.
+	// May not contain the path element '..'.
+	// May not start with the string '..'.
+	Path *string `json:"path" tf:"path"`
+}
+
+type RunServiceSpecTemplateSpecVolumesSecret struct {
+	// Mode bits to use on created files by default. Must be a value between 0000
+	// and 0777. Defaults to 0644. Directories within the path are not affected by
+	// this setting. This might be in conflict with other options that affect the
+	// file mode, like fsGroup, and the result can be other mode bits set.
+	// +optional
+	DefaultMode *int64 `json:"defaultMode,omitempty" tf:"default_mode"`
+	// If unspecified, the volume will expose a file whose name is the
+	// secret_name.
+	// If specified, the key will be used as the version to fetch from Cloud
+	// Secret Manager and the path will be the name of the file exposed in the
+	// volume. When items are defined, they must specify a key and a path.
+	// +optional
+	Items []RunServiceSpecTemplateSpecVolumesSecretItems `json:"items,omitempty" tf:"items"`
+	// The name of the secret in Cloud Secret Manager. By default, the secret
+	// is assumed to be in the same project.
+	// If the secret is in another project, you must define an alias.
+	// An alias definition has the form:
+	// <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+	// If multiple alias definitions are needed, they must be separated by
+	// commas.
+	// The alias definitions must be set on the run.googleapis.com/secrets
+	// annotation.
+	SecretName *string `json:"secretName" tf:"secret_name"`
+}
+
+type RunServiceSpecTemplateSpecVolumes struct {
+	// Volume's name.
+	Name *string `json:"name" tf:"name"`
+	// The secret's value will be presented as the content of a file whose
+	// name is defined in the item path. If no items are defined, the name of
+	// the file is the secret_name.
+	Secret *RunServiceSpecTemplateSpecVolumesSecret `json:"secret" tf:"secret"`
 }
 
 type RunServiceSpecTemplateSpec struct {
@@ -357,6 +445,9 @@ type RunServiceSpecTemplateSpec struct {
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
 	// +optional
 	TimeoutSeconds *int64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds"`
+	// Volume represents a named volume in a container.
+	// +optional
+	Volumes []RunServiceSpecTemplateSpecVolumes `json:"volumes,omitempty" tf:"volumes"`
 }
 
 type RunServiceSpecTemplate struct {

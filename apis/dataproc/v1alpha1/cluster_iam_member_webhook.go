@@ -95,7 +95,7 @@ func (r *ClusterIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusteriammemberForceNewList {
+	for key, _ := range clusteriammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

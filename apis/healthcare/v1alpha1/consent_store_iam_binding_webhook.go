@@ -93,7 +93,7 @@ func (r *ConsentStoreIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range consentstoreiambindingForceNewList {
+	for key, _ := range consentstoreiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

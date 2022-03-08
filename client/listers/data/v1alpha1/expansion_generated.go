@@ -98,6 +98,14 @@ type CatalogTagTemplateIamPolicyListerExpansion interface{}
 // CatalogTagTemplateIamPolicyNamespaceLister.
 type CatalogTagTemplateIamPolicyNamespaceListerExpansion interface{}
 
+// FusionInstanceListerExpansion allows custom methods to be added to
+// FusionInstanceLister.
+type FusionInstanceListerExpansion interface{}
+
+// FusionInstanceNamespaceListerExpansion allows custom methods to be added to
+// FusionInstanceNamespaceLister.
+type FusionInstanceNamespaceListerExpansion interface{}
+
 // LossPreventionDeidentifyTemplateListerExpansion allows custom methods to be added to
 // LossPreventionDeidentifyTemplateLister.
 type LossPreventionDeidentifyTemplateListerExpansion interface{}

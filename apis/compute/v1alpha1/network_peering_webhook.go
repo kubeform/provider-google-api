@@ -92,7 +92,7 @@ func (r *NetworkPeering) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range networkpeeringForceNewList {
+	for key, _ := range networkpeeringForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

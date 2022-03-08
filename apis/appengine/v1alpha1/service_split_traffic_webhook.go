@@ -88,7 +88,7 @@ func (r *ServiceSplitTraffic) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range servicesplittrafficForceNewList {
+	for key, _ := range servicesplittrafficForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

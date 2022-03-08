@@ -92,7 +92,7 @@ func (r *Hl7V2StoreIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range hl7v2storeiambindingForceNewList {
+	for key, _ := range hl7v2storeiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

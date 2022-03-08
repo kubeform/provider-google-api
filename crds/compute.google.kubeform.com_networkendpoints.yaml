@@ -122,7 +122,6 @@ spec:
                       is located.
                     type: string
                 required:
-                - instance
                 - ipAddress
                 - networkEndpointGroup
                 - port
@@ -194,7 +193,6 @@ spec:
                       is located.
                     type: string
                 required:
-                - instance
                 - ipAddress
                 - networkEndpointGroup
                 - port

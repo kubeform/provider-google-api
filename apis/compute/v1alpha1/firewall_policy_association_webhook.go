@@ -90,7 +90,7 @@ func (r *FirewallPolicyAssociation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range firewallpolicyassociationForceNewList {
+	for key, _ := range firewallpolicyassociationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

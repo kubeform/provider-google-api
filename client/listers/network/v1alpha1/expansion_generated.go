@@ -18,6 +18,22 @@ limitations under the License.
 
 package v1alpha1
 
+// ConnectivityHubListerExpansion allows custom methods to be added to
+// ConnectivityHubLister.
+type ConnectivityHubListerExpansion interface{}
+
+// ConnectivityHubNamespaceListerExpansion allows custom methods to be added to
+// ConnectivityHubNamespaceLister.
+type ConnectivityHubNamespaceListerExpansion interface{}
+
+// ConnectivitySpokeListerExpansion allows custom methods to be added to
+// ConnectivitySpokeLister.
+type ConnectivitySpokeListerExpansion interface{}
+
+// ConnectivitySpokeNamespaceListerExpansion allows custom methods to be added to
+// ConnectivitySpokeNamespaceLister.
+type ConnectivitySpokeNamespaceListerExpansion interface{}
+
 // ManagementConnectivityTestListerExpansion allows custom methods to be added to
 // ManagementConnectivityTestLister.
 type ManagementConnectivityTestListerExpansion interface{}

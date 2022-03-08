@@ -93,7 +93,7 @@ func (r *BucketIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketiammemberForceNewList {
+	for key, _ := range bucketiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

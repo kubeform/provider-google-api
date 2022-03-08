@@ -90,7 +90,7 @@ func (r *SslPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sslpolicyForceNewList {
+	for key, _ := range sslpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

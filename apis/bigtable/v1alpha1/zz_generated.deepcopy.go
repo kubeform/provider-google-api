@@ -146,6 +146,11 @@ func (in *AppProfileSpecResource) DeepCopyInto(out *AppProfileSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.MultiClusterRoutingClusterIDS != nil {
+		in, out := &in.MultiClusterRoutingClusterIDS, &out.MultiClusterRoutingClusterIDS
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	if in.MultiClusterRoutingUseAny != nil {
 		in, out := &in.MultiClusterRoutingUseAny, &out.MultiClusterRoutingUseAny
 		*out = new(bool)

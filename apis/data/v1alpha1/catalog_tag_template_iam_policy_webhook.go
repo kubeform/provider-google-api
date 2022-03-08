@@ -90,7 +90,7 @@ func (r *CatalogTagTemplateIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogtagtemplateiampolicyForceNewList {
+	for key, _ := range catalogtagtemplateiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

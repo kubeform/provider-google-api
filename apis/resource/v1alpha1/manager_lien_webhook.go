@@ -91,7 +91,7 @@ func (r *ManagerLien) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managerlienForceNewList {
+	for key, _ := range managerlienForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

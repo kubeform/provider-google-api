@@ -89,7 +89,7 @@ func (r *AnalysisNote) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range analysisnoteForceNewList {
+	for key, _ := range analysisnoteForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

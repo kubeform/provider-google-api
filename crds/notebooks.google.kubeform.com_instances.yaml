@@ -244,7 +244,7 @@ spec:
                       Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}'
                     type: string
                   tags:
-                    description: The Compute Engine tags to add to runtime.
+                    description: The Compute Engine tags to add to instance.
                     items:
                       type: string
                     type: array
@@ -501,7 +501,7 @@ spec:
                       Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}'
                     type: string
                   tags:
-                    description: The Compute Engine tags to add to runtime.
+                    description: The Compute Engine tags to add to instance.
                     items:
                       type: string
                     type: array

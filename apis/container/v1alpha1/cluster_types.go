@@ -47,6 +47,10 @@ type ClusterSpecAddonsConfigCloudrunConfig struct {
 	LoadBalancerType *string `json:"loadBalancerType,omitempty" tf:"load_balancer_type"`
 }
 
+type ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig struct {
+	Enabled *bool `json:"enabled" tf:"enabled"`
+}
+
 type ClusterSpecAddonsConfigHorizontalPodAutoscaling struct {
 	Disabled *bool `json:"disabled" tf:"disabled"`
 }
@@ -63,6 +67,9 @@ type ClusterSpecAddonsConfig struct {
 	// The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
 	// +optional
 	CloudrunConfig *ClusterSpecAddonsConfigCloudrunConfig `json:"cloudrunConfig,omitempty" tf:"cloudrun_config"`
+	// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+	// +optional
+	GcpFilestoreCsiDriverConfig *ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig `json:"gcpFilestoreCsiDriverConfig,omitempty" tf:"gcp_filestore_csi_driver_config"`
 	// The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
 	// +optional
 	HorizontalPodAutoscaling *ClusterSpecAddonsConfigHorizontalPodAutoscaling `json:"horizontalPodAutoscaling,omitempty" tf:"horizontal_pod_autoscaling"`
@@ -80,6 +87,9 @@ type ClusterSpecAuthenticatorGroupsConfig struct {
 }
 
 type ClusterSpecClusterAutoscalingAutoProvisioningDefaults struct {
+	// The default image type used by NAP once a new node pool is being created.
+	// +optional
+	ImageType *string `json:"imageType,omitempty" tf:"image_type"`
 	// Scopes that are used by NAP when creating node pools.
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes"`
@@ -110,6 +120,11 @@ type ClusterSpecClusterAutoscaling struct {
 	ResourceLimits []ClusterSpecClusterAutoscalingResourceLimits `json:"resourceLimits,omitempty" tf:"resource_limits"`
 }
 
+type ClusterSpecConfidentialNodes struct {
+	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	Enabled *bool `json:"enabled" tf:"enabled"`
+}
+
 type ClusterSpecDatabaseEncryption struct {
 	// The key to use to encrypt/decrypt secrets.
 	// +optional
@@ -121,6 +136,18 @@ type ClusterSpecDatabaseEncryption struct {
 type ClusterSpecDefaultSnatStatus struct {
 	// When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	Disabled *bool `json:"disabled" tf:"disabled"`
+}
+
+type ClusterSpecDnsConfig struct {
+	// Which in-cluster DNS provider should be used.
+	// +optional
+	ClusterDNS *string `json:"clusterDNS,omitempty" tf:"cluster_dns"`
+	// The suffix used for all cluster service records.
+	// +optional
+	ClusterDNSDomain *string `json:"clusterDNSDomain,omitempty" tf:"cluster_dns_domain"`
+	// The scope of access to cluster DNS records.
+	// +optional
+	ClusterDNSScope *string `json:"clusterDNSScope,omitempty" tf:"cluster_dns_scope"`
 }
 
 type ClusterSpecIpAllocationPolicy struct {
@@ -184,20 +211,13 @@ type ClusterSpecMasterAuth struct {
 	// +optional
 	ClientCertificate *string `json:"clientCertificate,omitempty" tf:"client_certificate"`
 	// Whether client certificate authorization is enabled for this cluster.
-	// +optional
-	ClientCertificateConfig *ClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig,omitempty" tf:"client_certificate_config"`
+	ClientCertificateConfig *ClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig" tf:"client_certificate_config"`
 	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
 	// +optional
 	ClientKey *string `json:"-" sensitive:"true" tf:"client_key"`
 	// Base64 encoded public certificate that is the root of trust for the cluster.
 	// +optional
 	ClusterCaCertificate *string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate"`
-	// The password to use for HTTP basic authentication when accessing the Kubernetes master endpoint.
-	// +optional
-	Password *string `json:"-" sensitive:"true" tf:"password"`
-	// The username to use for HTTP basic authentication when accessing the Kubernetes master endpoint. If not present basic auth will be disabled.
-	// +optional
-	Username *string `json:"username,omitempty" tf:"username"`
 }
 
 type ClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
@@ -225,6 +245,11 @@ type ClusterSpecNetworkPolicy struct {
 	// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
 	// +optional
 	Provider *string `json:"provider,omitempty" tf:"provider"`
+}
+
+type ClusterSpecNodeConfigGcfsConfig struct {
+	// Whether or not GCFS is enabled
+	Enabled *bool `json:"enabled" tf:"enabled"`
 }
 
 type ClusterSpecNodeConfigGuestAccelerator struct {
@@ -257,21 +282,22 @@ type ClusterSpecNodeConfigTaint struct {
 
 type ClusterSpecNodeConfigWorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node.
-	// +optional
-	Mode *string `json:"mode,omitempty" tf:"mode"`
-	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	// +optional
-	// Deprecated
-	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
+	Mode *string `json:"mode" tf:"mode"`
 }
 
 type ClusterSpecNodeConfig struct {
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+	// +optional
+	BootDiskKmsKey *string `json:"bootDiskKmsKey,omitempty" tf:"boot_disk_kms_key"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	// +optional
 	DiskSizeGb *int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb"`
 	// Type of the disk attached to each node.
 	// +optional
 	DiskType *string `json:"diskType,omitempty" tf:"disk_type"`
+	// GCFS configuration for this node.
+	// +optional
+	GcfsConfig *ClusterSpecNodeConfigGcfsConfig `json:"gcfsConfig,omitempty" tf:"gcfs_config"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// +optional
 	GuestAccelerator []ClusterSpecNodeConfigGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator"`
@@ -293,6 +319,9 @@ type ClusterSpecNodeConfig struct {
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
 	// +optional
 	MinCPUPlatform *string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+	// +optional
+	NodeGroup *string `json:"nodeGroup,omitempty" tf:"node_group"`
 	// The set of Google API scopes to be made available on all of the node VMs.
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes"`
@@ -332,6 +361,11 @@ type ClusterSpecNodePoolManagement struct {
 	AutoUpgrade *bool `json:"autoUpgrade,omitempty" tf:"auto_upgrade"`
 }
 
+type ClusterSpecNodePoolNodeConfigGcfsConfig struct {
+	// Whether or not GCFS is enabled
+	Enabled *bool `json:"enabled" tf:"enabled"`
+}
+
 type ClusterSpecNodePoolNodeConfigGuestAccelerator struct {
 	// The number of the accelerator cards exposed to an instance.
 	Count *int64 `json:"count" tf:"count"`
@@ -362,21 +396,22 @@ type ClusterSpecNodePoolNodeConfigTaint struct {
 
 type ClusterSpecNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node.
-	// +optional
-	Mode *string `json:"mode,omitempty" tf:"mode"`
-	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	// +optional
-	// Deprecated
-	NodeMetadata *string `json:"nodeMetadata,omitempty" tf:"node_metadata"`
+	Mode *string `json:"mode" tf:"mode"`
 }
 
 type ClusterSpecNodePoolNodeConfig struct {
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+	// +optional
+	BootDiskKmsKey *string `json:"bootDiskKmsKey,omitempty" tf:"boot_disk_kms_key"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
 	// +optional
 	DiskSizeGb *int64 `json:"diskSizeGb,omitempty" tf:"disk_size_gb"`
 	// Type of the disk attached to each node.
 	// +optional
 	DiskType *string `json:"diskType,omitempty" tf:"disk_type"`
+	// GCFS configuration for this node.
+	// +optional
+	GcfsConfig *ClusterSpecNodePoolNodeConfigGcfsConfig `json:"gcfsConfig,omitempty" tf:"gcfs_config"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// +optional
 	GuestAccelerator []ClusterSpecNodePoolNodeConfigGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator"`
@@ -398,6 +433,9 @@ type ClusterSpecNodePoolNodeConfig struct {
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
 	// +optional
 	MinCPUPlatform *string `json:"minCPUPlatform,omitempty" tf:"min_cpu_platform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+	// +optional
+	NodeGroup *string `json:"nodeGroup,omitempty" tf:"node_group"`
 	// The set of Google API scopes to be made available on all of the node VMs.
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes"`
@@ -438,6 +476,9 @@ type ClusterSpecNodePool struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	// +optional
 	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls"`
+	// List of instance group URLs which have been assigned to this node pool.
+	// +optional
+	ManagedInstanceGroupUrls []string `json:"managedInstanceGroupUrls,omitempty" tf:"managed_instance_group_urls"`
 	// Node management configuration, wherein auto-repair and auto-upgrade is configured.
 	// +optional
 	Management *ClusterSpecNodePoolManagement `json:"management,omitempty" tf:"management"`
@@ -465,11 +506,6 @@ type ClusterSpecNodePool struct {
 	// The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the google_container_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
 	// +optional
 	Version *string `json:"version,omitempty" tf:"version"`
-}
-
-type ClusterSpecPodSecurityPolicyConfig struct {
-	// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
-	Enabled *bool `json:"enabled" tf:"enabled"`
 }
 
 type ClusterSpecPrivateClusterConfigMasterGlobalAccessConfig struct {
@@ -531,10 +567,6 @@ type ClusterSpecVerticalPodAutoscaling struct {
 }
 
 type ClusterSpecWorkloadIdentityConfig struct {
-	// Enables workload identity.
-	// +optional
-	// Deprecated
-	IdentityNamespace *string `json:"identityNamespace,omitempty" tf:"identity_namespace"`
 	// The workload pool to attach all Kubernetes service accounts to.
 	// +optional
 	WorkloadPool *string `json:"workloadPool,omitempty" tf:"workload_pool"`
@@ -573,6 +605,9 @@ type ClusterSpecResource struct {
 	// The IP address range of the Kubernetes pods in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only work for routes-based clusters, where ip_allocation_policy is not defined.
 	// +optional
 	ClusterIpv4CIDR *string `json:"clusterIpv4CIDR,omitempty" tf:"cluster_ipv4_cidr"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
+	// +optional
+	ConfidentialNodes *ClusterSpecConfidentialNodes `json:"confidentialNodes,omitempty" tf:"confidential_nodes"`
 	// Application-layer Secrets Encryption settings. The object format is {state = string, key_name = string}. Valid values of state are: "ENCRYPTED"; "DECRYPTED". key_name is the name of a CloudKMS key.
 	// +optional
 	DatabaseEncryption *ClusterSpecDatabaseEncryption `json:"databaseEncryption,omitempty" tf:"database_encryption"`
@@ -588,6 +623,9 @@ type ClusterSpecResource struct {
 	//  Description of the cluster.
 	// +optional
 	Description *string `json:"description,omitempty" tf:"description"`
+	// Configuration for Cloud DNS for Kubernetes Engine.
+	// +optional
+	DnsConfig *ClusterSpecDnsConfig `json:"dnsConfig,omitempty" tf:"dns_config"`
 	// Enable Autopilot for this cluster.
 	// +optional
 	EnableAutopilot *bool `json:"enableAutopilot,omitempty" tf:"enable_autopilot"`
@@ -603,7 +641,7 @@ type ClusterSpecResource struct {
 	// Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM. Defaults to false.
 	// +optional
 	EnableLegacyAbac *bool `json:"enableLegacyAbac,omitempty" tf:"enable_legacy_abac"`
-	// Enable Shielded Nodes features on all nodes in this cluster.
+	// Enable Shielded Nodes features on all nodes in this cluster. Defaults to true.
 	// +optional
 	EnableShieldedNodes *bool `json:"enableShieldedNodes,omitempty" tf:"enable_shielded_nodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -615,10 +653,6 @@ type ClusterSpecResource struct {
 	// The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Must be set if node_pool is not set. If you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true.
 	// +optional
 	InitialNodeCount *int64 `json:"initialNodeCount,omitempty" tf:"initial_node_count"`
-	// List of instance group URLs which have been assigned to the cluster.
-	// +optional
-	// Deprecated
-	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls"`
 	// Configuration of cluster IP allocation for VPC-native clusters. Adding this block enables IP aliasing, making the cluster VPC-native instead of routes-based.
 	// +optional
 	IpAllocationPolicy *ClusterSpecIpAllocationPolicy `json:"ipAllocationPolicy,omitempty" tf:"ip_allocation_policy"`
@@ -637,9 +671,8 @@ type ClusterSpecResource struct {
 	// The maintenance policy to use for the cluster.
 	// +optional
 	MaintenancePolicy *ClusterSpecMaintenancePolicy `json:"maintenancePolicy,omitempty" tf:"maintenance_policy"`
-	// The authentication information for accessing the Kubernetes master. Some values in this block are only returned by the API if your service account has permission to get credentials for your GKE cluster. If you see an unexpected diff removing a username/password or unsetting your client cert, ensure you have the container.clusters.getCredentials permission.
+	// The authentication information for accessing the Kubernetes master. Some values in this block are only returned by the API if your service account has permission to get credentials for your GKE cluster. If you see an unexpected diff unsetting your client cert, ensure you have the container.clusters.getCredentials permission.
 	// +optional
-	// Deprecated
 	MasterAuth *ClusterSpecMasterAuth `json:"masterAuth,omitempty" tf:"master_auth"`
 	// The desired configuration options for master authorized networks. Omit the nested cidr_blocks attribute to disallow external access (except the cluster node IPs, which GKE automatically whitelists).
 	// +optional
@@ -681,10 +714,6 @@ type ClusterSpecResource struct {
 	NodeVersion *string `json:"nodeVersion,omitempty" tf:"node_version"`
 	// +optional
 	Operation *string `json:"operation,omitempty" tf:"operation"`
-	// Configuration for the PodSecurityPolicy feature.
-	// +optional
-	// Deprecated
-	PodSecurityPolicyConfig *ClusterSpecPodSecurityPolicyConfig `json:"podSecurityPolicyConfig,omitempty" tf:"pod_security_policy_config"`
 	// Configuration for private clusters, clusters with private nodes.
 	// +optional
 	PrivateClusterConfig *ClusterSpecPrivateClusterConfig `json:"privateClusterConfig,omitempty" tf:"private_cluster_config"`

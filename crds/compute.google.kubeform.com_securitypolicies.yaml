@@ -81,10 +81,7 @@ spec:
                     items:
                       properties:
                         action:
-                          description: 'Action to take when match matches the request.
-                            Valid values:   "allow" : allow access to target, "deny(status)"
-                            : deny access to target, returns the HTTP response code
-                            specified (valid values are 403, 404 and 502)'
+                          description: Action to take when match matches the request.
                           type: string
                         description:
                           description: An optional description of this rule. Max size
@@ -225,10 +222,7 @@ spec:
                     items:
                       properties:
                         action:
-                          description: 'Action to take when match matches the request.
-                            Valid values:   "allow" : allow access to target, "deny(status)"
-                            : deny access to target, returns the HTTP response code
-                            specified (valid values are 403, 404 and 502)'
+                          description: Action to take when match matches the request.
                           type: string
                         description:
                           description: An optional description of this rule. Max size

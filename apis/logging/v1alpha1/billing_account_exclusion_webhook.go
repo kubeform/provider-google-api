@@ -89,7 +89,7 @@ func (r *BillingAccountExclusion) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range billingaccountexclusionForceNewList {
+	for key, _ := range billingaccountexclusionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

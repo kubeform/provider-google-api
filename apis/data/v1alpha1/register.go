@@ -76,6 +76,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CatalogTagTemplateIamMemberList{},
 		&CatalogTagTemplateIamPolicy{},
 		&CatalogTagTemplateIamPolicyList{},
+		&FusionInstance{},
+		&FusionInstanceList{},
 		&LossPreventionDeidentifyTemplate{},
 		&LossPreventionDeidentifyTemplateList{},
 		&LossPreventionInspectTemplate{},

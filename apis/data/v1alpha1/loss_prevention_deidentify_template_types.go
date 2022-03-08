@@ -49,7 +49,7 @@ type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations
 type LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCharacterMaskConfigCharactersToIgnore struct {
 	// Characters to not transform when masking.
 	// +optional
-	CharacterToSkip *string `json:"characterToSkip,omitempty" tf:"character_to_skip"`
+	CharactersToSkip *string `json:"charactersToSkip,omitempty" tf:"characters_to_skip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation. Possible values: ["NUMERIC", "ALPHA_UPPER_CASE", "ALPHA_LOWER_CASE", "PUNCTUATION", "WHITESPACE"]
 	// +optional
 	CommonCharactersToIgnore *string `json:"commonCharactersToIgnore,omitempty" tf:"common_characters_to_ignore"`

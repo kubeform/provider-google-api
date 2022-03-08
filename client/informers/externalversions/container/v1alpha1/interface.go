@@ -28,6 +28,16 @@ type Interface interface {
 	AnalysisNotes() AnalysisNoteInformer
 	// AnalysisOccurrences returns a AnalysisOccurrenceInformer.
 	AnalysisOccurrences() AnalysisOccurrenceInformer
+	// AwsClusters returns a AwsClusterInformer.
+	AwsClusters() AwsClusterInformer
+	// AwsNodePools returns a AwsNodePoolInformer.
+	AwsNodePools() AwsNodePoolInformer
+	// AzureClients returns a AzureClientInformer.
+	AzureClients() AzureClientInformer
+	// AzureClusters returns a AzureClusterInformer.
+	AzureClusters() AzureClusterInformer
+	// AzureNodePools returns a AzureNodePoolInformer.
+	AzureNodePools() AzureNodePoolInformer
 	// Clusters returns a ClusterInformer.
 	Clusters() ClusterInformer
 	// NodePools returns a NodePoolInformer.
@@ -55,6 +65,31 @@ func (v *version) AnalysisNotes() AnalysisNoteInformer {
 // AnalysisOccurrences returns a AnalysisOccurrenceInformer.
 func (v *version) AnalysisOccurrences() AnalysisOccurrenceInformer {
 	return &analysisOccurrenceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsClusters returns a AwsClusterInformer.
+func (v *version) AwsClusters() AwsClusterInformer {
+	return &awsClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsNodePools returns a AwsNodePoolInformer.
+func (v *version) AwsNodePools() AwsNodePoolInformer {
+	return &awsNodePoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AzureClients returns a AzureClientInformer.
+func (v *version) AzureClients() AzureClientInformer {
+	return &azureClientInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AzureClusters returns a AzureClusterInformer.
+func (v *version) AzureClusters() AzureClusterInformer {
+	return &azureClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AzureNodePools returns a AzureNodePoolInformer.
+func (v *version) AzureNodePools() AzureNodePoolInformer {
+	return &azureNodePoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Clusters returns a ClusterInformer.

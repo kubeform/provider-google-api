@@ -88,7 +88,7 @@ func (r *Hl7V2StoreIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range hl7v2storeiampolicyForceNewList {
+	for key, _ := range hl7v2storeiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

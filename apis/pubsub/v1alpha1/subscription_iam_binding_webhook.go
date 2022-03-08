@@ -93,7 +93,7 @@ func (r *SubscriptionIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subscriptioniambindingForceNewList {
+	for key, _ := range subscriptioniambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

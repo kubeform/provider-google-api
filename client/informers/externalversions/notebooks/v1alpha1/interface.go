@@ -36,6 +36,14 @@ type Interface interface {
 	InstanceIamPolicies() InstanceIamPolicyInformer
 	// Locations returns a LocationInformer.
 	Locations() LocationInformer
+	// Runtimes returns a RuntimeInformer.
+	Runtimes() RuntimeInformer
+	// RuntimeIamBindings returns a RuntimeIamBindingInformer.
+	RuntimeIamBindings() RuntimeIamBindingInformer
+	// RuntimeIamMembers returns a RuntimeIamMemberInformer.
+	RuntimeIamMembers() RuntimeIamMemberInformer
+	// RuntimeIamPolicies returns a RuntimeIamPolicyInformer.
+	RuntimeIamPolicies() RuntimeIamPolicyInformer
 }
 
 type version struct {
@@ -77,4 +85,24 @@ func (v *version) InstanceIamPolicies() InstanceIamPolicyInformer {
 // Locations returns a LocationInformer.
 func (v *version) Locations() LocationInformer {
 	return &locationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// Runtimes returns a RuntimeInformer.
+func (v *version) Runtimes() RuntimeInformer {
+	return &runtimeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuntimeIamBindings returns a RuntimeIamBindingInformer.
+func (v *version) RuntimeIamBindings() RuntimeIamBindingInformer {
+	return &runtimeIamBindingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuntimeIamMembers returns a RuntimeIamMemberInformer.
+func (v *version) RuntimeIamMembers() RuntimeIamMemberInformer {
+	return &runtimeIamMemberInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// RuntimeIamPolicies returns a RuntimeIamPolicyInformer.
+func (v *version) RuntimeIamPolicies() RuntimeIamPolicyInformer {
+	return &runtimeIamPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

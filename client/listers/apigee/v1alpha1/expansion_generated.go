@@ -18,6 +18,14 @@ limitations under the License.
 
 package v1alpha1
 
+// EndpointAttachmentListerExpansion allows custom methods to be added to
+// EndpointAttachmentLister.
+type EndpointAttachmentListerExpansion interface{}
+
+// EndpointAttachmentNamespaceListerExpansion allows custom methods to be added to
+// EndpointAttachmentNamespaceLister.
+type EndpointAttachmentNamespaceListerExpansion interface{}
+
 // EnvgroupListerExpansion allows custom methods to be added to
 // EnvgroupLister.
 type EnvgroupListerExpansion interface{}
@@ -41,6 +49,30 @@ type EnvironmentListerExpansion interface{}
 // EnvironmentNamespaceListerExpansion allows custom methods to be added to
 // EnvironmentNamespaceLister.
 type EnvironmentNamespaceListerExpansion interface{}
+
+// EnvironmentIamBindingListerExpansion allows custom methods to be added to
+// EnvironmentIamBindingLister.
+type EnvironmentIamBindingListerExpansion interface{}
+
+// EnvironmentIamBindingNamespaceListerExpansion allows custom methods to be added to
+// EnvironmentIamBindingNamespaceLister.
+type EnvironmentIamBindingNamespaceListerExpansion interface{}
+
+// EnvironmentIamMemberListerExpansion allows custom methods to be added to
+// EnvironmentIamMemberLister.
+type EnvironmentIamMemberListerExpansion interface{}
+
+// EnvironmentIamMemberNamespaceListerExpansion allows custom methods to be added to
+// EnvironmentIamMemberNamespaceLister.
+type EnvironmentIamMemberNamespaceListerExpansion interface{}
+
+// EnvironmentIamPolicyListerExpansion allows custom methods to be added to
+// EnvironmentIamPolicyLister.
+type EnvironmentIamPolicyListerExpansion interface{}
+
+// EnvironmentIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// EnvironmentIamPolicyNamespaceLister.
+type EnvironmentIamPolicyNamespaceListerExpansion interface{}
 
 // InstanceListerExpansion allows custom methods to be added to
 // InstanceLister.

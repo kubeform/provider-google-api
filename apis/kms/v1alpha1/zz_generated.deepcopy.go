@@ -678,11 +678,6 @@ func (in *CryptoKeySpecResource) DeepCopyInto(out *CryptoKeySpecResource) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.SelfLink != nil {
-		in, out := &in.SelfLink, &out.SelfLink
-		*out = new(string)
-		**out = **in
-	}
 	if in.SkipInitialVersionCreation != nil {
 		in, out := &in.SkipInitialVersionCreation, &out.SkipInitialVersionCreation
 		*out = new(bool)
@@ -1604,11 +1599,6 @@ func (in *KeyRingSpecResource) DeepCopyInto(out *KeyRingSpecResource) {
 	}
 	if in.Project != nil {
 		in, out := &in.Project, &out.Project
-		*out = new(string)
-		**out = **in
-	}
-	if in.SelfLink != nil {
-		in, out := &in.SelfLink, &out.SelfLink
 		*out = new(string)
 		**out = **in
 	}

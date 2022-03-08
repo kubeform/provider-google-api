@@ -27,27 +27,49 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecContainerImage{}).Type1()):      EnvironmentSpecContainerImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecVmImage{}).Type1()):             EnvironmentSpecVmImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAcceleratorConfig{}).Type1()):      InstanceSpecAcceleratorConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecContainerImage{}).Type1()):         InstanceSpecContainerImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()): InstanceSpecShieldedInstanceConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecVmImage{}).Type1()):                InstanceSpecVmImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamBindingSpecCondition{}).Type1()):    InstanceIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamMemberSpecCondition{}).Type1()):     InstanceIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecContainerImage{}).Type1()):                                         EnvironmentSpecContainerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecVmImage{}).Type1()):                                                EnvironmentSpecVmImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAcceleratorConfig{}).Type1()):                                         InstanceSpecAcceleratorConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecContainerImage{}).Type1()):                                            InstanceSpecContainerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()):                                    InstanceSpecShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecVmImage{}).Type1()):                                                   InstanceSpecVmImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamBindingSpecCondition{}).Type1()):                                       InstanceIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamMemberSpecCondition{}).Type1()):                                        InstanceIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecAccessConfig{}).Type1()):                                               RuntimeSpecAccessConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecSoftwareConfig{}).Type1()):                                             RuntimeSpecSoftwareConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachine{}).Type1()):                                             RuntimeSpecVirtualMachineCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfig{}).Type1()):                         RuntimeSpecVirtualMachineVirtualMachineConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}).Type1()):        RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}).Type1()):                 RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}).Type1()): RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}).Type1()):         RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}).Type1()):   RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamBindingSpecCondition{}).Type1()):                                        RuntimeIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamMemberSpecCondition{}).Type1()):                                         RuntimeIamMemberSpecConditionCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecContainerImage{}).Type1()):      EnvironmentSpecContainerImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecVmImage{}).Type1()):             EnvironmentSpecVmImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAcceleratorConfig{}).Type1()):      InstanceSpecAcceleratorConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecContainerImage{}).Type1()):         InstanceSpecContainerImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()): InstanceSpecShieldedInstanceConfigCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecVmImage{}).Type1()):                InstanceSpecVmImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamBindingSpecCondition{}).Type1()):    InstanceIamBindingSpecConditionCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamMemberSpecCondition{}).Type1()):     InstanceIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecContainerImage{}).Type1()):                                         EnvironmentSpecContainerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(EnvironmentSpecVmImage{}).Type1()):                                                EnvironmentSpecVmImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecAcceleratorConfig{}).Type1()):                                         InstanceSpecAcceleratorConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecContainerImage{}).Type1()):                                            InstanceSpecContainerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecShieldedInstanceConfig{}).Type1()):                                    InstanceSpecShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceSpecVmImage{}).Type1()):                                                   InstanceSpecVmImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamBindingSpecCondition{}).Type1()):                                       InstanceIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(InstanceIamMemberSpecCondition{}).Type1()):                                        InstanceIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecAccessConfig{}).Type1()):                                               RuntimeSpecAccessConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecSoftwareConfig{}).Type1()):                                             RuntimeSpecSoftwareConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachine{}).Type1()):                                             RuntimeSpecVirtualMachineCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfig{}).Type1()):                         RuntimeSpecVirtualMachineVirtualMachineConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}).Type1()):        RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}).Type1()):                 RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}).Type1()): RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}).Type1()):         RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}).Type1()):   RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamBindingSpecCondition{}).Type1()):                                        RuntimeIamBindingSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamMemberSpecCondition{}).Type1()):                                         RuntimeIamMemberSpecConditionCodec{},
 	}
 }
 
@@ -692,5 +714,874 @@ func (InstanceIamMemberSpecConditionCodec) Decode(ptr unsafe.Pointer, iter *json
 		}
 	default:
 		iter.ReportError("decode InstanceIamMemberSpecCondition", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecAccessConfigCodec struct {
+}
+
+func (RuntimeSpecAccessConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecAccessConfig)(ptr) == nil
+}
+
+func (RuntimeSpecAccessConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecAccessConfig)(ptr)
+	var objs []RuntimeSpecAccessConfig
+	if obj != nil {
+		objs = []RuntimeSpecAccessConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecAccessConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecAccessConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecAccessConfig)(ptr) = RuntimeSpecAccessConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecAccessConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecAccessConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecAccessConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecAccessConfig)(ptr) = RuntimeSpecAccessConfig{}
+			}
+		} else {
+			*(*RuntimeSpecAccessConfig)(ptr) = RuntimeSpecAccessConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecAccessConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecAccessConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecAccessConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecAccessConfig)(ptr) = RuntimeSpecAccessConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecAccessConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecSoftwareConfigCodec struct {
+}
+
+func (RuntimeSpecSoftwareConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecSoftwareConfig)(ptr) == nil
+}
+
+func (RuntimeSpecSoftwareConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecSoftwareConfig)(ptr)
+	var objs []RuntimeSpecSoftwareConfig
+	if obj != nil {
+		objs = []RuntimeSpecSoftwareConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecSoftwareConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecSoftwareConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecSoftwareConfig)(ptr) = RuntimeSpecSoftwareConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecSoftwareConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecSoftwareConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecSoftwareConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecSoftwareConfig)(ptr) = RuntimeSpecSoftwareConfig{}
+			}
+		} else {
+			*(*RuntimeSpecSoftwareConfig)(ptr) = RuntimeSpecSoftwareConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecSoftwareConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecSoftwareConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecSoftwareConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecSoftwareConfig)(ptr) = RuntimeSpecSoftwareConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecSoftwareConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachine)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachine)(ptr)
+	var objs []RuntimeSpecVirtualMachine
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachine{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachine{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachine)(ptr) = RuntimeSpecVirtualMachine{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachine
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachine{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachine)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachine)(ptr) = RuntimeSpecVirtualMachine{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachine)(ptr) = RuntimeSpecVirtualMachine{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachine
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachine{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachine)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachine)(ptr) = RuntimeSpecVirtualMachine{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachine", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfig
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfig{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfigAcceleratorConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfigDataDisk", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParamsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfigDataDiskInitializeParams", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfigEncryptionConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec struct {
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) == nil
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr)
+	var objs []RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig
+	if obj != nil {
+		objs = []RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = objs[0]
+			} else {
+				*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}
+			}
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = obj
+		} else {
+			*(*RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig)(ptr) = RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig{}
+		}
+	default:
+		iter.ReportError("decode RuntimeSpecVirtualMachineVirtualMachineConfigShieldedInstanceConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeIamBindingSpecConditionCodec struct {
+}
+
+func (RuntimeIamBindingSpecConditionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeIamBindingSpecCondition)(ptr) == nil
+}
+
+func (RuntimeIamBindingSpecConditionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeIamBindingSpecCondition)(ptr)
+	var objs []RuntimeIamBindingSpecCondition
+	if obj != nil {
+		objs = []RuntimeIamBindingSpecCondition{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamBindingSpecCondition{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeIamBindingSpecConditionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeIamBindingSpecCondition)(ptr) = RuntimeIamBindingSpecCondition{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeIamBindingSpecCondition
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamBindingSpecCondition{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeIamBindingSpecCondition)(ptr) = objs[0]
+			} else {
+				*(*RuntimeIamBindingSpecCondition)(ptr) = RuntimeIamBindingSpecCondition{}
+			}
+		} else {
+			*(*RuntimeIamBindingSpecCondition)(ptr) = RuntimeIamBindingSpecCondition{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeIamBindingSpecCondition
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamBindingSpecCondition{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeIamBindingSpecCondition)(ptr) = obj
+		} else {
+			*(*RuntimeIamBindingSpecCondition)(ptr) = RuntimeIamBindingSpecCondition{}
+		}
+	default:
+		iter.ReportError("decode RuntimeIamBindingSpecCondition", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RuntimeIamMemberSpecConditionCodec struct {
+}
+
+func (RuntimeIamMemberSpecConditionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RuntimeIamMemberSpecCondition)(ptr) == nil
+}
+
+func (RuntimeIamMemberSpecConditionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RuntimeIamMemberSpecCondition)(ptr)
+	var objs []RuntimeIamMemberSpecCondition
+	if obj != nil {
+		objs = []RuntimeIamMemberSpecCondition{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamMemberSpecCondition{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RuntimeIamMemberSpecConditionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RuntimeIamMemberSpecCondition)(ptr) = RuntimeIamMemberSpecCondition{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RuntimeIamMemberSpecCondition
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamMemberSpecCondition{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RuntimeIamMemberSpecCondition)(ptr) = objs[0]
+			} else {
+				*(*RuntimeIamMemberSpecCondition)(ptr) = RuntimeIamMemberSpecCondition{}
+			}
+		} else {
+			*(*RuntimeIamMemberSpecCondition)(ptr) = RuntimeIamMemberSpecCondition{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RuntimeIamMemberSpecCondition
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RuntimeIamMemberSpecCondition{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RuntimeIamMemberSpecCondition)(ptr) = obj
+		} else {
+			*(*RuntimeIamMemberSpecCondition)(ptr) = RuntimeIamMemberSpecCondition{}
+		}
+	default:
+		iter.ReportError("decode RuntimeIamMemberSpecCondition", "unexpected JSON type")
 	}
 }

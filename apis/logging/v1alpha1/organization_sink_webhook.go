@@ -89,7 +89,7 @@ func (r *OrganizationSink) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range organizationsinkForceNewList {
+	for key, _ := range organizationsinkForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

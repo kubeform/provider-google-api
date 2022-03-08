@@ -29,3 +29,11 @@ type InstanceIamMemberExpansion interface{}
 type InstanceIamPolicyExpansion interface{}
 
 type LocationExpansion interface{}
+
+type RuntimeExpansion interface{}
+
+type RuntimeIamBindingExpansion interface{}
+
+type RuntimeIamMemberExpansion interface{}
+
+type RuntimeIamPolicyExpansion interface{}

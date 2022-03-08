@@ -91,6 +91,15 @@ type TopicSpecResource struct {
 	// A set of key/value label pairs to assign to this Topic.
 	// +optional
 	Labels *map[string]string `json:"labels,omitempty" tf:"labels"`
+	// Indicates the minimum duration to retain a message after it is published
+	// to the topic. If this field is set, messages published to the topic in
+	// the last messageRetentionDuration are always available to subscribers.
+	// For instance, it allows any attached subscription to seek to a timestamp
+	// that is up to messageRetentionDuration in the past. If this field is not
+	// set, message retention is controlled by settings on individual subscriptions.
+	// Cannot be more than 7 days or less than 10 minutes.
+	// +optional
+	MessageRetentionDuration *string `json:"messageRetentionDuration,omitempty" tf:"message_retention_duration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
 	// constraints are in effect.

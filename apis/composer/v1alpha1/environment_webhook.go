@@ -42,24 +42,26 @@ func (r *Environment) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Environment{}
 
 var environmentForceNewList = map[string]bool{
-	"/config/*/node_config/*/disk_size_gb":                                         true,
-	"/config/*/node_config/*/ip_allocation_policy/*/cluster_ipv4_cidr_block":       true,
-	"/config/*/node_config/*/ip_allocation_policy/*/cluster_secondary_range_name":  true,
-	"/config/*/node_config/*/ip_allocation_policy/*/services_ipv4_cidr_block":      true,
-	"/config/*/node_config/*/ip_allocation_policy/*/services_secondary_range_name": true,
-	"/config/*/node_config/*/ip_allocation_policy/*/use_ip_aliases":                true,
-	"/config/*/node_config/*/machine_type":                                         true,
-	"/config/*/node_config/*/network":                                              true,
-	"/config/*/node_config/*/oauth_scopes":                                         true,
-	"/config/*/node_config/*/service_account":                                      true,
-	"/config/*/node_config/*/subnetwork":                                           true,
-	"/config/*/node_config/*/tags":                                                 true,
-	"/config/*/node_config/*/zone":                                                 true,
-	"/config/*/private_environment_config/*/cloud_sql_ipv4_cidr_block":             true,
-	"/config/*/private_environment_config/*/enable_private_endpoint":               true,
-	"/config/*/private_environment_config/*/master_ipv4_cidr_block":                true,
-	"/config/*/private_environment_config/*/web_server_ipv4_cidr_block":            true,
-	"/config/*/software_config/*/python_version":                                   true,
+	"/config/*/encryption_config/*/kms_key_name":                                    true,
+	"/config/*/node_config/*/disk_size_gb":                                          true,
+	"/config/*/node_config/*/ip_allocation_policy/*/cluster_ipv4_cidr_block":        true,
+	"/config/*/node_config/*/ip_allocation_policy/*/cluster_secondary_range_name":   true,
+	"/config/*/node_config/*/ip_allocation_policy/*/services_ipv4_cidr_block":       true,
+	"/config/*/node_config/*/ip_allocation_policy/*/services_secondary_range_name":  true,
+	"/config/*/node_config/*/ip_allocation_policy/*/use_ip_aliases":                 true,
+	"/config/*/node_config/*/machine_type":                                          true,
+	"/config/*/node_config/*/network":                                               true,
+	"/config/*/node_config/*/oauth_scopes":                                          true,
+	"/config/*/node_config/*/service_account":                                       true,
+	"/config/*/node_config/*/subnetwork":                                            true,
+	"/config/*/node_config/*/tags":                                                  true,
+	"/config/*/node_config/*/zone":                                                  true,
+	"/config/*/private_environment_config/*/cloud_composer_network_ipv4_cidr_block": true,
+	"/config/*/private_environment_config/*/cloud_sql_ipv4_cidr_block":              true,
+	"/config/*/private_environment_config/*/enable_private_endpoint":                true,
+	"/config/*/private_environment_config/*/master_ipv4_cidr_block":                 true,
+	"/config/*/private_environment_config/*/web_server_ipv4_cidr_block":             true,
+	"/config/*/software_config/*/python_version":                                    true,
 	"/name":    true,
 	"/project": true,
 	"/region":  true,
@@ -108,7 +110,7 @@ func (r *Environment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range environmentForceNewList {
+	for key, _ := range environmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

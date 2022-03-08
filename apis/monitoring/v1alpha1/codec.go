@@ -27,8 +27,11 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategy{}).Type1()):                                                 AlertPolicySpecAlertStrategyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategyNotificationRateLimit{}).Type1()):                            AlertPolicySpecAlertStrategyNotificationRateLimitCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionAbsent{}).Type1()):                                     AlertPolicySpecConditionsConditionAbsentCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionAbsentTrigger{}).Type1()):                              AlertPolicySpecConditionsConditionAbsentTriggerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMatchedLog{}).Type1()):                                 AlertPolicySpecConditionsConditionMatchedLogCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMonitoringQueryLanguage{}).Type1()):                    AlertPolicySpecConditionsConditionMonitoringQueryLanguageCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMonitoringQueryLanguageTrigger{}).Type1()):             AlertPolicySpecConditionsConditionMonitoringQueryLanguageTriggerCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionThreshold{}).Type1()):                                  AlertPolicySpecConditionsConditionThresholdCodec{},
@@ -67,8 +70,11 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategy{}).Type1()):                                                 AlertPolicySpecAlertStrategyCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategyNotificationRateLimit{}).Type1()):                            AlertPolicySpecAlertStrategyNotificationRateLimitCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionAbsent{}).Type1()):                                     AlertPolicySpecConditionsConditionAbsentCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionAbsentTrigger{}).Type1()):                              AlertPolicySpecConditionsConditionAbsentTriggerCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMatchedLog{}).Type1()):                                 AlertPolicySpecConditionsConditionMatchedLogCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMonitoringQueryLanguage{}).Type1()):                    AlertPolicySpecConditionsConditionMonitoringQueryLanguageCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMonitoringQueryLanguageTrigger{}).Type1()):             AlertPolicySpecConditionsConditionMonitoringQueryLanguageTriggerCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionThreshold{}).Type1()):                                  AlertPolicySpecConditionsConditionThresholdCodec{},
@@ -115,6 +121,164 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type AlertPolicySpecAlertStrategyCodec struct {
+}
+
+func (AlertPolicySpecAlertStrategyCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AlertPolicySpecAlertStrategy)(ptr) == nil
+}
+
+func (AlertPolicySpecAlertStrategyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AlertPolicySpecAlertStrategy)(ptr)
+	var objs []AlertPolicySpecAlertStrategy
+	if obj != nil {
+		objs = []AlertPolicySpecAlertStrategy{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategy{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AlertPolicySpecAlertStrategyCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AlertPolicySpecAlertStrategy)(ptr) = AlertPolicySpecAlertStrategy{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AlertPolicySpecAlertStrategy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AlertPolicySpecAlertStrategy)(ptr) = objs[0]
+			} else {
+				*(*AlertPolicySpecAlertStrategy)(ptr) = AlertPolicySpecAlertStrategy{}
+			}
+		} else {
+			*(*AlertPolicySpecAlertStrategy)(ptr) = AlertPolicySpecAlertStrategy{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AlertPolicySpecAlertStrategy
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategy{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AlertPolicySpecAlertStrategy)(ptr) = obj
+		} else {
+			*(*AlertPolicySpecAlertStrategy)(ptr) = AlertPolicySpecAlertStrategy{}
+		}
+	default:
+		iter.ReportError("decode AlertPolicySpecAlertStrategy", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AlertPolicySpecAlertStrategyNotificationRateLimitCodec struct {
+}
+
+func (AlertPolicySpecAlertStrategyNotificationRateLimitCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) == nil
+}
+
+func (AlertPolicySpecAlertStrategyNotificationRateLimitCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr)
+	var objs []AlertPolicySpecAlertStrategyNotificationRateLimit
+	if obj != nil {
+		objs = []AlertPolicySpecAlertStrategyNotificationRateLimit{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategyNotificationRateLimit{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AlertPolicySpecAlertStrategyNotificationRateLimitCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = AlertPolicySpecAlertStrategyNotificationRateLimit{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AlertPolicySpecAlertStrategyNotificationRateLimit
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategyNotificationRateLimit{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = objs[0]
+			} else {
+				*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = AlertPolicySpecAlertStrategyNotificationRateLimit{}
+			}
+		} else {
+			*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = AlertPolicySpecAlertStrategyNotificationRateLimit{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AlertPolicySpecAlertStrategyNotificationRateLimit
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecAlertStrategyNotificationRateLimit{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = obj
+		} else {
+			*(*AlertPolicySpecAlertStrategyNotificationRateLimit)(ptr) = AlertPolicySpecAlertStrategyNotificationRateLimit{}
+		}
+	default:
+		iter.ReportError("decode AlertPolicySpecAlertStrategyNotificationRateLimit", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false
@@ -272,6 +436,85 @@ func (AlertPolicySpecConditionsConditionAbsentTriggerCodec) Decode(ptr unsafe.Po
 		}
 	default:
 		iter.ReportError("decode AlertPolicySpecConditionsConditionAbsentTrigger", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AlertPolicySpecConditionsConditionMatchedLogCodec struct {
+}
+
+func (AlertPolicySpecConditionsConditionMatchedLogCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AlertPolicySpecConditionsConditionMatchedLog)(ptr) == nil
+}
+
+func (AlertPolicySpecConditionsConditionMatchedLogCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AlertPolicySpecConditionsConditionMatchedLog)(ptr)
+	var objs []AlertPolicySpecConditionsConditionMatchedLog
+	if obj != nil {
+		objs = []AlertPolicySpecConditionsConditionMatchedLog{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMatchedLog{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AlertPolicySpecConditionsConditionMatchedLogCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = AlertPolicySpecConditionsConditionMatchedLog{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AlertPolicySpecConditionsConditionMatchedLog
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMatchedLog{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = objs[0]
+			} else {
+				*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = AlertPolicySpecConditionsConditionMatchedLog{}
+			}
+		} else {
+			*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = AlertPolicySpecConditionsConditionMatchedLog{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AlertPolicySpecConditionsConditionMatchedLog
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AlertPolicySpecConditionsConditionMatchedLog{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = obj
+		} else {
+			*(*AlertPolicySpecConditionsConditionMatchedLog)(ptr) = AlertPolicySpecConditionsConditionMatchedLog{}
+		}
+	default:
+		iter.ReportError("decode AlertPolicySpecConditionsConditionMatchedLog", "unexpected JSON type")
 	}
 }
 

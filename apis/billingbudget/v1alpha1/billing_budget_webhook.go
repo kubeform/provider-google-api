@@ -88,7 +88,7 @@ func (r *BillingBudget) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range billingbudgetForceNewList {
+	for key, _ := range billingbudgetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

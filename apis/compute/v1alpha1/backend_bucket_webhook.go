@@ -89,7 +89,7 @@ func (r *BackendBucket) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range backendbucketForceNewList {
+	for key, _ := range backendbucketForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

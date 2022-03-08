@@ -89,7 +89,7 @@ func (r *ManagerAccessLevel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range manageraccesslevelForceNewList {
+	for key, _ := range manageraccesslevelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

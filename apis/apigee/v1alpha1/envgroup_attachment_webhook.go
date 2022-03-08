@@ -89,7 +89,7 @@ func (r *EnvgroupAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range envgroupattachmentForceNewList {
+	for key, _ := range envgroupattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

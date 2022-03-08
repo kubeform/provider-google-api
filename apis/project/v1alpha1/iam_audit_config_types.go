@@ -70,9 +70,8 @@ type IamAuditConfigSpecResource struct {
 	AuditLogConfig []IamAuditConfigSpecAuditLogConfig `json:"auditLogConfig" tf:"audit_log_config"`
 	// The etag of iam policy
 	// +optional
-	Etag *string `json:"etag,omitempty" tf:"etag"`
-	// +optional
-	Project *string `json:"project,omitempty" tf:"project"`
+	Etag    *string `json:"etag,omitempty" tf:"etag"`
+	Project *string `json:"project" tf:"project"`
 	// Service which will be enabled for audit logging. The special value allServices covers all services.
 	Service *string `json:"service" tf:"service"`
 }

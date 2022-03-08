@@ -119,6 +119,32 @@ spec:
                                 type: array
                             type: object
                         type: object
+                      availableSecrets:
+                        description: Secrets and secret environment variables.
+                        properties:
+                          secretManager:
+                            description: Pairs a secret environment variable with
+                              a SecretVersion in Secret Manager.
+                            items:
+                              properties:
+                                env:
+                                  description: Environment variable name to associate
+                                    with the secret. Secret environment variables
+                                    must be unique across all of a build's secrets,
+                                    and must be used by at least one build step.
+                                  type: string
+                                versionName:
+                                  description: 'Resource name of the SecretVersion.
+                                    In format: projects/*/secrets/*/versions/*'
+                                  type: string
+                              required:
+                              - env
+                              - versionName
+                              type: object
+                            type: array
+                        required:
+                        - secretManager
+                        type: object
                       images:
                         description: A list of images to be pushed upon the successful
                           completion of all build steps. The images are pushed using
@@ -521,8 +547,8 @@ spec:
                           is "googlecloudplatform".'
                         type: string
                       pullRequest:
-                        description: filter to match changes in pull requests.  Specify
-                          only one of pullRequest or push.
+                        description: filter to match changes in pull requests. Specify
+                          only one of 'pull_request' or 'push'.
                         properties:
                           branch:
                             description: Regex of branches to match.
@@ -541,7 +567,7 @@ spec:
                         type: object
                       push:
                         description: filter to match changes in refs, like branches
-                          or tags.  Specify only one of pullRequest or push.
+                          or tags. Specify only one of 'pull_request' or 'push'.
                         properties:
                           branch:
                             description: Regex of branches to match.  Specify only
@@ -794,6 +820,32 @@ spec:
                                 type: array
                             type: object
                         type: object
+                      availableSecrets:
+                        description: Secrets and secret environment variables.
+                        properties:
+                          secretManager:
+                            description: Pairs a secret environment variable with
+                              a SecretVersion in Secret Manager.
+                            items:
+                              properties:
+                                env:
+                                  description: Environment variable name to associate
+                                    with the secret. Secret environment variables
+                                    must be unique across all of a build's secrets,
+                                    and must be used by at least one build step.
+                                  type: string
+                                versionName:
+                                  description: 'Resource name of the SecretVersion.
+                                    In format: projects/*/secrets/*/versions/*'
+                                  type: string
+                              required:
+                              - env
+                              - versionName
+                              type: object
+                            type: array
+                        required:
+                        - secretManager
+                        type: object
                       images:
                         description: A list of images to be pushed upon the successful
                           completion of all build steps. The images are pushed using
@@ -1196,8 +1248,8 @@ spec:
                           is "googlecloudplatform".'
                         type: string
                       pullRequest:
-                        description: filter to match changes in pull requests.  Specify
-                          only one of pullRequest or push.
+                        description: filter to match changes in pull requests. Specify
+                          only one of 'pull_request' or 'push'.
                         properties:
                           branch:
                             description: Regex of branches to match.
@@ -1216,7 +1268,7 @@ spec:
                         type: object
                       push:
                         description: filter to match changes in refs, like branches
-                          or tags.  Specify only one of pullRequest or push.
+                          or tags. Specify only one of 'pull_request' or 'push'.
                         properties:
                           branch:
                             description: Regex of branches to match.  Specify only

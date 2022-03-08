@@ -30,8 +30,12 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecEmailPreferences{}).Type1()):                    DataTransferConfigSpecEmailPreferencesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecScheduleOptions{}).Type1()):                     DataTransferConfigSpecScheduleOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecSensitiveParams{}).Type1()):                     DataTransferConfigSpecSensitiveParamsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDataset{}).Type1()):                                  DatasetSpecAccessDatasetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDatasetDataset{}).Type1()):                           DatasetSpecAccessDatasetDatasetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessView{}).Type1()):                                     DatasetSpecAccessViewCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecDefaultEncryptionConfiguration{}).Type1()):                 DatasetSpecDefaultEncryptionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDataset{}).Type1()):                                  DatasetAccessSpecDatasetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDatasetDataset{}).Type1()):                           DatasetAccessSpecDatasetDatasetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecView{}).Type1()):                                     DatasetAccessSpecViewCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetIamBindingSpecCondition{}).Type1()):                            DatasetIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetIamMemberSpecCondition{}).Type1()):                             DatasetIamMemberSpecConditionCodec{},
@@ -70,8 +74,12 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecEmailPreferences{}).Type1()):                    DataTransferConfigSpecEmailPreferencesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecScheduleOptions{}).Type1()):                     DataTransferConfigSpecScheduleOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DataTransferConfigSpecSensitiveParams{}).Type1()):                     DataTransferConfigSpecSensitiveParamsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDataset{}).Type1()):                                  DatasetSpecAccessDatasetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDatasetDataset{}).Type1()):                           DatasetSpecAccessDatasetDatasetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessView{}).Type1()):                                     DatasetSpecAccessViewCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecDefaultEncryptionConfiguration{}).Type1()):                 DatasetSpecDefaultEncryptionConfigurationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDataset{}).Type1()):                                  DatasetAccessSpecDatasetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDatasetDataset{}).Type1()):                           DatasetAccessSpecDatasetDatasetCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecView{}).Type1()):                                     DatasetAccessSpecViewCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetIamBindingSpecCondition{}).Type1()):                            DatasetIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DatasetIamMemberSpecCondition{}).Type1()):                             DatasetIamMemberSpecConditionCodec{},
@@ -355,6 +363,164 @@ func (DataTransferConfigSpecSensitiveParamsCodec) Decode(ptr unsafe.Pointer, ite
 }
 
 // +k8s:deepcopy-gen=false
+type DatasetSpecAccessDatasetCodec struct {
+}
+
+func (DatasetSpecAccessDatasetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DatasetSpecAccessDataset)(ptr) == nil
+}
+
+func (DatasetSpecAccessDatasetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DatasetSpecAccessDataset)(ptr)
+	var objs []DatasetSpecAccessDataset
+	if obj != nil {
+		objs = []DatasetSpecAccessDataset{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDataset{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DatasetSpecAccessDatasetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DatasetSpecAccessDataset)(ptr) = DatasetSpecAccessDataset{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DatasetSpecAccessDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DatasetSpecAccessDataset)(ptr) = objs[0]
+			} else {
+				*(*DatasetSpecAccessDataset)(ptr) = DatasetSpecAccessDataset{}
+			}
+		} else {
+			*(*DatasetSpecAccessDataset)(ptr) = DatasetSpecAccessDataset{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DatasetSpecAccessDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DatasetSpecAccessDataset)(ptr) = obj
+		} else {
+			*(*DatasetSpecAccessDataset)(ptr) = DatasetSpecAccessDataset{}
+		}
+	default:
+		iter.ReportError("decode DatasetSpecAccessDataset", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DatasetSpecAccessDatasetDatasetCodec struct {
+}
+
+func (DatasetSpecAccessDatasetDatasetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DatasetSpecAccessDatasetDataset)(ptr) == nil
+}
+
+func (DatasetSpecAccessDatasetDatasetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DatasetSpecAccessDatasetDataset)(ptr)
+	var objs []DatasetSpecAccessDatasetDataset
+	if obj != nil {
+		objs = []DatasetSpecAccessDatasetDataset{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDatasetDataset{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DatasetSpecAccessDatasetDatasetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DatasetSpecAccessDatasetDataset)(ptr) = DatasetSpecAccessDatasetDataset{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DatasetSpecAccessDatasetDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDatasetDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DatasetSpecAccessDatasetDataset)(ptr) = objs[0]
+			} else {
+				*(*DatasetSpecAccessDatasetDataset)(ptr) = DatasetSpecAccessDatasetDataset{}
+			}
+		} else {
+			*(*DatasetSpecAccessDatasetDataset)(ptr) = DatasetSpecAccessDatasetDataset{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DatasetSpecAccessDatasetDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetSpecAccessDatasetDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DatasetSpecAccessDatasetDataset)(ptr) = obj
+		} else {
+			*(*DatasetSpecAccessDatasetDataset)(ptr) = DatasetSpecAccessDatasetDataset{}
+		}
+	default:
+		iter.ReportError("decode DatasetSpecAccessDatasetDataset", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type DatasetSpecAccessViewCodec struct {
 }
 
@@ -509,6 +675,164 @@ func (DatasetSpecDefaultEncryptionConfigurationCodec) Decode(ptr unsafe.Pointer,
 		}
 	default:
 		iter.ReportError("decode DatasetSpecDefaultEncryptionConfiguration", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DatasetAccessSpecDatasetCodec struct {
+}
+
+func (DatasetAccessSpecDatasetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DatasetAccessSpecDataset)(ptr) == nil
+}
+
+func (DatasetAccessSpecDatasetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DatasetAccessSpecDataset)(ptr)
+	var objs []DatasetAccessSpecDataset
+	if obj != nil {
+		objs = []DatasetAccessSpecDataset{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDataset{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DatasetAccessSpecDatasetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DatasetAccessSpecDataset)(ptr) = DatasetAccessSpecDataset{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DatasetAccessSpecDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DatasetAccessSpecDataset)(ptr) = objs[0]
+			} else {
+				*(*DatasetAccessSpecDataset)(ptr) = DatasetAccessSpecDataset{}
+			}
+		} else {
+			*(*DatasetAccessSpecDataset)(ptr) = DatasetAccessSpecDataset{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DatasetAccessSpecDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DatasetAccessSpecDataset)(ptr) = obj
+		} else {
+			*(*DatasetAccessSpecDataset)(ptr) = DatasetAccessSpecDataset{}
+		}
+	default:
+		iter.ReportError("decode DatasetAccessSpecDataset", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type DatasetAccessSpecDatasetDatasetCodec struct {
+}
+
+func (DatasetAccessSpecDatasetDatasetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*DatasetAccessSpecDatasetDataset)(ptr) == nil
+}
+
+func (DatasetAccessSpecDatasetDatasetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*DatasetAccessSpecDatasetDataset)(ptr)
+	var objs []DatasetAccessSpecDatasetDataset
+	if obj != nil {
+		objs = []DatasetAccessSpecDatasetDataset{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDatasetDataset{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (DatasetAccessSpecDatasetDatasetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*DatasetAccessSpecDatasetDataset)(ptr) = DatasetAccessSpecDatasetDataset{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []DatasetAccessSpecDatasetDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDatasetDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*DatasetAccessSpecDatasetDataset)(ptr) = objs[0]
+			} else {
+				*(*DatasetAccessSpecDatasetDataset)(ptr) = DatasetAccessSpecDatasetDataset{}
+			}
+		} else {
+			*(*DatasetAccessSpecDatasetDataset)(ptr) = DatasetAccessSpecDatasetDataset{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj DatasetAccessSpecDatasetDataset
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(DatasetAccessSpecDatasetDataset{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*DatasetAccessSpecDatasetDataset)(ptr) = obj
+		} else {
+			*(*DatasetAccessSpecDatasetDataset)(ptr) = DatasetAccessSpecDatasetDataset{}
+		}
+	default:
+		iter.ReportError("decode DatasetAccessSpecDatasetDataset", "unexpected JSON type")
 	}
 }
 

@@ -95,7 +95,7 @@ func (r *EngineModel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range enginemodelForceNewList {
+	for key, _ := range enginemodelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

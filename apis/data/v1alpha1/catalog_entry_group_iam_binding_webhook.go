@@ -94,7 +94,7 @@ func (r *CatalogEntryGroupIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogentrygroupiambindingForceNewList {
+	for key, _ := range catalogentrygroupiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

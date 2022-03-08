@@ -53,6 +53,22 @@ func (c *FakeNotebooksV1alpha1) Locations(namespace string) v1alpha1.LocationInt
 	return &FakeLocations{c, namespace}
 }
 
+func (c *FakeNotebooksV1alpha1) Runtimes(namespace string) v1alpha1.RuntimeInterface {
+	return &FakeRuntimes{c, namespace}
+}
+
+func (c *FakeNotebooksV1alpha1) RuntimeIamBindings(namespace string) v1alpha1.RuntimeIamBindingInterface {
+	return &FakeRuntimeIamBindings{c, namespace}
+}
+
+func (c *FakeNotebooksV1alpha1) RuntimeIamMembers(namespace string) v1alpha1.RuntimeIamMemberInterface {
+	return &FakeRuntimeIamMembers{c, namespace}
+}
+
+func (c *FakeNotebooksV1alpha1) RuntimeIamPolicies(namespace string) v1alpha1.RuntimeIamPolicyInterface {
+	return &FakeRuntimeIamPolicies{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeNotebooksV1alpha1) RESTClient() rest.Interface {

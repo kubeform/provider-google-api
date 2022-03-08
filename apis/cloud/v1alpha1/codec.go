@@ -44,11 +44,14 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplate{}).Type1()):                                                      RunServiceSpecTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateMetadata{}).Type1()):                                              RunServiceSpecTemplateMetadataCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpec{}).Type1()):                                                  RunServiceSpecTemplateSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFrom{}).Type1()):                            RunServiceSpecTemplateSpecContainersEnvValueFromCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}).Type1()):                RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromConfigMapRef{}).Type1()):                     RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefLocalObjectReference{}).Type1()): RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefLocalObjectReferenceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromSecretRef{}).Type1()):                        RunServiceSpecTemplateSpecContainersEnvFromSecretRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromSecretRefLocalObjectReference{}).Type1()):    RunServiceSpecTemplateSpecContainersEnvFromSecretRefLocalObjectReferenceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersResources{}).Type1()):                               RunServiceSpecTemplateSpecContainersResourcesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecVolumesSecret{}).Type1()):                                     RunServiceSpecTemplateSpecVolumesSecretCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceIamBindingSpecCondition{}).Type1()):                                           RunServiceIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceIamMemberSpecCondition{}).Type1()):                                            RunServiceIamMemberSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SchedulerJobSpecAppEngineHTTPTarget{}).Type1()):                                         SchedulerJobSpecAppEngineHTTPTargetCodec{},
@@ -84,11 +87,14 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplate{}).Type1()):                                                      RunServiceSpecTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateMetadata{}).Type1()):                                              RunServiceSpecTemplateMetadataCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpec{}).Type1()):                                                  RunServiceSpecTemplateSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFrom{}).Type1()):                            RunServiceSpecTemplateSpecContainersEnvValueFromCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}).Type1()):                RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromConfigMapRef{}).Type1()):                     RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefLocalObjectReference{}).Type1()): RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefLocalObjectReferenceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromSecretRef{}).Type1()):                        RunServiceSpecTemplateSpecContainersEnvFromSecretRefCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvFromSecretRefLocalObjectReference{}).Type1()):    RunServiceSpecTemplateSpecContainersEnvFromSecretRefLocalObjectReferenceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersResources{}).Type1()):                               RunServiceSpecTemplateSpecContainersResourcesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecVolumesSecret{}).Type1()):                                     RunServiceSpecTemplateSpecVolumesSecretCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceIamBindingSpecCondition{}).Type1()):                                           RunServiceIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RunServiceIamMemberSpecCondition{}).Type1()):                                            RunServiceIamMemberSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SchedulerJobSpecAppEngineHTTPTarget{}).Type1()):                                         SchedulerJobSpecAppEngineHTTPTargetCodec{},
@@ -1461,6 +1467,164 @@ func (RunServiceSpecTemplateSpecCodec) Decode(ptr unsafe.Pointer, iter *jsoniter
 }
 
 // +k8s:deepcopy-gen=false
+type RunServiceSpecTemplateSpecContainersEnvValueFromCodec struct {
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) == nil
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr)
+	var objs []RunServiceSpecTemplateSpecContainersEnvValueFrom
+	if obj != nil {
+		objs = []RunServiceSpecTemplateSpecContainersEnvValueFrom{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFrom{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFrom{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RunServiceSpecTemplateSpecContainersEnvValueFrom
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFrom{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = objs[0]
+			} else {
+				*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFrom{}
+			}
+		} else {
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFrom{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RunServiceSpecTemplateSpecContainersEnvValueFrom
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFrom{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = obj
+		} else {
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFrom)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFrom{}
+		}
+	default:
+		iter.ReportError("decode RunServiceSpecTemplateSpecContainersEnvValueFrom", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec struct {
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) == nil
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr)
+	var objs []RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef
+	if obj != nil {
+		objs = []RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRefCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = objs[0]
+			} else {
+				*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}
+			}
+		} else {
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = obj
+		} else {
+			*(*RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef)(ptr) = RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef{}
+		}
+	default:
+		iter.ReportError("decode RunServiceSpecTemplateSpecContainersEnvValueFromSecretKeyRef", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type RunServiceSpecTemplateSpecContainersEnvFromConfigMapRefCodec struct {
 }
 
@@ -1852,6 +2016,85 @@ func (RunServiceSpecTemplateSpecContainersResourcesCodec) Decode(ptr unsafe.Poin
 		}
 	default:
 		iter.ReportError("decode RunServiceSpecTemplateSpecContainersResources", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RunServiceSpecTemplateSpecVolumesSecretCodec struct {
+}
+
+func (RunServiceSpecTemplateSpecVolumesSecretCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RunServiceSpecTemplateSpecVolumesSecret)(ptr) == nil
+}
+
+func (RunServiceSpecTemplateSpecVolumesSecretCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RunServiceSpecTemplateSpecVolumesSecret)(ptr)
+	var objs []RunServiceSpecTemplateSpecVolumesSecret
+	if obj != nil {
+		objs = []RunServiceSpecTemplateSpecVolumesSecret{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecVolumesSecret{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RunServiceSpecTemplateSpecVolumesSecretCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = RunServiceSpecTemplateSpecVolumesSecret{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RunServiceSpecTemplateSpecVolumesSecret
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecVolumesSecret{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = objs[0]
+			} else {
+				*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = RunServiceSpecTemplateSpecVolumesSecret{}
+			}
+		} else {
+			*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = RunServiceSpecTemplateSpecVolumesSecret{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RunServiceSpecTemplateSpecVolumesSecret
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RunServiceSpecTemplateSpecVolumesSecret{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = obj
+		} else {
+			*(*RunServiceSpecTemplateSpecVolumesSecret)(ptr) = RunServiceSpecTemplateSpecVolumesSecret{}
+		}
+	default:
+		iter.ReportError("decode RunServiceSpecTemplateSpecVolumesSecret", "unexpected JSON type")
 	}
 }
 

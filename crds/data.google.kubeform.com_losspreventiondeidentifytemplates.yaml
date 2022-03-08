@@ -99,7 +99,7 @@ spec:
                                             be left alone and skipped.
                                           items:
                                             properties:
-                                              characterToSkip:
+                                              charactersToSkip:
                                                 description: Characters to not transform
                                                   when masking.
                                                 type: string
@@ -647,7 +647,7 @@ spec:
                                             be left alone and skipped.
                                           items:
                                             properties:
-                                              characterToSkip:
+                                              charactersToSkip:
                                                 description: Characters to not transform
                                                   when masking.
                                                 type: string

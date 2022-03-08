@@ -89,7 +89,7 @@ func (r *OrganizationExclusion) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range organizationexclusionForceNewList {
+	for key, _ := range organizationexclusionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

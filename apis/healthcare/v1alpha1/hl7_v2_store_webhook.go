@@ -90,7 +90,7 @@ func (r *Hl7V2Store) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range hl7v2storeForceNewList {
+	for key, _ := range hl7v2storeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

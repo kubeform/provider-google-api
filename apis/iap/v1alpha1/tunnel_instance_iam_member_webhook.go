@@ -95,7 +95,7 @@ func (r *TunnelInstanceIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tunnelinstanceiammemberForceNewList {
+	for key, _ := range tunnelinstanceiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

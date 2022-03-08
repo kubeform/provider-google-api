@@ -89,7 +89,7 @@ func (r *LossPreventionStoredInfoType) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range losspreventionstoredinfotypeForceNewList {
+	for key, _ := range losspreventionstoredinfotypeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

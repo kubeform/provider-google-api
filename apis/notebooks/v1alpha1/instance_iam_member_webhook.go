@@ -95,7 +95,7 @@ func (r *InstanceIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instanceiammemberForceNewList {
+	for key, _ := range instanceiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

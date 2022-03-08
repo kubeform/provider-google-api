@@ -89,7 +89,7 @@ func (r *DefaultServiceAccounts) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range defaultserviceaccountsForceNewList {
+	for key, _ := range defaultserviceaccountsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

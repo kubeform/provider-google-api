@@ -95,7 +95,7 @@ func (r *CaPoolIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range capooliammemberForceNewList {
+	for key, _ := range capooliammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

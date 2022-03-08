@@ -29,6 +29,11 @@ type ContainerV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AnalysisNotesGetter
 	AnalysisOccurrencesGetter
+	AwsClustersGetter
+	AwsNodePoolsGetter
+	AzureClientsGetter
+	AzureClustersGetter
+	AzureNodePoolsGetter
 	ClustersGetter
 	NodePoolsGetter
 	RegistriesGetter
@@ -45,6 +50,26 @@ func (c *ContainerV1alpha1Client) AnalysisNotes(namespace string) AnalysisNoteIn
 
 func (c *ContainerV1alpha1Client) AnalysisOccurrences(namespace string) AnalysisOccurrenceInterface {
 	return newAnalysisOccurrences(c, namespace)
+}
+
+func (c *ContainerV1alpha1Client) AwsClusters(namespace string) AwsClusterInterface {
+	return newAwsClusters(c, namespace)
+}
+
+func (c *ContainerV1alpha1Client) AwsNodePools(namespace string) AwsNodePoolInterface {
+	return newAwsNodePools(c, namespace)
+}
+
+func (c *ContainerV1alpha1Client) AzureClients(namespace string) AzureClientInterface {
+	return newAzureClients(c, namespace)
+}
+
+func (c *ContainerV1alpha1Client) AzureClusters(namespace string) AzureClusterInterface {
+	return newAzureClusters(c, namespace)
+}
+
+func (c *ContainerV1alpha1Client) AzureNodePools(namespace string) AzureNodePoolInterface {
+	return newAzureNodePools(c, namespace)
 }
 
 func (c *ContainerV1alpha1Client) Clusters(namespace string) ClusterInterface {

@@ -74,9 +74,9 @@ import (
 	privateca "kubeform.dev/provider-google-api/client/informers/externalversions/privateca"
 	project "kubeform.dev/provider-google-api/client/informers/externalversions/project"
 	pubsub "kubeform.dev/provider-google-api/client/informers/externalversions/pubsub"
+	recaptcha "kubeform.dev/provider-google-api/client/informers/externalversions/recaptcha"
 	redis "kubeform.dev/provider-google-api/client/informers/externalversions/redis"
 	resource "kubeform.dev/provider-google-api/client/informers/externalversions/resource"
-	runtimeconfig "kubeform.dev/provider-google-api/client/informers/externalversions/runtimeconfig"
 	scc "kubeform.dev/provider-google-api/client/informers/externalversions/scc"
 	secret "kubeform.dev/provider-google-api/client/informers/externalversions/secret"
 	service "kubeform.dev/provider-google-api/client/informers/externalversions/service"
@@ -285,9 +285,9 @@ type SharedInformerFactory interface {
 	Privateca() privateca.Interface
 	Project() project.Interface
 	Pubsub() pubsub.Interface
+	Recaptcha() recaptcha.Interface
 	Redis() redis.Interface
 	Resource() resource.Interface
-	Runtimeconfig() runtimeconfig.Interface
 	Scc() scc.Interface
 	Secret() secret.Interface
 	Service() service.Interface
@@ -498,16 +498,16 @@ func (f *sharedInformerFactory) Pubsub() pubsub.Interface {
 	return pubsub.New(f, f.namespace, f.tweakListOptions)
 }
 
+func (f *sharedInformerFactory) Recaptcha() recaptcha.Interface {
+	return recaptcha.New(f, f.namespace, f.tweakListOptions)
+}
+
 func (f *sharedInformerFactory) Redis() redis.Interface {
 	return redis.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Resource() resource.Interface {
 	return resource.New(f, f.namespace, f.tweakListOptions)
-}
-
-func (f *sharedInformerFactory) Runtimeconfig() runtimeconfig.Interface {
-	return runtimeconfig.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Scc() scc.Interface {

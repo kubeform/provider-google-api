@@ -42,8 +42,9 @@ func (r *RunService) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &RunService{}
 
 var runserviceForceNewList = map[string]bool{
-	"/name":    true,
-	"/project": true,
+	"/location": true,
+	"/name":     true,
+	"/project":  true,
 	"/template/*/spec/*/containers/*/working_dir": true,
 }
 
@@ -90,7 +91,7 @@ func (r *RunService) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range runserviceForceNewList {
+	for key, _ := range runserviceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

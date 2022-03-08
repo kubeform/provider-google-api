@@ -81,6 +81,7 @@ spec:
                     type: string
                 required:
                 - member
+                - project
                 - role
                 type: object
               state:
@@ -109,6 +110,7 @@ spec:
                     type: string
                 required:
                 - member
+                - project
                 - role
                 type: object
               terminationPolicy:

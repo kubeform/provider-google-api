@@ -100,6 +100,9 @@ type InstanceSpecResource struct {
 	// Resource labels to represent user-provided metadata.
 	// +optional
 	Labels *map[string]string `json:"labels,omitempty" tf:"labels"`
+	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+	// +optional
+	Location *string `json:"location,omitempty" tf:"location"`
 	// The resource name of the instance.
 	Name *string `json:"name" tf:"name"`
 	// VPC networks to which the instance is connected. For this version,
@@ -108,10 +111,13 @@ type InstanceSpecResource struct {
 	Networks []InstanceSpecNetworks `json:"networks" tf:"networks"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
-	// The service tier of the instance. Possible values: ["TIER_UNSPECIFIED", "STANDARD", "PREMIUM", "BASIC_HDD", "BASIC_SSD", "HIGH_SCALE_SSD"]
+	// The service tier of the instance.
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
 	Tier *string `json:"tier" tf:"tier"`
 	// The name of the Filestore zone of the instance.
-	Zone *string `json:"zone" tf:"zone"`
+	// +optional
+	// Deprecated
+	Zone *string `json:"zone,omitempty" tf:"zone"`
 }
 
 type InstanceStatus struct {

@@ -1565,11 +1565,6 @@ func (in *SubscriptionSpecResource) DeepCopyInto(out *SubscriptionSpecResource) 
 		*out = new(string)
 		**out = **in
 	}
-	if in.Path != nil {
-		in, out := &in.Path, &out.Path
-		*out = new(string)
-		**out = **in
-	}
 	if in.Project != nil {
 		in, out := &in.Project, &out.Project
 		*out = new(string)
@@ -2316,6 +2311,11 @@ func (in *TopicSpecResource) DeepCopyInto(out *TopicSpecResource) {
 				(*out)[key] = val
 			}
 		}
+	}
+	if in.MessageRetentionDuration != nil {
+		in, out := &in.MessageRetentionDuration, &out.MessageRetentionDuration
+		*out = new(string)
+		**out = **in
 	}
 	if in.MessageStoragePolicy != nil {
 		in, out := &in.MessageStoragePolicy, &out.MessageStoragePolicy

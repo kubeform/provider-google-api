@@ -88,7 +88,7 @@ func (r *CryptoKeyIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range cryptokeyiampolicyForceNewList {
+	for key, _ := range cryptokeyiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -66,7 +66,7 @@ type SecurityPolicySpecRuleMatch struct {
 }
 
 type SecurityPolicySpecRule struct {
-	// Action to take when match matches the request. Valid values:   "allow" : allow access to target, "deny(status)" : deny access to target, returns the HTTP response code specified (valid values are 403, 404 and 502)
+	// Action to take when match matches the request.
 	Action *string `json:"action" tf:"action"`
 	// An optional description of this rule. Max size is 64.
 	// +optional

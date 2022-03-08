@@ -29,6 +29,10 @@ type FakeApigeeV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeApigeeV1alpha1) EndpointAttachments(namespace string) v1alpha1.EndpointAttachmentInterface {
+	return &FakeEndpointAttachments{c, namespace}
+}
+
 func (c *FakeApigeeV1alpha1) Envgroups(namespace string) v1alpha1.EnvgroupInterface {
 	return &FakeEnvgroups{c, namespace}
 }
@@ -39,6 +43,18 @@ func (c *FakeApigeeV1alpha1) EnvgroupAttachments(namespace string) v1alpha1.Envg
 
 func (c *FakeApigeeV1alpha1) Environments(namespace string) v1alpha1.EnvironmentInterface {
 	return &FakeEnvironments{c, namespace}
+}
+
+func (c *FakeApigeeV1alpha1) EnvironmentIamBindings(namespace string) v1alpha1.EnvironmentIamBindingInterface {
+	return &FakeEnvironmentIamBindings{c, namespace}
+}
+
+func (c *FakeApigeeV1alpha1) EnvironmentIamMembers(namespace string) v1alpha1.EnvironmentIamMemberInterface {
+	return &FakeEnvironmentIamMembers{c, namespace}
+}
+
+func (c *FakeApigeeV1alpha1) EnvironmentIamPolicies(namespace string) v1alpha1.EnvironmentIamPolicyInterface {
+	return &FakeEnvironmentIamPolicies{c, namespace}
 }
 
 func (c *FakeApigeeV1alpha1) Instances(namespace string) v1alpha1.InstanceInterface {

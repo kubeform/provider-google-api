@@ -125,15 +125,15 @@ type RegionNetworkEndpointGroupSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, app_engine or cloud_function may be set.
+	// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
 	// +optional
 	AppEngine *RegionNetworkEndpointGroupSpecAppEngine `json:"appEngine,omitempty" tf:"app_engine"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, app_engine or cloud_function may be set.
+	// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
 	// +optional
 	CloudFunction *RegionNetworkEndpointGroupSpecCloudFunction `json:"cloudFunction,omitempty" tf:"cloud_function"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, app_engine or cloud_function may be set.
+	// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
 	// +optional
 	CloudRun *RegionNetworkEndpointGroupSpecCloudRun `json:"cloudRun,omitempty" tf:"cloud_run"`
 	// An optional description of this resource. Provide this property when

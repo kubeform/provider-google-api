@@ -90,7 +90,7 @@ func (r *CertificateTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range certificatetemplateForceNewList {
+	for key, _ := range certificatetemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

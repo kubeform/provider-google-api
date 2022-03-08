@@ -94,7 +94,7 @@ func (r *DatabaseIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range databaseiambindingForceNewList {
+	for key, _ := range databaseiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

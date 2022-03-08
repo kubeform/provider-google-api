@@ -88,7 +88,7 @@ func (r *TagValueIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tagvalueiampolicyForceNewList {
+	for key, _ := range tagvalueiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -98,7 +98,7 @@ func (r *Reservation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range reservationForceNewList {
+	for key, _ := range reservationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

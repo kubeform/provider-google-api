@@ -89,7 +89,7 @@ func (r *ServicesEdgeCacheOrigin) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range servicesedgecacheoriginForceNewList {
+	for key, _ := range servicesedgecacheoriginForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

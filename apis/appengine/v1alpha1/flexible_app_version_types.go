@@ -477,7 +477,8 @@ type FlexibleAppVersionSpecResource struct {
 	// Desired runtime. Example python27.
 	Runtime *string `json:"runtime" tf:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\
+	// Substitute '<language>' with 'python', 'java', 'php', 'ruby', 'go' or 'nodejs'.
 	// +optional
 	RuntimeAPIVersion *string `json:"runtimeAPIVersion,omitempty" tf:"runtime_api_version"`
 	// The channel of the runtime to use. Only available for some runtimes.

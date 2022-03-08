@@ -96,7 +96,7 @@ func (r *RunDomainMapping) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range rundomainmappingForceNewList {
+	for key, _ := range rundomainmappingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

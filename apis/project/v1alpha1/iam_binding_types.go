@@ -70,9 +70,8 @@ type IamBindingSpecResource struct {
 	// +optional
 	Etag    *string  `json:"etag,omitempty" tf:"etag"`
 	Members []string `json:"members" tf:"members"`
-	// +optional
-	Project *string `json:"project,omitempty" tf:"project"`
-	Role    *string `json:"role" tf:"role"`
+	Project *string  `json:"project" tf:"project"`
+	Role    *string  `json:"role" tf:"role"`
 }
 
 type IamBindingStatus struct {

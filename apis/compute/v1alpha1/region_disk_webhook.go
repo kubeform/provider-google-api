@@ -96,7 +96,7 @@ func (r *RegionDisk) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regiondiskForceNewList {
+	for key, _ := range regiondiskForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

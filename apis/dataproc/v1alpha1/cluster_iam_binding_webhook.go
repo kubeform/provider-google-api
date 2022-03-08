@@ -94,7 +94,7 @@ func (r *ClusterIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusteriambindingForceNewList {
+	for key, _ := range clusteriambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

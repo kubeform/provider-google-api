@@ -68,10 +68,9 @@ type IamMemberSpecResource struct {
 	// +optional
 	Condition *IamMemberSpecCondition `json:"condition,omitempty" tf:"condition"`
 	// +optional
-	Etag   *string `json:"etag,omitempty" tf:"etag"`
-	Member *string `json:"member" tf:"member"`
-	// +optional
-	Project *string `json:"project,omitempty" tf:"project"`
+	Etag    *string `json:"etag,omitempty" tf:"etag"`
+	Member  *string `json:"member" tf:"member"`
+	Project *string `json:"project" tf:"project"`
 	Role    *string `json:"role" tf:"role"`
 }
 

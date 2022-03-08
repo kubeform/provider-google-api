@@ -68,9 +68,9 @@ import (
 	privatecav1alpha1 "kubeform.dev/provider-google-api/apis/privateca/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-google-api/apis/project/v1alpha1"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/apis/pubsub/v1alpha1"
+	recaptchav1alpha1 "kubeform.dev/provider-google-api/apis/recaptcha/v1alpha1"
 	redisv1alpha1 "kubeform.dev/provider-google-api/apis/redis/v1alpha1"
 	resourcev1alpha1 "kubeform.dev/provider-google-api/apis/resource/v1alpha1"
-	runtimeconfigv1alpha1 "kubeform.dev/provider-google-api/apis/runtimeconfig/v1alpha1"
 	sccv1alpha1 "kubeform.dev/provider-google-api/apis/scc/v1alpha1"
 	secretv1alpha1 "kubeform.dev/provider-google-api/apis/secret/v1alpha1"
 	servicev1alpha1 "kubeform.dev/provider-google-api/apis/service/v1alpha1"
@@ -144,9 +144,9 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	privatecav1alpha1.AddToScheme,
 	projectv1alpha1.AddToScheme,
 	pubsubv1alpha1.AddToScheme,
+	recaptchav1alpha1.AddToScheme,
 	redisv1alpha1.AddToScheme,
 	resourcev1alpha1.AddToScheme,
-	runtimeconfigv1alpha1.AddToScheme,
 	sccv1alpha1.AddToScheme,
 	secretv1alpha1.AddToScheme,
 	servicev1alpha1.AddToScheme,

@@ -118,12 +118,12 @@ import (
 	fakeprojectv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/project/v1alpha1/fake"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/pubsub/v1alpha1"
 	fakepubsubv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/pubsub/v1alpha1/fake"
+	recaptchav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/recaptcha/v1alpha1"
+	fakerecaptchav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/recaptcha/v1alpha1/fake"
 	redisv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/redis/v1alpha1"
 	fakeredisv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/redis/v1alpha1/fake"
 	resourcev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/resource/v1alpha1"
 	fakeresourcev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/resource/v1alpha1/fake"
-	runtimeconfigv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/runtimeconfig/v1alpha1"
-	fakeruntimeconfigv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/runtimeconfig/v1alpha1/fake"
 	sccv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/scc/v1alpha1"
 	fakesccv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/scc/v1alpha1/fake"
 	secretv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/secret/v1alpha1"
@@ -448,6 +448,11 @@ func (c *Clientset) PubsubV1alpha1() pubsubv1alpha1.PubsubV1alpha1Interface {
 	return &fakepubsubv1alpha1.FakePubsubV1alpha1{Fake: &c.Fake}
 }
 
+// RecaptchaV1alpha1 retrieves the RecaptchaV1alpha1Client
+func (c *Clientset) RecaptchaV1alpha1() recaptchav1alpha1.RecaptchaV1alpha1Interface {
+	return &fakerecaptchav1alpha1.FakeRecaptchaV1alpha1{Fake: &c.Fake}
+}
+
 // RedisV1alpha1 retrieves the RedisV1alpha1Client
 func (c *Clientset) RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface {
 	return &fakeredisv1alpha1.FakeRedisV1alpha1{Fake: &c.Fake}
@@ -456,11 +461,6 @@ func (c *Clientset) RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface {
 // ResourceV1alpha1 retrieves the ResourceV1alpha1Client
 func (c *Clientset) ResourceV1alpha1() resourcev1alpha1.ResourceV1alpha1Interface {
 	return &fakeresourcev1alpha1.FakeResourceV1alpha1{Fake: &c.Fake}
-}
-
-// RuntimeconfigV1alpha1 retrieves the RuntimeconfigV1alpha1Client
-func (c *Clientset) RuntimeconfigV1alpha1() runtimeconfigv1alpha1.RuntimeconfigV1alpha1Interface {
-	return &fakeruntimeconfigv1alpha1.FakeRuntimeconfigV1alpha1{Fake: &c.Fake}
 }
 
 // SccV1alpha1 retrieves the SccV1alpha1Client

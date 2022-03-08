@@ -91,7 +91,7 @@ func (r *RegionDiskResourcePolicyAttachment) ValidateUpdate(old runtime.Object) 
 		return err
 	}
 
-	for key := range regiondiskresourcepolicyattachmentForceNewList {
+	for key, _ := range regiondiskresourcepolicyattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

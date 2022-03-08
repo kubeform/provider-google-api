@@ -183,6 +183,9 @@ type InstanceFromTemplateSpecNetworkInterface struct {
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 	// +optional
 	NicType *string `json:"nicType,omitempty" tf:"nic_type"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	// +optional
+	QueueCount *int64 `json:"queueCount,omitempty" tf:"queue_count"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	// +optional
 	StackType *string `json:"stackType,omitempty" tf:"stack_type"`

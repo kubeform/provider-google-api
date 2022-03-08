@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// Triggers returns a TriggerInformer.
 	Triggers() TriggerInformer
+	// WorkerPools returns a WorkerPoolInformer.
+	WorkerPools() WorkerPoolInformer
 }
 
 type version struct {
@@ -42,4 +44,9 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // Triggers returns a TriggerInformer.
 func (v *version) Triggers() TriggerInformer {
 	return &triggerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// WorkerPools returns a WorkerPoolInformer.
+func (v *version) WorkerPools() WorkerPoolInformer {
+	return &workerPoolInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

@@ -90,7 +90,7 @@ func (r *Slo) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range sloForceNewList {
+	for key, _ := range sloForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

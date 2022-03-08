@@ -89,7 +89,7 @@ func (r *OrganizationPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range organizationpolicyForceNewList {
+	for key, _ := range organizationpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

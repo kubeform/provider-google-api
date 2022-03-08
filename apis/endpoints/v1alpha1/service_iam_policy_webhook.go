@@ -88,7 +88,7 @@ func (r *ServiceIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range serviceiampolicyForceNewList {
+	for key, _ := range serviceiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

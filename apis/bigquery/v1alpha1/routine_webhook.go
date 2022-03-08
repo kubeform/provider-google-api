@@ -42,7 +42,9 @@ func (r *Routine) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Routine{}
 
 var routineForceNewList = map[string]bool{
+	"/dataset_id":   true,
 	"/project":      true,
+	"/routine_id":   true,
 	"/routine_type": true,
 }
 
@@ -89,7 +91,7 @@ func (r *Routine) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routineForceNewList {
+	for key, _ := range routineForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

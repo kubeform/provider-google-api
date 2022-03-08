@@ -41,6 +41,25 @@ type Environment struct {
 	Status            EnvironmentStatus `json:"status,omitempty"`
 }
 
+type EnvironmentSpecConfigDatabaseConfig struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	MachineType *string `json:"machineType" tf:"machine_type"`
+}
+
+type EnvironmentSpecConfigEncryptionConfig struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
+	KmsKeyName *string `json:"kmsKeyName" tf:"kms_key_name"`
+}
+
+type EnvironmentSpecConfigMaintenanceWindow struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+	EndTime *string `json:"endTime" tf:"end_time"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+	Recurrence *string `json:"recurrence" tf:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime *string `json:"startTime" tf:"start_time"`
+}
+
 type EnvironmentSpecConfigNodeConfigIpAllocationPolicy struct {
 	// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
 	// +optional
@@ -55,7 +74,8 @@ type EnvironmentSpecConfigNodeConfigIpAllocationPolicy struct {
 	// +optional
 	ServicesSecondaryRangeName *string `json:"servicesSecondaryRangeName,omitempty" tf:"services_secondary_range_name"`
 	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
-	UseIPAliases *bool `json:"useIPAliases" tf:"use_ip_aliases"`
+	// +optional
+	UseIPAliases *bool `json:"useIPAliases,omitempty" tf:"use_ip_aliases"`
 }
 
 type EnvironmentSpecConfigNodeConfig struct {
@@ -89,6 +109,9 @@ type EnvironmentSpecConfigNodeConfig struct {
 }
 
 type EnvironmentSpecConfigPrivateEnvironmentConfig struct {
+	// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	// +optional
+	CloudComposerNetworkIpv4CIDRBlock *string `json:"cloudComposerNetworkIpv4CIDRBlock,omitempty" tf:"cloud_composer_network_ipv4_cidr_block"`
 	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
 	// +optional
 	CloudSQLIpv4CIDRBlock *string `json:"cloudSQLIpv4CIDRBlock,omitempty" tf:"cloud_sql_ipv4_cidr_block"`
@@ -107,7 +130,7 @@ type EnvironmentSpecConfigSoftwareConfig struct {
 	// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
 	// +optional
 	AirflowConfigOverrides *map[string]string `json:"airflowConfigOverrides,omitempty" tf:"airflow_config_overrides"`
-	// Additional environment variables to provide to the Apache Airflow schedulerf, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
 	// +optional
 	EnvVariables *map[string]string `json:"envVariables,omitempty" tf:"env_variables"`
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-[0-9]+\\.[0-9]+(\\.[0-9]+)?-airflow-[0-9]+\\.[0-9]+(\\.[0-9]+.*)?. The Cloud Composer portion of the version is a semantic version. The portion of the image version following 'airflow-' is an official Apache Airflow repository release name. See documentation for allowed release names.
@@ -124,6 +147,82 @@ type EnvironmentSpecConfigSoftwareConfig struct {
 	SchedulerCount *int64 `json:"schedulerCount,omitempty" tf:"scheduler_count"`
 }
 
+type EnvironmentSpecConfigWebServerConfig struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+	MachineType *string `json:"machineType" tf:"machine_type"`
+}
+
+type EnvironmentSpecConfigWebServerNetworkAccessControlAllowedIPRange struct {
+	// A description of this ip range.
+	// +optional
+	Description *string `json:"description,omitempty" tf:"description"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+	Value *string `json:"value" tf:"value"`
+}
+
+type EnvironmentSpecConfigWebServerNetworkAccessControl struct {
+	// A collection of allowed IP ranges with descriptions.
+	// +optional
+	AllowedIPRange []EnvironmentSpecConfigWebServerNetworkAccessControlAllowedIPRange `json:"allowedIPRange,omitempty" tf:"allowed_ip_range"`
+}
+
+type EnvironmentSpecConfigWorkloadsConfigScheduler struct {
+	// The number of schedulers.
+	// +optional
+	Count *int64 `json:"count,omitempty" tf:"count"`
+	// CPU request and limit for a single Airflow scheduler replica
+	// +optional
+	Cpu *float64 `json:"cpu,omitempty" tf:"cpu"`
+	// Memory (GB) request and limit for a single Airflow scheduler replica.
+	// +optional
+	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb"`
+	// Storage (GB) request and limit for a single Airflow scheduler replica.
+	// +optional
+	StorageGb *float64 `json:"storageGb,omitempty" tf:"storage_gb"`
+}
+
+type EnvironmentSpecConfigWorkloadsConfigWebServer struct {
+	// CPU request and limit for Airflow web server.
+	// +optional
+	Cpu *float64 `json:"cpu,omitempty" tf:"cpu"`
+	// Memory (GB) request and limit for Airflow web server.
+	// +optional
+	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb"`
+	// Storage (GB) request and limit for Airflow web server.
+	// +optional
+	StorageGb *float64 `json:"storageGb,omitempty" tf:"storage_gb"`
+}
+
+type EnvironmentSpecConfigWorkloadsConfigWorker struct {
+	// CPU request and limit for a single Airflow worker replica.
+	// +optional
+	Cpu *float64 `json:"cpu,omitempty" tf:"cpu"`
+	// Maximum number of workers for autoscaling.
+	// +optional
+	MaxCount *int64 `json:"maxCount,omitempty" tf:"max_count"`
+	// Memory (GB) request and limit for a single Airflow worker replica.
+	// +optional
+	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb"`
+	// Minimum number of workers for autoscaling.
+	// +optional
+	MinCount *int64 `json:"minCount,omitempty" tf:"min_count"`
+	// Storage (GB) request and limit for a single Airflow worker replica.
+	// +optional
+	StorageGb *float64 `json:"storageGb,omitempty" tf:"storage_gb"`
+}
+
+type EnvironmentSpecConfigWorkloadsConfig struct {
+	// Configuration for resources used by Airflow schedulers.
+	// +optional
+	Scheduler *EnvironmentSpecConfigWorkloadsConfigScheduler `json:"scheduler,omitempty" tf:"scheduler"`
+	// Configuration for resources used by Airflow web server.
+	// +optional
+	WebServer *EnvironmentSpecConfigWorkloadsConfigWebServer `json:"webServer,omitempty" tf:"web_server"`
+	// Configuration for resources used by Airflow workers.
+	// +optional
+	Worker *EnvironmentSpecConfigWorkloadsConfigWorker `json:"worker,omitempty" tf:"worker"`
+}
+
 type EnvironmentSpecConfig struct {
 	// The URI of the Apache Airflow Web UI hosted within this environment.
 	// +optional
@@ -131,9 +230,21 @@ type EnvironmentSpecConfig struct {
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 	// +optional
 	DagGcsPrefix *string `json:"dagGcsPrefix,omitempty" tf:"dag_gcs_prefix"`
+	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// +optional
+	DatabaseConfig *EnvironmentSpecConfigDatabaseConfig `json:"databaseConfig,omitempty" tf:"database_config"`
+	// The encryption options for the Composer environment and its dependencies. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// +optional
+	EncryptionConfig *EnvironmentSpecConfigEncryptionConfig `json:"encryptionConfig,omitempty" tf:"encryption_config"`
+	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	// +optional
+	EnvironmentSize *string `json:"environmentSize,omitempty" tf:"environment_size"`
 	// The Kubernetes Engine cluster used to run this environment.
 	// +optional
 	GkeCluster *string `json:"gkeCluster,omitempty" tf:"gke_cluster"`
+	// The configuration for Cloud Composer maintenance window.
+	// +optional
+	MaintenanceWindow *EnvironmentSpecConfigMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window"`
 	// The configuration used for the Kubernetes Engine cluster.
 	// +optional
 	NodeConfig *EnvironmentSpecConfigNodeConfig `json:"nodeConfig,omitempty" tf:"node_config"`
@@ -146,6 +257,15 @@ type EnvironmentSpecConfig struct {
 	// The configuration settings for software inside the environment.
 	// +optional
 	SoftwareConfig *EnvironmentSpecConfigSoftwareConfig `json:"softwareConfig,omitempty" tf:"software_config"`
+	// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// +optional
+	WebServerConfig *EnvironmentSpecConfigWebServerConfig `json:"webServerConfig,omitempty" tf:"web_server_config"`
+	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// +optional
+	WebServerNetworkAccessControl *EnvironmentSpecConfigWebServerNetworkAccessControl `json:"webServerNetworkAccessControl,omitempty" tf:"web_server_network_access_control"`
+	// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	// +optional
+	WorkloadsConfig *EnvironmentSpecConfigWorkloadsConfig `json:"workloadsConfig,omitempty" tf:"workloads_config"`
 }
 
 type EnvironmentSpec struct {

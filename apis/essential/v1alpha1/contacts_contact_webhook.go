@@ -42,6 +42,7 @@ func (r *ContactsContact) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &ContactsContact{}
 
 var contactscontactForceNewList = map[string]bool{
+	"/email":  true,
 	"/parent": true,
 }
 
@@ -88,7 +89,7 @@ func (r *ContactsContact) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range contactscontactForceNewList {
+	for key, _ := range contactscontactForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

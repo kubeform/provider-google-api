@@ -97,7 +97,7 @@ func (r *InterconnectAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range interconnectattachmentForceNewList {
+	for key, _ := range interconnectattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

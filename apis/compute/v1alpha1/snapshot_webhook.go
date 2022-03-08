@@ -96,7 +96,7 @@ func (r *Snapshot) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range snapshotForceNewList {
+	for key, _ := range snapshotForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

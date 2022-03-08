@@ -88,7 +88,7 @@ func (r *TunnelIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tunneliampolicyForceNewList {
+	for key, _ := range tunneliampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

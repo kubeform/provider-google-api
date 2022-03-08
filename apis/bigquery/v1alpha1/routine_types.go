@@ -112,6 +112,13 @@ type RoutineSpecResource struct {
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" tf:"last_modified_time"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
+	// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
+	//
+	// If absent, the return table type is inferred from definitionBody at query time in each query
+	// that references this routine. If present, then the columns in the evaluated table result will
+	// be cast to match the column types specificed in return table type, at query time.
+	// +optional
+	ReturnTableType *string `json:"returnTableType,omitempty" tf:"return_table_type"`
 	// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
 	// If absent, the return type is inferred from definitionBody at query time in each query
 	// that references this routine. If present, then the evaluated result will be cast to
@@ -125,7 +132,7 @@ type RoutineSpecResource struct {
 	ReturnType *string `json:"returnType,omitempty" tf:"return_type"`
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineID *string `json:"routineID" tf:"routine_id"`
-	// The type of routine. Possible values: ["SCALAR_FUNCTION", "PROCEDURE"]
+	// The type of routine. Possible values: ["SCALAR_FUNCTION", "PROCEDURE", "TABLE_VALUED_FUNCTION"]
 	// +optional
 	RoutineType *string `json:"routineType,omitempty" tf:"routine_type"`
 }

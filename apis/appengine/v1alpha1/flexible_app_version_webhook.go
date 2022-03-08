@@ -89,7 +89,7 @@ func (r *FlexibleAppVersion) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range flexibleappversionForceNewList {
+	for key, _ := range flexibleappversionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

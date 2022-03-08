@@ -96,6 +96,12 @@ spec:
                   location:
                     description: The location (region or zone) of the cluster.
                     type: string
+                  managedInstanceGroupUrls:
+                    description: List of instance group URLs which have been assigned
+                      to this node pool.
+                    items:
+                      type: string
+                    type: array
                   management:
                     description: Node management configuration, wherein auto-repair
                       and auto-upgrade is configured.
@@ -125,6 +131,10 @@ spec:
                   nodeConfig:
                     description: The configuration of the nodepool
                     properties:
+                      bootDiskKmsKey:
+                        description: The Customer Managed Encryption Key used to encrypt
+                          the boot disk attached to each node in the node pool.
+                        type: string
                       diskSizeGb:
                         description: Size of the disk attached to each node, specified
                           in GB. The smallest allowed disk size is 10GB.
@@ -133,6 +143,15 @@ spec:
                       diskType:
                         description: Type of the disk attached to each node.
                         type: string
+                      gcfsConfig:
+                        description: GCFS configuration for this node.
+                        properties:
+                          enabled:
+                            description: Whether or not GCFS is enabled
+                            type: boolean
+                        required:
+                        - enabled
+                        type: object
                       guestAccelerator:
                         description: List of the type and count of accelerator cards
                           attached to the instance.
@@ -187,6 +206,11 @@ spec:
                         description: Minimum CPU platform to be used by this instance.
                           The instance may be scheduled on the specified or newer
                           CPU platform.
+                        type: string
+                      nodeGroup:
+                        description: Setting this field will assign instances of this
+                          pool to run on the specified node group. This is useful
+                          for running workloads on sole tenant nodes.
                         type: string
                       oauthScopes:
                         description: The set of Google API scopes to be made available
@@ -247,11 +271,8 @@ spec:
                             description: Mode is the configuration for how to expose
                               metadata to workloads running on the node.
                             type: string
-                          nodeMetadata:
-                            description: NodeMetadata is the configuration for how
-                              to expose metadata to the workloads running on the node.
-                              Deprecated
-                            type: string
+                        required:
+                        - mode
                         type: object
                     type: object
                   nodeCount:
@@ -393,6 +414,12 @@ spec:
                   location:
                     description: The location (region or zone) of the cluster.
                     type: string
+                  managedInstanceGroupUrls:
+                    description: List of instance group URLs which have been assigned
+                      to this node pool.
+                    items:
+                      type: string
+                    type: array
                   management:
                     description: Node management configuration, wherein auto-repair
                       and auto-upgrade is configured.
@@ -422,6 +449,10 @@ spec:
                   nodeConfig:
                     description: The configuration of the nodepool
                     properties:
+                      bootDiskKmsKey:
+                        description: The Customer Managed Encryption Key used to encrypt
+                          the boot disk attached to each node in the node pool.
+                        type: string
                       diskSizeGb:
                         description: Size of the disk attached to each node, specified
                           in GB. The smallest allowed disk size is 10GB.
@@ -430,6 +461,15 @@ spec:
                       diskType:
                         description: Type of the disk attached to each node.
                         type: string
+                      gcfsConfig:
+                        description: GCFS configuration for this node.
+                        properties:
+                          enabled:
+                            description: Whether or not GCFS is enabled
+                            type: boolean
+                        required:
+                        - enabled
+                        type: object
                       guestAccelerator:
                         description: List of the type and count of accelerator cards
                           attached to the instance.
@@ -484,6 +524,11 @@ spec:
                         description: Minimum CPU platform to be used by this instance.
                           The instance may be scheduled on the specified or newer
                           CPU platform.
+                        type: string
+                      nodeGroup:
+                        description: Setting this field will assign instances of this
+                          pool to run on the specified node group. This is useful
+                          for running workloads on sole tenant nodes.
                         type: string
                       oauthScopes:
                         description: The set of Google API scopes to be made available
@@ -544,11 +589,8 @@ spec:
                             description: Mode is the configuration for how to expose
                               metadata to workloads running on the node.
                             type: string
-                          nodeMetadata:
-                            description: NodeMetadata is the configuration for how
-                              to expose metadata to the workloads running on the node.
-                              Deprecated
-                            type: string
+                        required:
+                        - mode
                         type: object
                     type: object
                   nodeCount:

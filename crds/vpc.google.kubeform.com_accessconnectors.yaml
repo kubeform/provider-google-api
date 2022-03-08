@@ -77,8 +77,8 @@ spec:
                     description: The name of the resource (Max 25 characters).
                     type: string
                   network:
-                    description: Name of the VPC network. Required if 'ip_cidr_range'
-                      is set.
+                    description: Name or self_link of the VPC network. Required if
+                      'ip_cidr_range' is set.
                     type: string
                   project:
                     type: string
@@ -155,8 +155,8 @@ spec:
                     description: The name of the resource (Max 25 characters).
                     type: string
                   network:
-                    description: Name of the VPC network. Required if 'ip_cidr_range'
-                      is set.
+                    description: Name or self_link of the VPC network. Required if
+                      'ip_cidr_range' is set.
                     type: string
                   project:
                     type: string

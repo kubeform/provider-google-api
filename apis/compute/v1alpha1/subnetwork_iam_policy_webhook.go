@@ -90,7 +90,7 @@ func (r *SubnetworkIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subnetworkiampolicyForceNewList {
+	for key, _ := range subnetworkiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

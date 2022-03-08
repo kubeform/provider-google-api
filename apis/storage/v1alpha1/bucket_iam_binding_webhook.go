@@ -92,7 +92,7 @@ func (r *BucketIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketiambindingForceNewList {
+	for key, _ := range bucketiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

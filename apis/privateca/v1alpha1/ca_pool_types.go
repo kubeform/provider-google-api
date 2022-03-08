@@ -89,15 +89,22 @@ type CaPoolSpecIssuancePolicyBaselineValuesAdditionalExtensions struct {
 }
 
 type CaPoolSpecIssuancePolicyBaselineValuesCaOptions struct {
-	// Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing,
-	// the extension will be omitted from the CA certificate.
+	// When true, the "CA" in Basic Constraints extension will be set to true.
 	// +optional
 	IsCa *bool `json:"isCa,omitempty" tf:"is_ca"`
-	// Refers to the path length restriction X.509 extension. For a CA certificate, this value describes the depth of
-	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. If this
-	// value is missing, the max path length will be omitted from the CA certificate.
+	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
 	// +optional
 	MaxIssuerPathLength *int64 `json:"maxIssuerPathLength,omitempty" tf:"max_issuer_path_length"`
+	// When true, the "CA" in Basic Constraints extension will be set to false.
+	// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+	// +optional
+	NonCa *bool `json:"nonCa,omitempty" tf:"non_ca"`
+	// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+	// if both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+	// the max path length will be omitted from the CA certificate.
+	// +optional
+	ZeroMaxIssuerPathLength *bool `json:"zeroMaxIssuerPathLength,omitempty" tf:"zero_max_issuer_path_length"`
 }
 
 type CaPoolSpecIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage struct {

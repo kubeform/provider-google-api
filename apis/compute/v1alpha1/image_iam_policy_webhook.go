@@ -89,7 +89,7 @@ func (r *ImageIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range imageiampolicyForceNewList {
+	for key, _ := range imageiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

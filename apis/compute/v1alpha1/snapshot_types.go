@@ -139,9 +139,6 @@ type SnapshotSpecResource struct {
 	// key.
 	// +optional
 	SourceDiskEncryptionKey *SnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key"`
-	// +optional
-	// Deprecated
-	SourceDiskLink *string `json:"sourceDiskLink,omitempty" tf:"source_disk_link"`
 	// A size of the storage used by the snapshot. As snapshots share
 	// storage, this number is expected to change with snapshot
 	// creation/deletion.
