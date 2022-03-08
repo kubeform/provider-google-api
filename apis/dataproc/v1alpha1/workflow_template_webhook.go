@@ -234,7 +234,7 @@ func (r *WorkflowTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range workflowtemplateForceNewList {
+	for key, _ := range workflowtemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

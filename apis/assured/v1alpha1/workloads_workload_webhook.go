@@ -96,7 +96,7 @@ func (r *WorkloadsWorkload) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range workloadsworkloadForceNewList {
+	for key, _ := range workloadsworkloadForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

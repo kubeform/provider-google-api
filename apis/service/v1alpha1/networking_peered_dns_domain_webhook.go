@@ -92,7 +92,7 @@ func (r *NetworkingPeeredDNSDomain) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range networkingpeereddnsdomainForceNewList {
+	for key, _ := range networkingpeereddnsdomainForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

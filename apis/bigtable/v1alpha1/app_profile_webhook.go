@@ -42,10 +42,9 @@ func (r *AppProfile) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &AppProfile{}
 
 var appprofileForceNewList = map[string]bool{
-	"/app_profile_id":                true,
-	"/instance":                      true,
-	"/multi_cluster_routing_use_any": true,
-	"/project":                       true,
+	"/app_profile_id": true,
+	"/instance":       true,
+	"/project":        true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +90,7 @@ func (r *AppProfile) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range appprofileForceNewList {
+	for key, _ := range appprofileForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

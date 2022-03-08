@@ -89,7 +89,7 @@ func (r *WebBackendServiceIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webbackendserviceiampolicyForceNewList {
+	for key, _ := range webbackendserviceiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

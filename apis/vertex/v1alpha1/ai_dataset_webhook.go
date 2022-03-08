@@ -91,7 +91,7 @@ func (r *AiDataset) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range aidatasetForceNewList {
+	for key, _ := range aidatasetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

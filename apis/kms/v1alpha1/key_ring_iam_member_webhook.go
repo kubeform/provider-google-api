@@ -93,7 +93,7 @@ func (r *KeyRingIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range keyringiammemberForceNewList {
+	for key, _ := range keyringiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

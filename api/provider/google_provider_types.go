@@ -63,6 +63,8 @@ type GoogleSpec struct {
 	// +optional
 	CloudBuildCustomEndpoint *string `json:"cloudBuildCustomEndpoint,omitempty" tf:"cloud_build_custom_endpoint"`
 	// +optional
+	CloudBuildWorkerPoolCustomEndpoint *string `json:"cloudBuildWorkerPoolCustomEndpoint,omitempty" tf:"cloud_build_worker_pool_custom_endpoint"`
+	// +optional
 	CloudFunctionsCustomEndpoint *string `json:"cloudFunctionsCustomEndpoint,omitempty" tf:"cloud_functions_custom_endpoint"`
 	// +optional
 	CloudIdentityCustomEndpoint *string `json:"cloudIdentityCustomEndpoint,omitempty" tf:"cloud_identity_custom_endpoint"`
@@ -79,13 +81,13 @@ type GoogleSpec struct {
 	// +optional
 	ComposerCustomEndpoint *string `json:"composerCustomEndpoint,omitempty" tf:"composer_custom_endpoint"`
 	// +optional
-	ComputeBetaCustomEndpoint *string `json:"computeBetaCustomEndpoint,omitempty" tf:"compute_beta_custom_endpoint"`
-	// +optional
 	ComputeCustomEndpoint *string `json:"computeCustomEndpoint,omitempty" tf:"compute_custom_endpoint"`
 	// +optional
 	ContainerAnalysisCustomEndpoint *string `json:"containerAnalysisCustomEndpoint,omitempty" tf:"container_analysis_custom_endpoint"`
 	// +optional
-	ContainerBetaCustomEndpoint *string `json:"containerBetaCustomEndpoint,omitempty" tf:"container_beta_custom_endpoint"`
+	ContainerAwsCustomEndpoint *string `json:"containerAwsCustomEndpoint,omitempty" tf:"container_aws_custom_endpoint"`
+	// +optional
+	ContainerAzureCustomEndpoint *string `json:"containerAzureCustomEndpoint,omitempty" tf:"container_azure_custom_endpoint"`
 	// +optional
 	ContainerCustomEndpoint *string `json:"containerCustomEndpoint,omitempty" tf:"container_custom_endpoint"`
 	// +optional
@@ -93,11 +95,11 @@ type GoogleSpec struct {
 	// +optional
 	DataCatalogCustomEndpoint *string `json:"dataCatalogCustomEndpoint,omitempty" tf:"data_catalog_custom_endpoint"`
 	// +optional
+	DataFusionCustomEndpoint *string `json:"dataFusionCustomEndpoint,omitempty" tf:"data_fusion_custom_endpoint"`
+	// +optional
 	DataLossPreventionCustomEndpoint *string `json:"dataLossPreventionCustomEndpoint,omitempty" tf:"data_loss_prevention_custom_endpoint"`
 	// +optional
 	DataflowCustomEndpoint *string `json:"dataflowCustomEndpoint,omitempty" tf:"dataflow_custom_endpoint"`
-	// +optional
-	DataprocBetaCustomEndpoint *string `json:"dataprocBetaCustomEndpoint,omitempty" tf:"dataproc_beta_custom_endpoint"`
 	// +optional
 	DataprocCustomEndpoint *string `json:"dataprocCustomEndpoint,omitempty" tf:"dataproc_custom_endpoint"`
 	// +optional
@@ -149,6 +151,8 @@ type GoogleSpec struct {
 	// +optional
 	MonitoringCustomEndpoint *string `json:"monitoringCustomEndpoint,omitempty" tf:"monitoring_custom_endpoint"`
 	// +optional
+	NetworkConnectivityCustomEndpoint *string `json:"networkConnectivityCustomEndpoint,omitempty" tf:"network_connectivity_custom_endpoint"`
+	// +optional
 	NetworkManagementCustomEndpoint *string `json:"networkManagementCustomEndpoint,omitempty" tf:"network_management_custom_endpoint"`
 	// +optional
 	NetworkServicesCustomEndpoint *string `json:"networkServicesCustomEndpoint,omitempty" tf:"network_services_custom_endpoint"`
@@ -169,6 +173,8 @@ type GoogleSpec struct {
 	// +optional
 	PubsubLiteCustomEndpoint *string `json:"pubsubLiteCustomEndpoint,omitempty" tf:"pubsub_lite_custom_endpoint"`
 	// +optional
+	RecaptchaEnterpriseCustomEndpoint *string `json:"recaptchaEnterpriseCustomEndpoint,omitempty" tf:"recaptcha_enterprise_custom_endpoint"`
+	// +optional
 	RedisCustomEndpoint *string `json:"redisCustomEndpoint,omitempty" tf:"redis_custom_endpoint"`
 	// +optional
 	Region *string `json:"region,omitempty" tf:"region"`
@@ -180,10 +186,6 @@ type GoogleSpec struct {
 	ResourceManagerCustomEndpoint *string `json:"resourceManagerCustomEndpoint,omitempty" tf:"resource_manager_custom_endpoint"`
 	// +optional
 	ResourceManagerV2CustomEndpoint *string `json:"resourceManagerV2CustomEndpoint,omitempty" tf:"resource_manager_v2_custom_endpoint"`
-	// +optional
-	RuntimeConfigCustomEndpoint *string `json:"runtimeConfigCustomEndpoint,omitempty" tf:"runtime_config_custom_endpoint"`
-	// +optional
-	RuntimeconfigCustomEndpoint *string `json:"runtimeconfigCustomEndpoint,omitempty" tf:"runtimeconfig_custom_endpoint"`
 	// +optional
 	Scopes []string `json:"scopes,omitempty" tf:"scopes"`
 	// +optional

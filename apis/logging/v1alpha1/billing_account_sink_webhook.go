@@ -89,7 +89,7 @@ func (r *BillingAccountSink) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range billingaccountsinkForceNewList {
+	for key, _ := range billingaccountsinkForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

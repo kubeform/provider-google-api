@@ -18,6 +18,10 @@ limitations under the License.
 
 package v1alpha1
 
+type ConnectivityHubExpansion interface{}
+
+type ConnectivitySpokeExpansion interface{}
+
 type ManagementConnectivityTestExpansion interface{}
 
 type ServicesEdgeCacheKeysetExpansion interface{}

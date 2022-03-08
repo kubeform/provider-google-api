@@ -30,16 +30,50 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisNoteSpecAttestationAuthority{}).Type1()):                    AnalysisNoteSpecAttestationAuthorityCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisNoteSpecAttestationAuthorityHint{}).Type1()):                AnalysisNoteSpecAttestationAuthorityHintCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisOccurrenceSpecAttestation{}).Type1()):                       AnalysisOccurrenceSpecAttestationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecAuthorization{}).Type1()):                             AwsClusterSpecAuthorizationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlane{}).Type1()):                              AwsClusterSpecControlPlaneCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneAwsServicesAuthentication{}).Type1()):     AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneConfigEncryption{}).Type1()):              AwsClusterSpecControlPlaneConfigEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneDatabaseEncryption{}).Type1()):            AwsClusterSpecControlPlaneDatabaseEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneMainVolume{}).Type1()):                    AwsClusterSpecControlPlaneMainVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneProxyConfig{}).Type1()):                   AwsClusterSpecControlPlaneProxyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneRootVolume{}).Type1()):                    AwsClusterSpecControlPlaneRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneSshConfig{}).Type1()):                     AwsClusterSpecControlPlaneSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecFleet{}).Type1()):                                     AwsClusterSpecFleetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecNetworking{}).Type1()):                                AwsClusterSpecNetworkingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecAutoscaling{}).Type1()):                              AwsNodePoolSpecAutoscalingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfig{}).Type1()):                                   AwsNodePoolSpecConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigConfigEncryption{}).Type1()):                   AwsNodePoolSpecConfigConfigEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigRootVolume{}).Type1()):                         AwsNodePoolSpecConfigRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigSshConfig{}).Type1()):                          AwsNodePoolSpecConfigSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecMaxPodsConstraint{}).Type1()):                        AwsNodePoolSpecMaxPodsConstraintCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecAuthorization{}).Type1()):                           AzureClusterSpecAuthorizationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlane{}).Type1()):                            AzureClusterSpecControlPlaneCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneDatabaseEncryption{}).Type1()):          AzureClusterSpecControlPlaneDatabaseEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneMainVolume{}).Type1()):                  AzureClusterSpecControlPlaneMainVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneProxyConfig{}).Type1()):                 AzureClusterSpecControlPlaneProxyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneRootVolume{}).Type1()):                  AzureClusterSpecControlPlaneRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneSshConfig{}).Type1()):                   AzureClusterSpecControlPlaneSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecFleet{}).Type1()):                                   AzureClusterSpecFleetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecNetworking{}).Type1()):                              AzureClusterSpecNetworkingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecAutoscaling{}).Type1()):                            AzureNodePoolSpecAutoscalingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfig{}).Type1()):                                 AzureNodePoolSpecConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigRootVolume{}).Type1()):                       AzureNodePoolSpecConfigRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigSshConfig{}).Type1()):                        AzureNodePoolSpecConfigSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecMaxPodsConstraint{}).Type1()):                      AzureNodePoolSpecMaxPodsConstraintCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfig{}).Type1()):                                 ClusterSpecAddonsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigCloudrunConfig{}).Type1()):                   ClusterSpecAddonsConfigCloudrunConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}).Type1()):      ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigHorizontalPodAutoscaling{}).Type1()):         ClusterSpecAddonsConfigHorizontalPodAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigHttpLoadBalancing{}).Type1()):                ClusterSpecAddonsConfigHttpLoadBalancingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigNetworkPolicyConfig{}).Type1()):              ClusterSpecAddonsConfigNetworkPolicyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAuthenticatorGroupsConfig{}).Type1()):                    ClusterSpecAuthenticatorGroupsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecClusterAutoscaling{}).Type1()):                           ClusterSpecClusterAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecClusterAutoscalingAutoProvisioningDefaults{}).Type1()):   ClusterSpecClusterAutoscalingAutoProvisioningDefaultsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecConfidentialNodes{}).Type1()):                            ClusterSpecConfidentialNodesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDatabaseEncryption{}).Type1()):                           ClusterSpecDatabaseEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDefaultSnatStatus{}).Type1()):                            ClusterSpecDefaultSnatStatusCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDnsConfig{}).Type1()):                                    ClusterSpecDnsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecIpAllocationPolicy{}).Type1()):                           ClusterSpecIpAllocationPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1()):                                ClusterSpecLoggingConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicy{}).Type1()):                            ClusterSpecMaintenancePolicyCodec{},
@@ -51,15 +85,16 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1()):                             ClusterSpecMonitoringConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNetworkPolicy{}).Type1()):                                ClusterSpecNetworkPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfig{}).Type1()):                                   ClusterSpecNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigGcfsConfig{}).Type1()):                         ClusterSpecNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigShieldedInstanceConfig{}).Type1()):             ClusterSpecNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigWorkloadMetadataConfig{}).Type1()):             ClusterSpecNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolAutoscaling{}).Type1()):                          ClusterSpecNodePoolAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolManagement{}).Type1()):                           ClusterSpecNodePoolManagementCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfig{}).Type1()):                           ClusterSpecNodePoolNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigGcfsConfig{}).Type1()):                 ClusterSpecNodePoolNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigShieldedInstanceConfig{}).Type1()):     ClusterSpecNodePoolNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigWorkloadMetadataConfig{}).Type1()):     ClusterSpecNodePoolNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolUpgradeSettings{}).Type1()):                      ClusterSpecNodePoolUpgradeSettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPodSecurityPolicyConfig{}).Type1()):                      ClusterSpecPodSecurityPolicyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPrivateClusterConfig{}).Type1()):                         ClusterSpecPrivateClusterConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPrivateClusterConfigMasterGlobalAccessConfig{}).Type1()): ClusterSpecPrivateClusterConfigMasterGlobalAccessConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecReleaseChannel{}).Type1()):                               ClusterSpecReleaseChannelCodec{},
@@ -70,6 +105,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecAutoscaling{}).Type1()):                                 NodePoolSpecAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecManagement{}).Type1()):                                  NodePoolSpecManagementCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfig{}).Type1()):                                  NodePoolSpecNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigGcfsConfig{}).Type1()):                        NodePoolSpecNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigShieldedInstanceConfig{}).Type1()):            NodePoolSpecNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigWorkloadMetadataConfig{}).Type1()):            NodePoolSpecNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecUpgradeSettings{}).Type1()):                             NodePoolSpecUpgradeSettingsCodec{},
@@ -81,16 +117,50 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisNoteSpecAttestationAuthority{}).Type1()):                    AnalysisNoteSpecAttestationAuthorityCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisNoteSpecAttestationAuthorityHint{}).Type1()):                AnalysisNoteSpecAttestationAuthorityHintCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(AnalysisOccurrenceSpecAttestation{}).Type1()):                       AnalysisOccurrenceSpecAttestationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecAuthorization{}).Type1()):                             AwsClusterSpecAuthorizationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlane{}).Type1()):                              AwsClusterSpecControlPlaneCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneAwsServicesAuthentication{}).Type1()):     AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneConfigEncryption{}).Type1()):              AwsClusterSpecControlPlaneConfigEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneDatabaseEncryption{}).Type1()):            AwsClusterSpecControlPlaneDatabaseEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneMainVolume{}).Type1()):                    AwsClusterSpecControlPlaneMainVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneProxyConfig{}).Type1()):                   AwsClusterSpecControlPlaneProxyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneRootVolume{}).Type1()):                    AwsClusterSpecControlPlaneRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneSshConfig{}).Type1()):                     AwsClusterSpecControlPlaneSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecFleet{}).Type1()):                                     AwsClusterSpecFleetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecNetworking{}).Type1()):                                AwsClusterSpecNetworkingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecAutoscaling{}).Type1()):                              AwsNodePoolSpecAutoscalingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfig{}).Type1()):                                   AwsNodePoolSpecConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigConfigEncryption{}).Type1()):                   AwsNodePoolSpecConfigConfigEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigRootVolume{}).Type1()):                         AwsNodePoolSpecConfigRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigSshConfig{}).Type1()):                          AwsNodePoolSpecConfigSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecMaxPodsConstraint{}).Type1()):                        AwsNodePoolSpecMaxPodsConstraintCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecAuthorization{}).Type1()):                           AzureClusterSpecAuthorizationCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlane{}).Type1()):                            AzureClusterSpecControlPlaneCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneDatabaseEncryption{}).Type1()):          AzureClusterSpecControlPlaneDatabaseEncryptionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneMainVolume{}).Type1()):                  AzureClusterSpecControlPlaneMainVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneProxyConfig{}).Type1()):                 AzureClusterSpecControlPlaneProxyConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneRootVolume{}).Type1()):                  AzureClusterSpecControlPlaneRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneSshConfig{}).Type1()):                   AzureClusterSpecControlPlaneSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecFleet{}).Type1()):                                   AzureClusterSpecFleetCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecNetworking{}).Type1()):                              AzureClusterSpecNetworkingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecAutoscaling{}).Type1()):                            AzureNodePoolSpecAutoscalingCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfig{}).Type1()):                                 AzureNodePoolSpecConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigRootVolume{}).Type1()):                       AzureNodePoolSpecConfigRootVolumeCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigSshConfig{}).Type1()):                        AzureNodePoolSpecConfigSshConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecMaxPodsConstraint{}).Type1()):                      AzureNodePoolSpecMaxPodsConstraintCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfig{}).Type1()):                                 ClusterSpecAddonsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigCloudrunConfig{}).Type1()):                   ClusterSpecAddonsConfigCloudrunConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}).Type1()):      ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigHorizontalPodAutoscaling{}).Type1()):         ClusterSpecAddonsConfigHorizontalPodAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigHttpLoadBalancing{}).Type1()):                ClusterSpecAddonsConfigHttpLoadBalancingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigNetworkPolicyConfig{}).Type1()):              ClusterSpecAddonsConfigNetworkPolicyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAuthenticatorGroupsConfig{}).Type1()):                    ClusterSpecAuthenticatorGroupsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecClusterAutoscaling{}).Type1()):                           ClusterSpecClusterAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecClusterAutoscalingAutoProvisioningDefaults{}).Type1()):   ClusterSpecClusterAutoscalingAutoProvisioningDefaultsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecConfidentialNodes{}).Type1()):                            ClusterSpecConfidentialNodesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDatabaseEncryption{}).Type1()):                           ClusterSpecDatabaseEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDefaultSnatStatus{}).Type1()):                            ClusterSpecDefaultSnatStatusCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDnsConfig{}).Type1()):                                    ClusterSpecDnsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecIpAllocationPolicy{}).Type1()):                           ClusterSpecIpAllocationPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecLoggingConfig{}).Type1()):                                ClusterSpecLoggingConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMaintenancePolicy{}).Type1()):                            ClusterSpecMaintenancePolicyCodec{},
@@ -102,15 +172,16 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecMonitoringConfig{}).Type1()):                             ClusterSpecMonitoringConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNetworkPolicy{}).Type1()):                                ClusterSpecNetworkPolicyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfig{}).Type1()):                                   ClusterSpecNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigGcfsConfig{}).Type1()):                         ClusterSpecNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigShieldedInstanceConfig{}).Type1()):             ClusterSpecNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigWorkloadMetadataConfig{}).Type1()):             ClusterSpecNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolAutoscaling{}).Type1()):                          ClusterSpecNodePoolAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolManagement{}).Type1()):                           ClusterSpecNodePoolManagementCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfig{}).Type1()):                           ClusterSpecNodePoolNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigGcfsConfig{}).Type1()):                 ClusterSpecNodePoolNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigShieldedInstanceConfig{}).Type1()):     ClusterSpecNodePoolNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigWorkloadMetadataConfig{}).Type1()):     ClusterSpecNodePoolNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolUpgradeSettings{}).Type1()):                      ClusterSpecNodePoolUpgradeSettingsCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPodSecurityPolicyConfig{}).Type1()):                      ClusterSpecPodSecurityPolicyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPrivateClusterConfig{}).Type1()):                         ClusterSpecPrivateClusterConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPrivateClusterConfigMasterGlobalAccessConfig{}).Type1()): ClusterSpecPrivateClusterConfigMasterGlobalAccessConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecReleaseChannel{}).Type1()):                               ClusterSpecReleaseChannelCodec{},
@@ -121,6 +192,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecAutoscaling{}).Type1()):                                 NodePoolSpecAutoscalingCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecManagement{}).Type1()):                                  NodePoolSpecManagementCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfig{}).Type1()):                                  NodePoolSpecNodeConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigGcfsConfig{}).Type1()):                        NodePoolSpecNodeConfigGcfsConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigShieldedInstanceConfig{}).Type1()):            NodePoolSpecNodeConfigShieldedInstanceConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigWorkloadMetadataConfig{}).Type1()):            NodePoolSpecNodeConfigWorkloadMetadataConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecUpgradeSettings{}).Type1()):                             NodePoolSpecUpgradeSettingsCodec{},
@@ -377,6 +449,2455 @@ func (AnalysisOccurrenceSpecAttestationCodec) Decode(ptr unsafe.Pointer, iter *j
 }
 
 // +k8s:deepcopy-gen=false
+type AwsClusterSpecAuthorizationCodec struct {
+}
+
+func (AwsClusterSpecAuthorizationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecAuthorization)(ptr) == nil
+}
+
+func (AwsClusterSpecAuthorizationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecAuthorization)(ptr)
+	var objs []AwsClusterSpecAuthorization
+	if obj != nil {
+		objs = []AwsClusterSpecAuthorization{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecAuthorization{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecAuthorizationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecAuthorization)(ptr) = AwsClusterSpecAuthorization{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecAuthorization
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecAuthorization{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecAuthorization)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecAuthorization)(ptr) = AwsClusterSpecAuthorization{}
+			}
+		} else {
+			*(*AwsClusterSpecAuthorization)(ptr) = AwsClusterSpecAuthorization{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecAuthorization
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecAuthorization{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecAuthorization)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecAuthorization)(ptr) = AwsClusterSpecAuthorization{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecAuthorization", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlane)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlane)(ptr)
+	var objs []AwsClusterSpecControlPlane
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlane{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlane{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlane)(ptr) = AwsClusterSpecControlPlane{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlane
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlane{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlane)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlane)(ptr) = AwsClusterSpecControlPlane{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlane)(ptr) = AwsClusterSpecControlPlane{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlane
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlane{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlane)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlane)(ptr) = AwsClusterSpecControlPlane{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlane", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr)
+	var objs []AwsClusterSpecControlPlaneAwsServicesAuthentication
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneAwsServicesAuthentication{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneAwsServicesAuthentication{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneAwsServicesAuthenticationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = AwsClusterSpecControlPlaneAwsServicesAuthentication{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneAwsServicesAuthentication
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneAwsServicesAuthentication{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = AwsClusterSpecControlPlaneAwsServicesAuthentication{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = AwsClusterSpecControlPlaneAwsServicesAuthentication{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneAwsServicesAuthentication
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneAwsServicesAuthentication{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneAwsServicesAuthentication)(ptr) = AwsClusterSpecControlPlaneAwsServicesAuthentication{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneAwsServicesAuthentication", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneConfigEncryptionCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneConfigEncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneConfigEncryption)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneConfigEncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneConfigEncryption)(ptr)
+	var objs []AwsClusterSpecControlPlaneConfigEncryption
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneConfigEncryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneConfigEncryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneConfigEncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = AwsClusterSpecControlPlaneConfigEncryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneConfigEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneConfigEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = AwsClusterSpecControlPlaneConfigEncryption{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = AwsClusterSpecControlPlaneConfigEncryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneConfigEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneConfigEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneConfigEncryption)(ptr) = AwsClusterSpecControlPlaneConfigEncryption{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneConfigEncryption", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneDatabaseEncryptionCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneDatabaseEncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneDatabaseEncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr)
+	var objs []AwsClusterSpecControlPlaneDatabaseEncryption
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneDatabaseEncryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneDatabaseEncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = AwsClusterSpecControlPlaneDatabaseEncryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneDatabaseEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = AwsClusterSpecControlPlaneDatabaseEncryption{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = AwsClusterSpecControlPlaneDatabaseEncryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneDatabaseEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneDatabaseEncryption)(ptr) = AwsClusterSpecControlPlaneDatabaseEncryption{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneDatabaseEncryption", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneMainVolumeCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneMainVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneMainVolume)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneMainVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneMainVolume)(ptr)
+	var objs []AwsClusterSpecControlPlaneMainVolume
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneMainVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneMainVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneMainVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = AwsClusterSpecControlPlaneMainVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneMainVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneMainVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = AwsClusterSpecControlPlaneMainVolume{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = AwsClusterSpecControlPlaneMainVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneMainVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneMainVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneMainVolume)(ptr) = AwsClusterSpecControlPlaneMainVolume{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneMainVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneProxyConfigCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneProxyConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneProxyConfig)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneProxyConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneProxyConfig)(ptr)
+	var objs []AwsClusterSpecControlPlaneProxyConfig
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneProxyConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneProxyConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneProxyConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = AwsClusterSpecControlPlaneProxyConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneProxyConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneProxyConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = AwsClusterSpecControlPlaneProxyConfig{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = AwsClusterSpecControlPlaneProxyConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneProxyConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneProxyConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneProxyConfig)(ptr) = AwsClusterSpecControlPlaneProxyConfig{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneProxyConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneRootVolumeCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneRootVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneRootVolume)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneRootVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneRootVolume)(ptr)
+	var objs []AwsClusterSpecControlPlaneRootVolume
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneRootVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneRootVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneRootVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = AwsClusterSpecControlPlaneRootVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = AwsClusterSpecControlPlaneRootVolume{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = AwsClusterSpecControlPlaneRootVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneRootVolume)(ptr) = AwsClusterSpecControlPlaneRootVolume{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneRootVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecControlPlaneSshConfigCodec struct {
+}
+
+func (AwsClusterSpecControlPlaneSshConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecControlPlaneSshConfig)(ptr) == nil
+}
+
+func (AwsClusterSpecControlPlaneSshConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecControlPlaneSshConfig)(ptr)
+	var objs []AwsClusterSpecControlPlaneSshConfig
+	if obj != nil {
+		objs = []AwsClusterSpecControlPlaneSshConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneSshConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecControlPlaneSshConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = AwsClusterSpecControlPlaneSshConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecControlPlaneSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = AwsClusterSpecControlPlaneSshConfig{}
+			}
+		} else {
+			*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = AwsClusterSpecControlPlaneSshConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecControlPlaneSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecControlPlaneSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecControlPlaneSshConfig)(ptr) = AwsClusterSpecControlPlaneSshConfig{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecControlPlaneSshConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecFleetCodec struct {
+}
+
+func (AwsClusterSpecFleetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecFleet)(ptr) == nil
+}
+
+func (AwsClusterSpecFleetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecFleet)(ptr)
+	var objs []AwsClusterSpecFleet
+	if obj != nil {
+		objs = []AwsClusterSpecFleet{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecFleet{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecFleetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecFleet)(ptr) = AwsClusterSpecFleet{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecFleet
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecFleet{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecFleet)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecFleet)(ptr) = AwsClusterSpecFleet{}
+			}
+		} else {
+			*(*AwsClusterSpecFleet)(ptr) = AwsClusterSpecFleet{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecFleet
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecFleet{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecFleet)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecFleet)(ptr) = AwsClusterSpecFleet{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecFleet", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsClusterSpecNetworkingCodec struct {
+}
+
+func (AwsClusterSpecNetworkingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsClusterSpecNetworking)(ptr) == nil
+}
+
+func (AwsClusterSpecNetworkingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsClusterSpecNetworking)(ptr)
+	var objs []AwsClusterSpecNetworking
+	if obj != nil {
+		objs = []AwsClusterSpecNetworking{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecNetworking{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsClusterSpecNetworkingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsClusterSpecNetworking)(ptr) = AwsClusterSpecNetworking{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsClusterSpecNetworking
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecNetworking{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsClusterSpecNetworking)(ptr) = objs[0]
+			} else {
+				*(*AwsClusterSpecNetworking)(ptr) = AwsClusterSpecNetworking{}
+			}
+		} else {
+			*(*AwsClusterSpecNetworking)(ptr) = AwsClusterSpecNetworking{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsClusterSpecNetworking
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsClusterSpecNetworking{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsClusterSpecNetworking)(ptr) = obj
+		} else {
+			*(*AwsClusterSpecNetworking)(ptr) = AwsClusterSpecNetworking{}
+		}
+	default:
+		iter.ReportError("decode AwsClusterSpecNetworking", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecAutoscalingCodec struct {
+}
+
+func (AwsNodePoolSpecAutoscalingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecAutoscaling)(ptr) == nil
+}
+
+func (AwsNodePoolSpecAutoscalingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecAutoscaling)(ptr)
+	var objs []AwsNodePoolSpecAutoscaling
+	if obj != nil {
+		objs = []AwsNodePoolSpecAutoscaling{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecAutoscaling{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecAutoscalingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecAutoscaling)(ptr) = AwsNodePoolSpecAutoscaling{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecAutoscaling
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecAutoscaling{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecAutoscaling)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecAutoscaling)(ptr) = AwsNodePoolSpecAutoscaling{}
+			}
+		} else {
+			*(*AwsNodePoolSpecAutoscaling)(ptr) = AwsNodePoolSpecAutoscaling{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecAutoscaling
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecAutoscaling{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecAutoscaling)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecAutoscaling)(ptr) = AwsNodePoolSpecAutoscaling{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecAutoscaling", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecConfigCodec struct {
+}
+
+func (AwsNodePoolSpecConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecConfig)(ptr) == nil
+}
+
+func (AwsNodePoolSpecConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecConfig)(ptr)
+	var objs []AwsNodePoolSpecConfig
+	if obj != nil {
+		objs = []AwsNodePoolSpecConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecConfig)(ptr) = AwsNodePoolSpecConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecConfig)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecConfig)(ptr) = AwsNodePoolSpecConfig{}
+			}
+		} else {
+			*(*AwsNodePoolSpecConfig)(ptr) = AwsNodePoolSpecConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecConfig)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecConfig)(ptr) = AwsNodePoolSpecConfig{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecConfigConfigEncryptionCodec struct {
+}
+
+func (AwsNodePoolSpecConfigConfigEncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecConfigConfigEncryption)(ptr) == nil
+}
+
+func (AwsNodePoolSpecConfigConfigEncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecConfigConfigEncryption)(ptr)
+	var objs []AwsNodePoolSpecConfigConfigEncryption
+	if obj != nil {
+		objs = []AwsNodePoolSpecConfigConfigEncryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigConfigEncryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecConfigConfigEncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = AwsNodePoolSpecConfigConfigEncryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecConfigConfigEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigConfigEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = AwsNodePoolSpecConfigConfigEncryption{}
+			}
+		} else {
+			*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = AwsNodePoolSpecConfigConfigEncryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecConfigConfigEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigConfigEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecConfigConfigEncryption)(ptr) = AwsNodePoolSpecConfigConfigEncryption{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecConfigConfigEncryption", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecConfigRootVolumeCodec struct {
+}
+
+func (AwsNodePoolSpecConfigRootVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecConfigRootVolume)(ptr) == nil
+}
+
+func (AwsNodePoolSpecConfigRootVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecConfigRootVolume)(ptr)
+	var objs []AwsNodePoolSpecConfigRootVolume
+	if obj != nil {
+		objs = []AwsNodePoolSpecConfigRootVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigRootVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecConfigRootVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecConfigRootVolume)(ptr) = AwsNodePoolSpecConfigRootVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecConfigRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecConfigRootVolume)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecConfigRootVolume)(ptr) = AwsNodePoolSpecConfigRootVolume{}
+			}
+		} else {
+			*(*AwsNodePoolSpecConfigRootVolume)(ptr) = AwsNodePoolSpecConfigRootVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecConfigRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecConfigRootVolume)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecConfigRootVolume)(ptr) = AwsNodePoolSpecConfigRootVolume{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecConfigRootVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecConfigSshConfigCodec struct {
+}
+
+func (AwsNodePoolSpecConfigSshConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecConfigSshConfig)(ptr) == nil
+}
+
+func (AwsNodePoolSpecConfigSshConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecConfigSshConfig)(ptr)
+	var objs []AwsNodePoolSpecConfigSshConfig
+	if obj != nil {
+		objs = []AwsNodePoolSpecConfigSshConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigSshConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecConfigSshConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecConfigSshConfig)(ptr) = AwsNodePoolSpecConfigSshConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecConfigSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecConfigSshConfig)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecConfigSshConfig)(ptr) = AwsNodePoolSpecConfigSshConfig{}
+			}
+		} else {
+			*(*AwsNodePoolSpecConfigSshConfig)(ptr) = AwsNodePoolSpecConfigSshConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecConfigSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecConfigSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecConfigSshConfig)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecConfigSshConfig)(ptr) = AwsNodePoolSpecConfigSshConfig{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecConfigSshConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AwsNodePoolSpecMaxPodsConstraintCodec struct {
+}
+
+func (AwsNodePoolSpecMaxPodsConstraintCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AwsNodePoolSpecMaxPodsConstraint)(ptr) == nil
+}
+
+func (AwsNodePoolSpecMaxPodsConstraintCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AwsNodePoolSpecMaxPodsConstraint)(ptr)
+	var objs []AwsNodePoolSpecMaxPodsConstraint
+	if obj != nil {
+		objs = []AwsNodePoolSpecMaxPodsConstraint{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecMaxPodsConstraint{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AwsNodePoolSpecMaxPodsConstraintCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = AwsNodePoolSpecMaxPodsConstraint{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AwsNodePoolSpecMaxPodsConstraint
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecMaxPodsConstraint{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = objs[0]
+			} else {
+				*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = AwsNodePoolSpecMaxPodsConstraint{}
+			}
+		} else {
+			*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = AwsNodePoolSpecMaxPodsConstraint{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AwsNodePoolSpecMaxPodsConstraint
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AwsNodePoolSpecMaxPodsConstraint{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = obj
+		} else {
+			*(*AwsNodePoolSpecMaxPodsConstraint)(ptr) = AwsNodePoolSpecMaxPodsConstraint{}
+		}
+	default:
+		iter.ReportError("decode AwsNodePoolSpecMaxPodsConstraint", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecAuthorizationCodec struct {
+}
+
+func (AzureClusterSpecAuthorizationCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecAuthorization)(ptr) == nil
+}
+
+func (AzureClusterSpecAuthorizationCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecAuthorization)(ptr)
+	var objs []AzureClusterSpecAuthorization
+	if obj != nil {
+		objs = []AzureClusterSpecAuthorization{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecAuthorization{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecAuthorizationCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecAuthorization)(ptr) = AzureClusterSpecAuthorization{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecAuthorization
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecAuthorization{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecAuthorization)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecAuthorization)(ptr) = AzureClusterSpecAuthorization{}
+			}
+		} else {
+			*(*AzureClusterSpecAuthorization)(ptr) = AzureClusterSpecAuthorization{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecAuthorization
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecAuthorization{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecAuthorization)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecAuthorization)(ptr) = AzureClusterSpecAuthorization{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecAuthorization", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlane)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlane)(ptr)
+	var objs []AzureClusterSpecControlPlane
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlane{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlane{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlane)(ptr) = AzureClusterSpecControlPlane{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlane
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlane{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlane)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlane)(ptr) = AzureClusterSpecControlPlane{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlane)(ptr) = AzureClusterSpecControlPlane{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlane
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlane{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlane)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlane)(ptr) = AzureClusterSpecControlPlane{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlane", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneDatabaseEncryptionCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneDatabaseEncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneDatabaseEncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr)
+	var objs []AzureClusterSpecControlPlaneDatabaseEncryption
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlaneDatabaseEncryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneDatabaseEncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = AzureClusterSpecControlPlaneDatabaseEncryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlaneDatabaseEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = AzureClusterSpecControlPlaneDatabaseEncryption{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = AzureClusterSpecControlPlaneDatabaseEncryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlaneDatabaseEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneDatabaseEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlaneDatabaseEncryption)(ptr) = AzureClusterSpecControlPlaneDatabaseEncryption{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlaneDatabaseEncryption", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneMainVolumeCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneMainVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlaneMainVolume)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneMainVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlaneMainVolume)(ptr)
+	var objs []AzureClusterSpecControlPlaneMainVolume
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlaneMainVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneMainVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneMainVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = AzureClusterSpecControlPlaneMainVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlaneMainVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneMainVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = AzureClusterSpecControlPlaneMainVolume{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = AzureClusterSpecControlPlaneMainVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlaneMainVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneMainVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlaneMainVolume)(ptr) = AzureClusterSpecControlPlaneMainVolume{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlaneMainVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneProxyConfigCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneProxyConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlaneProxyConfig)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneProxyConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlaneProxyConfig)(ptr)
+	var objs []AzureClusterSpecControlPlaneProxyConfig
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlaneProxyConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneProxyConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneProxyConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = AzureClusterSpecControlPlaneProxyConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlaneProxyConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneProxyConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = AzureClusterSpecControlPlaneProxyConfig{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = AzureClusterSpecControlPlaneProxyConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlaneProxyConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneProxyConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlaneProxyConfig)(ptr) = AzureClusterSpecControlPlaneProxyConfig{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlaneProxyConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneRootVolumeCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneRootVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlaneRootVolume)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneRootVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlaneRootVolume)(ptr)
+	var objs []AzureClusterSpecControlPlaneRootVolume
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlaneRootVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneRootVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneRootVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = AzureClusterSpecControlPlaneRootVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlaneRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = AzureClusterSpecControlPlaneRootVolume{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = AzureClusterSpecControlPlaneRootVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlaneRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlaneRootVolume)(ptr) = AzureClusterSpecControlPlaneRootVolume{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlaneRootVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecControlPlaneSshConfigCodec struct {
+}
+
+func (AzureClusterSpecControlPlaneSshConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecControlPlaneSshConfig)(ptr) == nil
+}
+
+func (AzureClusterSpecControlPlaneSshConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecControlPlaneSshConfig)(ptr)
+	var objs []AzureClusterSpecControlPlaneSshConfig
+	if obj != nil {
+		objs = []AzureClusterSpecControlPlaneSshConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneSshConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecControlPlaneSshConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = AzureClusterSpecControlPlaneSshConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecControlPlaneSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = AzureClusterSpecControlPlaneSshConfig{}
+			}
+		} else {
+			*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = AzureClusterSpecControlPlaneSshConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecControlPlaneSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecControlPlaneSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecControlPlaneSshConfig)(ptr) = AzureClusterSpecControlPlaneSshConfig{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecControlPlaneSshConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecFleetCodec struct {
+}
+
+func (AzureClusterSpecFleetCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecFleet)(ptr) == nil
+}
+
+func (AzureClusterSpecFleetCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecFleet)(ptr)
+	var objs []AzureClusterSpecFleet
+	if obj != nil {
+		objs = []AzureClusterSpecFleet{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecFleet{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecFleetCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecFleet)(ptr) = AzureClusterSpecFleet{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecFleet
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecFleet{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecFleet)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecFleet)(ptr) = AzureClusterSpecFleet{}
+			}
+		} else {
+			*(*AzureClusterSpecFleet)(ptr) = AzureClusterSpecFleet{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecFleet
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecFleet{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecFleet)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecFleet)(ptr) = AzureClusterSpecFleet{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecFleet", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureClusterSpecNetworkingCodec struct {
+}
+
+func (AzureClusterSpecNetworkingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureClusterSpecNetworking)(ptr) == nil
+}
+
+func (AzureClusterSpecNetworkingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureClusterSpecNetworking)(ptr)
+	var objs []AzureClusterSpecNetworking
+	if obj != nil {
+		objs = []AzureClusterSpecNetworking{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecNetworking{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureClusterSpecNetworkingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureClusterSpecNetworking)(ptr) = AzureClusterSpecNetworking{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureClusterSpecNetworking
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecNetworking{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureClusterSpecNetworking)(ptr) = objs[0]
+			} else {
+				*(*AzureClusterSpecNetworking)(ptr) = AzureClusterSpecNetworking{}
+			}
+		} else {
+			*(*AzureClusterSpecNetworking)(ptr) = AzureClusterSpecNetworking{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureClusterSpecNetworking
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureClusterSpecNetworking{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureClusterSpecNetworking)(ptr) = obj
+		} else {
+			*(*AzureClusterSpecNetworking)(ptr) = AzureClusterSpecNetworking{}
+		}
+	default:
+		iter.ReportError("decode AzureClusterSpecNetworking", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureNodePoolSpecAutoscalingCodec struct {
+}
+
+func (AzureNodePoolSpecAutoscalingCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureNodePoolSpecAutoscaling)(ptr) == nil
+}
+
+func (AzureNodePoolSpecAutoscalingCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureNodePoolSpecAutoscaling)(ptr)
+	var objs []AzureNodePoolSpecAutoscaling
+	if obj != nil {
+		objs = []AzureNodePoolSpecAutoscaling{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecAutoscaling{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureNodePoolSpecAutoscalingCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureNodePoolSpecAutoscaling)(ptr) = AzureNodePoolSpecAutoscaling{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureNodePoolSpecAutoscaling
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecAutoscaling{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureNodePoolSpecAutoscaling)(ptr) = objs[0]
+			} else {
+				*(*AzureNodePoolSpecAutoscaling)(ptr) = AzureNodePoolSpecAutoscaling{}
+			}
+		} else {
+			*(*AzureNodePoolSpecAutoscaling)(ptr) = AzureNodePoolSpecAutoscaling{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureNodePoolSpecAutoscaling
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecAutoscaling{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureNodePoolSpecAutoscaling)(ptr) = obj
+		} else {
+			*(*AzureNodePoolSpecAutoscaling)(ptr) = AzureNodePoolSpecAutoscaling{}
+		}
+	default:
+		iter.ReportError("decode AzureNodePoolSpecAutoscaling", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureNodePoolSpecConfigCodec struct {
+}
+
+func (AzureNodePoolSpecConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureNodePoolSpecConfig)(ptr) == nil
+}
+
+func (AzureNodePoolSpecConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureNodePoolSpecConfig)(ptr)
+	var objs []AzureNodePoolSpecConfig
+	if obj != nil {
+		objs = []AzureNodePoolSpecConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureNodePoolSpecConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureNodePoolSpecConfig)(ptr) = AzureNodePoolSpecConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureNodePoolSpecConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureNodePoolSpecConfig)(ptr) = objs[0]
+			} else {
+				*(*AzureNodePoolSpecConfig)(ptr) = AzureNodePoolSpecConfig{}
+			}
+		} else {
+			*(*AzureNodePoolSpecConfig)(ptr) = AzureNodePoolSpecConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureNodePoolSpecConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureNodePoolSpecConfig)(ptr) = obj
+		} else {
+			*(*AzureNodePoolSpecConfig)(ptr) = AzureNodePoolSpecConfig{}
+		}
+	default:
+		iter.ReportError("decode AzureNodePoolSpecConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureNodePoolSpecConfigRootVolumeCodec struct {
+}
+
+func (AzureNodePoolSpecConfigRootVolumeCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureNodePoolSpecConfigRootVolume)(ptr) == nil
+}
+
+func (AzureNodePoolSpecConfigRootVolumeCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureNodePoolSpecConfigRootVolume)(ptr)
+	var objs []AzureNodePoolSpecConfigRootVolume
+	if obj != nil {
+		objs = []AzureNodePoolSpecConfigRootVolume{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigRootVolume{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureNodePoolSpecConfigRootVolumeCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureNodePoolSpecConfigRootVolume)(ptr) = AzureNodePoolSpecConfigRootVolume{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureNodePoolSpecConfigRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureNodePoolSpecConfigRootVolume)(ptr) = objs[0]
+			} else {
+				*(*AzureNodePoolSpecConfigRootVolume)(ptr) = AzureNodePoolSpecConfigRootVolume{}
+			}
+		} else {
+			*(*AzureNodePoolSpecConfigRootVolume)(ptr) = AzureNodePoolSpecConfigRootVolume{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureNodePoolSpecConfigRootVolume
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigRootVolume{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureNodePoolSpecConfigRootVolume)(ptr) = obj
+		} else {
+			*(*AzureNodePoolSpecConfigRootVolume)(ptr) = AzureNodePoolSpecConfigRootVolume{}
+		}
+	default:
+		iter.ReportError("decode AzureNodePoolSpecConfigRootVolume", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureNodePoolSpecConfigSshConfigCodec struct {
+}
+
+func (AzureNodePoolSpecConfigSshConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureNodePoolSpecConfigSshConfig)(ptr) == nil
+}
+
+func (AzureNodePoolSpecConfigSshConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureNodePoolSpecConfigSshConfig)(ptr)
+	var objs []AzureNodePoolSpecConfigSshConfig
+	if obj != nil {
+		objs = []AzureNodePoolSpecConfigSshConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigSshConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureNodePoolSpecConfigSshConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureNodePoolSpecConfigSshConfig)(ptr) = AzureNodePoolSpecConfigSshConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureNodePoolSpecConfigSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureNodePoolSpecConfigSshConfig)(ptr) = objs[0]
+			} else {
+				*(*AzureNodePoolSpecConfigSshConfig)(ptr) = AzureNodePoolSpecConfigSshConfig{}
+			}
+		} else {
+			*(*AzureNodePoolSpecConfigSshConfig)(ptr) = AzureNodePoolSpecConfigSshConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureNodePoolSpecConfigSshConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecConfigSshConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureNodePoolSpecConfigSshConfig)(ptr) = obj
+		} else {
+			*(*AzureNodePoolSpecConfigSshConfig)(ptr) = AzureNodePoolSpecConfigSshConfig{}
+		}
+	default:
+		iter.ReportError("decode AzureNodePoolSpecConfigSshConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AzureNodePoolSpecMaxPodsConstraintCodec struct {
+}
+
+func (AzureNodePoolSpecMaxPodsConstraintCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AzureNodePoolSpecMaxPodsConstraint)(ptr) == nil
+}
+
+func (AzureNodePoolSpecMaxPodsConstraintCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AzureNodePoolSpecMaxPodsConstraint)(ptr)
+	var objs []AzureNodePoolSpecMaxPodsConstraint
+	if obj != nil {
+		objs = []AzureNodePoolSpecMaxPodsConstraint{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecMaxPodsConstraint{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AzureNodePoolSpecMaxPodsConstraintCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = AzureNodePoolSpecMaxPodsConstraint{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AzureNodePoolSpecMaxPodsConstraint
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecMaxPodsConstraint{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = objs[0]
+			} else {
+				*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = AzureNodePoolSpecMaxPodsConstraint{}
+			}
+		} else {
+			*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = AzureNodePoolSpecMaxPodsConstraint{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AzureNodePoolSpecMaxPodsConstraint
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AzureNodePoolSpecMaxPodsConstraint{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = obj
+		} else {
+			*(*AzureNodePoolSpecMaxPodsConstraint)(ptr) = AzureNodePoolSpecMaxPodsConstraint{}
+		}
+	default:
+		iter.ReportError("decode AzureNodePoolSpecMaxPodsConstraint", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ClusterSpecAddonsConfigCodec struct {
 }
 
@@ -531,6 +3052,85 @@ func (ClusterSpecAddonsConfigCloudrunConfigCodec) Decode(ptr unsafe.Pointer, ite
 		}
 	default:
 		iter.ReportError("decode ClusterSpecAddonsConfigCloudrunConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec struct {
+}
+
+func (ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) == nil
+}
+
+func (ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr)
+	var objs []ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig
+	if obj != nil {
+		objs = []ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}
+			}
+		} else {
+			*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig)(ptr) = ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig", "unexpected JSON type")
 	}
 }
 
@@ -1009,6 +3609,85 @@ func (ClusterSpecClusterAutoscalingAutoProvisioningDefaultsCodec) Decode(ptr uns
 }
 
 // +k8s:deepcopy-gen=false
+type ClusterSpecConfidentialNodesCodec struct {
+}
+
+func (ClusterSpecConfidentialNodesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecConfidentialNodes)(ptr) == nil
+}
+
+func (ClusterSpecConfidentialNodesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecConfidentialNodes)(ptr)
+	var objs []ClusterSpecConfidentialNodes
+	if obj != nil {
+		objs = []ClusterSpecConfidentialNodes{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecConfidentialNodes{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecConfidentialNodesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecConfidentialNodes)(ptr) = ClusterSpecConfidentialNodes{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecConfidentialNodes
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecConfidentialNodes{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecConfidentialNodes)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecConfidentialNodes)(ptr) = ClusterSpecConfidentialNodes{}
+			}
+		} else {
+			*(*ClusterSpecConfidentialNodes)(ptr) = ClusterSpecConfidentialNodes{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecConfidentialNodes
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecConfidentialNodes{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecConfidentialNodes)(ptr) = obj
+		} else {
+			*(*ClusterSpecConfidentialNodes)(ptr) = ClusterSpecConfidentialNodes{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecConfidentialNodes", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ClusterSpecDatabaseEncryptionCodec struct {
 }
 
@@ -1163,6 +3842,85 @@ func (ClusterSpecDefaultSnatStatusCodec) Decode(ptr unsafe.Pointer, iter *jsonit
 		}
 	default:
 		iter.ReportError("decode ClusterSpecDefaultSnatStatus", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ClusterSpecDnsConfigCodec struct {
+}
+
+func (ClusterSpecDnsConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecDnsConfig)(ptr) == nil
+}
+
+func (ClusterSpecDnsConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecDnsConfig)(ptr)
+	var objs []ClusterSpecDnsConfig
+	if obj != nil {
+		objs = []ClusterSpecDnsConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDnsConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecDnsConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecDnsConfig)(ptr) = ClusterSpecDnsConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecDnsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDnsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecDnsConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecDnsConfig)(ptr) = ClusterSpecDnsConfig{}
+			}
+		} else {
+			*(*ClusterSpecDnsConfig)(ptr) = ClusterSpecDnsConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecDnsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecDnsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecDnsConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecDnsConfig)(ptr) = ClusterSpecDnsConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecDnsConfig", "unexpected JSON type")
 	}
 }
 
@@ -2036,6 +4794,85 @@ func (ClusterSpecNodeConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iter
 }
 
 // +k8s:deepcopy-gen=false
+type ClusterSpecNodeConfigGcfsConfigCodec struct {
+}
+
+func (ClusterSpecNodeConfigGcfsConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecNodeConfigGcfsConfig)(ptr) == nil
+}
+
+func (ClusterSpecNodeConfigGcfsConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecNodeConfigGcfsConfig)(ptr)
+	var objs []ClusterSpecNodeConfigGcfsConfig
+	if obj != nil {
+		objs = []ClusterSpecNodeConfigGcfsConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigGcfsConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecNodeConfigGcfsConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = ClusterSpecNodeConfigGcfsConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = ClusterSpecNodeConfigGcfsConfig{}
+			}
+		} else {
+			*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = ClusterSpecNodeConfigGcfsConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecNodeConfigGcfsConfig)(ptr) = ClusterSpecNodeConfigGcfsConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecNodeConfigGcfsConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ClusterSpecNodeConfigShieldedInstanceConfigCodec struct {
 }
 
@@ -2431,6 +5268,85 @@ func (ClusterSpecNodePoolNodeConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoni
 }
 
 // +k8s:deepcopy-gen=false
+type ClusterSpecNodePoolNodeConfigGcfsConfigCodec struct {
+}
+
+func (ClusterSpecNodePoolNodeConfigGcfsConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) == nil
+}
+
+func (ClusterSpecNodePoolNodeConfigGcfsConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr)
+	var objs []ClusterSpecNodePoolNodeConfigGcfsConfig
+	if obj != nil {
+		objs = []ClusterSpecNodePoolNodeConfigGcfsConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigGcfsConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ClusterSpecNodePoolNodeConfigGcfsConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = ClusterSpecNodePoolNodeConfigGcfsConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ClusterSpecNodePoolNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = objs[0]
+			} else {
+				*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = ClusterSpecNodePoolNodeConfigGcfsConfig{}
+			}
+		} else {
+			*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = ClusterSpecNodePoolNodeConfigGcfsConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ClusterSpecNodePoolNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecNodePoolNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = obj
+		} else {
+			*(*ClusterSpecNodePoolNodeConfigGcfsConfig)(ptr) = ClusterSpecNodePoolNodeConfigGcfsConfig{}
+		}
+	default:
+		iter.ReportError("decode ClusterSpecNodePoolNodeConfigGcfsConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ClusterSpecNodePoolNodeConfigShieldedInstanceConfigCodec struct {
 }
 
@@ -2664,85 +5580,6 @@ func (ClusterSpecNodePoolUpgradeSettingsCodec) Decode(ptr unsafe.Pointer, iter *
 		}
 	default:
 		iter.ReportError("decode ClusterSpecNodePoolUpgradeSettings", "unexpected JSON type")
-	}
-}
-
-// +k8s:deepcopy-gen=false
-type ClusterSpecPodSecurityPolicyConfigCodec struct {
-}
-
-func (ClusterSpecPodSecurityPolicyConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
-	return (*ClusterSpecPodSecurityPolicyConfig)(ptr) == nil
-}
-
-func (ClusterSpecPodSecurityPolicyConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
-	obj := (*ClusterSpecPodSecurityPolicyConfig)(ptr)
-	var objs []ClusterSpecPodSecurityPolicyConfig
-	if obj != nil {
-		objs = []ClusterSpecPodSecurityPolicyConfig{*obj}
-	}
-
-	jsonit := jsoniter.Config{
-		EscapeHTML:             true,
-		SortMapKeys:            true,
-		ValidateJsonRawMessage: true,
-		TagKey:                 "tf",
-		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPodSecurityPolicyConfig{}).Type1())),
-	}.Froze()
-
-	byt, _ := jsonit.Marshal(objs)
-
-	stream.Write(byt)
-}
-
-func (ClusterSpecPodSecurityPolicyConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	switch iter.WhatIsNext() {
-	case jsoniter.NilValue:
-		iter.Skip()
-		*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = ClusterSpecPodSecurityPolicyConfig{}
-		return
-	case jsoniter.ArrayValue:
-		objsByte := iter.SkipAndReturnBytes()
-		if len(objsByte) > 0 {
-			var objs []ClusterSpecPodSecurityPolicyConfig
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPodSecurityPolicyConfig{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objsByte, &objs)
-
-			if len(objs) > 0 {
-				*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = objs[0]
-			} else {
-				*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = ClusterSpecPodSecurityPolicyConfig{}
-			}
-		} else {
-			*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = ClusterSpecPodSecurityPolicyConfig{}
-		}
-	case jsoniter.ObjectValue:
-		objByte := iter.SkipAndReturnBytes()
-		if len(objByte) > 0 {
-			var obj ClusterSpecPodSecurityPolicyConfig
-
-			jsonit := jsoniter.Config{
-				EscapeHTML:             true,
-				SortMapKeys:            true,
-				ValidateJsonRawMessage: true,
-				TagKey:                 "tf",
-				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ClusterSpecPodSecurityPolicyConfig{}).Type1())),
-			}.Froze()
-			jsonit.Unmarshal(objByte, &obj)
-
-			*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = obj
-		} else {
-			*(*ClusterSpecPodSecurityPolicyConfig)(ptr) = ClusterSpecPodSecurityPolicyConfig{}
-		}
-	default:
-		iter.ReportError("decode ClusterSpecPodSecurityPolicyConfig", "unexpected JSON type")
 	}
 }
 
@@ -3533,6 +6370,85 @@ func (NodePoolSpecNodeConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Ite
 		}
 	default:
 		iter.ReportError("decode NodePoolSpecNodeConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type NodePoolSpecNodeConfigGcfsConfigCodec struct {
+}
+
+func (NodePoolSpecNodeConfigGcfsConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*NodePoolSpecNodeConfigGcfsConfig)(ptr) == nil
+}
+
+func (NodePoolSpecNodeConfigGcfsConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*NodePoolSpecNodeConfigGcfsConfig)(ptr)
+	var objs []NodePoolSpecNodeConfigGcfsConfig
+	if obj != nil {
+		objs = []NodePoolSpecNodeConfigGcfsConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigGcfsConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (NodePoolSpecNodeConfigGcfsConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = NodePoolSpecNodeConfigGcfsConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []NodePoolSpecNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = objs[0]
+			} else {
+				*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = NodePoolSpecNodeConfigGcfsConfig{}
+			}
+		} else {
+			*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = NodePoolSpecNodeConfigGcfsConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj NodePoolSpecNodeConfigGcfsConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(NodePoolSpecNodeConfigGcfsConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = obj
+		} else {
+			*(*NodePoolSpecNodeConfigGcfsConfig)(ptr) = NodePoolSpecNodeConfigGcfsConfig{}
+		}
+	default:
+		iter.ReportError("decode NodePoolSpecNodeConfigGcfsConfig", "unexpected JSON type")
 	}
 }
 

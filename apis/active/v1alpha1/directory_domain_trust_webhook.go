@@ -92,7 +92,7 @@ func (r *DirectoryDomainTrust) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range directorydomaintrustForceNewList {
+	for key, _ := range directorydomaintrustForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

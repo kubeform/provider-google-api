@@ -42,17 +42,20 @@ func (r *DatasetAccess) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &DatasetAccess{}
 
 var datasetaccessForceNewList = map[string]bool{
-	"/dataset_id":        true,
-	"/domain":            true,
-	"/group_by_email":    true,
-	"/iam_member":        true,
-	"/project":           true,
-	"/role":              true,
-	"/special_group":     true,
-	"/user_by_email":     true,
-	"/view/*/dataset_id": true,
-	"/view/*/project_id": true,
-	"/view/*/table_id":   true,
+	"/dataset/*/dataset/*/dataset_id": true,
+	"/dataset/*/dataset/*/project_id": true,
+	"/dataset/*/target_types":         true,
+	"/dataset_id":                     true,
+	"/domain":                         true,
+	"/group_by_email":                 true,
+	"/iam_member":                     true,
+	"/project":                        true,
+	"/role":                           true,
+	"/special_group":                  true,
+	"/user_by_email":                  true,
+	"/view/*/dataset_id":              true,
+	"/view/*/project_id":              true,
+	"/view/*/table_id":                true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -98,7 +101,7 @@ func (r *DatasetAccess) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datasetaccessForceNewList {
+	for key, _ := range datasetaccessForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

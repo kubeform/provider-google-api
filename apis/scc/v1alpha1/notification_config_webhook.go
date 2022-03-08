@@ -89,7 +89,7 @@ func (r *NotificationConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range notificationconfigForceNewList {
+	for key, _ := range notificationconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

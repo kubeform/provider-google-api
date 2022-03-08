@@ -91,7 +91,7 @@ func (r *TargetHTTPSProxy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range targethttpsproxyForceNewList {
+	for key, _ := range targethttpsproxyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

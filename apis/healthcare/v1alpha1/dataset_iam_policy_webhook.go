@@ -88,7 +88,7 @@ func (r *DatasetIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datasetiampolicyForceNewList {
+	for key, _ := range datasetiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

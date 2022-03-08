@@ -219,7 +219,7 @@ type InstanceSpecResource struct {
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	// +optional
 	Subnet *string `json:"subnet,omitempty" tf:"subnet"`
-	// The Compute Engine tags to add to runtime.
+	// The Compute Engine tags to add to instance.
 	// +optional
 	Tags []string `json:"tags,omitempty" tf:"tags"`
 	// Instance update time.

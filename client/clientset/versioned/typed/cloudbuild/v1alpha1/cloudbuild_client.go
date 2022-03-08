@@ -28,6 +28,7 @@ import (
 type CloudbuildV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	TriggersGetter
+	WorkerPoolsGetter
 }
 
 // CloudbuildV1alpha1Client is used to interact with features provided by the cloudbuild.google.kubeform.com group.
@@ -37,6 +38,10 @@ type CloudbuildV1alpha1Client struct {
 
 func (c *CloudbuildV1alpha1Client) Triggers(namespace string) TriggerInterface {
 	return newTriggers(c, namespace)
+}
+
+func (c *CloudbuildV1alpha1Client) WorkerPools(namespace string) WorkerPoolInterface {
+	return newWorkerPools(c, namespace)
 }
 
 // NewForConfig creates a new CloudbuildV1alpha1Client for the given config.

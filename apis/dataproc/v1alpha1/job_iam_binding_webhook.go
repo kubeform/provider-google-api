@@ -94,7 +94,7 @@ func (r *JobIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range jobiambindingForceNewList {
+	for key, _ := range jobiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

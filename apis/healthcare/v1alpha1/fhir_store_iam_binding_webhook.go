@@ -92,7 +92,7 @@ func (r *FhirStoreIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range fhirstoreiambindingForceNewList {
+	for key, _ := range fhirstoreiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

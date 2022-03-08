@@ -95,7 +95,7 @@ func (r *CatalogTagTemplateIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogtagtemplateiammemberForceNewList {
+	for key, _ := range catalogtagtemplateiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

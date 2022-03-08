@@ -59,7 +59,8 @@ spec:
                 properties:
                   appEngine:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       service:
                         description: 'Optional serving service. The service name must
@@ -85,7 +86,8 @@ spec:
                     type: object
                   cloudFunction:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       function:
                         description: 'A user-defined name of the Cloud Function. The
@@ -105,7 +107,8 @@ spec:
                     type: object
                   cloudRun:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       service:
                         description: 'Cloud Run service is the main resource of Cloud
@@ -204,7 +207,8 @@ spec:
                 properties:
                   appEngine:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       service:
                         description: 'Optional serving service. The service name must
@@ -230,7 +234,8 @@ spec:
                     type: object
                   cloudFunction:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       function:
                         description: 'A user-defined name of the Cloud Function. The
@@ -250,7 +255,8 @@ spec:
                     type: object
                   cloudRun:
                     description: Only valid when networkEndpointType is "SERVERLESS".
-                      Only one of cloud_run, app_engine or cloud_function may be set.
+                      Only one of cloud_run, app_engine, cloud_function or serverless_deployment
+                      may be set.
                     properties:
                       service:
                         description: 'Cloud Run service is the main resource of Cloud

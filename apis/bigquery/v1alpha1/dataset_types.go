@@ -41,6 +41,21 @@ type Dataset struct {
 	Status            DatasetStatus `json:"status,omitempty"`
 }
 
+type DatasetSpecAccessDatasetDataset struct {
+	// The ID of the dataset containing this table.
+	DatasetID *string `json:"datasetID" tf:"dataset_id"`
+	// The ID of the project containing this table.
+	ProjectID *string `json:"projectID" tf:"project_id"`
+}
+
+type DatasetSpecAccessDataset struct {
+	// The dataset this entry applies to
+	Dataset *DatasetSpecAccessDatasetDataset `json:"dataset" tf:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes []string `json:"targetTypes" tf:"target_types"`
+}
+
 type DatasetSpecAccessView struct {
 	// The ID of the dataset containing this table.
 	DatasetID *string `json:"datasetID" tf:"dataset_id"`
@@ -53,6 +68,9 @@ type DatasetSpecAccessView struct {
 }
 
 type DatasetSpecAccess struct {
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
+	// +optional
+	Dataset *DatasetSpecAccessDataset `json:"dataset,omitempty" tf:"dataset"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	// +optional

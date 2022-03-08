@@ -88,7 +88,7 @@ func (r *WebTypeComputeIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webtypecomputeiampolicyForceNewList {
+	for key, _ := range webtypecomputeiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

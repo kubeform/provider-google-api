@@ -316,12 +316,6 @@ spec:
                           least 10.
                         format: int64
                         type: integer
-                      minReadySec:
-                        description: Minimum number of seconds to wait for after a
-                          newly created instance becomes available. This value must
-                          be from range [0, 3600]. Deprecated
-                        format: int64
-                        type: integer
                       minimalAction:
                         description: Minimal action to be taken on an instance. You
                           can specify either RESTART to restart existing instances
@@ -667,12 +661,6 @@ spec:
                           Conflicts with max_unavailable_fixed. Percent value is only
                           allowed for regional managed instance groups with size at
                           least 10.
-                        format: int64
-                        type: integer
-                      minReadySec:
-                        description: Minimum number of seconds to wait for after a
-                          newly created instance becomes available. This value must
-                          be from range [0, 3600]. Deprecated
                         format: int64
                         type: integer
                       minimalAction:

@@ -89,7 +89,7 @@ func (r *PlatformOauthIdpConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range platformoauthidpconfigForceNewList {
+	for key, _ := range platformoauthidpconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

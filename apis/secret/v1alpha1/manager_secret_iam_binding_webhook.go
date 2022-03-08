@@ -93,7 +93,7 @@ func (r *ManagerSecretIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managersecretiambindingForceNewList {
+	for key, _ := range managersecretiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

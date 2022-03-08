@@ -43,6 +43,7 @@ var _ webhook.Validator = &Trigger{}
 
 var triggerForceNewList = map[string]bool{
 	"/location":                   true,
+	"/name":                       true,
 	"/project":                    true,
 	"/transport/*/pubsub/*/topic": true,
 }
@@ -90,7 +91,7 @@ func (r *Trigger) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range triggerForceNewList {
+	for key, _ := range triggerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

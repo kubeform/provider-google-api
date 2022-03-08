@@ -37,6 +37,7 @@ type DataV1alpha1Interface interface {
 	CatalogTagTemplateIamBindingsGetter
 	CatalogTagTemplateIamMembersGetter
 	CatalogTagTemplateIamPoliciesGetter
+	FusionInstancesGetter
 	LossPreventionDeidentifyTemplatesGetter
 	LossPreventionInspectTemplatesGetter
 	LossPreventionJobTriggersGetter
@@ -86,6 +87,10 @@ func (c *DataV1alpha1Client) CatalogTagTemplateIamMembers(namespace string) Cata
 
 func (c *DataV1alpha1Client) CatalogTagTemplateIamPolicies(namespace string) CatalogTagTemplateIamPolicyInterface {
 	return newCatalogTagTemplateIamPolicies(c, namespace)
+}
+
+func (c *DataV1alpha1Client) FusionInstances(namespace string) FusionInstanceInterface {
+	return newFusionInstances(c, namespace)
 }
 
 func (c *DataV1alpha1Client) LossPreventionDeidentifyTemplates(namespace string) LossPreventionDeidentifyTemplateInterface {

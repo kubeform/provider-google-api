@@ -93,6 +93,20 @@ type TriggerSpecBuildArtifacts struct {
 	Objects *TriggerSpecBuildArtifactsObjects `json:"objects,omitempty" tf:"objects"`
 }
 
+type TriggerSpecBuildAvailableSecretsSecretManager struct {
+	// Environment variable name to associate with the secret. Secret environment
+	// variables must be unique across all of a build's secrets, and must be used
+	// by at least one build step.
+	Env *string `json:"env" tf:"env"`
+	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+	VersionName *string `json:"versionName" tf:"version_name"`
+}
+
+type TriggerSpecBuildAvailableSecrets struct {
+	// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+	SecretManager []TriggerSpecBuildAvailableSecretsSecretManager `json:"secretManager" tf:"secret_manager"`
+}
+
 type TriggerSpecBuildOptionsVolumes struct {
 	// Name of the volume to mount.
 	//
@@ -344,6 +358,9 @@ type TriggerSpecBuild struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	// +optional
 	Artifacts *TriggerSpecBuildArtifacts `json:"artifacts,omitempty" tf:"artifacts"`
+	// Secrets and secret environment variables.
+	// +optional
+	AvailableSecrets *TriggerSpecBuildAvailableSecrets `json:"availableSecrets,omitempty" tf:"available_secrets"`
 	// A list of images to be pushed upon the successful completion of all build steps.
 	// The images are pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
@@ -420,10 +437,10 @@ type TriggerSpecGithub struct {
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 	// +optional
 	Owner *string `json:"owner,omitempty" tf:"owner"`
-	// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+	// filter to match changes in pull requests. Specify only one of 'pull_request' or 'push'.
 	// +optional
 	PullRequest *TriggerSpecGithubPullRequest `json:"pullRequest,omitempty" tf:"pull_request"`
-	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+	// filter to match changes in refs, like branches or tags. Specify only one of 'pull_request' or 'push'.
 	// +optional
 	Push *TriggerSpecGithubPush `json:"push,omitempty" tf:"push"`
 }

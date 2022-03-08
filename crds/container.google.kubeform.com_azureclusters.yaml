@@ -1,0 +1,793 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: azureclusters.container.google.kubeform.com
+spec:
+  group: container.google.kubeform.com
+  names:
+    kind: AzureCluster
+    listKind: AzureClusterList
+    plural: azureclusters
+    singular: azurecluster
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  annotations:
+                    additionalProperties:
+                      type: string
+                    description: 'Optional. Annotations on the cluster. This field
+                      has the same restrictions as Kubernetes annotations. The total
+                      size of all keys and values combined is limited to 256k. Keys
+                      can have 2 segments: prefix (optional) and name (required),
+                      separated by a slash (/). Prefix must be a DNS subdomain. Name
+                      must be 63 characters or less, begin and end with alphanumerics,
+                      with dashes (-), underscores (_), dots (.), and alphanumerics
+                      between.'
+                    type: object
+                  authorization:
+                    description: Required. Configuration related to the cluster RBAC
+                      settings.
+                    properties:
+                      adminUsers:
+                        description: Required. Users that can perform operations as
+                          a cluster admin. A new ClusterRoleBinding will be created
+                          to grant the cluster-admin ClusterRole to the users. At
+                          most one user can be specified. For more info on RBAC, see
+                          https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+                        items:
+                          properties:
+                            username:
+                              description: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+                              type: string
+                          required:
+                          - username
+                          type: object
+                        type: array
+                    required:
+                    - adminUsers
+                    type: object
+                  azureRegion:
+                    description: Required. The Azure region where the cluster runs.
+                      Each Google Cloud region supports a subset of nearby Azure regions.
+                      You can call to list all supported Azure regions within a given
+                      Google Cloud region.
+                    type: string
+                  client:
+                    description: Required. Name of the AzureClient. The `AzureClient`
+                      resource must reside on the same GCP project and region as the
+                      `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`.
+                      See Resource Names (https:cloud.google.com/apis/design/resource_names)
+                      for more details on Google Cloud resource names.
+                    type: string
+                  controlPlane:
+                    description: Required. Configuration related to the cluster control
+                      plane.
+                    properties:
+                      databaseEncryption:
+                        description: Optional. Configuration related to application-layer
+                          secrets encryption.
+                        properties:
+                          keyID:
+                            description: 'The ARM ID of the Azure Key Vault key to
+                              encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>`
+                              Encryption will always take the latest version of the
+                              key and hence specific version is not supported.'
+                            type: string
+                        required:
+                        - keyID
+                        type: object
+                      mainVolume:
+                        description: Optional. Configuration related to the main volume
+                          provisioned for each control plane replica. The main volume
+                          is in charge of storing all of the cluster's etcd state.
+                          When unspecified, it defaults to a 8-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      proxyConfig:
+                        description: Proxy configuration for outbound HTTP(S) traffic.
+                        properties:
+                          resourceGroupID:
+                            description: The ARM ID the of the resource group containing
+                              proxy keyvault. Resource group ids are formatted as
+                              `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+                            type: string
+                          secretID:
+                            description: The URL the of the proxy setting secret with
+                              its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+                            type: string
+                        required:
+                        - resourceGroupID
+                        - secretID
+                        type: object
+                      replicaPlacements:
+                        description: Configuration for where to place the control
+                          plane replicas. Up to three replica placement instances
+                          can be specified. If replica_placements is set, the replica
+                          placement instances will be applied to the three control
+                          plane replicas as evenly as possible.
+                        items:
+                          properties:
+                            azureAvailabilityZone:
+                              description: For a given replica, the Azure availability
+                                zone where to provision the control plane VM and the
+                                ETCD disk.
+                              type: string
+                            subnetID:
+                              description: For a given replica, the ARM ID of the
+                                subnet where the control plane VM is deployed. Make
+                                sure it's a subnet under the virtual network in the
+                                cluster configuration.
+                              type: string
+                          required:
+                          - azureAvailabilityZone
+                          - subnetID
+                          type: object
+                        type: array
+                      rootVolume:
+                        description: Optional. Configuration related to the root volume
+                          provisioned for each control plane replica. When unspecified,
+                          it defaults to 32-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      sshConfig:
+                        description: Required. SSH configuration for how to access
+                          the underlying control plane machines.
+                        properties:
+                          authorizedKey:
+                            description: Required. The SSH public key data for VMs
+                              managed by Anthos. This accepts the authorized_keys
+                              file format used in OpenSSH according to the sshd(8)
+                              manual page.
+                            type: string
+                        required:
+                        - authorizedKey
+                        type: object
+                      subnetID:
+                        description: 'Required. The ARM ID of the subnet where the
+                          control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.'
+                        type: string
+                      tags:
+                        additionalProperties:
+                          type: string
+                        description: Optional. A set of tags to apply to all underlying
+                          control plane Azure resources.
+                        type: object
+                      version:
+                        description: Required. The Kubernetes version to run on control
+                          plane replicas (e.g. `1.19.10-gke.1000`). You can list all
+                          supported versions on a given Google Cloud region by calling
+                          GetAzureServerConfig.
+                        type: string
+                      vmSize:
+                        description: 'Optional. The Azure VM size name. Example: `Standard_DS2_v2`.
+                          For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions.
+                          When unspecified, it defaults to `Standard_DS2_v2`.'
+                        type: string
+                    required:
+                    - sshConfig
+                    - subnetID
+                    - version
+                    type: object
+                  createTime:
+                    description: Output only. The time at which this cluster was created.
+                    type: string
+                  description:
+                    description: Optional. A human readable description of this cluster.
+                      Cannot be longer than 255 UTF-8 encoded bytes.
+                    type: string
+                  endpoint:
+                    description: Output only. The endpoint of the cluster's API server.
+                    type: string
+                  etag:
+                    description: Allows clients to perform consistent read-modify-writes
+                      through optimistic concurrency control. May be sent on update
+                      and delete requests to ensure the client has an up-to-date value
+                      before proceeding.
+                    type: string
+                  fleet:
+                    description: Fleet configuration.
+                    properties:
+                      membership:
+                        description: The name of the managed Hub Membership resource
+                          associated to this cluster. Membership names are formatted
+                          as projects/<project-number>/locations/global/membership/<cluster-id>.
+                        type: string
+                      project:
+                        description: The number of the Fleet host project where this
+                          cluster will be registered.
+                        type: string
+                    type: object
+                  id:
+                    type: string
+                  location:
+                    description: The location for the resource
+                    type: string
+                  name:
+                    description: The name of this resource.
+                    type: string
+                  networking:
+                    description: Required. Cluster-wide networking configuration.
+                    properties:
+                      podAddressCIDRBlocks:
+                        description: Required. The IP address range of the pods in
+                          this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All
+                          pods in the cluster get assigned a unique RFC1918 IPv4 address
+                          from these ranges. Only a single range is supported. This
+                          field cannot be changed after creation.
+                        items:
+                          type: string
+                        type: array
+                      serviceAddressCIDRBlocks:
+                        description: Required. The IP address range for services in
+                          this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All
+                          services in the cluster get assigned a unique RFC1918 IPv4
+                          address from these ranges. Only a single range is supported.
+                          This field cannot be changed after creating a cluster.
+                        items:
+                          type: string
+                        type: array
+                      virtualNetworkID:
+                        description: 'Required. The Azure Resource Manager (ARM) ID
+                          of the VNet associated with your cluster. All components
+                          in the cluster (i.e. control plane and node pools) run on
+                          a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*`
+                          This field cannot be changed after creation.'
+                        type: string
+                    required:
+                    - podAddressCIDRBlocks
+                    - serviceAddressCIDRBlocks
+                    - virtualNetworkID
+                    type: object
+                  project:
+                    description: The project for the resource
+                    type: string
+                  reconciling:
+                    description: Output only. If set, there are currently changes
+                      in flight to the cluster.
+                    type: boolean
+                  resourceGroupID:
+                    description: 'Required. The ARM ID of the resource group where
+                      the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`'
+                    type: string
+                  state:
+                    description: 'Output only. The current state of the cluster. Possible
+                      values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
+                      STOPPING, ERROR, DEGRADED'
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  uid:
+                    description: Output only. A globally unique identifier for the
+                      cluster.
+                    type: string
+                  updateTime:
+                    description: Output only. The time at which this cluster was last
+                      updated.
+                    type: string
+                  workloadIdentityConfig:
+                    description: Output only. Workload Identity settings.
+                    items:
+                      properties:
+                        identityProvider:
+                          description: The ID of the OIDC Identity Provider (IdP)
+                            associated to the Workload Identity Pool.
+                          type: string
+                        issuerURI:
+                          description: The OIDC issuer URL for this cluster.
+                          type: string
+                        workloadPool:
+                          description: The Workload Identity Pool associated to the
+                            cluster.
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - authorization
+                - azureRegion
+                - client
+                - controlPlane
+                - fleet
+                - location
+                - name
+                - networking
+                - resourceGroupID
+                type: object
+              state:
+                properties:
+                  annotations:
+                    additionalProperties:
+                      type: string
+                    description: 'Optional. Annotations on the cluster. This field
+                      has the same restrictions as Kubernetes annotations. The total
+                      size of all keys and values combined is limited to 256k. Keys
+                      can have 2 segments: prefix (optional) and name (required),
+                      separated by a slash (/). Prefix must be a DNS subdomain. Name
+                      must be 63 characters or less, begin and end with alphanumerics,
+                      with dashes (-), underscores (_), dots (.), and alphanumerics
+                      between.'
+                    type: object
+                  authorization:
+                    description: Required. Configuration related to the cluster RBAC
+                      settings.
+                    properties:
+                      adminUsers:
+                        description: Required. Users that can perform operations as
+                          a cluster admin. A new ClusterRoleBinding will be created
+                          to grant the cluster-admin ClusterRole to the users. At
+                          most one user can be specified. For more info on RBAC, see
+                          https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+                        items:
+                          properties:
+                            username:
+                              description: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+                              type: string
+                          required:
+                          - username
+                          type: object
+                        type: array
+                    required:
+                    - adminUsers
+                    type: object
+                  azureRegion:
+                    description: Required. The Azure region where the cluster runs.
+                      Each Google Cloud region supports a subset of nearby Azure regions.
+                      You can call to list all supported Azure regions within a given
+                      Google Cloud region.
+                    type: string
+                  client:
+                    description: Required. Name of the AzureClient. The `AzureClient`
+                      resource must reside on the same GCP project and region as the
+                      `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`.
+                      See Resource Names (https:cloud.google.com/apis/design/resource_names)
+                      for more details on Google Cloud resource names.
+                    type: string
+                  controlPlane:
+                    description: Required. Configuration related to the cluster control
+                      plane.
+                    properties:
+                      databaseEncryption:
+                        description: Optional. Configuration related to application-layer
+                          secrets encryption.
+                        properties:
+                          keyID:
+                            description: 'The ARM ID of the Azure Key Vault key to
+                              encrypt / decrypt data. For example: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.KeyVault/vaults/<key-vault-id>/keys/<key-name>`
+                              Encryption will always take the latest version of the
+                              key and hence specific version is not supported.'
+                            type: string
+                        required:
+                        - keyID
+                        type: object
+                      mainVolume:
+                        description: Optional. Configuration related to the main volume
+                          provisioned for each control plane replica. The main volume
+                          is in charge of storing all of the cluster's etcd state.
+                          When unspecified, it defaults to a 8-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      proxyConfig:
+                        description: Proxy configuration for outbound HTTP(S) traffic.
+                        properties:
+                          resourceGroupID:
+                            description: The ARM ID the of the resource group containing
+                              proxy keyvault. Resource group ids are formatted as
+                              `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+                            type: string
+                          secretID:
+                            description: The URL the of the proxy setting secret with
+                              its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+                            type: string
+                        required:
+                        - resourceGroupID
+                        - secretID
+                        type: object
+                      replicaPlacements:
+                        description: Configuration for where to place the control
+                          plane replicas. Up to three replica placement instances
+                          can be specified. If replica_placements is set, the replica
+                          placement instances will be applied to the three control
+                          plane replicas as evenly as possible.
+                        items:
+                          properties:
+                            azureAvailabilityZone:
+                              description: For a given replica, the Azure availability
+                                zone where to provision the control plane VM and the
+                                ETCD disk.
+                              type: string
+                            subnetID:
+                              description: For a given replica, the ARM ID of the
+                                subnet where the control plane VM is deployed. Make
+                                sure it's a subnet under the virtual network in the
+                                cluster configuration.
+                              type: string
+                          required:
+                          - azureAvailabilityZone
+                          - subnetID
+                          type: object
+                        type: array
+                      rootVolume:
+                        description: Optional. Configuration related to the root volume
+                          provisioned for each control plane replica. When unspecified,
+                          it defaults to 32-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      sshConfig:
+                        description: Required. SSH configuration for how to access
+                          the underlying control plane machines.
+                        properties:
+                          authorizedKey:
+                            description: Required. The SSH public key data for VMs
+                              managed by Anthos. This accepts the authorized_keys
+                              file format used in OpenSSH according to the sshd(8)
+                              manual page.
+                            type: string
+                        required:
+                        - authorizedKey
+                        type: object
+                      subnetID:
+                        description: 'Required. The ARM ID of the subnet where the
+                          control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.'
+                        type: string
+                      tags:
+                        additionalProperties:
+                          type: string
+                        description: Optional. A set of tags to apply to all underlying
+                          control plane Azure resources.
+                        type: object
+                      version:
+                        description: Required. The Kubernetes version to run on control
+                          plane replicas (e.g. `1.19.10-gke.1000`). You can list all
+                          supported versions on a given Google Cloud region by calling
+                          GetAzureServerConfig.
+                        type: string
+                      vmSize:
+                        description: 'Optional. The Azure VM size name. Example: `Standard_DS2_v2`.
+                          For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions.
+                          When unspecified, it defaults to `Standard_DS2_v2`.'
+                        type: string
+                    required:
+                    - sshConfig
+                    - subnetID
+                    - version
+                    type: object
+                  createTime:
+                    description: Output only. The time at which this cluster was created.
+                    type: string
+                  description:
+                    description: Optional. A human readable description of this cluster.
+                      Cannot be longer than 255 UTF-8 encoded bytes.
+                    type: string
+                  endpoint:
+                    description: Output only. The endpoint of the cluster's API server.
+                    type: string
+                  etag:
+                    description: Allows clients to perform consistent read-modify-writes
+                      through optimistic concurrency control. May be sent on update
+                      and delete requests to ensure the client has an up-to-date value
+                      before proceeding.
+                    type: string
+                  fleet:
+                    description: Fleet configuration.
+                    properties:
+                      membership:
+                        description: The name of the managed Hub Membership resource
+                          associated to this cluster. Membership names are formatted
+                          as projects/<project-number>/locations/global/membership/<cluster-id>.
+                        type: string
+                      project:
+                        description: The number of the Fleet host project where this
+                          cluster will be registered.
+                        type: string
+                    type: object
+                  id:
+                    type: string
+                  location:
+                    description: The location for the resource
+                    type: string
+                  name:
+                    description: The name of this resource.
+                    type: string
+                  networking:
+                    description: Required. Cluster-wide networking configuration.
+                    properties:
+                      podAddressCIDRBlocks:
+                        description: Required. The IP address range of the pods in
+                          this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All
+                          pods in the cluster get assigned a unique RFC1918 IPv4 address
+                          from these ranges. Only a single range is supported. This
+                          field cannot be changed after creation.
+                        items:
+                          type: string
+                        type: array
+                      serviceAddressCIDRBlocks:
+                        description: Required. The IP address range for services in
+                          this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All
+                          services in the cluster get assigned a unique RFC1918 IPv4
+                          address from these ranges. Only a single range is supported.
+                          This field cannot be changed after creating a cluster.
+                        items:
+                          type: string
+                        type: array
+                      virtualNetworkID:
+                        description: 'Required. The Azure Resource Manager (ARM) ID
+                          of the VNet associated with your cluster. All components
+                          in the cluster (i.e. control plane and node pools) run on
+                          a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*`
+                          This field cannot be changed after creation.'
+                        type: string
+                    required:
+                    - podAddressCIDRBlocks
+                    - serviceAddressCIDRBlocks
+                    - virtualNetworkID
+                    type: object
+                  project:
+                    description: The project for the resource
+                    type: string
+                  reconciling:
+                    description: Output only. If set, there are currently changes
+                      in flight to the cluster.
+                    type: boolean
+                  resourceGroupID:
+                    description: 'Required. The ARM ID of the resource group where
+                      the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`'
+                    type: string
+                  state:
+                    description: 'Output only. The current state of the cluster. Possible
+                      values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
+                      STOPPING, ERROR, DEGRADED'
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  uid:
+                    description: Output only. A globally unique identifier for the
+                      cluster.
+                    type: string
+                  updateTime:
+                    description: Output only. The time at which this cluster was last
+                      updated.
+                    type: string
+                  workloadIdentityConfig:
+                    description: Output only. Workload Identity settings.
+                    items:
+                      properties:
+                        identityProvider:
+                          description: The ID of the OIDC Identity Provider (IdP)
+                            associated to the Workload Identity Pool.
+                          type: string
+                        issuerURI:
+                          description: The OIDC issuer URL for this cluster.
+                          type: string
+                        workloadPool:
+                          description: The Workload Identity Pool associated to the
+                            cluster.
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - authorization
+                - azureRegion
+                - client
+                - controlPlane
+                - fleet
+                - location
+                - name
+                - networking
+                - resourceGroupID
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -88,14 +88,14 @@ spec:
                       string starting with 'tf-' will be selected."
                     type: string
                   numNodes:
-                    description: The number of nodes allocated to this instance. At
-                      most one of either node_count or processing_units can be present
+                    description: The number of nodes allocated to this instance. Exactly
+                      one of either node_count or processing_units must be present
                       in terraform.
                     format: int64
                     type: integer
                   processingUnits:
                     description: The number of processing units allocated to this
-                      instance. At most one of processing_units or node_count can
+                      instance. Exactly one of processing_units or node_count must
                       be present in terraform.
                     format: int64
                     type: integer
@@ -179,14 +179,14 @@ spec:
                       string starting with 'tf-' will be selected."
                     type: string
                   numNodes:
-                    description: The number of nodes allocated to this instance. At
-                      most one of either node_count or processing_units can be present
+                    description: The number of nodes allocated to this instance. Exactly
+                      one of either node_count or processing_units must be present
                       in terraform.
                     format: int64
                     type: integer
                   processingUnits:
                     description: The number of processing units allocated to this
-                      instance. At most one of processing_units or node_count can
+                      instance. Exactly one of processing_units or node_count must
                       be present in terraform.
                     format: int64
                     type: integer

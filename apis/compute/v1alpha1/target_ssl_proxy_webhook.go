@@ -90,7 +90,7 @@ func (r *TargetSslProxy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range targetsslproxyForceNewList {
+	for key, _ := range targetsslproxyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -90,7 +90,7 @@ func (r *DiskIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range diskiampolicyForceNewList {
+	for key, _ := range diskiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

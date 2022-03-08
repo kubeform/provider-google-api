@@ -68,10 +68,6 @@ spec:
                     type: string
                   project:
                     type: string
-                  selfLink:
-                    description: The self link of the created KeyRing in the format
-                      projects/{project}/locations/{location}/keyRings/{name}. Deprecated
-                    type: string
                   timeouts:
                     properties:
                       create:
@@ -126,10 +122,6 @@ spec:
                     description: The resource name for the KeyRing.
                     type: string
                   project:
-                    type: string
-                  selfLink:
-                    description: The self link of the created KeyRing in the format
-                      projects/{project}/locations/{location}/keyRings/{name}. Deprecated
                     type: string
                   timeouts:
                     properties:

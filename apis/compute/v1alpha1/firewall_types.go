@@ -123,7 +123,8 @@ type FirewallSpecResource struct {
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// sourceRanges OR sourceTags. Possible values: ["INGRESS", "EGRESS"]
+	// 'source_ranges' OR 'source_tags'. For INGRESS traffic, one of 'source_ranges',
+	// 'source_tags' or 'source_service_accounts' is required. Possible values: ["INGRESS", "EGRESS"]
 	// +optional
 	Direction *string `json:"direction,omitempty" tf:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -169,7 +170,8 @@ type FirewallSpecResource struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported.
+	// apply. Only IPv4 is supported. For INGRESS traffic, one of 'source_ranges',
+	// 'source_tags' or 'source_service_accounts' is required.
 	// +optional
 	SourceRanges []string `json:"sourceRanges,omitempty" tf:"source_ranges"`
 	// If source service accounts are specified, the firewall will apply only
@@ -182,7 +184,8 @@ type FirewallSpecResource struct {
 	// source IP belongs to an instance with service account listed in
 	// sourceServiceAccount. The connection does not need to match both
 	// properties for the firewall to apply. sourceServiceAccounts cannot be
-	// used at the same time as sourceTags or targetTags.
+	// used at the same time as sourceTags or targetTags. For INGRESS traffic,
+	// one of 'source_ranges', 'source_tags' or 'source_service_accounts' is required.
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
 	SourceServiceAccounts []string `json:"sourceServiceAccounts,omitempty" tf:"source_service_accounts"`
@@ -194,7 +197,8 @@ type FirewallSpecResource struct {
 	// both properties are set, the firewall will apply to traffic that has
 	// source IP address within sourceRanges OR the source IP that belongs to
 	// a tag listed in the sourceTags property. The connection does not need
-	// to match both properties for the firewall to apply.
+	// to match both properties for the firewall to apply. For INGRESS traffic,
+	// one of 'source_ranges', 'source_tags' or 'source_service_accounts' is required.
 	// +optional
 	SourceTags []string `json:"sourceTags,omitempty" tf:"source_tags"`
 	// A list of service accounts indicating sets of instances located in the

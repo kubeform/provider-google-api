@@ -102,7 +102,7 @@ func (r *VpnTunnel) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpntunnelForceNewList {
+	for key, _ := range vpntunnelForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

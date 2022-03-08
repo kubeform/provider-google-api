@@ -41,6 +41,22 @@ type Reservation struct {
 	Status            ReservationStatus `json:"status,omitempty"`
 }
 
+type ReservationSpecShareSettingsProjectMap struct {
+	ID *string `json:"ID" tf:"id"`
+	// The project id/number, should be same as the key of this project config in the project map.
+	// +optional
+	ProjectID *string `json:"projectID,omitempty" tf:"project_id"`
+}
+
+type ReservationSpecShareSettings struct {
+	// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+	// +optional
+	ProjectMap []ReservationSpecShareSettingsProjectMap `json:"projectMap,omitempty" tf:"project_map"`
+	// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+	// +optional
+	ShareType *string `json:"shareType,omitempty" tf:"share_type"`
+}
+
 type ReservationSpecSpecificReservationInstancePropertiesGuestAccelerators struct {
 	// The number of the guest accelerator cards exposed to
 	// this instance.
@@ -130,6 +146,9 @@ type ReservationSpecResource struct {
 	Project *string `json:"project,omitempty" tf:"project"`
 	// +optional
 	SelfLink *string `json:"selfLink,omitempty" tf:"self_link"`
+	// The share setting for reservations.
+	// +optional
+	ShareSettings *ReservationSpecShareSettings `json:"shareSettings,omitempty" tf:"share_settings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *ReservationSpecSpecificReservation `json:"specificReservation" tf:"specific_reservation"`
 	// When set to true, only VMs that target this reservation by name can

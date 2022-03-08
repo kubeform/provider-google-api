@@ -89,7 +89,7 @@ func (r *PlatformDefaultSupportedIdpConfig) ValidateUpdate(old runtime.Object) e
 		return err
 	}
 
-	for key := range platformdefaultsupportedidpconfigForceNewList {
+	for key, _ := range platformdefaultsupportedidpconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

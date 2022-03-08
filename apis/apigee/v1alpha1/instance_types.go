@@ -73,6 +73,15 @@ type InstanceSpecResource struct {
 	// Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
 	// +optional
 	Host *string `json:"host,omitempty" tf:"host"`
+	// IP range represents the customer-provided CIDR block of length 22 that will be used for
+	// the Apigee instance creation. This optional range, if provided, should be freely
+	// available as part of larger named range the customer has allocated to the Service
+	// Networking peering. If this is not provided, Apigee will automatically request for any
+	// available /22 CIDR block from Service Networking. The customer should use this CIDR block
+	// for configuring their firewall needs to allow traffic from Apigee.
+	// Input format: "a.b.c.d/22"
+	// +optional
+	IpRange *string `json:"ipRange,omitempty" tf:"ip_range"`
 	// Compute Engine location where the instance resides. For trial organization
 	// subscriptions, the location must be a Compute Engine zone. For paid organization
 	// subscriptions, it should correspond to a Compute Engine region.
@@ -82,7 +91,8 @@ type InstanceSpecResource struct {
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format 'organizations/{{org_name}}'.
 	OrgID *string `json:"orgID" tf:"org_id"`
-	// The size of the CIDR block range that will be reserved by the instance. Possible values: ["SLASH_16", "SLASH_20", "SLASH_22"]
+	// The size of the CIDR block range that will be reserved by the instance. For valid values,
+	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
 	// +optional
 	PeeringCIDRRange *string `json:"peeringCIDRRange,omitempty" tf:"peering_cidr_range"`
 	// Output only. Port number of the exposed Apigee endpoint.

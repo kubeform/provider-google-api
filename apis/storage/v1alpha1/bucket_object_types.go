@@ -41,6 +41,14 @@ type BucketObject struct {
 	Status            BucketObjectStatus `json:"status,omitempty"`
 }
 
+type BucketObjectSpecCustomerEncryption struct {
+	// The encryption algorithm. Default: AES256
+	// +optional
+	EncryptionAlgorithm *string `json:"encryptionAlgorithm,omitempty" tf:"encryption_algorithm"`
+	// Base64 encoded customer supplied encryption key.
+	EncryptionKey *string `json:"-" sensitive:"true" tf:"encryption_key"`
+}
+
 type BucketObjectSpec struct {
 	State *BucketObjectSpecResource `json:"state,omitempty" tf:"-"`
 
@@ -87,6 +95,7 @@ type BucketObjectSpecResource struct {
 	Crc32c *string `json:"crc32c,omitempty" tf:"crc32c"`
 	// Encryption key; encoded using base64.
 	// +optional
+	CustomerEncryption *BucketObjectSpecCustomerEncryption `json:"-" sensitive:"true" tf:"customer_encryption"`
 	// +optional
 	DetectMd5hash *string `json:"detectMd5hash,omitempty" tf:"detect_md5hash"`
 	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).

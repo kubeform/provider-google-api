@@ -92,7 +92,7 @@ func (r *ServiceAttachment) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range serviceattachmentForceNewList {
+	for key, _ := range serviceattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

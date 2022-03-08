@@ -62,6 +62,37 @@ spec:
                       one or more entities.
                     items:
                       properties:
+                        dataset:
+                          description: Grants all resources of particular types in
+                            a particular dataset read access to the current dataset.
+                          properties:
+                            dataset:
+                              description: The dataset this entry applies to
+                              properties:
+                                datasetID:
+                                  description: The ID of the dataset containing this
+                                    table.
+                                  type: string
+                                projectID:
+                                  description: The ID of the project containing this
+                                    table.
+                                  type: string
+                              required:
+                              - datasetID
+                              - projectID
+                              type: object
+                            targetTypes:
+                              description: 'Which resources in the dataset this entry
+                                applies to. Currently, only views are supported, but
+                                additional target types may be added in the future.
+                                Possible values: VIEWS'
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - dataset
+                          - targetTypes
+                          type: object
                         domain:
                           description: A domain to grant access to. Any users signed
                             in with the domain specified will be granted the specified
@@ -259,6 +290,37 @@ spec:
                       one or more entities.
                     items:
                       properties:
+                        dataset:
+                          description: Grants all resources of particular types in
+                            a particular dataset read access to the current dataset.
+                          properties:
+                            dataset:
+                              description: The dataset this entry applies to
+                              properties:
+                                datasetID:
+                                  description: The ID of the dataset containing this
+                                    table.
+                                  type: string
+                                projectID:
+                                  description: The ID of the project containing this
+                                    table.
+                                  type: string
+                              required:
+                              - datasetID
+                              - projectID
+                              type: object
+                            targetTypes:
+                              description: 'Which resources in the dataset this entry
+                                applies to. Currently, only views are supported, but
+                                additional target types may be added in the future.
+                                Possible values: VIEWS'
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - dataset
+                          - targetTypes
+                          type: object
                         domain:
                           description: A domain to grant access to. Any users signed
                             in with the domain specified will be granted the specified

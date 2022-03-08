@@ -130,7 +130,9 @@ type DataTransferConfigSpecResource struct {
 	// associated with this transfer config finish.
 	// +optional
 	NotificationPubsubTopic *string `json:"notificationPubsubTopic,omitempty" tf:"notification_pubsub_topic"`
-	// These parameters are specific to each data source.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params *map[string]string `json:"params" tf:"params"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
@@ -156,7 +158,7 @@ type DataTransferConfigSpecResource struct {
 	// to a different credential configuration in the config will require an apply to update state.
 	// +optional
 	SensitiveParams *DataTransferConfigSpecSensitiveParams `json:"sensitiveParams,omitempty" tf:"sensitive_params"`
-	// Optional service account name. If this field is set, transfer config will
+	// Service account email. If this field is set, transfer config will
 	// be created with this service account credentials. It requires that
 	// requesting user calling this API has permissions to act as this service account.
 	// +optional

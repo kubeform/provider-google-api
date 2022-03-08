@@ -91,7 +91,7 @@ func (r *PerInstanceConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range perinstanceconfigForceNewList {
+	for key, _ := range perinstanceconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

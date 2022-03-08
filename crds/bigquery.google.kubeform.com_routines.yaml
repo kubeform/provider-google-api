@@ -127,6 +127,14 @@ spec:
                     type: integer
                   project:
                     type: string
+                  returnTableType:
+                    description: "Optional. Can be set only if routineType = \"TABLE_VALUED_FUNCTION\".
+                      \n If absent, the return table type is inferred from definitionBody
+                      at query time in each query that references this routine. If
+                      present, then the columns in the evaluated table result will
+                      be cast to match the column types specificed in return table
+                      type, at query time."
+                    type: string
                   returnType:
                     description: 'A JSON schema for the return type. Optional if language
                       = "SQL"; required otherwise. If absent, the return type is inferred
@@ -148,7 +156,7 @@ spec:
                     type: string
                   routineType:
                     description: 'The type of routine. Possible values: ["SCALAR_FUNCTION",
-                      "PROCEDURE"]'
+                      "PROCEDURE", "TABLE_VALUED_FUNCTION"]'
                     type: string
                   timeouts:
                     properties:
@@ -265,6 +273,14 @@ spec:
                     type: integer
                   project:
                     type: string
+                  returnTableType:
+                    description: "Optional. Can be set only if routineType = \"TABLE_VALUED_FUNCTION\".
+                      \n If absent, the return table type is inferred from definitionBody
+                      at query time in each query that references this routine. If
+                      present, then the columns in the evaluated table result will
+                      be cast to match the column types specificed in return table
+                      type, at query time."
+                    type: string
                   returnType:
                     description: 'A JSON schema for the return type. Optional if language
                       = "SQL"; required otherwise. If absent, the return type is inferred
@@ -286,7 +302,7 @@ spec:
                     type: string
                   routineType:
                     description: 'The type of routine. Possible values: ["SCALAR_FUNCTION",
-                      "PROCEDURE"]'
+                      "PROCEDURE", "TABLE_VALUED_FUNCTION"]'
                     type: string
                   timeouts:
                     properties:

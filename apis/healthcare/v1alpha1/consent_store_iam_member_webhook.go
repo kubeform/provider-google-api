@@ -94,7 +94,7 @@ func (r *ConsentStoreIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range consentstoreiammemberForceNewList {
+	for key, _ := range consentstoreiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -90,7 +90,7 @@ func (r *BillingAccountBucketConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range billingaccountbucketconfigForceNewList {
+	for key, _ := range billingaccountbucketconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

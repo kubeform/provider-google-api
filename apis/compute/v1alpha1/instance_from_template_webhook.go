@@ -51,7 +51,6 @@ var instancefromtemplateForceNewList = map[string]bool{
 	"/boot_disk/*/kms_key_self_link":                        true,
 	"/boot_disk/*/mode":                                     true,
 	"/boot_disk/*/source":                                   true,
-	"/can_ip_forward":                                       true,
 	"/description":                                          true,
 	"/guest_accelerator/*/count":                            true,
 	"/guest_accelerator/*/type":                             true,
@@ -59,6 +58,7 @@ var instancefromtemplateForceNewList = map[string]bool{
 	"/metadata_startup_script":                              true,
 	"/name":                                                 true,
 	"/network_interface/*/nic_type":                         true,
+	"/network_interface/*/queue_count":                      true,
 	"/project":                                              true,
 	"/reservation_affinity/*/specific_reservation/*/key":    true,
 	"/reservation_affinity/*/specific_reservation/*/values": true,
@@ -111,7 +111,7 @@ func (r *InstanceFromTemplate) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancefromtemplateForceNewList {
+	for key, _ := range instancefromtemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *FirewallPolicyRule) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range firewallpolicyruleForceNewList {
+	for key, _ := range firewallpolicyruleForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

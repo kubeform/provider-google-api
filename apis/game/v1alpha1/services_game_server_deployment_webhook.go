@@ -89,7 +89,7 @@ func (r *ServicesGameServerDeployment) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range servicesgameserverdeploymentForceNewList {
+	for key, _ := range servicesgameserverdeploymentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

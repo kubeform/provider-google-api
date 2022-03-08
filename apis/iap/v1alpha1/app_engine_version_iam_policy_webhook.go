@@ -91,7 +91,7 @@ func (r *AppEngineVersionIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range appengineversioniampolicyForceNewList {
+	for key, _ := range appengineversioniampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

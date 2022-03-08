@@ -137,9 +137,6 @@ spec:
                           Agent service account is used.
                         type: string
                     type: object
-                  sourceDiskLink:
-                    description: Deprecated
-                    type: string
                   storageBytes:
                     description: A size of the storage used by the snapshot. As snapshots
                       share storage, this number is expected to change with snapshot
@@ -288,9 +285,6 @@ spec:
                           Agent service account is used.
                         type: string
                     type: object
-                  sourceDiskLink:
-                    description: Deprecated
-                    type: string
                   storageBytes:
                     description: A size of the storage used by the snapshot. As snapshots
                       share storage, this number is expected to change with snapshot

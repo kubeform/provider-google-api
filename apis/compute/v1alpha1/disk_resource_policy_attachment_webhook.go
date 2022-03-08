@@ -91,7 +91,7 @@ func (r *DiskResourcePolicyAttachment) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range diskresourcepolicyattachmentForceNewList {
+	for key, _ := range diskresourcepolicyattachmentForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

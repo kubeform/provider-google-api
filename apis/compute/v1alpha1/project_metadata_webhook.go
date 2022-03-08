@@ -88,7 +88,7 @@ func (r *ProjectMetadata) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range projectmetadataForceNewList {
+	for key, _ := range projectmetadataForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

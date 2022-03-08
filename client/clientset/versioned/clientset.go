@@ -70,9 +70,9 @@ import (
 	privatecav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/privateca/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/project/v1alpha1"
 	pubsubv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/pubsub/v1alpha1"
+	recaptchav1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/recaptcha/v1alpha1"
 	redisv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/redis/v1alpha1"
 	resourcev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/resource/v1alpha1"
-	runtimeconfigv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/runtimeconfig/v1alpha1"
 	sccv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/scc/v1alpha1"
 	secretv1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/secret/v1alpha1"
 	servicev1alpha1 "kubeform.dev/provider-google-api/client/clientset/versioned/typed/service/v1alpha1"
@@ -142,9 +142,9 @@ type Interface interface {
 	PrivatecaV1alpha1() privatecav1alpha1.PrivatecaV1alpha1Interface
 	ProjectV1alpha1() projectv1alpha1.ProjectV1alpha1Interface
 	PubsubV1alpha1() pubsubv1alpha1.PubsubV1alpha1Interface
+	RecaptchaV1alpha1() recaptchav1alpha1.RecaptchaV1alpha1Interface
 	RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface
 	ResourceV1alpha1() resourcev1alpha1.ResourceV1alpha1Interface
-	RuntimeconfigV1alpha1() runtimeconfigv1alpha1.RuntimeconfigV1alpha1Interface
 	SccV1alpha1() sccv1alpha1.SccV1alpha1Interface
 	SecretV1alpha1() secretv1alpha1.SecretV1alpha1Interface
 	ServiceV1alpha1() servicev1alpha1.ServiceV1alpha1Interface
@@ -212,9 +212,9 @@ type Clientset struct {
 	privatecaV1alpha1              *privatecav1alpha1.PrivatecaV1alpha1Client
 	projectV1alpha1                *projectv1alpha1.ProjectV1alpha1Client
 	pubsubV1alpha1                 *pubsubv1alpha1.PubsubV1alpha1Client
+	recaptchaV1alpha1              *recaptchav1alpha1.RecaptchaV1alpha1Client
 	redisV1alpha1                  *redisv1alpha1.RedisV1alpha1Client
 	resourceV1alpha1               *resourcev1alpha1.ResourceV1alpha1Client
-	runtimeconfigV1alpha1          *runtimeconfigv1alpha1.RuntimeconfigV1alpha1Client
 	sccV1alpha1                    *sccv1alpha1.SccV1alpha1Client
 	secretV1alpha1                 *secretv1alpha1.SecretV1alpha1Client
 	serviceV1alpha1                *servicev1alpha1.ServiceV1alpha1Client
@@ -474,6 +474,11 @@ func (c *Clientset) PubsubV1alpha1() pubsubv1alpha1.PubsubV1alpha1Interface {
 	return c.pubsubV1alpha1
 }
 
+// RecaptchaV1alpha1 retrieves the RecaptchaV1alpha1Client
+func (c *Clientset) RecaptchaV1alpha1() recaptchav1alpha1.RecaptchaV1alpha1Interface {
+	return c.recaptchaV1alpha1
+}
+
 // RedisV1alpha1 retrieves the RedisV1alpha1Client
 func (c *Clientset) RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface {
 	return c.redisV1alpha1
@@ -482,11 +487,6 @@ func (c *Clientset) RedisV1alpha1() redisv1alpha1.RedisV1alpha1Interface {
 // ResourceV1alpha1 retrieves the ResourceV1alpha1Client
 func (c *Clientset) ResourceV1alpha1() resourcev1alpha1.ResourceV1alpha1Interface {
 	return c.resourceV1alpha1
-}
-
-// RuntimeconfigV1alpha1 retrieves the RuntimeconfigV1alpha1Client
-func (c *Clientset) RuntimeconfigV1alpha1() runtimeconfigv1alpha1.RuntimeconfigV1alpha1Interface {
-	return c.runtimeconfigV1alpha1
 }
 
 // SccV1alpha1 retrieves the SccV1alpha1Client
@@ -766,15 +766,15 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.recaptchaV1alpha1, err = recaptchav1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.redisV1alpha1, err = redisv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
 	cs.resourceV1alpha1, err = resourcev1alpha1.NewForConfig(&configShallowCopy)
-	if err != nil {
-		return nil, err
-	}
-	cs.runtimeconfigV1alpha1, err = runtimeconfigv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
 	}
@@ -887,9 +887,9 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.privatecaV1alpha1 = privatecav1alpha1.NewForConfigOrDie(c)
 	cs.projectV1alpha1 = projectv1alpha1.NewForConfigOrDie(c)
 	cs.pubsubV1alpha1 = pubsubv1alpha1.NewForConfigOrDie(c)
+	cs.recaptchaV1alpha1 = recaptchav1alpha1.NewForConfigOrDie(c)
 	cs.redisV1alpha1 = redisv1alpha1.NewForConfigOrDie(c)
 	cs.resourceV1alpha1 = resourcev1alpha1.NewForConfigOrDie(c)
-	cs.runtimeconfigV1alpha1 = runtimeconfigv1alpha1.NewForConfigOrDie(c)
 	cs.sccV1alpha1 = sccv1alpha1.NewForConfigOrDie(c)
 	cs.secretV1alpha1 = secretv1alpha1.NewForConfigOrDie(c)
 	cs.serviceV1alpha1 = servicev1alpha1.NewForConfigOrDie(c)
@@ -959,9 +959,9 @@ func New(c rest.Interface) *Clientset {
 	cs.privatecaV1alpha1 = privatecav1alpha1.New(c)
 	cs.projectV1alpha1 = projectv1alpha1.New(c)
 	cs.pubsubV1alpha1 = pubsubv1alpha1.New(c)
+	cs.recaptchaV1alpha1 = recaptchav1alpha1.New(c)
 	cs.redisV1alpha1 = redisv1alpha1.New(c)
 	cs.resourceV1alpha1 = resourcev1alpha1.New(c)
-	cs.runtimeconfigV1alpha1 = runtimeconfigv1alpha1.New(c)
 	cs.sccV1alpha1 = sccv1alpha1.New(c)
 	cs.secretV1alpha1 = secretv1alpha1.New(c)
 	cs.serviceV1alpha1 = servicev1alpha1.New(c)

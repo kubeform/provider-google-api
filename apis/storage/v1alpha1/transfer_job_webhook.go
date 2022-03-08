@@ -98,7 +98,7 @@ func (r *TransferJob) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range transferjobForceNewList {
+	for key, _ := range transferjobForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

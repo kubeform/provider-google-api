@@ -88,7 +88,7 @@ func (r *EntityType) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range entitytypeForceNewList {
+	for key, _ := range entitytypeForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

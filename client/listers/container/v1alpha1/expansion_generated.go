@@ -34,6 +34,46 @@ type AnalysisOccurrenceListerExpansion interface{}
 // AnalysisOccurrenceNamespaceLister.
 type AnalysisOccurrenceNamespaceListerExpansion interface{}
 
+// AwsClusterListerExpansion allows custom methods to be added to
+// AwsClusterLister.
+type AwsClusterListerExpansion interface{}
+
+// AwsClusterNamespaceListerExpansion allows custom methods to be added to
+// AwsClusterNamespaceLister.
+type AwsClusterNamespaceListerExpansion interface{}
+
+// AwsNodePoolListerExpansion allows custom methods to be added to
+// AwsNodePoolLister.
+type AwsNodePoolListerExpansion interface{}
+
+// AwsNodePoolNamespaceListerExpansion allows custom methods to be added to
+// AwsNodePoolNamespaceLister.
+type AwsNodePoolNamespaceListerExpansion interface{}
+
+// AzureClientListerExpansion allows custom methods to be added to
+// AzureClientLister.
+type AzureClientListerExpansion interface{}
+
+// AzureClientNamespaceListerExpansion allows custom methods to be added to
+// AzureClientNamespaceLister.
+type AzureClientNamespaceListerExpansion interface{}
+
+// AzureClusterListerExpansion allows custom methods to be added to
+// AzureClusterLister.
+type AzureClusterListerExpansion interface{}
+
+// AzureClusterNamespaceListerExpansion allows custom methods to be added to
+// AzureClusterNamespaceLister.
+type AzureClusterNamespaceListerExpansion interface{}
+
+// AzureNodePoolListerExpansion allows custom methods to be added to
+// AzureNodePoolLister.
+type AzureNodePoolListerExpansion interface{}
+
+// AzureNodePoolNamespaceListerExpansion allows custom methods to be added to
+// AzureNodePoolNamespaceLister.
+type AzureNodePoolNamespaceListerExpansion interface{}
+
 // ClusterListerExpansion allows custom methods to be added to
 // ClusterLister.
 type ClusterListerExpansion interface{}

@@ -90,7 +90,7 @@ func (r *PlatformTenantInboundSamlConfig) ValidateUpdate(old runtime.Object) err
 		return err
 	}
 
-	for key := range platformtenantinboundsamlconfigForceNewList {
+	for key, _ := range platformtenantinboundsamlconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -34,6 +34,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                                      CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                                     CatalogTagTemplateIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                                      CatalogTagTemplateIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FusionInstanceSpecNetworkConfig{}).Type1()):                                                                                                                               FusionInstanceSpecNetworkConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                                   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                                             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
@@ -113,6 +114,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateSpecFieldsTypeEnumType{}).Type1()):                                                                                                                      CatalogTagTemplateSpecFieldsTypeEnumTypeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamBindingSpecCondition{}).Type1()):                                                                                                                     CatalogTagTemplateIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(CatalogTagTemplateIamMemberSpecCondition{}).Type1()):                                                                                                                      CatalogTagTemplateIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(FusionInstanceSpecNetworkConfig{}).Type1()):                                                                                                                               FusionInstanceSpecNetworkConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfig{}).Type1()):                                                                                                          LossPreventionDeidentifyTemplateSpecDeidentifyConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations{}).Type1()):                                                                                   LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformation{}).Type1()):                                             LossPreventionDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsPrimitiveTransformationCodec{},
@@ -745,6 +747,85 @@ func (CatalogTagTemplateIamMemberSpecConditionCodec) Decode(ptr unsafe.Pointer, 
 		}
 	default:
 		iter.ReportError("decode CatalogTagTemplateIamMemberSpecCondition", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type FusionInstanceSpecNetworkConfigCodec struct {
+}
+
+func (FusionInstanceSpecNetworkConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*FusionInstanceSpecNetworkConfig)(ptr) == nil
+}
+
+func (FusionInstanceSpecNetworkConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*FusionInstanceSpecNetworkConfig)(ptr)
+	var objs []FusionInstanceSpecNetworkConfig
+	if obj != nil {
+		objs = []FusionInstanceSpecNetworkConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FusionInstanceSpecNetworkConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (FusionInstanceSpecNetworkConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*FusionInstanceSpecNetworkConfig)(ptr) = FusionInstanceSpecNetworkConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []FusionInstanceSpecNetworkConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FusionInstanceSpecNetworkConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*FusionInstanceSpecNetworkConfig)(ptr) = objs[0]
+			} else {
+				*(*FusionInstanceSpecNetworkConfig)(ptr) = FusionInstanceSpecNetworkConfig{}
+			}
+		} else {
+			*(*FusionInstanceSpecNetworkConfig)(ptr) = FusionInstanceSpecNetworkConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj FusionInstanceSpecNetworkConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(FusionInstanceSpecNetworkConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*FusionInstanceSpecNetworkConfig)(ptr) = obj
+		} else {
+			*(*FusionInstanceSpecNetworkConfig)(ptr) = FusionInstanceSpecNetworkConfig{}
+		}
+	default:
+		iter.ReportError("decode FusionInstanceSpecNetworkConfig", "unexpected JSON type")
 	}
 }
 

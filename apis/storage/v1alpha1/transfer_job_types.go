@@ -90,9 +90,13 @@ type TransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKey struct {
 
 type TransferJobSpecTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
-	AwsAccessKey *TransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKey `json:"awsAccessKey" tf:"aws_access_key"`
+	// +optional
+	AwsAccessKey *TransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKey `json:"awsAccessKey,omitempty" tf:"aws_access_key"`
 	// S3 Bucket name.
 	BucketName *string `json:"bucketName" tf:"bucket_name"`
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+	// +optional
+	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn"`
 }
 
 type TransferJobSpecTransferSpecAzureBlobStorageDataSourceAzureCredentials struct {
@@ -148,6 +152,16 @@ type TransferJobSpecTransferSpecObjectConditions struct {
 	MinTimeElapsedSinceLastModification *string `json:"minTimeElapsedSinceLastModification,omitempty" tf:"min_time_elapsed_since_last_modification"`
 }
 
+type TransferJobSpecTransferSpecPosixDataSink struct {
+	// Root directory path to the filesystem.
+	RootDirectory *string `json:"rootDirectory" tf:"root_directory"`
+}
+
+type TransferJobSpecTransferSpecPosixDataSource struct {
+	// Root directory path to the filesystem.
+	RootDirectory *string `json:"rootDirectory" tf:"root_directory"`
+}
+
 type TransferJobSpecTransferSpecTransferOptions struct {
 	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and delete_objects_unique_in_sink are mutually exclusive.
 	// +optional
@@ -179,6 +193,12 @@ type TransferJobSpecTransferSpec struct {
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' last_modification_time do not exclude objects in a data sink.
 	// +optional
 	ObjectConditions *TransferJobSpecTransferSpecObjectConditions `json:"objectConditions,omitempty" tf:"object_conditions"`
+	// A POSIX filesystem data sink.
+	// +optional
+	PosixDataSink *TransferJobSpecTransferSpecPosixDataSink `json:"posixDataSink,omitempty" tf:"posix_data_sink"`
+	// A POSIX filesystem data source.
+	// +optional
+	PosixDataSource *TransferJobSpecTransferSpecPosixDataSource `json:"posixDataSource,omitempty" tf:"posix_data_source"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option delete_objects_unique_in_sink is true, object conditions based on objects' last_modification_time are ignored and do not exclude objects in a data source or a data sink.
 	// +optional
 	TransferOptions *TransferJobSpecTransferSpecTransferOptions `json:"transferOptions,omitempty" tf:"transfer_options"`
@@ -221,7 +241,8 @@ type TransferJobSpecResource struct {
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run.
-	Schedule *TransferJobSpecSchedule `json:"schedule" tf:"schedule"`
+	// +optional
+	Schedule *TransferJobSpecSchedule `json:"schedule,omitempty" tf:"schedule"`
 	// Status of the job. Default: ENABLED. NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
 	// +optional
 	Status *string `json:"status,omitempty" tf:"status"`

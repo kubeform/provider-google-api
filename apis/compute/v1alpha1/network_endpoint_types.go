@@ -63,7 +63,8 @@ type NetworkEndpointSpecResource struct {
 	// The name for a specific VM instance that the IP address belongs to.
 	// This is required for network endpoints of type GCE_VM_IP_PORT.
 	// The instance must be in the same zone of network endpoint group.
-	Instance *string `json:"instance" tf:"instance"`
+	// +optional
+	Instance *string `json:"instance,omitempty" tf:"instance"`
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).

@@ -634,7 +634,9 @@ spec:
                     type: string
                   runtimeAPIVersion:
                     description: The version of the API in the given runtime environment.
-                      Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+                      Please see the app.yaml reference for valid values at 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\
+                      Substitute '<language>' with 'python', 'java', 'php', 'ruby',
+                      'go' or 'nodejs'.
                     type: string
                   runtimeChannel:
                     description: The channel of the runtime to use. Only available
@@ -1291,7 +1293,9 @@ spec:
                     type: string
                   runtimeAPIVersion:
                     description: The version of the API in the given runtime environment.
-                      Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+                      Please see the app.yaml reference for valid values at 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\
+                      Substitute '<language>' with 'python', 'java', 'php', 'ruby',
+                      'go' or 'nodejs'.
                     type: string
                   runtimeChannel:
                     description: The channel of the runtime to use. Only available

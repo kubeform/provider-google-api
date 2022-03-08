@@ -36,6 +36,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketSpecWebsite{}).Type1()):                                                     BucketSpecWebsiteCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketIamBindingSpecCondition{}).Type1()):                                         BucketIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketIamMemberSpecCondition{}).Type1()):                                          BucketIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketObjectSpecCustomerEncryption{}).Type1()):                                    BucketObjectSpecCustomerEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecSchedule{}).Type1()):                                               TransferJobSpecScheduleCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecScheduleScheduleEndDate{}).Type1()):                                TransferJobSpecScheduleScheduleEndDateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecScheduleScheduleStartDate{}).Type1()):                              TransferJobSpecScheduleScheduleStartDateCodec{},
@@ -49,6 +50,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecGcsDataSource{}).Type1()):                              TransferJobSpecTransferSpecGcsDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecHttpDataSource{}).Type1()):                             TransferJobSpecTransferSpecHttpDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecObjectConditions{}).Type1()):                           TransferJobSpecTransferSpecObjectConditionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSink{}).Type1()):                              TransferJobSpecTransferSpecPosixDataSinkCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSource{}).Type1()):                            TransferJobSpecTransferSpecPosixDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecTransferOptions{}).Type1()):                            TransferJobSpecTransferSpecTransferOptionsCodec{},
 	}
 }
@@ -64,6 +67,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketSpecWebsite{}).Type1()):                                                     BucketSpecWebsiteCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketIamBindingSpecCondition{}).Type1()):                                         BucketIamBindingSpecConditionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BucketIamMemberSpecCondition{}).Type1()):                                          BucketIamMemberSpecConditionCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BucketObjectSpecCustomerEncryption{}).Type1()):                                    BucketObjectSpecCustomerEncryptionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecSchedule{}).Type1()):                                               TransferJobSpecScheduleCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecScheduleScheduleEndDate{}).Type1()):                                TransferJobSpecScheduleScheduleEndDateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecScheduleScheduleStartDate{}).Type1()):                              TransferJobSpecScheduleScheduleStartDateCodec{},
@@ -77,6 +81,8 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecGcsDataSource{}).Type1()):                              TransferJobSpecTransferSpecGcsDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecHttpDataSource{}).Type1()):                             TransferJobSpecTransferSpecHttpDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecObjectConditions{}).Type1()):                           TransferJobSpecTransferSpecObjectConditionsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSink{}).Type1()):                              TransferJobSpecTransferSpecPosixDataSinkCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSource{}).Type1()):                            TransferJobSpecTransferSpecPosixDataSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecTransferOptions{}).Type1()):                            TransferJobSpecTransferSpecTransferOptionsCodec{},
 	}
 }
@@ -801,6 +807,85 @@ func (BucketIamMemberSpecConditionCodec) Decode(ptr unsafe.Pointer, iter *jsonit
 		}
 	default:
 		iter.ReportError("decode BucketIamMemberSpecCondition", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type BucketObjectSpecCustomerEncryptionCodec struct {
+}
+
+func (BucketObjectSpecCustomerEncryptionCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*BucketObjectSpecCustomerEncryption)(ptr) == nil
+}
+
+func (BucketObjectSpecCustomerEncryptionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*BucketObjectSpecCustomerEncryption)(ptr)
+	var objs []BucketObjectSpecCustomerEncryption
+	if obj != nil {
+		objs = []BucketObjectSpecCustomerEncryption{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BucketObjectSpecCustomerEncryption{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (BucketObjectSpecCustomerEncryptionCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*BucketObjectSpecCustomerEncryption)(ptr) = BucketObjectSpecCustomerEncryption{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []BucketObjectSpecCustomerEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BucketObjectSpecCustomerEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*BucketObjectSpecCustomerEncryption)(ptr) = objs[0]
+			} else {
+				*(*BucketObjectSpecCustomerEncryption)(ptr) = BucketObjectSpecCustomerEncryption{}
+			}
+		} else {
+			*(*BucketObjectSpecCustomerEncryption)(ptr) = BucketObjectSpecCustomerEncryption{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj BucketObjectSpecCustomerEncryption
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BucketObjectSpecCustomerEncryption{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*BucketObjectSpecCustomerEncryption)(ptr) = obj
+		} else {
+			*(*BucketObjectSpecCustomerEncryption)(ptr) = BucketObjectSpecCustomerEncryption{}
+		}
+	default:
+		iter.ReportError("decode BucketObjectSpecCustomerEncryption", "unexpected JSON type")
 	}
 }
 
@@ -1828,6 +1913,164 @@ func (TransferJobSpecTransferSpecObjectConditionsCodec) Decode(ptr unsafe.Pointe
 		}
 	default:
 		iter.ReportError("decode TransferJobSpecTransferSpecObjectConditions", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TransferJobSpecTransferSpecPosixDataSinkCodec struct {
+}
+
+func (TransferJobSpecTransferSpecPosixDataSinkCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TransferJobSpecTransferSpecPosixDataSink)(ptr) == nil
+}
+
+func (TransferJobSpecTransferSpecPosixDataSinkCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TransferJobSpecTransferSpecPosixDataSink)(ptr)
+	var objs []TransferJobSpecTransferSpecPosixDataSink
+	if obj != nil {
+		objs = []TransferJobSpecTransferSpecPosixDataSink{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSink{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TransferJobSpecTransferSpecPosixDataSinkCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = TransferJobSpecTransferSpecPosixDataSink{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TransferJobSpecTransferSpecPosixDataSink
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSink{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = objs[0]
+			} else {
+				*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = TransferJobSpecTransferSpecPosixDataSink{}
+			}
+		} else {
+			*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = TransferJobSpecTransferSpecPosixDataSink{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TransferJobSpecTransferSpecPosixDataSink
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSink{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = obj
+		} else {
+			*(*TransferJobSpecTransferSpecPosixDataSink)(ptr) = TransferJobSpecTransferSpecPosixDataSink{}
+		}
+	default:
+		iter.ReportError("decode TransferJobSpecTransferSpecPosixDataSink", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TransferJobSpecTransferSpecPosixDataSourceCodec struct {
+}
+
+func (TransferJobSpecTransferSpecPosixDataSourceCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TransferJobSpecTransferSpecPosixDataSource)(ptr) == nil
+}
+
+func (TransferJobSpecTransferSpecPosixDataSourceCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TransferJobSpecTransferSpecPosixDataSource)(ptr)
+	var objs []TransferJobSpecTransferSpecPosixDataSource
+	if obj != nil {
+		objs = []TransferJobSpecTransferSpecPosixDataSource{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSource{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TransferJobSpecTransferSpecPosixDataSourceCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = TransferJobSpecTransferSpecPosixDataSource{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TransferJobSpecTransferSpecPosixDataSource
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSource{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = objs[0]
+			} else {
+				*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = TransferJobSpecTransferSpecPosixDataSource{}
+			}
+		} else {
+			*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = TransferJobSpecTransferSpecPosixDataSource{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TransferJobSpecTransferSpecPosixDataSource
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TransferJobSpecTransferSpecPosixDataSource{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = obj
+		} else {
+			*(*TransferJobSpecTransferSpecPosixDataSource)(ptr) = TransferJobSpecTransferSpecPosixDataSource{}
+		}
+	default:
+		iter.ReportError("decode TransferJobSpecTransferSpecPosixDataSource", "unexpected JSON type")
 	}
 }
 

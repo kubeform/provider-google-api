@@ -86,7 +86,7 @@ func (r *DefaultObjectAccessControl) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range defaultobjectaccesscontrolForceNewList {
+	for key, _ := range defaultobjectaccesscontrolForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

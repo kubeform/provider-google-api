@@ -91,7 +91,7 @@ func (r *ManagedZone) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managedzoneForceNewList {
+	for key, _ := range managedzoneForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

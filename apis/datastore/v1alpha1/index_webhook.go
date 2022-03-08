@@ -92,7 +92,7 @@ func (r *Index) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range indexForceNewList {
+	for key, _ := range indexForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -326,6 +326,41 @@ spec:
                                           the variable exists or not. Defaults to
                                           "".'
                                         type: string
+                                      valueFrom:
+                                        description: Source for the environment variable's
+                                          value. Only supports secret_key_ref.
+                                        properties:
+                                          secretKeyRef:
+                                            description: Selects a key (version) of
+                                              a secret in Secret Manager.
+                                            properties:
+                                              key:
+                                                description: A Cloud Secret Manager
+                                                  secret version. Must be 'latest'
+                                                  for the latest version or an integer
+                                                  for a specific version.
+                                                type: string
+                                              name:
+                                                description: The name of the secret
+                                                  in Cloud Secret Manager. By default,
+                                                  the secret is assumed to be in the
+                                                  same project. If the secret is in
+                                                  another project, you must define
+                                                  an alias. You set the <alias> in
+                                                  this field, and create an annotation
+                                                  with the following structure "run.googleapis.com/secrets"
+                                                  = "<alias>:projects/<project-id|project-number>/secrets/<secret-name>".
+                                                  If multiple alias definitions are
+                                                  needed, they must be separated by
+                                                  commas in the annotation field.
+                                                type: string
+                                            required:
+                                            - key
+                                            - name
+                                            type: object
+                                        required:
+                                        - secretKeyRef
+                                        type: object
                                     type: object
                                   type: array
                                 envFrom:
@@ -392,18 +427,20 @@ spec:
                                   items:
                                     properties:
                                       containerPort:
-                                        description: Port number.
+                                        description: Port number the container listens
+                                          on. This must be a valid port number, 0
+                                          < x < 65536.
                                         format: int64
                                         type: integer
                                       name:
-                                        description: Name of the port.
+                                        description: If specified, used to specify
+                                          which protocol to use. Allowed values are
+                                          "http1" and "h2c".
                                         type: string
                                       protocol:
-                                        description: Protocol used on port. Defaults
-                                          to TCP.
+                                        description: Protocol for port. Must be "TCP".
+                                          Defaults to "TCP".
                                         type: string
-                                    required:
-                                    - containerPort
                                     type: object
                                   type: array
                                 resources:
@@ -431,6 +468,25 @@ spec:
                                         k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go'
                                       type: object
                                   type: object
+                                volumeMounts:
+                                  description: Volume to mount into the container's
+                                    filesystem. Only supports SecretVolumeSources.
+                                  items:
+                                    properties:
+                                      mountPath:
+                                        description: Path within the container at
+                                          which the volume should be mounted.  Must
+                                          not contain ':'.
+                                        type: string
+                                      name:
+                                        description: This must match the Name of a
+                                          Volume.
+                                        type: string
+                                    required:
+                                    - mountPath
+                                    - name
+                                    type: object
+                                  type: array
                                 workingDir:
                                   description: Container's working directory. If not
                                     specified, the container runtime's default will
@@ -460,6 +516,87 @@ spec:
                               instance is allowed for responding to a request.
                             format: int64
                             type: integer
+                          volumes:
+                            description: Volume represents a named volume in a container.
+                            items:
+                              properties:
+                                name:
+                                  description: Volume's name.
+                                  type: string
+                                secret:
+                                  description: The secret's value will be presented
+                                    as the content of a file whose name is defined
+                                    in the item path. If no items are defined, the
+                                    name of the file is the secret_name.
+                                  properties:
+                                    defaultMode:
+                                      description: Mode bits to use on created files
+                                        by default. Must be a value between 0000 and
+                                        0777. Defaults to 0644. Directories within
+                                        the path are not affected by this setting.
+                                        This might be in conflict with other options
+                                        that affect the file mode, like fsGroup, and
+                                        the result can be other mode bits set.
+                                      format: int64
+                                      type: integer
+                                    items:
+                                      description: If unspecified, the volume will
+                                        expose a file whose name is the secret_name.
+                                        If specified, the key will be used as the
+                                        version to fetch from Cloud Secret Manager
+                                        and the path will be the name of the file
+                                        exposed in the volume. When items are defined,
+                                        they must specify a key and a path.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: The Cloud Secret Manager
+                                              secret version. Can be 'latest' for
+                                              the latest value or an integer for a
+                                              specific version.
+                                            type: string
+                                          mode:
+                                            description: Mode bits to use on this
+                                              file, must be a value between 0000 and
+                                              0777. If not specified, the volume defaultMode
+                                              will be used. This might be in conflict
+                                              with other options that affect the file
+                                              mode, like fsGroup, and the result can
+                                              be other mode bits set.
+                                            format: int64
+                                            type: integer
+                                          path:
+                                            description: The relative path of the
+                                              file to map the key to. May not be an
+                                              absolute path. May not contain the path
+                                              element '..'. May not start with the
+                                              string '..'.
+                                            type: string
+                                        required:
+                                        - key
+                                        - path
+                                        type: object
+                                      type: array
+                                    secretName:
+                                      description: 'The name of the secret in Cloud
+                                        Secret Manager. By default, the secret is
+                                        assumed to be in the same project. If the
+                                        secret is in another project, you must define
+                                        an alias. An alias definition has the form:
+                                        <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+                                        If multiple alias definitions are needed,
+                                        they must be separated by commas. The alias
+                                        definitions must be set on the run.googleapis.com/secrets
+                                        annotation.'
+                                      type: string
+                                  required:
+                                  - secretName
+                                  type: object
+                              required:
+                              - name
+                              - secret
+                              type: object
+                            type: array
                         type: object
                     type: object
                   timeouts:
@@ -800,6 +937,41 @@ spec:
                                           the variable exists or not. Defaults to
                                           "".'
                                         type: string
+                                      valueFrom:
+                                        description: Source for the environment variable's
+                                          value. Only supports secret_key_ref.
+                                        properties:
+                                          secretKeyRef:
+                                            description: Selects a key (version) of
+                                              a secret in Secret Manager.
+                                            properties:
+                                              key:
+                                                description: A Cloud Secret Manager
+                                                  secret version. Must be 'latest'
+                                                  for the latest version or an integer
+                                                  for a specific version.
+                                                type: string
+                                              name:
+                                                description: The name of the secret
+                                                  in Cloud Secret Manager. By default,
+                                                  the secret is assumed to be in the
+                                                  same project. If the secret is in
+                                                  another project, you must define
+                                                  an alias. You set the <alias> in
+                                                  this field, and create an annotation
+                                                  with the following structure "run.googleapis.com/secrets"
+                                                  = "<alias>:projects/<project-id|project-number>/secrets/<secret-name>".
+                                                  If multiple alias definitions are
+                                                  needed, they must be separated by
+                                                  commas in the annotation field.
+                                                type: string
+                                            required:
+                                            - key
+                                            - name
+                                            type: object
+                                        required:
+                                        - secretKeyRef
+                                        type: object
                                     type: object
                                   type: array
                                 envFrom:
@@ -866,18 +1038,20 @@ spec:
                                   items:
                                     properties:
                                       containerPort:
-                                        description: Port number.
+                                        description: Port number the container listens
+                                          on. This must be a valid port number, 0
+                                          < x < 65536.
                                         format: int64
                                         type: integer
                                       name:
-                                        description: Name of the port.
+                                        description: If specified, used to specify
+                                          which protocol to use. Allowed values are
+                                          "http1" and "h2c".
                                         type: string
                                       protocol:
-                                        description: Protocol used on port. Defaults
-                                          to TCP.
+                                        description: Protocol for port. Must be "TCP".
+                                          Defaults to "TCP".
                                         type: string
-                                    required:
-                                    - containerPort
                                     type: object
                                   type: array
                                 resources:
@@ -905,6 +1079,25 @@ spec:
                                         k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go'
                                       type: object
                                   type: object
+                                volumeMounts:
+                                  description: Volume to mount into the container's
+                                    filesystem. Only supports SecretVolumeSources.
+                                  items:
+                                    properties:
+                                      mountPath:
+                                        description: Path within the container at
+                                          which the volume should be mounted.  Must
+                                          not contain ':'.
+                                        type: string
+                                      name:
+                                        description: This must match the Name of a
+                                          Volume.
+                                        type: string
+                                    required:
+                                    - mountPath
+                                    - name
+                                    type: object
+                                  type: array
                                 workingDir:
                                   description: Container's working directory. If not
                                     specified, the container runtime's default will
@@ -934,6 +1127,87 @@ spec:
                               instance is allowed for responding to a request.
                             format: int64
                             type: integer
+                          volumes:
+                            description: Volume represents a named volume in a container.
+                            items:
+                              properties:
+                                name:
+                                  description: Volume's name.
+                                  type: string
+                                secret:
+                                  description: The secret's value will be presented
+                                    as the content of a file whose name is defined
+                                    in the item path. If no items are defined, the
+                                    name of the file is the secret_name.
+                                  properties:
+                                    defaultMode:
+                                      description: Mode bits to use on created files
+                                        by default. Must be a value between 0000 and
+                                        0777. Defaults to 0644. Directories within
+                                        the path are not affected by this setting.
+                                        This might be in conflict with other options
+                                        that affect the file mode, like fsGroup, and
+                                        the result can be other mode bits set.
+                                      format: int64
+                                      type: integer
+                                    items:
+                                      description: If unspecified, the volume will
+                                        expose a file whose name is the secret_name.
+                                        If specified, the key will be used as the
+                                        version to fetch from Cloud Secret Manager
+                                        and the path will be the name of the file
+                                        exposed in the volume. When items are defined,
+                                        they must specify a key and a path.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: The Cloud Secret Manager
+                                              secret version. Can be 'latest' for
+                                              the latest value or an integer for a
+                                              specific version.
+                                            type: string
+                                          mode:
+                                            description: Mode bits to use on this
+                                              file, must be a value between 0000 and
+                                              0777. If not specified, the volume defaultMode
+                                              will be used. This might be in conflict
+                                              with other options that affect the file
+                                              mode, like fsGroup, and the result can
+                                              be other mode bits set.
+                                            format: int64
+                                            type: integer
+                                          path:
+                                            description: The relative path of the
+                                              file to map the key to. May not be an
+                                              absolute path. May not contain the path
+                                              element '..'. May not start with the
+                                              string '..'.
+                                            type: string
+                                        required:
+                                        - key
+                                        - path
+                                        type: object
+                                      type: array
+                                    secretName:
+                                      description: 'The name of the secret in Cloud
+                                        Secret Manager. By default, the secret is
+                                        assumed to be in the same project. If the
+                                        secret is in another project, you must define
+                                        an alias. An alias definition has the form:
+                                        <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+                                        If multiple alias definitions are needed,
+                                        they must be separated by commas. The alias
+                                        definitions must be set on the run.googleapis.com/secrets
+                                        annotation.'
+                                      type: string
+                                  required:
+                                  - secretName
+                                  type: object
+                              required:
+                              - name
+                              - secret
+                              type: object
+                            type: array
                         type: object
                     type: object
                   timeouts:

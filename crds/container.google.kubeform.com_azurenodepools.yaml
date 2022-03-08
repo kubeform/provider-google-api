@@ -1,0 +1,517 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: google.kubeform.com
+    app.kubernetes.io/part-of: kubeform.com
+  name: azurenodepools.container.google.kubeform.com
+spec:
+  group: container.google.kubeform.com
+  names:
+    kind: AzureNodePool
+    listKind: AzureNodePoolList
+    plural: azurenodepools
+    singular: azurenodepool
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.phase
+      name: Phase
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              backendRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              providerRef:
+                description: LocalObjectReference contains enough information to let
+                  you locate the referenced object inside the same namespace.
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+              resource:
+                properties:
+                  annotations:
+                    additionalProperties:
+                      type: string
+                    description: 'Optional. Annotations on the node pool. This field
+                      has the same restrictions as Kubernetes annotations. The total
+                      size of all keys and values combined is limited to 256k. Keys
+                      can have 2 segments: prefix (optional) and name (required),
+                      separated by a slash (/). Prefix must be a DNS subdomain. Name
+                      must be 63 characters or less, begin and end with alphanumerics,
+                      with dashes (-), underscores (_), dots (.), and alphanumerics
+                      between.'
+                    type: object
+                  autoscaling:
+                    description: Required. Autoscaler configuration for this node
+                      pool.
+                    properties:
+                      maxNodeCount:
+                        description: Required. Maximum number of nodes in the node
+                          pool. Must be >= min_node_count.
+                        format: int64
+                        type: integer
+                      minNodeCount:
+                        description: Required. Minimum number of nodes in the node
+                          pool. Must be >= 1 and <= max_node_count.
+                        format: int64
+                        type: integer
+                    required:
+                    - maxNodeCount
+                    - minNodeCount
+                    type: object
+                  azureAvailabilityZone:
+                    description: Optional. The Azure availability zone of the nodes
+                      in this nodepool. When unspecified, it defaults to `1`.
+                    type: string
+                  cluster:
+                    description: The azureCluster for the resource
+                    type: string
+                  config:
+                    description: Required. The node configuration of the node pool.
+                    properties:
+                      rootVolume:
+                        description: Optional. Configuration related to the root volume
+                          provisioned for each node pool machine. When unspecified,
+                          it defaults to a 32-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      sshConfig:
+                        description: Required. SSH configuration for how to access
+                          the node pool machines.
+                        properties:
+                          authorizedKey:
+                            description: Required. The SSH public key data for VMs
+                              managed by Anthos. This accepts the authorized_keys
+                              file format used in OpenSSH according to the sshd(8)
+                              manual page.
+                            type: string
+                        required:
+                        - authorizedKey
+                        type: object
+                      tags:
+                        additionalProperties:
+                          type: string
+                        description: Optional. A set of tags to apply to all underlying
+                          Azure resources for this node pool. This currently only
+                          includes Virtual Machine Scale Sets. Specify at most 50
+                          pairs containing alphanumerics, spaces, and symbols (.+-=_:@/).
+                          Keys can be up to 127 Unicode characters. Values can be
+                          up to 255 Unicode characters.
+                        type: object
+                      vmSize:
+                        description: 'Optional. The Azure VM size name. Example: `Standard_DS2_v2`.
+                          See (/anthos/clusters/docs/azure/reference/supported-vms)
+                          for options. When unspecified, it defaults to `Standard_DS2_v2`.'
+                        type: string
+                    required:
+                    - sshConfig
+                    type: object
+                  createTime:
+                    description: Output only. The time at which this node pool was
+                      created.
+                    type: string
+                  etag:
+                    description: Allows clients to perform consistent read-modify-writes
+                      through optimistic concurrency control. May be sent on update
+                      and delete requests to ensure the client has an up-to-date value
+                      before proceeding.
+                    type: string
+                  id:
+                    type: string
+                  location:
+                    description: The location for the resource
+                    type: string
+                  maxPodsConstraint:
+                    description: Required. The constraint on the maximum number of
+                      pods that can be run simultaneously on a node in the node pool.
+                    properties:
+                      maxPodsPerNode:
+                        description: Required. The maximum number of pods to schedule
+                          on a single node.
+                        format: int64
+                        type: integer
+                    required:
+                    - maxPodsPerNode
+                    type: object
+                  name:
+                    description: The name of this resource.
+                    type: string
+                  project:
+                    description: The project for the resource
+                    type: string
+                  reconciling:
+                    description: Output only. If set, there are currently pending
+                      changes to the node pool.
+                    type: boolean
+                  state:
+                    description: 'Output only. The current state of the node pool.
+                      Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
+                      STOPPING, ERROR, DEGRADED'
+                    type: string
+                  subnetID:
+                    description: Required. The ARM ID of the subnet where the node
+                      pool VMs run. Make sure it's a subnet under the virtual network
+                      in the cluster configuration.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  uid:
+                    description: Output only. A globally unique identifier for the
+                      node pool.
+                    type: string
+                  updateTime:
+                    description: Output only. The time at which this node pool was
+                      last updated.
+                    type: string
+                  version:
+                    description: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`)
+                      running on this node pool.
+                    type: string
+                required:
+                - autoscaling
+                - cluster
+                - config
+                - location
+                - maxPodsConstraint
+                - name
+                - subnetID
+                - version
+                type: object
+              state:
+                properties:
+                  annotations:
+                    additionalProperties:
+                      type: string
+                    description: 'Optional. Annotations on the node pool. This field
+                      has the same restrictions as Kubernetes annotations. The total
+                      size of all keys and values combined is limited to 256k. Keys
+                      can have 2 segments: prefix (optional) and name (required),
+                      separated by a slash (/). Prefix must be a DNS subdomain. Name
+                      must be 63 characters or less, begin and end with alphanumerics,
+                      with dashes (-), underscores (_), dots (.), and alphanumerics
+                      between.'
+                    type: object
+                  autoscaling:
+                    description: Required. Autoscaler configuration for this node
+                      pool.
+                    properties:
+                      maxNodeCount:
+                        description: Required. Maximum number of nodes in the node
+                          pool. Must be >= min_node_count.
+                        format: int64
+                        type: integer
+                      minNodeCount:
+                        description: Required. Minimum number of nodes in the node
+                          pool. Must be >= 1 and <= max_node_count.
+                        format: int64
+                        type: integer
+                    required:
+                    - maxNodeCount
+                    - minNodeCount
+                    type: object
+                  azureAvailabilityZone:
+                    description: Optional. The Azure availability zone of the nodes
+                      in this nodepool. When unspecified, it defaults to `1`.
+                    type: string
+                  cluster:
+                    description: The azureCluster for the resource
+                    type: string
+                  config:
+                    description: Required. The node configuration of the node pool.
+                    properties:
+                      rootVolume:
+                        description: Optional. Configuration related to the root volume
+                          provisioned for each node pool machine. When unspecified,
+                          it defaults to a 32-GiB Azure Disk.
+                        properties:
+                          sizeGib:
+                            description: Optional. The size of the disk, in GiBs.
+                              When unspecified, a default value is provided. See the
+                              specific reference in the parent resource.
+                            format: int64
+                            type: integer
+                        type: object
+                      sshConfig:
+                        description: Required. SSH configuration for how to access
+                          the node pool machines.
+                        properties:
+                          authorizedKey:
+                            description: Required. The SSH public key data for VMs
+                              managed by Anthos. This accepts the authorized_keys
+                              file format used in OpenSSH according to the sshd(8)
+                              manual page.
+                            type: string
+                        required:
+                        - authorizedKey
+                        type: object
+                      tags:
+                        additionalProperties:
+                          type: string
+                        description: Optional. A set of tags to apply to all underlying
+                          Azure resources for this node pool. This currently only
+                          includes Virtual Machine Scale Sets. Specify at most 50
+                          pairs containing alphanumerics, spaces, and symbols (.+-=_:@/).
+                          Keys can be up to 127 Unicode characters. Values can be
+                          up to 255 Unicode characters.
+                        type: object
+                      vmSize:
+                        description: 'Optional. The Azure VM size name. Example: `Standard_DS2_v2`.
+                          See (/anthos/clusters/docs/azure/reference/supported-vms)
+                          for options. When unspecified, it defaults to `Standard_DS2_v2`.'
+                        type: string
+                    required:
+                    - sshConfig
+                    type: object
+                  createTime:
+                    description: Output only. The time at which this node pool was
+                      created.
+                    type: string
+                  etag:
+                    description: Allows clients to perform consistent read-modify-writes
+                      through optimistic concurrency control. May be sent on update
+                      and delete requests to ensure the client has an up-to-date value
+                      before proceeding.
+                    type: string
+                  id:
+                    type: string
+                  location:
+                    description: The location for the resource
+                    type: string
+                  maxPodsConstraint:
+                    description: Required. The constraint on the maximum number of
+                      pods that can be run simultaneously on a node in the node pool.
+                    properties:
+                      maxPodsPerNode:
+                        description: Required. The maximum number of pods to schedule
+                          on a single node.
+                        format: int64
+                        type: integer
+                    required:
+                    - maxPodsPerNode
+                    type: object
+                  name:
+                    description: The name of this resource.
+                    type: string
+                  project:
+                    description: The project for the resource
+                    type: string
+                  reconciling:
+                    description: Output only. If set, there are currently pending
+                      changes to the node pool.
+                    type: boolean
+                  state:
+                    description: 'Output only. The current state of the node pool.
+                      Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
+                      STOPPING, ERROR, DEGRADED'
+                    type: string
+                  subnetID:
+                    description: Required. The ARM ID of the subnet where the node
+                      pool VMs run. Make sure it's a subnet under the virtual network
+                      in the cluster configuration.
+                    type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
+                  uid:
+                    description: Output only. A globally unique identifier for the
+                      node pool.
+                    type: string
+                  updateTime:
+                    description: Output only. The time at which this node pool was
+                      last updated.
+                    type: string
+                  version:
+                    description: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`)
+                      running on this node pool.
+                    type: string
+                required:
+                - autoscaling
+                - cluster
+                - config
+                - location
+                - maxPodsConstraint
+                - name
+                - subnetID
+                - version
+                type: object
+              terminationPolicy:
+                enum:
+                - Delete
+                - DoNotTerminate
+                type: string
+              updatePolicy:
+                enum:
+                - Destroy
+                - DoNotDestroy
+                type: string
+            required:
+            - providerRef
+            - resource
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another. This should be when the underlying condition changed.  If
+                        that is not known, then using the time when the API field
+                        changed is acceptable.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition. This field may be empty.
+                      type: string
+                    observedGeneration:
+                      description: If set, this represents the .metadata.generation
+                        that the condition was set based upon. For instance, if .metadata.generation
+                        is currently 12, but the .status.condition[x].observedGeneration
+                        is 9, the condition is out of date with respect to the current
+                        state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: The reason for the condition's last transition
+                        in CamelCase. The specific API may choose whether or not this
+                        field is considered a guaranteed API. This field may not be
+                        empty.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition in CamelCase or in foo.example.com/CamelCase.
+                        Many .condition.type values are consistent across resources
+                        like Available, but because arbitrary conditions can be useful
+                        (see .node.status.conditions), the ability to deconflict is
+                        important.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              observedGeneration:
+                description: Resource generation, which is updated on mutation by
+                  the API Server.
+                format: int64
+                type: integer
+              phase:
+                description: Status defines the set of statuses a resource can have.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

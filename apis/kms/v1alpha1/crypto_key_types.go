@@ -45,7 +45,7 @@ type CryptoKeySpecVersionTemplate struct {
 	// The algorithm to use when creating a version based on this template.
 	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
 	Algorithm *string `json:"algorithm" tf:"algorithm"`
-	// The protection level to use when creating a version based on this template. Default value: "SOFTWARE" Possible values: ["SOFTWARE", "HSM"]
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
 	// +optional
 	ProtectionLevel *string `json:"protectionLevel,omitempty" tf:"protection_level"`
 }
@@ -95,10 +95,6 @@ type CryptoKeySpecResource struct {
 	// letter 's' (seconds). It must be greater than a day (ie, 86400).
 	// +optional
 	RotationPeriod *string `json:"rotationPeriod,omitempty" tf:"rotation_period"`
-	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-	// +optional
-	// Deprecated
-	SelfLink *string `json:"selfLink,omitempty" tf:"self_link"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
 	// +optional

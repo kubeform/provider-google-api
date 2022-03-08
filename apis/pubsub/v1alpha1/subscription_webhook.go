@@ -92,7 +92,7 @@ func (r *Subscription) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range subscriptionForceNewList {
+	for key, _ := range subscriptionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

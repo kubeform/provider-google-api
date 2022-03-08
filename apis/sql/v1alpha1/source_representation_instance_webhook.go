@@ -93,7 +93,7 @@ func (r *SourceRepresentationInstance) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range sourcerepresentationinstanceForceNewList {
+	for key, _ := range sourcerepresentationinstanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -234,8 +234,7 @@ type StandardAppVersionSpecResource struct {
 	// Code and application artifacts that make up this version.
 	Deployment *StandardAppVersionSpecDeployment `json:"deployment" tf:"deployment"`
 	// The entrypoint for the application.
-	// +optional
-	Entrypoint *StandardAppVersionSpecEntrypoint `json:"entrypoint,omitempty" tf:"entrypoint"`
+	Entrypoint *StandardAppVersionSpecEntrypoint `json:"entrypoint" tf:"entrypoint"`
 	// Environment variables available to the application.
 	// +optional
 	EnvVariables *map[string]string `json:"envVariables,omitempty" tf:"env_variables"`
@@ -268,7 +267,8 @@ type StandardAppVersionSpecResource struct {
 	// Desired runtime. Example python27.
 	Runtime *string `json:"runtime" tf:"runtime"`
 	// The version of the API in the given runtime environment.
-	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+	// Please see the app.yaml reference for valid values at 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\
+	// Substitute '<language>' with 'python', 'java', 'php', 'ruby', 'go' or 'nodejs'.
 	// +optional
 	RuntimeAPIVersion *string `json:"runtimeAPIVersion,omitempty" tf:"runtime_api_version"`
 	// AppEngine service resource

@@ -71,7 +71,7 @@ type AccessConnectorSpecResource struct {
 	MinThroughput *int64 `json:"minThroughput,omitempty" tf:"min_throughput"`
 	// The name of the resource (Max 25 characters).
 	Name *string `json:"name" tf:"name"`
-	// Name of the VPC network. Required if 'ip_cidr_range' is set.
+	// Name or self_link of the VPC network. Required if 'ip_cidr_range' is set.
 	// +optional
 	Network *string `json:"network,omitempty" tf:"network"`
 	// +optional

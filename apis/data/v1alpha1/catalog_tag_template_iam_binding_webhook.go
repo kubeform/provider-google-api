@@ -94,7 +94,7 @@ func (r *CatalogTagTemplateIamBinding) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range catalogtagtemplateiambindingForceNewList {
+	for key, _ := range catalogtagtemplateiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

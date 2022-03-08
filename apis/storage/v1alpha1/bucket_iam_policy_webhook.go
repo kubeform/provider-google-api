@@ -88,7 +88,7 @@ func (r *BucketIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketiampolicyForceNewList {
+	for key, _ := range bucketiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

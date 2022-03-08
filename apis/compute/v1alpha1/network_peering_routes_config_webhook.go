@@ -88,7 +88,7 @@ func (r *NetworkPeeringRoutesConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range networkpeeringroutesconfigForceNewList {
+	for key, _ := range networkpeeringroutesconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

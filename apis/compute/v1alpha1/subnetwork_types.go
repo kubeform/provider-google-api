@@ -160,13 +160,11 @@ type SubnetworkSpecResource struct {
 	PrivateIpv6GoogleAccess *string `json:"privateIpv6GoogleAccess,omitempty" tf:"private_ipv6_google_access"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
-	// The purpose of the resource. This field can be either PRIVATE
-	// or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+	// The purpose of the resource. A subnetwork with purpose set to
 	// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-	// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
-	// purpose defaults to PRIVATE.
+	// reserved for Internal HTTP(S) Load Balancing.
 	//
-	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set 'role'.
+	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the 'role' field.
 	// +optional
 	Purpose *string `json:"purpose,omitempty" tf:"purpose"`
 	// The GCP region for this subnetwork.

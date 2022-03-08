@@ -88,7 +88,7 @@ func (r *BillingSubaccount) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range billingsubaccountForceNewList {
+	for key, _ := range billingsubaccountForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

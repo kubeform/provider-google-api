@@ -90,7 +90,7 @@ func (r *TasksQueue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tasksqueueForceNewList {
+	for key, _ := range tasksqueueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

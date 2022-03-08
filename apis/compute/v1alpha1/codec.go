@@ -44,6 +44,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetection{}).Type1()):                                                  BackendServiceSpecOutlierDetectionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetectionBaseEjectionTime{}).Type1()):                                  BackendServiceSpecOutlierDetectionBaseEjectionTimeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetectionInterval{}).Type1()):                                          BackendServiceSpecOutlierDetectionIntervalCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecSecuritySettings{}).Type1()):                                                  BackendServiceSpecSecuritySettingsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecDiskEncryptionKey{}).Type1()):                                                           DiskSpecDiskEncryptionKeyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecSourceImageEncryptionKey{}).Type1()):                                                    DiskSpecSourceImageEncryptionKeyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecSourceSnapshotEncryptionKey{}).Type1()):                                                 DiskSpecSourceSnapshotEncryptionKeyCodec{},
@@ -167,6 +168,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesRouteActionUrlRewrite{}).Type1()):                          RegionURLMapSpecPathMatcherRouteRulesRouteActionUrlRewriteCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesRouteActionWeightedBackendServicesHeaderAction{}).Type1()): RegionURLMapSpecPathMatcherRouteRulesRouteActionWeightedBackendServicesHeaderActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesUrlRedirect{}).Type1()):                                    RegionURLMapSpecPathMatcherRouteRulesUrlRedirectCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecShareSettings{}).Type1()):                                                        ReservationSpecShareSettingsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecSpecificReservation{}).Type1()):                                                  ReservationSpecSpecificReservationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecSpecificReservationInstanceProperties{}).Type1()):                                ReservationSpecSpecificReservationInstancePropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ResourcePolicySpecGroupPlacementPolicy{}).Type1()):                                              ResourcePolicySpecGroupPlacementPolicyCodec{},
@@ -182,6 +184,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ResourcePolicySpecSnapshotSchedulePolicySnapshotProperties{}).Type1()):                          ResourcePolicySpecSnapshotSchedulePolicySnapshotPropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RouterSpecBgp{}).Type1()):                                                                       RouterSpecBgpCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RouterNATSpecLogConfig{}).Type1()):                                                              RouterNATSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RouterPeerSpecBfd{}).Type1()):                                                                   RouterPeerSpecBfdCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatch{}).Type1()):                                                         SecurityPolicySpecRuleMatchCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatchConfig{}).Type1()):                                                   SecurityPolicySpecRuleMatchConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatchExpr{}).Type1()):                                                     SecurityPolicySpecRuleMatchExprCodec{},
@@ -268,6 +271,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetection{}).Type1()):                                                  BackendServiceSpecOutlierDetectionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetectionBaseEjectionTime{}).Type1()):                                  BackendServiceSpecOutlierDetectionBaseEjectionTimeCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecOutlierDetectionInterval{}).Type1()):                                          BackendServiceSpecOutlierDetectionIntervalCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecSecuritySettings{}).Type1()):                                                  BackendServiceSpecSecuritySettingsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecDiskEncryptionKey{}).Type1()):                                                           DiskSpecDiskEncryptionKeyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecSourceImageEncryptionKey{}).Type1()):                                                    DiskSpecSourceImageEncryptionKeyCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(DiskSpecSourceSnapshotEncryptionKey{}).Type1()):                                                 DiskSpecSourceSnapshotEncryptionKeyCodec{},
@@ -391,6 +395,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesRouteActionUrlRewrite{}).Type1()):                          RegionURLMapSpecPathMatcherRouteRulesRouteActionUrlRewriteCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesRouteActionWeightedBackendServicesHeaderAction{}).Type1()): RegionURLMapSpecPathMatcherRouteRulesRouteActionWeightedBackendServicesHeaderActionCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RegionURLMapSpecPathMatcherRouteRulesUrlRedirect{}).Type1()):                                    RegionURLMapSpecPathMatcherRouteRulesUrlRedirectCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecShareSettings{}).Type1()):                                                        ReservationSpecShareSettingsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecSpecificReservation{}).Type1()):                                                  ReservationSpecSpecificReservationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecSpecificReservationInstanceProperties{}).Type1()):                                ReservationSpecSpecificReservationInstancePropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ResourcePolicySpecGroupPlacementPolicy{}).Type1()):                                              ResourcePolicySpecGroupPlacementPolicyCodec{},
@@ -406,6 +411,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(ResourcePolicySpecSnapshotSchedulePolicySnapshotProperties{}).Type1()):                          ResourcePolicySpecSnapshotSchedulePolicySnapshotPropertiesCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RouterSpecBgp{}).Type1()):                                                                       RouterSpecBgpCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(RouterNATSpecLogConfig{}).Type1()):                                                              RouterNATSpecLogConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(RouterPeerSpecBfd{}).Type1()):                                                                   RouterPeerSpecBfdCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatch{}).Type1()):                                                         SecurityPolicySpecRuleMatchCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatchConfig{}).Type1()):                                                   SecurityPolicySpecRuleMatchConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(SecurityPolicySpecRuleMatchExpr{}).Type1()):                                                     SecurityPolicySpecRuleMatchExprCodec{},
@@ -1825,6 +1831,85 @@ func (BackendServiceSpecOutlierDetectionIntervalCodec) Decode(ptr unsafe.Pointer
 		}
 	default:
 		iter.ReportError("decode BackendServiceSpecOutlierDetectionInterval", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type BackendServiceSpecSecuritySettingsCodec struct {
+}
+
+func (BackendServiceSpecSecuritySettingsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*BackendServiceSpecSecuritySettings)(ptr) == nil
+}
+
+func (BackendServiceSpecSecuritySettingsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*BackendServiceSpecSecuritySettings)(ptr)
+	var objs []BackendServiceSpecSecuritySettings
+	if obj != nil {
+		objs = []BackendServiceSpecSecuritySettings{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecSecuritySettings{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (BackendServiceSpecSecuritySettingsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*BackendServiceSpecSecuritySettings)(ptr) = BackendServiceSpecSecuritySettings{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []BackendServiceSpecSecuritySettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecSecuritySettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*BackendServiceSpecSecuritySettings)(ptr) = objs[0]
+			} else {
+				*(*BackendServiceSpecSecuritySettings)(ptr) = BackendServiceSpecSecuritySettings{}
+			}
+		} else {
+			*(*BackendServiceSpecSecuritySettings)(ptr) = BackendServiceSpecSecuritySettings{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj BackendServiceSpecSecuritySettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(BackendServiceSpecSecuritySettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*BackendServiceSpecSecuritySettings)(ptr) = obj
+		} else {
+			*(*BackendServiceSpecSecuritySettings)(ptr) = BackendServiceSpecSecuritySettings{}
+		}
+	default:
+		iter.ReportError("decode BackendServiceSpecSecuritySettings", "unexpected JSON type")
 	}
 }
 
@@ -11546,6 +11631,85 @@ func (RegionURLMapSpecPathMatcherRouteRulesUrlRedirectCodec) Decode(ptr unsafe.P
 }
 
 // +k8s:deepcopy-gen=false
+type ReservationSpecShareSettingsCodec struct {
+}
+
+func (ReservationSpecShareSettingsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ReservationSpecShareSettings)(ptr) == nil
+}
+
+func (ReservationSpecShareSettingsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ReservationSpecShareSettings)(ptr)
+	var objs []ReservationSpecShareSettings
+	if obj != nil {
+		objs = []ReservationSpecShareSettings{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecShareSettings{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ReservationSpecShareSettingsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ReservationSpecShareSettings)(ptr) = ReservationSpecShareSettings{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ReservationSpecShareSettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecShareSettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ReservationSpecShareSettings)(ptr) = objs[0]
+			} else {
+				*(*ReservationSpecShareSettings)(ptr) = ReservationSpecShareSettings{}
+			}
+		} else {
+			*(*ReservationSpecShareSettings)(ptr) = ReservationSpecShareSettings{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ReservationSpecShareSettings
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ReservationSpecShareSettings{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ReservationSpecShareSettings)(ptr) = obj
+		} else {
+			*(*ReservationSpecShareSettings)(ptr) = ReservationSpecShareSettings{}
+		}
+	default:
+		iter.ReportError("decode ReservationSpecShareSettings", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type ReservationSpecSpecificReservationCodec struct {
 }
 
@@ -12727,6 +12891,85 @@ func (RouterNATSpecLogConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Ite
 		}
 	default:
 		iter.ReportError("decode RouterNATSpecLogConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type RouterPeerSpecBfdCodec struct {
+}
+
+func (RouterPeerSpecBfdCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*RouterPeerSpecBfd)(ptr) == nil
+}
+
+func (RouterPeerSpecBfdCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*RouterPeerSpecBfd)(ptr)
+	var objs []RouterPeerSpecBfd
+	if obj != nil {
+		objs = []RouterPeerSpecBfd{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RouterPeerSpecBfd{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (RouterPeerSpecBfdCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*RouterPeerSpecBfd)(ptr) = RouterPeerSpecBfd{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []RouterPeerSpecBfd
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RouterPeerSpecBfd{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*RouterPeerSpecBfd)(ptr) = objs[0]
+			} else {
+				*(*RouterPeerSpecBfd)(ptr) = RouterPeerSpecBfd{}
+			}
+		} else {
+			*(*RouterPeerSpecBfd)(ptr) = RouterPeerSpecBfd{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj RouterPeerSpecBfd
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(RouterPeerSpecBfd{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*RouterPeerSpecBfd)(ptr) = obj
+		} else {
+			*(*RouterPeerSpecBfd)(ptr) = RouterPeerSpecBfd{}
+		}
+	default:
+		iter.ReportError("decode RouterPeerSpecBfd", "unexpected JSON type")
 	}
 }
 

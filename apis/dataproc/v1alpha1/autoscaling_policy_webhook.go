@@ -89,7 +89,7 @@ func (r *AutoscalingPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range autoscalingpolicyForceNewList {
+	for key, _ := range autoscalingpolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

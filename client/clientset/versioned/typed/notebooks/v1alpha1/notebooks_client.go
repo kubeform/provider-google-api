@@ -33,6 +33,10 @@ type NotebooksV1alpha1Interface interface {
 	InstanceIamMembersGetter
 	InstanceIamPoliciesGetter
 	LocationsGetter
+	RuntimesGetter
+	RuntimeIamBindingsGetter
+	RuntimeIamMembersGetter
+	RuntimeIamPoliciesGetter
 }
 
 // NotebooksV1alpha1Client is used to interact with features provided by the notebooks.google.kubeform.com group.
@@ -62,6 +66,22 @@ func (c *NotebooksV1alpha1Client) InstanceIamPolicies(namespace string) Instance
 
 func (c *NotebooksV1alpha1Client) Locations(namespace string) LocationInterface {
 	return newLocations(c, namespace)
+}
+
+func (c *NotebooksV1alpha1Client) Runtimes(namespace string) RuntimeInterface {
+	return newRuntimes(c, namespace)
+}
+
+func (c *NotebooksV1alpha1Client) RuntimeIamBindings(namespace string) RuntimeIamBindingInterface {
+	return newRuntimeIamBindings(c, namespace)
+}
+
+func (c *NotebooksV1alpha1Client) RuntimeIamMembers(namespace string) RuntimeIamMemberInterface {
+	return newRuntimeIamMembers(c, namespace)
+}
+
+func (c *NotebooksV1alpha1Client) RuntimeIamPolicies(namespace string) RuntimeIamPolicyInterface {
+	return newRuntimeIamPolicies(c, namespace)
 }
 
 // NewForConfig creates a new NotebooksV1alpha1Client for the given config.

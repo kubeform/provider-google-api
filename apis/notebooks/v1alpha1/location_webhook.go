@@ -88,7 +88,7 @@ func (r *Location) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range locationForceNewList {
+	for key, _ := range locationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

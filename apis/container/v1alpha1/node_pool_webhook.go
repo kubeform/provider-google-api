@@ -42,15 +42,17 @@ func (r *NodePool) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &NodePool{}
 
 var nodepoolForceNewList = map[string]bool{
-	"/cluster":                    true,
-	"/initial_node_count":         true,
-	"/location":                   true,
-	"/max_pods_per_node":          true,
-	"/name":                       true,
-	"/name_prefix":                true,
-	"/node_config/*/disk_size_gb": true,
-	"/node_config/*/disk_type":    true,
-	"/node_config/*/guest_accelerator/*/count":                              true,
+	"/cluster":                                 true,
+	"/initial_node_count":                      true,
+	"/location":                                true,
+	"/max_pods_per_node":                       true,
+	"/name":                                    true,
+	"/name_prefix":                             true,
+	"/node_config/*/boot_disk_kms_key":         true,
+	"/node_config/*/disk_size_gb":              true,
+	"/node_config/*/disk_type":                 true,
+	"/node_config/*/gcfs_config/*/enabled":     true,
+	"/node_config/*/guest_accelerator/*/count": true,
 	"/node_config/*/guest_accelerator/*/gpu_partition_size":                 true,
 	"/node_config/*/guest_accelerator/*/type":                               true,
 	"/node_config/*/labels":                                                 true,
@@ -58,6 +60,7 @@ var nodepoolForceNewList = map[string]bool{
 	"/node_config/*/machine_type":                                           true,
 	"/node_config/*/metadata":                                               true,
 	"/node_config/*/min_cpu_platform":                                       true,
+	"/node_config/*/node_group":                                             true,
 	"/node_config/*/oauth_scopes":                                           true,
 	"/node_config/*/preemptible":                                            true,
 	"/node_config/*/service_account":                                        true,
@@ -113,7 +116,7 @@ func (r *NodePool) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range nodepoolForceNewList {
+	for key, _ := range nodepoolForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

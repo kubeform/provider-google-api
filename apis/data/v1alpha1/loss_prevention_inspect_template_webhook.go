@@ -88,7 +88,7 @@ func (r *LossPreventionInspectTemplate) ValidateUpdate(old runtime.Object) error
 		return err
 	}
 
-	for key := range losspreventioninspecttemplateForceNewList {
+	for key, _ := range losspreventioninspecttemplateForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

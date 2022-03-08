@@ -187,8 +187,16 @@ spec:
                           bucketName:
                             description: S3 Bucket name.
                             type: string
+                          roleArn:
+                            description: The Amazon Resource Name (ARN) of the role
+                              to support temporary credentials via 'AssumeRoleWithWebIdentity'.
+                              For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+                              When a role ARN is provided, Transfer Service fetches
+                              temporary credentials for the session using a 'AssumeRoleWithWebIdentity'
+                              call for the provided role using the [GoogleServiceAccount][]
+                              for this project.
+                            type: string
                         required:
-                        - awsAccessKey
                         - bucketName
                         type: object
                       azureBlobStorageDataSource:
@@ -284,6 +292,24 @@ spec:
                               digits, terminated by ''s''. Example: "3.5s".'
                             type: string
                         type: object
+                      posixDataSink:
+                        description: A POSIX filesystem data sink.
+                        properties:
+                          rootDirectory:
+                            description: Root directory path to the filesystem.
+                            type: string
+                        required:
+                        - rootDirectory
+                        type: object
+                      posixDataSource:
+                        description: A POSIX filesystem data source.
+                        properties:
+                          rootDirectory:
+                            description: Root directory path to the filesystem.
+                            type: string
+                        required:
+                        - rootDirectory
+                        type: object
                       transferOptions:
                         description: Characteristics of how to treat files from datasource
                           and sink during job. If the option delete_objects_unique_in_sink
@@ -310,7 +336,6 @@ spec:
                     type: object
                 required:
                 - description
-                - schedule
                 - transferSpec
                 type: object
               secretRef:
@@ -454,8 +479,16 @@ spec:
                           bucketName:
                             description: S3 Bucket name.
                             type: string
+                          roleArn:
+                            description: The Amazon Resource Name (ARN) of the role
+                              to support temporary credentials via 'AssumeRoleWithWebIdentity'.
+                              For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+                              When a role ARN is provided, Transfer Service fetches
+                              temporary credentials for the session using a 'AssumeRoleWithWebIdentity'
+                              call for the provided role using the [GoogleServiceAccount][]
+                              for this project.
+                            type: string
                         required:
-                        - awsAccessKey
                         - bucketName
                         type: object
                       azureBlobStorageDataSource:
@@ -551,6 +584,24 @@ spec:
                               digits, terminated by ''s''. Example: "3.5s".'
                             type: string
                         type: object
+                      posixDataSink:
+                        description: A POSIX filesystem data sink.
+                        properties:
+                          rootDirectory:
+                            description: Root directory path to the filesystem.
+                            type: string
+                        required:
+                        - rootDirectory
+                        type: object
+                      posixDataSource:
+                        description: A POSIX filesystem data source.
+                        properties:
+                          rootDirectory:
+                            description: Root directory path to the filesystem.
+                            type: string
+                        required:
+                        - rootDirectory
+                        type: object
                       transferOptions:
                         description: Characteristics of how to treat files from datasource
                           and sink during job. If the option delete_objects_unique_in_sink
@@ -577,7 +628,6 @@ spec:
                     type: object
                 required:
                 - description
-                - schedule
                 - transferSpec
                 type: object
               terminationPolicy:

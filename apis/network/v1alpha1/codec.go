@@ -27,6 +27,9 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedInterconnectAttachments{}).Type1()):                                        ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedRouterApplianceInstances{}).Type1()):                                       ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedVPNTunnels{}).Type1()):                                                     ConnectivitySpokeSpecLinkedVPNTunnelsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()):                                                 ManagementConnectivityTestSpecDestinationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):                                                      ManagementConnectivityTestSpecSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1()):                                                        ServicesEdgeCacheOriginSpecTimeoutCodec{},
@@ -44,6 +47,9 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedInterconnectAttachments{}).Type1()):                                        ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedRouterApplianceInstances{}).Type1()):                                       ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedVPNTunnels{}).Type1()):                                                     ConnectivitySpokeSpecLinkedVPNTunnelsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecDestination{}).Type1()):                                                 ManagementConnectivityTestSpecDestinationCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ManagementConnectivityTestSpecSource{}).Type1()):                                                      ManagementConnectivityTestSpecSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(ServicesEdgeCacheOriginSpecTimeout{}).Type1()):                                                        ServicesEdgeCacheOriginSpecTimeoutCodec{},
@@ -69,6 +75,243 @@ func getDecodersWithout(typ string) map[string]jsoniter.ValDecoder {
 	origMap := GetDecoder()
 	delete(origMap, typ)
 	return origMap
+}
+
+// +k8s:deepcopy-gen=false
+type ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec struct {
+}
+
+func (ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) == nil
+}
+
+func (ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr)
+	var objs []ConnectivitySpokeSpecLinkedInterconnectAttachments
+	if obj != nil {
+		objs = []ConnectivitySpokeSpecLinkedInterconnectAttachments{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedInterconnectAttachments{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ConnectivitySpokeSpecLinkedInterconnectAttachmentsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = ConnectivitySpokeSpecLinkedInterconnectAttachments{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ConnectivitySpokeSpecLinkedInterconnectAttachments
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedInterconnectAttachments{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = objs[0]
+			} else {
+				*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = ConnectivitySpokeSpecLinkedInterconnectAttachments{}
+			}
+		} else {
+			*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = ConnectivitySpokeSpecLinkedInterconnectAttachments{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ConnectivitySpokeSpecLinkedInterconnectAttachments
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedInterconnectAttachments{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = obj
+		} else {
+			*(*ConnectivitySpokeSpecLinkedInterconnectAttachments)(ptr) = ConnectivitySpokeSpecLinkedInterconnectAttachments{}
+		}
+	default:
+		iter.ReportError("decode ConnectivitySpokeSpecLinkedInterconnectAttachments", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec struct {
+}
+
+func (ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) == nil
+}
+
+func (ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr)
+	var objs []ConnectivitySpokeSpecLinkedRouterApplianceInstances
+	if obj != nil {
+		objs = []ConnectivitySpokeSpecLinkedRouterApplianceInstances{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedRouterApplianceInstances{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ConnectivitySpokeSpecLinkedRouterApplianceInstancesCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = ConnectivitySpokeSpecLinkedRouterApplianceInstances{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ConnectivitySpokeSpecLinkedRouterApplianceInstances
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedRouterApplianceInstances{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = objs[0]
+			} else {
+				*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = ConnectivitySpokeSpecLinkedRouterApplianceInstances{}
+			}
+		} else {
+			*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = ConnectivitySpokeSpecLinkedRouterApplianceInstances{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ConnectivitySpokeSpecLinkedRouterApplianceInstances
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedRouterApplianceInstances{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = obj
+		} else {
+			*(*ConnectivitySpokeSpecLinkedRouterApplianceInstances)(ptr) = ConnectivitySpokeSpecLinkedRouterApplianceInstances{}
+		}
+	default:
+		iter.ReportError("decode ConnectivitySpokeSpecLinkedRouterApplianceInstances", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type ConnectivitySpokeSpecLinkedVPNTunnelsCodec struct {
+}
+
+func (ConnectivitySpokeSpecLinkedVPNTunnelsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) == nil
+}
+
+func (ConnectivitySpokeSpecLinkedVPNTunnelsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr)
+	var objs []ConnectivitySpokeSpecLinkedVPNTunnels
+	if obj != nil {
+		objs = []ConnectivitySpokeSpecLinkedVPNTunnels{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedVPNTunnels{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (ConnectivitySpokeSpecLinkedVPNTunnelsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = ConnectivitySpokeSpecLinkedVPNTunnels{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []ConnectivitySpokeSpecLinkedVPNTunnels
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedVPNTunnels{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = objs[0]
+			} else {
+				*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = ConnectivitySpokeSpecLinkedVPNTunnels{}
+			}
+		} else {
+			*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = ConnectivitySpokeSpecLinkedVPNTunnels{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj ConnectivitySpokeSpecLinkedVPNTunnels
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(ConnectivitySpokeSpecLinkedVPNTunnels{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = obj
+		} else {
+			*(*ConnectivitySpokeSpecLinkedVPNTunnels)(ptr) = ConnectivitySpokeSpecLinkedVPNTunnels{}
+		}
+	default:
+		iter.ReportError("decode ConnectivitySpokeSpecLinkedVPNTunnels", "unexpected JSON type")
+	}
 }
 
 // +k8s:deepcopy-gen=false

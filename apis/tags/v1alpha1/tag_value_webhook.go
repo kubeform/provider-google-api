@@ -89,7 +89,7 @@ func (r *TagValue) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tagvalueForceNewList {
+	for key, _ := range tagvalueForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -90,7 +90,7 @@ func (r *RegionAutoscaler) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regionautoscalerForceNewList {
+	for key, _ := range regionautoscalerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

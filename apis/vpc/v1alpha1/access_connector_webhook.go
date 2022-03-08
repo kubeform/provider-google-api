@@ -94,7 +94,7 @@ func (r *AccessConnector) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range accessconnectorForceNewList {
+	for key, _ := range accessconnectorForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

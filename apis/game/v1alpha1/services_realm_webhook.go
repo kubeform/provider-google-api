@@ -89,7 +89,7 @@ func (r *ServicesRealm) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range servicesrealmForceNewList {
+	for key, _ := range servicesrealmForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

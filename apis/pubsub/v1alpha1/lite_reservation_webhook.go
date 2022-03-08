@@ -89,7 +89,7 @@ func (r *LiteReservation) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range litereservationForceNewList {
+	for key, _ := range litereservationForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

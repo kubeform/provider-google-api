@@ -89,7 +89,7 @@ func (r *ObjectACL) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range objectaclForceNewList {
+	for key, _ := range objectaclForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

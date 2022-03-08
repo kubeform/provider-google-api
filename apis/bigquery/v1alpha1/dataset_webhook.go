@@ -90,7 +90,7 @@ func (r *Dataset) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datasetForceNewList {
+	for key, _ := range datasetForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

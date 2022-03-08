@@ -72,10 +72,68 @@ spec:
                           this environment reside in a simulated directory with this
                           prefix.
                         type: string
+                      databaseConfig:
+                        description: The configuration of Cloud SQL instance that
+                          is used by the Apache Airflow software. This field is supported
+                          for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          machineType:
+                            description: 'Optional. Cloud SQL machine type used by
+                              Airflow database. It has to be one of: db-n1-standard-2,
+                              db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16.
+                              If not specified, db-n1-standard-2 will be used.'
+                            type: string
+                        required:
+                        - machineType
+                        type: object
+                      encryptionConfig:
+                        description: The encryption options for the Composer environment
+                          and its dependencies. This field is supported for Cloud
+                          Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          kmsKeyName:
+                            description: Optional. Customer-managed Encryption Key
+                              available through Google's Key Management Service. Cannot
+                              be updated.
+                            type: string
+                        required:
+                        - kmsKeyName
+                        type: object
+                      environmentSize:
+                        description: The size of the Cloud Composer environment. This
+                          field is supported for Cloud Composer environments in versions
+                          composer-2.*.*-airflow-*.*.* and newer.
+                        type: string
                       gkeCluster:
                         description: The Kubernetes Engine cluster used to run this
                           environment.
                         type: string
+                      maintenanceWindow:
+                        description: The configuration for Cloud Composer maintenance
+                          window.
+                        properties:
+                          endTime:
+                            description: Maintenance window end time. It is used only
+                              to calculate the duration of the maintenance window.
+                              The value for end-time must be in the future, relative
+                              to 'start_time'.
+                            type: string
+                          recurrence:
+                            description: 'Maintenance window recurrence. Format is
+                              a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545)
+                              ''RRULE''. The only allowed values for ''FREQ'' field
+                              are ''FREQ=DAILY'' and ''FREQ=WEEKLY;BYDAY=...''. Example
+                              values: ''FREQ=WEEKLY;BYDAY=TU,WE'', ''FREQ=DAILY''.'
+                            type: string
+                          startTime:
+                            description: Start time of the first recurrence of the
+                              maintenance window.
+                            type: string
+                        required:
+                        - endTime
+                        - recurrence
+                        - startTime
+                        type: object
                       nodeConfig:
                         description: The configuration used for the Kubernetes Engine
                           cluster.
@@ -144,8 +202,6 @@ spec:
                                   Environments in newer versions always use VPC-native
                                   GKE clusters.
                                 type: boolean
-                            required:
-                            - useIPAliases
                             type: object
                           machineType:
                             description: 'The Compute Engine machine type used for
@@ -221,6 +277,14 @@ spec:
                         description: The configuration used for the Private IP Cloud
                           Composer environment.
                         properties:
+                          cloudComposerNetworkIpv4CIDRBlock:
+                            description: The CIDR block from which IP range for Cloud
+                              Composer Network in tenant project will be reserved.
+                              Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block
+                              and cloud_sql_ipv4_cidr_block. This field is supported
+                              for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
+                              and newer.
+                            type: string
                           cloudSQLIpv4CIDRBlock:
                             description: The CIDR block from which IP range in tenant
                               project will be reserved for Cloud SQL. Needs to be
@@ -272,7 +336,7 @@ spec:
                             additionalProperties:
                               type: string
                             description: 'Additional environment variables to provide
-                              to the Apache Airflow schedulerf, worker, and webserver
+                              to the Apache Airflow scheduler, worker, and webserver
                               processes. Environment variable names must match the
                               regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot
                               specify Apache Airflow software configuration overrides
@@ -319,6 +383,130 @@ spec:
                               versions composer-1.*.*-airflow-2.*.*.
                             format: int64
                             type: integer
+                        type: object
+                      webServerConfig:
+                        description: The configuration settings for the Airflow web
+                          server App Engine instance. This field is supported for
+                          Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          machineType:
+                            description: 'Optional. Machine type on which Airflow
+                              web server is running. It has to be one of: composer-n1-webserver-2,
+                              composer-n1-webserver-4 or composer-n1-webserver-8.
+                              If not specified, composer-n1-webserver-2 will be used.
+                              Value custom is returned only in response, if Airflow
+                              web server parameters were manually changed to a non-standard
+                              values.'
+                            type: string
+                        required:
+                        - machineType
+                        type: object
+                      webServerNetworkAccessControl:
+                        description: The network-level access control policy for the
+                          Airflow web server. If unspecified, no network-level access
+                          restrictions will be applied. This field is supported for
+                          Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          allowedIPRange:
+                            description: A collection of allowed IP ranges with descriptions.
+                            items:
+                              properties:
+                                description:
+                                  description: A description of this ip range.
+                                  type: string
+                                value:
+                                  description: 'IP address or range, defined using
+                                    CIDR notation, of requests that this rule applies
+                                    to. Examples: 192.168.1.1 or 192.168.0.0/16 or
+                                    2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334.
+                                    IP range prefixes should be properly truncated.
+                                    For example, 1.2.3.4/24 should be truncated to
+                                    1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32
+                                    should be truncated to 2001:db8::/32.'
+                                  type: string
+                              required:
+                              - value
+                              type: object
+                            type: array
+                        type: object
+                      workloadsConfig:
+                        description: The workloads configuration settings for the
+                          GKE cluster associated with the Cloud Composer environment.
+                          Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
+                          and newer.
+                        properties:
+                          scheduler:
+                            description: Configuration for resources used by Airflow
+                              schedulers.
+                            properties:
+                              count:
+                                description: The number of schedulers.
+                                format: int64
+                                type: integer
+                              cpu:
+                                description: CPU request and limit for a single Airflow
+                                  scheduler replica
+                                format: double
+                                type: number
+                              memoryGb:
+                                description: Memory (GB) request and limit for a single
+                                  Airflow scheduler replica.
+                                format: double
+                                type: number
+                              storageGb:
+                                description: Storage (GB) request and limit for a
+                                  single Airflow scheduler replica.
+                                format: double
+                                type: number
+                            type: object
+                          webServer:
+                            description: Configuration for resources used by Airflow
+                              web server.
+                            properties:
+                              cpu:
+                                description: CPU request and limit for Airflow web
+                                  server.
+                                format: double
+                                type: number
+                              memoryGb:
+                                description: Memory (GB) request and limit for Airflow
+                                  web server.
+                                format: double
+                                type: number
+                              storageGb:
+                                description: Storage (GB) request and limit for Airflow
+                                  web server.
+                                format: double
+                                type: number
+                            type: object
+                          worker:
+                            description: Configuration for resources used by Airflow
+                              workers.
+                            properties:
+                              cpu:
+                                description: CPU request and limit for a single Airflow
+                                  worker replica.
+                                format: double
+                                type: number
+                              maxCount:
+                                description: Maximum number of workers for autoscaling.
+                                format: int64
+                                type: integer
+                              memoryGb:
+                                description: Memory (GB) request and limit for a single
+                                  Airflow worker replica.
+                                format: double
+                                type: number
+                              minCount:
+                                description: Minimum number of workers for autoscaling.
+                                format: int64
+                                type: integer
+                              storageGb:
+                                description: Storage (GB) request and limit for a
+                                  single Airflow worker replica.
+                                format: double
+                                type: number
+                            type: object
                         type: object
                     type: object
                   id:
@@ -404,10 +592,68 @@ spec:
                           this environment reside in a simulated directory with this
                           prefix.
                         type: string
+                      databaseConfig:
+                        description: The configuration of Cloud SQL instance that
+                          is used by the Apache Airflow software. This field is supported
+                          for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          machineType:
+                            description: 'Optional. Cloud SQL machine type used by
+                              Airflow database. It has to be one of: db-n1-standard-2,
+                              db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16.
+                              If not specified, db-n1-standard-2 will be used.'
+                            type: string
+                        required:
+                        - machineType
+                        type: object
+                      encryptionConfig:
+                        description: The encryption options for the Composer environment
+                          and its dependencies. This field is supported for Cloud
+                          Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          kmsKeyName:
+                            description: Optional. Customer-managed Encryption Key
+                              available through Google's Key Management Service. Cannot
+                              be updated.
+                            type: string
+                        required:
+                        - kmsKeyName
+                        type: object
+                      environmentSize:
+                        description: The size of the Cloud Composer environment. This
+                          field is supported for Cloud Composer environments in versions
+                          composer-2.*.*-airflow-*.*.* and newer.
+                        type: string
                       gkeCluster:
                         description: The Kubernetes Engine cluster used to run this
                           environment.
                         type: string
+                      maintenanceWindow:
+                        description: The configuration for Cloud Composer maintenance
+                          window.
+                        properties:
+                          endTime:
+                            description: Maintenance window end time. It is used only
+                              to calculate the duration of the maintenance window.
+                              The value for end-time must be in the future, relative
+                              to 'start_time'.
+                            type: string
+                          recurrence:
+                            description: 'Maintenance window recurrence. Format is
+                              a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545)
+                              ''RRULE''. The only allowed values for ''FREQ'' field
+                              are ''FREQ=DAILY'' and ''FREQ=WEEKLY;BYDAY=...''. Example
+                              values: ''FREQ=WEEKLY;BYDAY=TU,WE'', ''FREQ=DAILY''.'
+                            type: string
+                          startTime:
+                            description: Start time of the first recurrence of the
+                              maintenance window.
+                            type: string
+                        required:
+                        - endTime
+                        - recurrence
+                        - startTime
+                        type: object
                       nodeConfig:
                         description: The configuration used for the Kubernetes Engine
                           cluster.
@@ -476,8 +722,6 @@ spec:
                                   Environments in newer versions always use VPC-native
                                   GKE clusters.
                                 type: boolean
-                            required:
-                            - useIPAliases
                             type: object
                           machineType:
                             description: 'The Compute Engine machine type used for
@@ -553,6 +797,14 @@ spec:
                         description: The configuration used for the Private IP Cloud
                           Composer environment.
                         properties:
+                          cloudComposerNetworkIpv4CIDRBlock:
+                            description: The CIDR block from which IP range for Cloud
+                              Composer Network in tenant project will be reserved.
+                              Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block
+                              and cloud_sql_ipv4_cidr_block. This field is supported
+                              for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
+                              and newer.
+                            type: string
                           cloudSQLIpv4CIDRBlock:
                             description: The CIDR block from which IP range in tenant
                               project will be reserved for Cloud SQL. Needs to be
@@ -604,7 +856,7 @@ spec:
                             additionalProperties:
                               type: string
                             description: 'Additional environment variables to provide
-                              to the Apache Airflow schedulerf, worker, and webserver
+                              to the Apache Airflow scheduler, worker, and webserver
                               processes. Environment variable names must match the
                               regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot
                               specify Apache Airflow software configuration overrides
@@ -651,6 +903,130 @@ spec:
                               versions composer-1.*.*-airflow-2.*.*.
                             format: int64
                             type: integer
+                        type: object
+                      webServerConfig:
+                        description: The configuration settings for the Airflow web
+                          server App Engine instance. This field is supported for
+                          Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          machineType:
+                            description: 'Optional. Machine type on which Airflow
+                              web server is running. It has to be one of: composer-n1-webserver-2,
+                              composer-n1-webserver-4 or composer-n1-webserver-8.
+                              If not specified, composer-n1-webserver-2 will be used.
+                              Value custom is returned only in response, if Airflow
+                              web server parameters were manually changed to a non-standard
+                              values.'
+                            type: string
+                        required:
+                        - machineType
+                        type: object
+                      webServerNetworkAccessControl:
+                        description: The network-level access control policy for the
+                          Airflow web server. If unspecified, no network-level access
+                          restrictions will be applied. This field is supported for
+                          Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+                        properties:
+                          allowedIPRange:
+                            description: A collection of allowed IP ranges with descriptions.
+                            items:
+                              properties:
+                                description:
+                                  description: A description of this ip range.
+                                  type: string
+                                value:
+                                  description: 'IP address or range, defined using
+                                    CIDR notation, of requests that this rule applies
+                                    to. Examples: 192.168.1.1 or 192.168.0.0/16 or
+                                    2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334.
+                                    IP range prefixes should be properly truncated.
+                                    For example, 1.2.3.4/24 should be truncated to
+                                    1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32
+                                    should be truncated to 2001:db8::/32.'
+                                  type: string
+                              required:
+                              - value
+                              type: object
+                            type: array
+                        type: object
+                      workloadsConfig:
+                        description: The workloads configuration settings for the
+                          GKE cluster associated with the Cloud Composer environment.
+                          Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
+                          and newer.
+                        properties:
+                          scheduler:
+                            description: Configuration for resources used by Airflow
+                              schedulers.
+                            properties:
+                              count:
+                                description: The number of schedulers.
+                                format: int64
+                                type: integer
+                              cpu:
+                                description: CPU request and limit for a single Airflow
+                                  scheduler replica
+                                format: double
+                                type: number
+                              memoryGb:
+                                description: Memory (GB) request and limit for a single
+                                  Airflow scheduler replica.
+                                format: double
+                                type: number
+                              storageGb:
+                                description: Storage (GB) request and limit for a
+                                  single Airflow scheduler replica.
+                                format: double
+                                type: number
+                            type: object
+                          webServer:
+                            description: Configuration for resources used by Airflow
+                              web server.
+                            properties:
+                              cpu:
+                                description: CPU request and limit for Airflow web
+                                  server.
+                                format: double
+                                type: number
+                              memoryGb:
+                                description: Memory (GB) request and limit for Airflow
+                                  web server.
+                                format: double
+                                type: number
+                              storageGb:
+                                description: Storage (GB) request and limit for Airflow
+                                  web server.
+                                format: double
+                                type: number
+                            type: object
+                          worker:
+                            description: Configuration for resources used by Airflow
+                              workers.
+                            properties:
+                              cpu:
+                                description: CPU request and limit for a single Airflow
+                                  worker replica.
+                                format: double
+                                type: number
+                              maxCount:
+                                description: Maximum number of workers for autoscaling.
+                                format: int64
+                                type: integer
+                              memoryGb:
+                                description: Memory (GB) request and limit for a single
+                                  Airflow worker replica.
+                                format: double
+                                type: number
+                              minCount:
+                                description: Minimum number of workers for autoscaling.
+                                format: int64
+                                type: integer
+                              storageGb:
+                                description: Storage (GB) request and limit for a
+                                  single Airflow worker replica.
+                                format: double
+                                type: number
+                            type: object
                         type: object
                     type: object
                   id:

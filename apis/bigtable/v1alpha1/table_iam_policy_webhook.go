@@ -90,7 +90,7 @@ func (r *TableIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range tableiampolicyForceNewList {
+	for key, _ := range tableiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

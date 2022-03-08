@@ -29,6 +29,14 @@ type FakeNetworkV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeNetworkV1alpha1) ConnectivityHubs(namespace string) v1alpha1.ConnectivityHubInterface {
+	return &FakeConnectivityHubs{c, namespace}
+}
+
+func (c *FakeNetworkV1alpha1) ConnectivitySpokes(namespace string) v1alpha1.ConnectivitySpokeInterface {
+	return &FakeConnectivitySpokes{c, namespace}
+}
+
 func (c *FakeNetworkV1alpha1) ManagementConnectivityTests(namespace string) v1alpha1.ManagementConnectivityTestInterface {
 	return &FakeManagementConnectivityTests{c, namespace}
 }

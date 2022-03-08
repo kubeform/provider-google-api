@@ -22,6 +22,16 @@ type AnalysisNoteExpansion interface{}
 
 type AnalysisOccurrenceExpansion interface{}
 
+type AwsClusterExpansion interface{}
+
+type AwsNodePoolExpansion interface{}
+
+type AzureClientExpansion interface{}
+
+type AzureClusterExpansion interface{}
+
+type AzureNodePoolExpansion interface{}
+
 type ClusterExpansion interface{}
 
 type NodePoolExpansion interface{}

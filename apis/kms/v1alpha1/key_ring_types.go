@@ -67,10 +67,6 @@ type KeyRingSpecResource struct {
 	Name *string `json:"name" tf:"name"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
-	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
-	// +optional
-	// Deprecated
-	SelfLink *string `json:"selfLink,omitempty" tf:"self_link"`
 }
 
 type KeyRingStatus struct {

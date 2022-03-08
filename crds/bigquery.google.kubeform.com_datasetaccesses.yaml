@@ -62,6 +62,35 @@ spec:
                       config was translated to a different member type by the API,
                       and is stored in state as a different member type
                     type: boolean
+                  dataset:
+                    description: Grants all resources of particular types in a particular
+                      dataset read access to the current dataset.
+                    properties:
+                      dataset:
+                        description: The dataset this entry applies to
+                        properties:
+                          datasetID:
+                            description: The ID of the dataset containing this table.
+                            type: string
+                          projectID:
+                            description: The ID of the project containing this table.
+                            type: string
+                        required:
+                        - datasetID
+                        - projectID
+                        type: object
+                      targetTypes:
+                        description: 'Which resources in the dataset this entry applies
+                          to. Currently, only views are supported, but additional
+                          target types may be added in the future. Possible values:
+                          VIEWS'
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - dataset
+                    - targetTypes
+                    type: object
                   datasetID:
                     description: A unique ID for this dataset, without the project
                       name. The ID must contain only letters (a-z, A-Z), numbers (0-9),
@@ -173,6 +202,35 @@ spec:
                       config was translated to a different member type by the API,
                       and is stored in state as a different member type
                     type: boolean
+                  dataset:
+                    description: Grants all resources of particular types in a particular
+                      dataset read access to the current dataset.
+                    properties:
+                      dataset:
+                        description: The dataset this entry applies to
+                        properties:
+                          datasetID:
+                            description: The ID of the dataset containing this table.
+                            type: string
+                          projectID:
+                            description: The ID of the project containing this table.
+                            type: string
+                        required:
+                        - datasetID
+                        - projectID
+                        type: object
+                      targetTypes:
+                        description: 'Which resources in the dataset this entry applies
+                          to. Currently, only views are supported, but additional
+                          target types may be added in the future. Possible values:
+                          VIEWS'
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - dataset
+                    - targetTypes
+                    type: object
                   datasetID:
                     description: A unique ID for this dataset, without the project
                       name. The ID must contain only letters (a-z, A-Z), numbers (0-9),

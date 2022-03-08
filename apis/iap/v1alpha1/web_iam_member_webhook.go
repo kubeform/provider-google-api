@@ -93,7 +93,7 @@ func (r *WebIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webiammemberForceNewList {
+	for key, _ := range webiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

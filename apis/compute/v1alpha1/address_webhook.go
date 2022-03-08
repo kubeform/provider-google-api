@@ -98,7 +98,7 @@ func (r *Address) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range addressForceNewList {
+	for key, _ := range addressForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

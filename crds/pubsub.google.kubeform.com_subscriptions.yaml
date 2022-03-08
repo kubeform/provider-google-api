@@ -162,10 +162,6 @@ spec:
                   name:
                     description: Name of the subscription.
                     type: string
-                  path:
-                    description: ' Path of the subscription in the format projects/{project}/subscriptions/{name}
-                      Deprecated'
-                    type: string
                   project:
                     type: string
                   pushConfig:
@@ -406,10 +402,6 @@ spec:
                     type: string
                   name:
                     description: Name of the subscription.
-                    type: string
-                  path:
-                    description: ' Path of the subscription in the format projects/{project}/subscriptions/{name}
-                      Deprecated'
                     type: string
                   project:
                     type: string

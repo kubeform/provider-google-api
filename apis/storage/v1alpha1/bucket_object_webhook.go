@@ -99,7 +99,7 @@ func (r *BucketObject) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range bucketobjectForceNewList {
+	for key, _ := range bucketobjectForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

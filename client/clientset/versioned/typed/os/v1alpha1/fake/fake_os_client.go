@@ -29,6 +29,10 @@ type FakeOsV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeOsV1alpha1) ConfigOsPolicyAssignments(namespace string) v1alpha1.ConfigOsPolicyAssignmentInterface {
+	return &FakeConfigOsPolicyAssignments{c, namespace}
+}
+
 func (c *FakeOsV1alpha1) ConfigPatchDeployments(namespace string) v1alpha1.ConfigPatchDeploymentInterface {
 	return &FakeConfigPatchDeployments{c, namespace}
 }

@@ -94,7 +94,7 @@ func (r *WebTypeAppEngineIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webtypeappengineiammemberForceNewList {
+	for key, _ := range webtypeappengineiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

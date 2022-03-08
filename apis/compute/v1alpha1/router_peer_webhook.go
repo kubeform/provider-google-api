@@ -92,7 +92,7 @@ func (r *RouterPeer) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routerpeerForceNewList {
+	for key, _ := range routerpeerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -89,7 +89,7 @@ func (r *ManagementConnectivityTest) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range managementconnectivitytestForceNewList {
+	for key, _ := range managementconnectivitytestForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

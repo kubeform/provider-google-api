@@ -18,11 +18,19 @@ limitations under the License.
 
 package v1alpha1
 
+type EndpointAttachmentExpansion interface{}
+
 type EnvgroupExpansion interface{}
 
 type EnvgroupAttachmentExpansion interface{}
 
 type EnvironmentExpansion interface{}
+
+type EnvironmentIamBindingExpansion interface{}
+
+type EnvironmentIamMemberExpansion interface{}
+
+type EnvironmentIamPolicyExpansion interface{}
 
 type InstanceExpansion interface{}
 

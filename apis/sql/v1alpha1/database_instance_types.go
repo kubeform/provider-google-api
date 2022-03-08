@@ -42,6 +42,9 @@ type DatabaseInstance struct {
 }
 
 type DatabaseInstanceSpecClone struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+	// +optional
+	AllocatedIPRange *string `json:"allocatedIPRange,omitempty" tf:"allocated_ip_range"`
 	// The timestamp of the point in time that should be restored.
 	// +optional
 	PointInTime *string `json:"pointInTime,omitempty" tf:"point_in_time"`
@@ -185,6 +188,9 @@ type DatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks struct {
 }
 
 type DatabaseInstanceSpecSettingsIpConfiguration struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+	// +optional
+	AllocatedIPRange *string `json:"allocatedIPRange,omitempty" tf:"allocated_ip_range"`
 	// +optional
 	AuthorizedNetworks []DatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks `json:"authorizedNetworks,omitempty" tf:"authorized_networks"`
 	// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
@@ -222,10 +228,6 @@ type DatabaseInstanceSpecSettings struct {
 	// This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
 	// +optional
 	ActivationPolicy *string `json:"activationPolicy,omitempty" tf:"activation_policy"`
-	// This property is only applicable to First Generation instances. First Generation instances are now deprecated, see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances. A list of Google App Engine project names that are allowed to access this instance.
-	// +optional
-	// Deprecated
-	AuthorizedGaeApplications []string `json:"authorizedGaeApplications,omitempty" tf:"authorized_gae_applications"`
 	// The availability type of the Cloud SQL instance, high availability
 	// (REGIONAL) or single zone (ZONAL). For MySQL instances, ensure that
 	// settings.backup_configuration.enabled and
@@ -237,10 +239,6 @@ type DatabaseInstanceSpecSettings struct {
 	// The name of server instance collation.
 	// +optional
 	Collation *string `json:"collation,omitempty" tf:"collation"`
-	// This property is only applicable to First Generation instances. First Generation instances are now deprecated, see here for information on how to upgrade to Second Generation instances. Specific to read instances, indicates when crash-safe replication flags are enabled.
-	// +optional
-	// Deprecated
-	CrashSafeReplication *bool `json:"crashSafeReplication,omitempty" tf:"crash_safe_replication"`
 	// +optional
 	DatabaseFlags []DatabaseInstanceSpecSettingsDatabaseFlags `json:"databaseFlags,omitempty" tf:"database_flags"`
 	// Configuration to increase storage size automatically.  Note that future terraform apply calls will attempt to resize the disk to the value specified in disk_size - if this is set, do not set disk_size.
@@ -268,10 +266,6 @@ type DatabaseInstanceSpecSettings struct {
 	// Pricing plan for this instance, can only be PER_USE.
 	// +optional
 	PricingPlan *string `json:"pricingPlan,omitempty" tf:"pricing_plan"`
-	// This property is only applicable to First Generation instances. First Generation instances are now deprecated, see here for information on how to upgrade to Second Generation instances. Replication type for this instance, can be one of ASYNCHRONOUS or SYNCHRONOUS.
-	// +optional
-	// Deprecated
-	ReplicationType *string `json:"replicationType,omitempty" tf:"replication_type"`
 	// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
 	Tier *string `json:"tier" tf:"tier"`
 	// A set of key/value user label pairs to assign to the instance.
@@ -310,8 +304,7 @@ type DatabaseInstanceSpecResource struct {
 	// +optional
 	ConnectionName *string `json:"connectionName,omitempty" tf:"connection_name"`
 	// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version Policies includes an up-to-date reference of supported versions.
-	// +optional
-	DatabaseVersion *string `json:"databaseVersion,omitempty" tf:"database_version"`
+	DatabaseVersion *string `json:"databaseVersion" tf:"database_version"`
 	// Used to block Terraform from deleting a SQL Instance.
 	// +optional
 	DeletionProtection *bool `json:"deletionProtection,omitempty" tf:"deletion_protection"`

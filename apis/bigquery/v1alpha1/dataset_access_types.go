@@ -41,6 +41,21 @@ type DatasetAccess struct {
 	Status            DatasetAccessStatus `json:"status,omitempty"`
 }
 
+type DatasetAccessSpecDatasetDataset struct {
+	// The ID of the dataset containing this table.
+	DatasetID *string `json:"datasetID" tf:"dataset_id"`
+	// The ID of the project containing this table.
+	ProjectID *string `json:"projectID" tf:"project_id"`
+}
+
+type DatasetAccessSpecDataset struct {
+	// The dataset this entry applies to
+	Dataset *DatasetAccessSpecDatasetDataset `json:"dataset" tf:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes []string `json:"targetTypes" tf:"target_types"`
+}
+
 type DatasetAccessSpecView struct {
 	// The ID of the dataset containing this table.
 	DatasetID *string `json:"datasetID" tf:"dataset_id"`
@@ -74,6 +89,9 @@ type DatasetAccessSpecResource struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
 	// +optional
 	ApiUpdatedMember *bool `json:"apiUpdatedMember,omitempty" tf:"api_updated_member"`
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
+	// +optional
+	Dataset *DatasetAccessSpecDataset `json:"dataset,omitempty" tf:"dataset"`
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.

@@ -94,7 +94,7 @@ func (r *AppEngineServiceIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range appengineserviceiambindingForceNewList {
+	for key, _ := range appengineserviceiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -95,7 +95,7 @@ func (r *MetricDescriptor) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range metricdescriptorForceNewList {
+	for key, _ := range metricdescriptorForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

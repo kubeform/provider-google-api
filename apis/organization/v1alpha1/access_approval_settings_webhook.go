@@ -88,7 +88,7 @@ func (r *AccessApprovalSettings) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range accessapprovalsettingsForceNewList {
+	for key, _ := range accessapprovalsettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

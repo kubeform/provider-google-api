@@ -88,7 +88,7 @@ func (r *DicomStoreIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dicomstoreiampolicyForceNewList {
+	for key, _ := range dicomstoreiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

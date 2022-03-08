@@ -88,7 +88,7 @@ func (r *ApplicationURLDispatchRules) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range applicationurldispatchrulesForceNewList {
+	for key, _ := range applicationurldispatchrulesForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

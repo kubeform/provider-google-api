@@ -93,7 +93,7 @@ func (r *AttachedDisk) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range attacheddiskForceNewList {
+	for key, _ := range attacheddiskForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

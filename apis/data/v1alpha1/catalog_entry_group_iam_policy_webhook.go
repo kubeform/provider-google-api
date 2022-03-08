@@ -90,7 +90,7 @@ func (r *CatalogEntryGroupIamPolicy) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range catalogentrygroupiampolicyForceNewList {
+	for key, _ := range catalogentrygroupiampolicyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

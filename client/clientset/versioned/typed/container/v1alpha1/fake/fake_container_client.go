@@ -37,6 +37,26 @@ func (c *FakeContainerV1alpha1) AnalysisOccurrences(namespace string) v1alpha1.A
 	return &FakeAnalysisOccurrences{c, namespace}
 }
 
+func (c *FakeContainerV1alpha1) AwsClusters(namespace string) v1alpha1.AwsClusterInterface {
+	return &FakeAwsClusters{c, namespace}
+}
+
+func (c *FakeContainerV1alpha1) AwsNodePools(namespace string) v1alpha1.AwsNodePoolInterface {
+	return &FakeAwsNodePools{c, namespace}
+}
+
+func (c *FakeContainerV1alpha1) AzureClients(namespace string) v1alpha1.AzureClientInterface {
+	return &FakeAzureClients{c, namespace}
+}
+
+func (c *FakeContainerV1alpha1) AzureClusters(namespace string) v1alpha1.AzureClusterInterface {
+	return &FakeAzureClusters{c, namespace}
+}
+
+func (c *FakeContainerV1alpha1) AzureNodePools(namespace string) v1alpha1.AzureNodePoolInterface {
+	return &FakeAzureNodePools{c, namespace}
+}
+
 func (c *FakeContainerV1alpha1) Clusters(namespace string) v1alpha1.ClusterInterface {
 	return &FakeClusters{c, namespace}
 }

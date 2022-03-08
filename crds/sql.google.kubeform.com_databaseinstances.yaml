@@ -61,6 +61,14 @@ spec:
                     description: Configuration for creating a new instance as a clone
                       of another instance.
                     properties:
+                      allocatedIPRange:
+                        description: 'The name of the allocated ip range for the private
+                          ip CloudSQL instance. For example: "google-managed-services-default".
+                          If set, the cloned instance ip will be created in the allocated
+                          range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035).
+                          Specifically, the name must be 1-63 characters long and
+                          match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.'
+                        type: string
                       pointInTime:
                         description: The timestamp of the point in time that should
                           be restored.
@@ -237,16 +245,6 @@ spec:
                         description: This specifies when the instance should be active.
                           Can be either ALWAYS, NEVER or ON_DEMAND.
                         type: string
-                      authorizedGaeApplications:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see https://cloud.google.com/sql/docs/mysql/deprecation-notice
-                          for information on how to upgrade to Second Generation instances.
-                          A list of Google App Engine project names that are allowed
-                          to access this instance. Deprecated
-                        items:
-                          type: string
-                        type: array
                       availabilityType:
                         description: The availability type of the Cloud SQL instance,
                           high availability (REGIONAL) or single zone (ZONAL). For
@@ -296,13 +294,6 @@ spec:
                       collation:
                         description: The name of server instance collation.
                         type: string
-                      crashSafeReplication:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see here for information on how to upgrade to Second Generation
-                          instances. Specific to read instances, indicates when crash-safe
-                          replication flags are enabled. Deprecated
-                        type: boolean
                       databaseFlags:
                         items:
                           properties:
@@ -359,6 +350,14 @@ spec:
                         type: object
                       ipConfiguration:
                         properties:
+                          allocatedIPRange:
+                            description: 'The name of the allocated ip range for the
+                              private ip CloudSQL instance. For example: "google-managed-services-default".
+                              If set, the instance ip will be created in the allocated
+                              range. The range name must comply with RFC 1035. Specifically,
+                              the name must be 1-63 characters long and match the
+                              regular expression [a-z]([-a-z0-9]*[a-z0-9])?.'
+                            type: string
                           authorizedNetworks:
                             items:
                               properties:
@@ -420,13 +419,6 @@ spec:
                       pricingPlan:
                         description: Pricing plan for this instance, can only be PER_USE.
                         type: string
-                      replicationType:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see here for information on how to upgrade to Second Generation
-                          instances. Replication type for this instance, can be one
-                          of ASYNCHRONOUS or SYNCHRONOUS. Deprecated
-                        type: string
                       tier:
                         description: The machine type to use. See tiers for more details
                           and supported versions. Postgres supports only shared-core
@@ -486,6 +478,8 @@ spec:
                         format: int64
                         type: integer
                     type: object
+                required:
+                - databaseVersion
                 type: object
               secretRef:
                 description: LocalObjectReference contains enough information to let
@@ -502,6 +496,14 @@ spec:
                     description: Configuration for creating a new instance as a clone
                       of another instance.
                     properties:
+                      allocatedIPRange:
+                        description: 'The name of the allocated ip range for the private
+                          ip CloudSQL instance. For example: "google-managed-services-default".
+                          If set, the cloned instance ip will be created in the allocated
+                          range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035).
+                          Specifically, the name must be 1-63 characters long and
+                          match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.'
+                        type: string
                       pointInTime:
                         description: The timestamp of the point in time that should
                           be restored.
@@ -678,16 +680,6 @@ spec:
                         description: This specifies when the instance should be active.
                           Can be either ALWAYS, NEVER or ON_DEMAND.
                         type: string
-                      authorizedGaeApplications:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see https://cloud.google.com/sql/docs/mysql/deprecation-notice
-                          for information on how to upgrade to Second Generation instances.
-                          A list of Google App Engine project names that are allowed
-                          to access this instance. Deprecated
-                        items:
-                          type: string
-                        type: array
                       availabilityType:
                         description: The availability type of the Cloud SQL instance,
                           high availability (REGIONAL) or single zone (ZONAL). For
@@ -737,13 +729,6 @@ spec:
                       collation:
                         description: The name of server instance collation.
                         type: string
-                      crashSafeReplication:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see here for information on how to upgrade to Second Generation
-                          instances. Specific to read instances, indicates when crash-safe
-                          replication flags are enabled. Deprecated
-                        type: boolean
                       databaseFlags:
                         items:
                           properties:
@@ -800,6 +785,14 @@ spec:
                         type: object
                       ipConfiguration:
                         properties:
+                          allocatedIPRange:
+                            description: 'The name of the allocated ip range for the
+                              private ip CloudSQL instance. For example: "google-managed-services-default".
+                              If set, the instance ip will be created in the allocated
+                              range. The range name must comply with RFC 1035. Specifically,
+                              the name must be 1-63 characters long and match the
+                              regular expression [a-z]([-a-z0-9]*[a-z0-9])?.'
+                            type: string
                           authorizedNetworks:
                             items:
                               properties:
@@ -861,13 +854,6 @@ spec:
                       pricingPlan:
                         description: Pricing plan for this instance, can only be PER_USE.
                         type: string
-                      replicationType:
-                        description: This property is only applicable to First Generation
-                          instances. First Generation instances are now deprecated,
-                          see here for information on how to upgrade to Second Generation
-                          instances. Replication type for this instance, can be one
-                          of ASYNCHRONOUS or SYNCHRONOUS. Deprecated
-                        type: string
                       tier:
                         description: The machine type to use. See tiers for more details
                           and supported versions. Postgres supports only shared-core
@@ -927,6 +913,8 @@ spec:
                         format: int64
                         type: integer
                     type: object
+                required:
+                - databaseVersion
                 type: object
               terminationPolicy:
                 enum:

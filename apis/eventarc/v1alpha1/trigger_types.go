@@ -53,7 +53,7 @@ type TriggerSpecDestinationCloudRunService struct {
 }
 
 type TriggerSpecDestination struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
 	// +optional
 	CloudFunction *string `json:"cloudFunction,omitempty" tf:"cloud_function"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
@@ -72,7 +72,7 @@ type TriggerSpecTransportPubsub struct {
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	// +optional
 	Subscription *string `json:"subscription,omitempty" tf:"subscription"`
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	// +optional
 	Topic *string `json:"topic,omitempty" tf:"topic"`
 }
@@ -117,7 +117,7 @@ type TriggerSpecResource struct {
 	Location *string `json:"location" tf:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriteria []TriggerSpecMatchingCriteria `json:"matchingCriteria" tf:"matching_criteria"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name *string `json:"name" tf:"name"`
 	// The project for the resource
 	// +optional

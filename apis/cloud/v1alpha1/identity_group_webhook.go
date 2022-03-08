@@ -91,7 +91,7 @@ func (r *IdentityGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range identitygroupForceNewList {
+	for key, _ := range identitygroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

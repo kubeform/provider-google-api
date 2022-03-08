@@ -57,9 +57,6 @@ spec:
                 type: object
               resource:
                 properties:
-                  bucketPolicyOnly:
-                    description: Enables Bucket Policy Only access to a bucket. Deprecated
-                    type: boolean
                   cors:
                     description: The bucket's Cross-Origin Resource Sharing (CORS)
                       configuration.
@@ -95,6 +92,8 @@ spec:
                       type: object
                     type: array
                   defaultEventBasedHold:
+                    description: Whether or not to automatically apply an eventBasedHold
+                      to new objects added to the bucket.
                     type: boolean
                   encryption:
                     description: The bucket's encryption configuration.
@@ -250,6 +249,44 @@ spec:
                       include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
                       ARCHIVE.'
                     type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
                   uniformBucketLevelAccess:
                     description: Enables uniform bucket-level access on a bucket.
                     type: boolean
@@ -279,13 +316,11 @@ spec:
                         type: string
                     type: object
                 required:
+                - location
                 - name
                 type: object
               state:
                 properties:
-                  bucketPolicyOnly:
-                    description: Enables Bucket Policy Only access to a bucket. Deprecated
-                    type: boolean
                   cors:
                     description: The bucket's Cross-Origin Resource Sharing (CORS)
                       configuration.
@@ -321,6 +356,8 @@ spec:
                       type: object
                     type: array
                   defaultEventBasedHold:
+                    description: Whether or not to automatically apply an eventBasedHold
+                      to new objects added to the bucket.
                     type: boolean
                   encryption:
                     description: The bucket's encryption configuration.
@@ -476,6 +513,44 @@ spec:
                       include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
                       ARCHIVE.'
                     type: string
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                    type: object
                   uniformBucketLevelAccess:
                     description: Enables uniform bucket-level access on a bucket.
                     type: boolean
@@ -505,6 +580,7 @@ spec:
                         type: string
                     type: object
                 required:
+                - location
                 - name
                 type: object
               terminationPolicy:

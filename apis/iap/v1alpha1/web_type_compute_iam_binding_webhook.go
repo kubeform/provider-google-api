@@ -92,7 +92,7 @@ func (r *WebTypeComputeIamBinding) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webtypecomputeiambindingForceNewList {
+	for key, _ := range webtypecomputeiambindingForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

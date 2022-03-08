@@ -114,9 +114,11 @@ spec:
                           period.
                         type: string
                       period:
-                        description: How long a published message is retained. If
+                        description: 'How long a published message is retained. If
                           unset, messages will be retained as long as the bytes retained
-                          for each partition is below perPartitionBytes.
+                          for each partition is below perPartitionBytes. A duration
+                          in seconds with up to nine fractional digits, terminated
+                          by ''s''. Example: "3.5s".'
                         type: string
                     required:
                     - perPartitionBytes
@@ -224,9 +226,11 @@ spec:
                           period.
                         type: string
                       period:
-                        description: How long a published message is retained. If
+                        description: 'How long a published message is retained. If
                           unset, messages will be retained as long as the bytes retained
-                          for each partition is below perPartitionBytes.
+                          for each partition is below perPartitionBytes. A duration
+                          in seconds with up to nine fractional digits, terminated
+                          by ''s''. Example: "3.5s".'
                         type: string
                     required:
                     - perPartitionBytes

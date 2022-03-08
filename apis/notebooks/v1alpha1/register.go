@@ -68,6 +68,14 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&InstanceIamPolicyList{},
 		&Location{},
 		&LocationList{},
+		&Runtime{},
+		&RuntimeList{},
+		&RuntimeIamBinding{},
+		&RuntimeIamBindingList{},
+		&RuntimeIamMember{},
+		&RuntimeIamMemberList{},
+		&RuntimeIamPolicy{},
+		&RuntimeIamPolicyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

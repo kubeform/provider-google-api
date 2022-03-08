@@ -94,7 +94,7 @@ func (r *WebBackendServiceIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range webbackendserviceiammemberForceNewList {
+	for key, _ := range webbackendserviceiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

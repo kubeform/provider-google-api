@@ -94,7 +94,7 @@ func (r *DatasetIamMember) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datasetiammemberForceNewList {
+	for key, _ := range datasetiammemberForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

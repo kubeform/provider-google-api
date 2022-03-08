@@ -89,7 +89,7 @@ func (r *ProjectExclusion) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range projectexclusionForceNewList {
+	for key, _ := range projectexclusionForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

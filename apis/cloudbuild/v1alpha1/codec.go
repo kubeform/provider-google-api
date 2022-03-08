@@ -30,6 +30,7 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuild{}).Type1()):                    TriggerSpecBuildCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildArtifacts{}).Type1()):           TriggerSpecBuildArtifactsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildArtifactsObjects{}).Type1()):    TriggerSpecBuildArtifactsObjectsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildAvailableSecrets{}).Type1()):    TriggerSpecBuildAvailableSecretsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildOptions{}).Type1()):             TriggerSpecBuildOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildSource{}).Type1()):              TriggerSpecBuildSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildSourceRepoSource{}).Type1()):    TriggerSpecBuildSourceRepoSourceCodec{},
@@ -40,6 +41,8 @@ func GetEncoder() map[string]jsoniter.ValEncoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1()):             TriggerSpecPubsubConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecTriggerTemplate{}).Type1()):          TriggerSpecTriggerTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1()):            TriggerSpecWebhookConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecNetworkConfig{}).Type1()):         WorkerPoolSpecNetworkConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecWorkerConfig{}).Type1()):          WorkerPoolSpecWorkerConfigCodec{},
 	}
 }
 
@@ -48,6 +51,7 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuild{}).Type1()):                    TriggerSpecBuildCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildArtifacts{}).Type1()):           TriggerSpecBuildArtifactsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildArtifactsObjects{}).Type1()):    TriggerSpecBuildArtifactsObjectsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildAvailableSecrets{}).Type1()):    TriggerSpecBuildAvailableSecretsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildOptions{}).Type1()):             TriggerSpecBuildOptionsCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildSource{}).Type1()):              TriggerSpecBuildSourceCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildSourceRepoSource{}).Type1()):    TriggerSpecBuildSourceRepoSourceCodec{},
@@ -58,6 +62,8 @@ func GetDecoder() map[string]jsoniter.ValDecoder {
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecPubsubConfig{}).Type1()):             TriggerSpecPubsubConfigCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecTriggerTemplate{}).Type1()):          TriggerSpecTriggerTemplateCodec{},
 		jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecWebhookConfig{}).Type1()):            TriggerSpecWebhookConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecNetworkConfig{}).Type1()):         WorkerPoolSpecNetworkConfigCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecWorkerConfig{}).Type1()):          WorkerPoolSpecWorkerConfigCodec{},
 	}
 }
 
@@ -307,6 +313,85 @@ func (TriggerSpecBuildArtifactsObjectsCodec) Decode(ptr unsafe.Pointer, iter *js
 		}
 	default:
 		iter.ReportError("decode TriggerSpecBuildArtifactsObjects", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type TriggerSpecBuildAvailableSecretsCodec struct {
+}
+
+func (TriggerSpecBuildAvailableSecretsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*TriggerSpecBuildAvailableSecrets)(ptr) == nil
+}
+
+func (TriggerSpecBuildAvailableSecretsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*TriggerSpecBuildAvailableSecrets)(ptr)
+	var objs []TriggerSpecBuildAvailableSecrets
+	if obj != nil {
+		objs = []TriggerSpecBuildAvailableSecrets{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildAvailableSecrets{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (TriggerSpecBuildAvailableSecretsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*TriggerSpecBuildAvailableSecrets)(ptr) = TriggerSpecBuildAvailableSecrets{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []TriggerSpecBuildAvailableSecrets
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildAvailableSecrets{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*TriggerSpecBuildAvailableSecrets)(ptr) = objs[0]
+			} else {
+				*(*TriggerSpecBuildAvailableSecrets)(ptr) = TriggerSpecBuildAvailableSecrets{}
+			}
+		} else {
+			*(*TriggerSpecBuildAvailableSecrets)(ptr) = TriggerSpecBuildAvailableSecrets{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj TriggerSpecBuildAvailableSecrets
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(TriggerSpecBuildAvailableSecrets{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*TriggerSpecBuildAvailableSecrets)(ptr) = obj
+		} else {
+			*(*TriggerSpecBuildAvailableSecrets)(ptr) = TriggerSpecBuildAvailableSecrets{}
+		}
+	default:
+		iter.ReportError("decode TriggerSpecBuildAvailableSecrets", "unexpected JSON type")
 	}
 }
 
@@ -1097,5 +1182,163 @@ func (TriggerSpecWebhookConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.I
 		}
 	default:
 		iter.ReportError("decode TriggerSpecWebhookConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type WorkerPoolSpecNetworkConfigCodec struct {
+}
+
+func (WorkerPoolSpecNetworkConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*WorkerPoolSpecNetworkConfig)(ptr) == nil
+}
+
+func (WorkerPoolSpecNetworkConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*WorkerPoolSpecNetworkConfig)(ptr)
+	var objs []WorkerPoolSpecNetworkConfig
+	if obj != nil {
+		objs = []WorkerPoolSpecNetworkConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecNetworkConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (WorkerPoolSpecNetworkConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*WorkerPoolSpecNetworkConfig)(ptr) = WorkerPoolSpecNetworkConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []WorkerPoolSpecNetworkConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecNetworkConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*WorkerPoolSpecNetworkConfig)(ptr) = objs[0]
+			} else {
+				*(*WorkerPoolSpecNetworkConfig)(ptr) = WorkerPoolSpecNetworkConfig{}
+			}
+		} else {
+			*(*WorkerPoolSpecNetworkConfig)(ptr) = WorkerPoolSpecNetworkConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj WorkerPoolSpecNetworkConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecNetworkConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*WorkerPoolSpecNetworkConfig)(ptr) = obj
+		} else {
+			*(*WorkerPoolSpecNetworkConfig)(ptr) = WorkerPoolSpecNetworkConfig{}
+		}
+	default:
+		iter.ReportError("decode WorkerPoolSpecNetworkConfig", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type WorkerPoolSpecWorkerConfigCodec struct {
+}
+
+func (WorkerPoolSpecWorkerConfigCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*WorkerPoolSpecWorkerConfig)(ptr) == nil
+}
+
+func (WorkerPoolSpecWorkerConfigCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*WorkerPoolSpecWorkerConfig)(ptr)
+	var objs []WorkerPoolSpecWorkerConfig
+	if obj != nil {
+		objs = []WorkerPoolSpecWorkerConfig{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecWorkerConfig{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (WorkerPoolSpecWorkerConfigCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*WorkerPoolSpecWorkerConfig)(ptr) = WorkerPoolSpecWorkerConfig{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []WorkerPoolSpecWorkerConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecWorkerConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*WorkerPoolSpecWorkerConfig)(ptr) = objs[0]
+			} else {
+				*(*WorkerPoolSpecWorkerConfig)(ptr) = WorkerPoolSpecWorkerConfig{}
+			}
+		} else {
+			*(*WorkerPoolSpecWorkerConfig)(ptr) = WorkerPoolSpecWorkerConfig{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj WorkerPoolSpecWorkerConfig
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(WorkerPoolSpecWorkerConfig{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*WorkerPoolSpecWorkerConfig)(ptr) = obj
+		} else {
+			*(*WorkerPoolSpecWorkerConfig)(ptr) = WorkerPoolSpecWorkerConfig{}
+		}
+	default:
+		iter.ReportError("decode WorkerPoolSpecWorkerConfig", "unexpected JSON type")
 	}
 }

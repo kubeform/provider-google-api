@@ -68,7 +68,9 @@ type LiteTopicSpecRetentionConfig struct {
 	// dropped to make room for newer ones, regardless of the value of period.
 	PerPartitionBytes *string `json:"perPartitionBytes" tf:"per_partition_bytes"`
 	// How long a published message is retained. If unset, messages will be retained as
-	// long as the bytes retained for each partition is below perPartitionBytes.
+	// long as the bytes retained for each partition is below perPartitionBytes. A
+	// duration in seconds with up to nine fractional digits, terminated by 's'.
+	// Example: "3.5s".
 	// +optional
 	Period *string `json:"period,omitempty" tf:"period"`
 }

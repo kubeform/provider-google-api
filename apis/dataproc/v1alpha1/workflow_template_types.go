@@ -456,8 +456,7 @@ type WorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfig struct {
 
 type WorkflowTemplateSpecPlacementManagedClusterConfigInitializationActions struct {
 	// Required. Cloud Storage URI of executable file.
-	// +optional
-	ExecutableFile *string `json:"executableFile,omitempty" tf:"executable_file"`
+	ExecutableFile *string `json:"executableFile" tf:"executable_file"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	// +optional
 	ExecutionTimeout *string `json:"executionTimeout,omitempty" tf:"execution_timeout"`
@@ -752,10 +751,10 @@ type WorkflowTemplateSpecPlacementManagedClusterConfig struct {
 	// Optional. Lifecycle setting for the cluster.
 	// +optional
 	LifecycleConfig *WorkflowTemplateSpecPlacementManagedClusterConfigLifecycleConfig `json:"lifecycleConfig,omitempty" tf:"lifecycle_config"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for the master instance in a cluster.
 	// +optional
 	MasterConfig *WorkflowTemplateSpecPlacementManagedClusterConfigMasterConfig `json:"masterConfig,omitempty" tf:"master_config"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
 	// +optional
 	SecondaryWorkerConfig *WorkflowTemplateSpecPlacementManagedClusterConfigSecondaryWorkerConfig `json:"secondaryWorkerConfig,omitempty" tf:"secondary_worker_config"`
 	// Optional. Security settings for the cluster.

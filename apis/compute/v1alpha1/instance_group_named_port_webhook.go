@@ -92,7 +92,7 @@ func (r *InstanceGroupNamedPort) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instancegroupnamedportForceNewList {
+	for key, _ := range instancegroupnamedportForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

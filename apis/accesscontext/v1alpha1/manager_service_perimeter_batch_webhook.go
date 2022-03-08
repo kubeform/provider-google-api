@@ -90,7 +90,7 @@ func (r *ManagerServicePerimeterBatch) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range managerserviceperimeterbatchForceNewList {
+	for key, _ := range managerserviceperimeterbatchForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

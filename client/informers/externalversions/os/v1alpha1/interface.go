@@ -24,6 +24,8 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
+	// ConfigOsPolicyAssignments returns a ConfigOsPolicyAssignmentInformer.
+	ConfigOsPolicyAssignments() ConfigOsPolicyAssignmentInformer
 	// ConfigPatchDeployments returns a ConfigPatchDeploymentInformer.
 	ConfigPatchDeployments() ConfigPatchDeploymentInformer
 	// LoginSSHPublicKeys returns a LoginSSHPublicKeyInformer.
@@ -39,6 +41,11 @@ type version struct {
 // New returns a new Interface.
 func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakListOptions internalinterfaces.TweakListOptionsFunc) Interface {
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
+}
+
+// ConfigOsPolicyAssignments returns a ConfigOsPolicyAssignmentInformer.
+func (v *version) ConfigOsPolicyAssignments() ConfigOsPolicyAssignmentInformer {
+	return &configOsPolicyAssignmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // ConfigPatchDeployments returns a ConfigPatchDeploymentInformer.

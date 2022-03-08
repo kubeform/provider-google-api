@@ -18,6 +18,8 @@ limitations under the License.
 
 package v1alpha1
 
+type ConfigOsPolicyAssignmentExpansion interface{}
+
 type ConfigPatchDeploymentExpansion interface{}
 
 type LoginSSHPublicKeyExpansion interface{}

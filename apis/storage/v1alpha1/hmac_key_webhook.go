@@ -89,7 +89,7 @@ func (r *HmacKey) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range hmackeyForceNewList {
+	for key, _ := range hmackeyForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

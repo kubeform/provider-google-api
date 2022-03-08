@@ -27,9 +27,13 @@ import (
 
 type ApigeeV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	EndpointAttachmentsGetter
 	EnvgroupsGetter
 	EnvgroupAttachmentsGetter
 	EnvironmentsGetter
+	EnvironmentIamBindingsGetter
+	EnvironmentIamMembersGetter
+	EnvironmentIamPoliciesGetter
 	InstancesGetter
 	InstanceAttachmentsGetter
 	OrganizationsGetter
@@ -38,6 +42,10 @@ type ApigeeV1alpha1Interface interface {
 // ApigeeV1alpha1Client is used to interact with features provided by the apigee.google.kubeform.com group.
 type ApigeeV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *ApigeeV1alpha1Client) EndpointAttachments(namespace string) EndpointAttachmentInterface {
+	return newEndpointAttachments(c, namespace)
 }
 
 func (c *ApigeeV1alpha1Client) Envgroups(namespace string) EnvgroupInterface {
@@ -50,6 +58,18 @@ func (c *ApigeeV1alpha1Client) EnvgroupAttachments(namespace string) EnvgroupAtt
 
 func (c *ApigeeV1alpha1Client) Environments(namespace string) EnvironmentInterface {
 	return newEnvironments(c, namespace)
+}
+
+func (c *ApigeeV1alpha1Client) EnvironmentIamBindings(namespace string) EnvironmentIamBindingInterface {
+	return newEnvironmentIamBindings(c, namespace)
+}
+
+func (c *ApigeeV1alpha1Client) EnvironmentIamMembers(namespace string) EnvironmentIamMemberInterface {
+	return newEnvironmentIamMembers(c, namespace)
+}
+
+func (c *ApigeeV1alpha1Client) EnvironmentIamPolicies(namespace string) EnvironmentIamPolicyInterface {
+	return newEnvironmentIamPolicies(c, namespace)
 }
 
 func (c *ApigeeV1alpha1Client) Instances(namespace string) InstanceInterface {

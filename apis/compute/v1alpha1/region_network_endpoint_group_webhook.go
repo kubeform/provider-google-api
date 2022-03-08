@@ -100,7 +100,7 @@ func (r *RegionNetworkEndpointGroup) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range regionnetworkendpointgroupForceNewList {
+	for key, _ := range regionnetworkendpointgroupForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

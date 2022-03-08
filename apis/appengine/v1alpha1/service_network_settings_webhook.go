@@ -88,7 +88,7 @@ func (r *ServiceNetworkSettings) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range servicenetworksettingsForceNewList {
+	for key, _ := range servicenetworksettingsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -42,10 +42,11 @@ func (r *Router) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Router{}
 
 var routerForceNewList = map[string]bool{
-	"/name":    true,
-	"/network": true,
-	"/project": true,
-	"/region":  true,
+	"/encrypted_interconnect_router": true,
+	"/name":                          true,
+	"/network":                       true,
+	"/project":                       true,
+	"/region":                        true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -91,7 +92,7 @@ func (r *Router) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range routerForceNewList {
+	for key, _ := range routerForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

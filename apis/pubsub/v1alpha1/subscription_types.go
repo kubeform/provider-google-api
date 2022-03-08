@@ -228,10 +228,6 @@ type SubscriptionSpecResource struct {
 	MessageRetentionDuration *string `json:"messageRetentionDuration,omitempty" tf:"message_retention_duration"`
 	// Name of the subscription.
 	Name *string `json:"name" tf:"name"`
-	//  Path of the subscription in the format projects/{project}/subscriptions/{name}
-	// +optional
-	// Deprecated
-	Path *string `json:"path,omitempty" tf:"path"`
 	// +optional
 	Project *string `json:"project,omitempty" tf:"project"`
 	// If push delivery is used with this subscription, this field is used to

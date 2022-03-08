@@ -65,3 +65,35 @@ type LocationListerExpansion interface{}
 // LocationNamespaceListerExpansion allows custom methods to be added to
 // LocationNamespaceLister.
 type LocationNamespaceListerExpansion interface{}
+
+// RuntimeListerExpansion allows custom methods to be added to
+// RuntimeLister.
+type RuntimeListerExpansion interface{}
+
+// RuntimeNamespaceListerExpansion allows custom methods to be added to
+// RuntimeNamespaceLister.
+type RuntimeNamespaceListerExpansion interface{}
+
+// RuntimeIamBindingListerExpansion allows custom methods to be added to
+// RuntimeIamBindingLister.
+type RuntimeIamBindingListerExpansion interface{}
+
+// RuntimeIamBindingNamespaceListerExpansion allows custom methods to be added to
+// RuntimeIamBindingNamespaceLister.
+type RuntimeIamBindingNamespaceListerExpansion interface{}
+
+// RuntimeIamMemberListerExpansion allows custom methods to be added to
+// RuntimeIamMemberLister.
+type RuntimeIamMemberListerExpansion interface{}
+
+// RuntimeIamMemberNamespaceListerExpansion allows custom methods to be added to
+// RuntimeIamMemberNamespaceLister.
+type RuntimeIamMemberNamespaceListerExpansion interface{}
+
+// RuntimeIamPolicyListerExpansion allows custom methods to be added to
+// RuntimeIamPolicyLister.
+type RuntimeIamPolicyListerExpansion interface{}
+
+// RuntimeIamPolicyNamespaceListerExpansion allows custom methods to be added to
+// RuntimeIamPolicyNamespaceLister.
+type RuntimeIamPolicyNamespaceListerExpansion interface{}

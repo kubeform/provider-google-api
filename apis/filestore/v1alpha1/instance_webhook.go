@@ -43,6 +43,7 @@ var _ webhook.Validator = &Instance{}
 
 var instanceForceNewList = map[string]bool{
 	"/file_shares/*/name":           true,
+	"/location":                     true,
 	"/networks/*/modes":             true,
 	"/networks/*/network":           true,
 	"/networks/*/reserved_ip_range": true,
@@ -94,7 +95,7 @@ func (r *Instance) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range instanceForceNewList {
+	for key, _ := range instanceForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

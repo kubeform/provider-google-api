@@ -89,7 +89,7 @@ func (r *DicomStore) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dicomstoreForceNewList {
+	for key, _ := range dicomstoreForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

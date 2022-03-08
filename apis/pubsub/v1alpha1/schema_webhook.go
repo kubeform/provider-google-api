@@ -42,8 +42,10 @@ func (r *Schema) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Schema{}
 
 var schemaForceNewList = map[string]bool{
-	"/name":    true,
-	"/project": true,
+	"/definition": true,
+	"/name":       true,
+	"/project":    true,
+	"/type":       true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
@@ -89,7 +91,7 @@ func (r *Schema) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range schemaForceNewList {
+	for key, _ := range schemaForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -27,6 +27,7 @@ import (
 
 type OsV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	ConfigOsPolicyAssignmentsGetter
 	ConfigPatchDeploymentsGetter
 	LoginSSHPublicKeysGetter
 }
@@ -34,6 +35,10 @@ type OsV1alpha1Interface interface {
 // OsV1alpha1Client is used to interact with features provided by the os.google.kubeform.com group.
 type OsV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *OsV1alpha1Client) ConfigOsPolicyAssignments(namespace string) ConfigOsPolicyAssignmentInterface {
+	return newConfigOsPolicyAssignments(c, namespace)
 }
 
 func (c *OsV1alpha1Client) ConfigPatchDeployments(namespace string) ConfigPatchDeploymentInterface {

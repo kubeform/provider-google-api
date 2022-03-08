@@ -92,7 +92,7 @@ func (r *DataTransferConfig) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range datatransferconfigForceNewList {
+	for key, _ := range datatransferconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

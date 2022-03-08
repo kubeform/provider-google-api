@@ -113,7 +113,10 @@ spec:
                   params:
                     additionalProperties:
                       type: string
-                    description: These parameters are specific to each data source.
+                    description: 'Parameters specific to each data source. For more
+                      information see the bq tab in the ''Setting up a data transfer''
+                      section for each data source. For example the parameters for
+                      Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq'
                     type: object
                   project:
                     type: string
@@ -165,8 +168,8 @@ spec:
                       will require an apply to update state."
                     type: object
                   serviceAccountName:
-                    description: Optional service account name. If this field is set,
-                      transfer config will be created with this service account credentials.
+                    description: Service account email. If this field is set, transfer
+                      config will be created with this service account credentials.
                       It requires that requesting user calling this API has permissions
                       to act as this service account.
                     type: string
@@ -280,7 +283,10 @@ spec:
                   params:
                     additionalProperties:
                       type: string
-                    description: These parameters are specific to each data source.
+                    description: 'Parameters specific to each data source. For more
+                      information see the bq tab in the ''Setting up a data transfer''
+                      section for each data source. For example the parameters for
+                      Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq'
                     type: object
                   project:
                     type: string
@@ -332,8 +338,8 @@ spec:
                       will require an apply to update state."
                     type: object
                   serviceAccountName:
-                    description: Optional service account name. If this field is set,
-                      transfer config will be created with this service account credentials.
+                    description: Service account email. If this field is set, transfer
+                      config will be created with this service account credentials.
                       It requires that requesting user calling this API has permissions
                       to act as this service account.
                     type: string

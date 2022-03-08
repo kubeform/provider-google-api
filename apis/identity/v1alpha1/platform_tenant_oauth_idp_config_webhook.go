@@ -90,7 +90,7 @@ func (r *PlatformTenantOauthIdpConfig) ValidateUpdate(old runtime.Object) error 
 		return err
 	}
 
-	for key := range platformtenantoauthidpconfigForceNewList {
+	for key, _ := range platformtenantoauthidpconfigForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false
